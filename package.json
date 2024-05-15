@@ -1,0 +1,22 @@
+{
+    "id": "x-validatorInput",
+    "name": "验证码等分格输入框",
+    "displayName": "验证码等分格输入框",
+    "version": "1.0.1",
+    "description": "使用view+css模拟input，再隐藏input,做的，用于验证码输入等场景",
+    "keywords": [
+        "输入框",
+        "input",
+        "验证码",
+        "分格输入框"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    },
+    "dependencies": {
+        "qiniu-js": "^3.4.2"
+    }
+}

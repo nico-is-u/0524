@@ -1,0 +1,434 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/ranking",
+			"style": {
+				"navigationBarTitleText": "共富功臣"
+			}
+		},
+		{
+			"path": "pages/index/gongfu",
+			"style": {
+				"navigationBarTitleText": "2024分配新方案",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/gf_buy_card",
+			"style": {
+				"navigationBarTitleText": "支付"
+			}
+		},
+		{
+			"path": "pages/index/gf_buy_card2",
+			"style": {
+				"navigationBarTitleText": "支付"
+			}
+		},
+		{
+			"path": "pages/index/gf_card",
+			"style": {
+				"navigationBarTitleText": "税务抵用券",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/team",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/my",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/home-page/zc_recover",
+			"style": {
+				"navigationBarTitleText": "资产交接"
+			}
+		},
+		{
+			"path": "pages/home-page/zc_recover_reg",
+			"style": {
+				"navigationBarTitleText": "资产交接登记"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_news",
+			"style": {
+				"navigationBarTitleText": "共富新闻"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_notices",
+			"style": {
+				"navigationBarTitleText": "站内消息"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_news_detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_Chat",
+			"style": {
+				"navigationBarTitleText": "共富工程官方群"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_baozhang",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_baozhang_ls",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_share",
+			"style": {
+				"navigationStyle": "custom",
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/home-page/gf_top-up",
+			"style": {
+				"navigationBarTitleText": "充值",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/home-page/gf_customer",
+			"style": {
+				"navigationStyle": "custom",
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/home-page/gf_sign",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/shop-page/gf_active",
+			"style": {
+				"navigationBarTitleText": "激活账单"
+			}
+		},
+		{
+			"path": "pages/shop-page/gf_up",
+			"style": {
+				"navigationBarTitleText": "提高额度"
+			}
+		},
+		{
+			"path": "pages/shop-page/gf_baozhang",
+			"style": {
+				"navigationBarTitleText": "共富保障"
+			}
+		},
+		{
+			"path": "pages/system-page/sys_user_info",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_about",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_draw",
+			"style": {
+				"navigationBarTitleText": "提现申请"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_draw_ecny",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_draw_tobank",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_tr-money",
+			"style": {
+				"navigationBarTitleText": "转账"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_tr-ecny",
+			"style": {
+				"navigationBarTitleText": "数字人民币转账"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_amount_fund",
+			"style": {
+				"navigationBarTitleText": "账户资金明细",
+				"onReachBottomDistance": 60
+			}
+		},
+		{
+			"path": "pages/system-page/gf_amount_draw",
+			"style": {
+				"navigationBarTitleText": "账户资金明细",
+				"onReachBottomDistance": 60
+			}
+		},
+		{
+			"path": "pages/system-page/gf_amount_ecny-fund",
+			"style": {
+				"navigationBarTitleText": "E-CNY提现申请记录",
+				"onReachBottomDistance": 60
+			}
+		},
+		{
+			"path": "pages/system-page/gf_amount_ecny-fund-det",
+			"style": {
+				"navigationBarTitleText": "E-CNY提现申请记录"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_bank_list",
+			"style": {
+				"navigationBarTitleText": "银行卡"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_band-card",
+			"style": {
+				"navigationBarTitleText": "绑定银行账户"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_secure",
+			"style": {
+				"navigationBarTitleText": "账户安全",
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/system-page/gf_pay-pwd",
+			"style": {
+				"navigationBarTitleText": "支付密码"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_login-pwd",
+			"style": {
+				"navigationBarTitleText": "修改登录密码"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_login",
+			"style": {
+				"navigationStyle": "custom"
+				// "disableScroll": true
+			}
+		},
+		{
+			"path": "pages/system-page/gf_register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_real-name_auth",
+			"style": {
+				"navigationBarTitleText": "实名认证"
+			}
+		},
+		{
+			"path": "pages/system-page/gf_amount-detail",
+			"style": {
+				"navigationBarTitleText": "现金明细",
+				"navigationBarTextStyle": "black",
+				"disableScroll": true,
+				"navigationBarBackgroundColor": "#FFF",
+				"backgroundColor": "#f6f9ff"
+			}
+		},
+		// {
+		// 	"path": "pages/shop-page/gf_live",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		{
+			"path": "pages/shop-page/gf_ecny",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/shop-page/gf_buy_project",
+			"style": {
+				"navigationBarTitleText": "支付"
+			}
+		},
+		{
+			"path": "pages/home-page/gf_file",
+			"style": {
+				"navigationBarTitleText": "政策文件"
+			}
+		},
+		{
+			"path" : "pages/home-page/zc_payment",
+			"style" : 
+			{
+				"navigationBarTitleText" : "支付交接金"
+			}
+		},
+		{
+			"path" : "pages/shop-page/gf_tr_bank",
+			"style" : 
+			{
+				"navigationBarTitleText" : "线下银行卡转账"
+			}
+		},
+		{
+			"path" : "pages/system-page/gf_zc_detail",
+			"style" : 
+			{
+				"navigationStyle": "custom"
+				
+			}
+		},
+		{
+			"path" : "pages/shop-page/gf_goods_home",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/system-page/gf_ecny_money",
+			"style" : 
+			{
+				"navigationBarTitleText" : "数字钱包 E-CNY",
+				"navigationBarBackgroundColor": "#CE514F"
+			}
+		},
+		{
+			"path" : "pages/shop-page/gf_goods_detail"
+		},
+		{
+			"path" : "pages/shop-page/gf_buy_project_shop",
+			"style" : 
+			{
+				"navigationBarTitleText" : "支付"
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_get_baozhang",
+			"style" : 
+			{
+				"navigationBarTitleText" : "共富保障性住房"
+			}
+		},
+		{
+			"path" : "pages/shop-page/gf_shop_fund",
+			"style" : 
+			{
+				"navigationBarTitleText" : "流转记录"
+			}
+		},
+		{
+			"path" : "pages/shop-page/gf_ecny_found",
+			"style" : 
+			{
+				"navigationBarTitleText" : "数字人民币提现申请记录"
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_zcgz",
+			"style" : 
+			{
+				"navigationBarTitleText" : "资产公证"
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_zcgzs",
+			"style" : 
+			{
+				"navigationBarTitleText" : "资产公证书"
+			}
+		},
+		{
+		  "path" : "pages/home-page/gf_rzzc",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "认证资产"
+		  }
+		}
+	],
+	"tabBar": {
+		"color": "#707070",
+		"selectedColor": "#B80606",
+		"list": [{
+				"text": "首页",
+				"iconPath": "static/images/tabbar/t1.png",
+				"selectedIconPath": "static/images/tabbar/t1c.png",
+				"pagePath": "pages/index/index"
+			},
+			{
+				"text": "排行",
+				"iconPath": "static/images/tabbar/t2.png",
+				"selectedIconPath": "static/images/tabbar/t2c.png",
+				"pagePath": "pages/index/ranking"
+			},
+			{
+				"text": "共富",
+				"iconPath": "static/images/tabbar/t3.png",
+				"selectedIconPath": "static/images/tabbar/t3c.png",
+				"pagePath": "pages/index/gongfu"
+			},
+			{
+				"text": "团队",
+				"iconPath": "static/images/tabbar/t4.png",
+				"selectedIconPath": "static/images/tabbar/t4c.png",
+				"pagePath": "pages/index/team"
+			},
+			{
+				"text": "我的",
+				"iconPath": "static/images/tabbar/t5.png",
+				"selectedIconPath": "static/images/tabbar/t5c.png",
+				"pagePath": "pages/index/my"
+			}
+		]
+	},
+	"globalStyle": {
+		"app-plus": {
+			"bounce": "none"
+		},
+		"enablePullDownRefresh": false,
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "共富工程",
+		"navigationBarBackgroundColor": "#B80606",
+		"backgroundColor": "#B80606"
+	},
+	"uniIdRouter": {}
+}
