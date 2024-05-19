@@ -57,6 +57,10 @@
 							}
 						})
 					})
+					.catch(err => {
+						if (err.code === 10002) this.toa(err.msg)
+						_.isDone = false
+					})
 				setTimeout(() => {
 					_.isDone = false
 				}, 2000)

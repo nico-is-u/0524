@@ -10,7 +10,7 @@
 			</view>
 			<view class="item">
 				<u--text prefixIcon="" align="center" size="30rpx"
-					iconStyle="font-size: 32rpx;color:#EE2B2A" text="公证人数"></u--text>
+					iconStyle="font-size: 32rpx;color:#EE2B2A" text="认领人数"></u--text>
 			</view>
 			<view class="item">
 				<u--text prefixIcon="" align="center" size="30rpx"
