@@ -104,15 +104,15 @@ var
     // 'https://wsxy1908wsx.oss-rg-china-mainland.aliyuncs.com/y1908mymyrrym.txt',
     // 'https://ysxy1908ysx.oss-cn-hangzhou.aliyuncs.com/y1908hzmymyrrym.txt'
   oss_list = [
-    'https://wsxy1908wsx.oss-rg-china-mainland.aliyuncs.com/y1908mymyrrym.txt',
-    'https://ysxy1908ysx.oss-cn-hangzhou.aliyuncs.com/y1908hzmymyrrym.txt',
-    'https://e1652mydysx.oss-rg-china-mainland.aliyuncs.com/e1652ymyrrym.txt',
-    'https://ydysxe1652.oss-cn-shenzhen.aliyuncs.com/e1652szmymyrrym.txt',
-    'https://cvcvzwdw.oss-rg-china-mainland.aliyuncs.com/fshufh1675ym.txt',
     'https://sadasdax.oss-cn-beijing.aliyuncs.com/1675bjxjckfym.txt',
-    
+    'https://cvcvzwdw.oss-rg-china-mainland.aliyuncs.com/fshufh1675ym.txt',
+    'https://cbcbcbcb.oss-rg-china-mainland.aliyuncs.com/wu1654zzzym.txt',
+    'https://sfsfsf.oss-cn-zhangjiakou.aliyuncs.com/zjkyouyou1654ym.txt',
+    'https://jkjkjklllll.oss-cn-qingdao.aliyuncs.com/qdqdyou1656ym.txt',
+    'https://dasdaddsfs.oss-rg-china-mainland.aliyuncs.com/d1656dfbwuym.txt',
+
+    'https://niubei.fanglkj.com/gf888ym.txt',
     'https://ossqny.yjtno.com/gf888ym.txt',
-    'https://niubei.fanglkj.com/gf888ym.txt'
   ],
   oss_index = 0
 
