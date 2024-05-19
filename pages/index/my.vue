@@ -4,30 +4,20 @@
       <u-row justify="space-between" customStyle="margin:20rpx 0;" gutter="1">
         <u-col align="center" span="2">
           <view class="logo">
-            <avatar selWidth="400upx" noTab selHeight="400upx" @upload="myUpload" :avatarSrc="avatarurl" avatarStyle="width: 100upx; height: 100upx; border-radius: 100%;"></avatar>
+            <avatar selWidth="400upx" noTab selHeight="400upx" @upload="myUpload" :avatarSrc="avatarurl"
+              avatarStyle="width: 100upx; height: 100upx; border-radius: 100%;"></avatar>
           </view>
         </u-col>
         <u-col align="center" span="6">
           <u--text color="#fff" :text="user_info.phone.slice(0, 3) + '****' + user_info.phone.slice(7, 11)"></u--text>
-          <u--text
-            color="#fff"
-            :text="user_info.level_text"
-            customStyle="margin:8rpx 0"
-            prefixIcon="integral-fill"
+          <u--text color="#fff" :text="user_info.level_text" customStyle="margin:8rpx 0" prefixIcon="integral-fill"
             @click="too('/pages/home-page/gf_baozhang?type=zce')"
-            iconStyle="color:#fff;font-size:34rpx;margin:5rpx 6rpx 0 0"
-          ></u--text>
-          <u--text
-            v-if="user_info.ic_number"
-            :mode="showName"
-            :text="user_info.realname"
-            format="encrypt"
-            :suffixIcon="showNameIcon"
-            iconStyle="color:#fff;margin-left:25rpx"
-            color="#fff"
-            @click="showNameBtn"
-          ></u--text>
-          <u--text v-else text="未实名认证" color="#fff" @click="too('/pages/system-page/gf_real-name_auth?v=' + user_info.is_set_pay_password)"></u--text>
+            iconStyle="color:#fff;font-size:34rpx;margin:5rpx 6rpx 0 0"></u--text>
+          <u--text v-if="user_info.ic_number" :mode="showName" :text="user_info.realname" format="encrypt"
+            :suffixIcon="showNameIcon" iconStyle="color:#fff;margin-left:25rpx" color="#fff"
+            @click="showNameBtn"></u--text>
+          <u--text v-else text="未实名认证" color="#fff"
+            @click="too('/pages/system-page/gf_real-name_auth?v=' + user_info.is_set_pay_password)"></u--text>
         </u-col>
         <u-col align="center" span="4" @click="too('/pages/shop-page/gf_baozhang')">
           <u-icon name="gift" color="#fff" size="35"></u-icon>
@@ -49,7 +39,8 @@
           <view class="n-ecny" @click="toecny">
             <!-- <view class="n-ecny" @click="toa('1月28日开放')"> -->
             <view style="display: flex">
-              <image src="/static/icon/wecny.png" mode="widthFix" style="width: 80rpx; margin-right: 10rpx; height: 1rpx"></image>
+              <image src="/static/icon/wecny.png" mode="widthFix"
+                style="width: 80rpx; margin-right: 10rpx; height: 1rpx"></image>
               <view class="">
                 <view>数字钱包</view>
                 <view style="font-size: 28rpx; margin-top: 5rpx">E-CNY</view>
@@ -62,10 +53,12 @@
           <view class="n-ecny" style="background-color: #e7847e" @click="too('/pages/home-page/gf_draw?type=gfgc')">
             <!-- <view class="n-ecny" @click="toa('1月28日开放')"> -->
             <view style="display: flex">
-              <image src="/static/icon/logo-r.png" mode="widthFix" style="width: 80rpx; margin-right: 10rpx; height: 1rpx"></image>
+              <image src="/static/icon/logo-r.png" mode="widthFix"
+                style="width: 80rpx; margin-right: 10rpx; height: 1rpx"></image>
               <view class="">
                 <view>共富工程钱包</view>
-                <u--text mode="price" align="left" size="28rpx" margin="5rpx 0 0" color="#fff" :text="user_info.gf_purse"></u--text>
+                <u--text mode="price" align="left" size="28rpx" margin="5rpx 0 0" color="#fff"
+                  :text="user_info.gf_purse"></u--text>
               </view>
             </view>
             <!-- <text>{{user_info.digit_balance}}元</text> -->
@@ -81,13 +74,15 @@
         </u-col>
         <u-col align="center" span="4" @click="toyuanCny">
           <view class="zj_item it2">
-            <u--text :text="'￥' + Number(user_info.digital_yuan_amount).toFixed(1)" color="#fff" align="center"></u--text>
+            <u--text :text="'￥' + Number(user_info.digital_yuan_amount).toFixed(1)" color="#fff"
+              align="center"></u--text>
             <u--text color="#fff" text="数字人民币" align="center"></u--text>
           </view>
         </u-col>
         <u-col align="center" span="4" @click="too('/pages/home-page/gf_baozhang?type=live')">
           <view class="zj_item it3">
-            <u--text :text="'￥' + Number(user_info.poverty_subsidy_amount).toFixed(2)" color="#fff" align="center"></u--text>
+            <u--text :text="'￥' + Number(user_info.poverty_subsidy_amount).toFixed(2)" color="#fff"
+              align="center"></u--text>
             <u--text color="#fff" text="生活补助" align="center"></u--text>
           </view>
         </u-col>
@@ -101,8 +96,13 @@
 			</image> -->
 
       <view class="ser_list">
+        <view class="item" @click="too('/pages/home-page/gf_rzzc')">
+          <u--text prefixIcon="tags" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="认领资产"></u--text>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
+        </view>
         <view class="item" @click="too('/pages/home-page/gf_zcgzs')">
-          <u--text prefixIcon="fingerprint" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="资产公证书"></u--text>
+          <u--text prefixIcon="fingerprint" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
+            text="资产公证书"></u--text>
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
         </view>
         <view class="item" @click="too('/pages/system-page/gf_zc_detail')">
@@ -111,11 +111,13 @@
         </view>
         <view class="item" @click="too('/pages/system-page/sys_user_info')">
           <u--text prefixIcon="account" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="个人信息"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999" text="内容"></u--text>
+          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
+            text="内容"></u--text>
         </view>
         <view class="item" @click="too('/pages/home-page/gf_top-up')">
           <u--text prefixIcon="coupon" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户充值"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999" text="点击即可充值"></u--text>
+          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
+            text="点击即可充值"></u--text>
         </view>
         <view class="item" @click="too('/pages/home-page/gf_draw')">
           <u--text prefixIcon="order" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户提现"></u--text>
@@ -130,12 +132,16 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
         </view>
         <view class="item" @click="too('/pages/system-page/gf_band-card')">
-          <u--text prefixIcon="rmb-circle" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="收款方式"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999" text="银行卡"></u--text>
+          <u--text prefixIcon="rmb-circle" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
+            text="收款方式"></u--text>
+          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
+            text="银行卡"></u--text>
         </view>
         <view class="item" @click="too('/pages/home-page/gf_customer')">
-          <u--text prefixIcon="kefu-ermai" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="我的客服"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999" text="在线咨询"></u--text>
+          <u--text prefixIcon="kefu-ermai" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
+            text="我的客服"></u--text>
+          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
+            text="在线咨询"></u--text>
         </view>
         <view class="item" @click="too('/pages/system-page/gf_secure?v=' + user_info.is_set_pay_password)">
           <u--text prefixIcon="setting" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户安全"></u--text>
@@ -143,7 +149,8 @@
         </view>
 
         <view class="item" @click="too('/pages/system-page/gf_about')">
-          <u--text prefixIcon="server-man" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="关于我们"></u--text>
+          <u--text prefixIcon="server-man" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
+            text="关于我们"></u--text>
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
         </view>
         <view class="item" @click="logOut">

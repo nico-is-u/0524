@@ -12,62 +12,57 @@
           <u--text align="right" size="14px" color="#999" :text="userInfo.maskedIcNumber"></u--text>
         </view>
         <view class="item">
-          <u--text text="认证有效期至:"></u--text>
+          <u--text text="认领有效期至:"></u--text>
           <u--text align="right" size="14px" color="#999" text="2024年6月5日"></u--text>
         </view>
         <u--text text="重要提示" size="14px" color="#909da3" margin="10px 0"></u--text>
         <u--text
           text="1.本人参与共富工程领取所有共富工程项目收益，如果有不实或隐瞒冒用他们身份领取，愿承担因此引起的所有责任。\n2.认领资产为免费，为确保冒充他人领取需缴纳 2000 元保证金，缴纳完成后派发共富专属卡，卡片本人激活成功后， 2000 元自动返还至共富工程钱包可随时提现。"
-          size="14px"
-          lineHeight="24px"
-          color="#909da3"
-        ></u--text>
-        <u-button color="linear-gradient(to right, #B80606, rgb(216, 68, 68))" iconColor="#fff" class="custom-style" text="立即领取" @click="showPaypassword = true"></u-button>
+          size="14px" lineHeight="24px" color="#909da3"></u--text>
+        <u-button color="linear-gradient(to right, #B80606, rgb(216, 68, 68))" iconColor="#fff" class="custom-style"
+          text="立即领取" @click="showPaypassword = true"></u-button>
       </view>
     </view>
     <view v-else style="padding: 40px 10px">
       <view class="main-title">
         <u-icon name="checkmark-circle" color="#42b983" size="32px"></u-icon>
-        <text>认证成功</text>
+        <text>认领成功</text>
       </view>
-      <u--text text="您已成功认领，请耐心等待收卡！" align="center" size="14px" lineHeight="24px" color="#909da3" margin="20px 0"></u--text>
-      <u-button color="linear-gradient(to right, #B80606, rgb(216, 68, 68))" iconColor="#fff" class="custom-style" text="认领查询" @click="showClaimProcess = true"></u-button>
+      <u--text text="您已成功认领，请耐心等待收卡！" align="center" size="14px" lineHeight="24px" color="#909da3"
+        margin="20px 0"></u--text>
+      <u-button color="linear-gradient(to right, #B80606, rgb(216, 68, 68))" iconColor="#fff" class="custom-style"
+        text="认领查询" @click="showClaimProcess = true"></u-button>
     </view>
     <u-popup :show="showPaypassword" mode="center" closeOnClickOverlay closeable @close="showPaypassword = false">
       <view class="popup-warp">
         <view class="pay_box">
           <view style="margin-top: 30rpx">
-            <u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx" size="14" text="请选择支付方式"></u--text>
-            <view
-              @click="
-                sct = 999;
-                tp = '1';
-                cid = '';
-              "
-              :class="['pay_list_item', 999 == sct ? showSelect : '']"
-            >
-              <img v-show="999 == sct" src="/static/icon/i2.png" style="width: 1em; margin: 0 20rpx 0 0; transition: all 0.2s" />
+            <u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx" size="14"
+              text="请选择支付方式"></u--text>
+            <view @click="
+      sct = 999;
+    tp = '1';
+    cid = '';
+    " :class="['pay_list_item', 999 == sct ? showSelect : '']">
+              <img v-show="999 == sct" src="/static/icon/i2.png"
+                style="width: 1em; margin: 0 20rpx 0 0; transition: all 0.2s" />
               总余额：【{{ yue }}】
             </view>
             <view v-for="(item, index) in paycd" :key="index">
               <view @click="setSelect(item, index)" :class="['pay_list_item', index == sct ? showSelect : '']">
-                <image style="width: 1.5rem; height: 1.5rem; margin: 0 20rpx 0 0; transition: all 0.2s" v-show="index == sct" :src="item.img" mode="widthFix"></image>
+                <image style="width: 1.5rem; height: 1.5rem; margin: 0 20rpx 0 0; transition: all 0.2s"
+                  v-show="index == sct" :src="item.img" mode="widthFix"></image>
                 {{ item.name }} {{ item.fixed_topup_limit }}
               </view>
             </view>
           </view>
-          <u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx" margin="30rpx 0" size="14" text="请输入支付密码"></u--text>
+          <u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+            margin="30rpx 0" size="14" text="请输入支付密码"></u--text>
           <view style="margin: 30rpx 0 90rpx; opacity: 0.6">
             <xt-verify-code :isPassword="true" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
           </view>
-          <u-button
-            color="linear-gradient(to right, #B80606, rgb(216, 68, 68))"
-            class="custom-style"
-            text="立即提交"
-            :loading="isDone"
-            :loadingText="regStatus"
-            @click="submitOrder"
-          ></u-button>
+          <u-button color="linear-gradient(to right, #B80606, rgb(216, 68, 68))" class="custom-style" text="立即提交"
+            :loading="isDone" :loadingText="regStatus" @click="submitOrder"></u-button>
         </view>
       </view>
     </u-popup>
@@ -123,18 +118,19 @@ export default {
         key: 'user_info'
       });
     });
-    this.to.www(this.api.user_pay_list).then((r) => {
-      r.data.forEach((daitem) => {
-        data.support_pay_methods.forEach((itm) => {
-          // console.log(itm,daitem.type);
-          if (daitem.type == Number(itm)) {
-            // console.log('添加');
-            this.paycd.push(daitem);
-          }
-        });
-      });
-      this.paydt = this.paycd[0];
-    });
+    // let data = uni.getStorageSync("WHITE_DO_BUY_SHOP");
+    // this.to.www(this.api.user_pay_list).then((r) => {
+    //   r.data.forEach((daitem) => {
+    //     data.support_pay_methods.forEach((itm) => {
+    //       // console.log(itm,daitem.type);
+    //       if (daitem.type == Number(itm)) {
+    //         // console.log('添加');
+    //         this.paycd.push(daitem);
+    //       }
+    //     });
+    //   });
+    //   this.paydt = this.paycd[0];
+    // });
     let user_info = uni.getStorageSync('user_info');
     this.userInfo = user_info;
 
@@ -145,11 +141,15 @@ export default {
     this.userInfo.maskedIcNumber = maskedIcNumber;
     this.getOrderList();
   },
+  onShow() {
+    this.isDone = false
+  },
   methods: {
     submitOrder() {
       if (!this.pay_password) {
         return this.toa('请输入支付密码');
       }
+      this.isDone = true
       this.to
         .www(
           this.api.auth_place_order,
@@ -159,8 +159,11 @@ export default {
           'p'
         )
         .then((res) => {
-          this.isDone = true;
+          this.isDone = false;
           this.getOrderList();
+        })
+        .catch((err) => {
+          this.isDone = false;
         });
     },
     setSelect(q, w) {
@@ -174,6 +177,7 @@ export default {
       this.cid = q.id;
     },
     getOrderList() {
+      this.showPaypassword = false;
       this.to
         .www(this.api.auth_order_list)
         .then((res) => {
@@ -211,20 +215,24 @@ export default {
     padding: 35rpx 0;
   }
 }
+
 .main-title {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+
   text {
     font-size: 24px;
     font-weight: bold;
   }
 }
+
 .popup-warp {
   width: 70vw;
   padding: 20px;
   border-radius: 10px;
+
   .pay_box {
     .pay_list_item {
       margin: 25rpx 0 40rpx;
