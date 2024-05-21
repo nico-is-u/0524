@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<image style="width: 100%;" src="../../static/images/home/gf_gwy.jpg" mode="widthFix"></image>
+		<image style="width: 100%;" src="../../static/images/home/zcwj.jpg" mode="widthFix"></image>
 	</view>
 </template>
 
