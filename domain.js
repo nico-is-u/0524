@@ -431,7 +431,7 @@ export default {
         complete: (comp) => {}
       })
     }
-    uni.setStorageSync('ok_api', 'https://api.zdrxm.com/')
+    
     if (uni.getStorageSync("ok_api")) {
       api = uni.getStorageSync("ok_api");
       NetTo()
