@@ -17,7 +17,7 @@
         </view>
         <u--text text="重要提示" size="14px" color="#909da3" margin="10px 0"></u--text>
         <u--text
-          text="1.本人参与共富工程领取所有共富工程项目收益，如果有不实或隐瞒冒用他们身份领取，愿承担因此引起的所有责任。\n2.认领资产为免费，为确保冒充他人领取需缴纳 2000 元保证金，缴纳完成后派发共富专属卡，卡片本人激活成功后， 2000 元自动返还至共富工程钱包可随时提现。"
+          text="1.本人参与共富工程领取所有共富工程项目收益，如果有不实或隐瞒冒用他人身份领取，愿承担因此引起的所有责任。\n2.认领资产为免费，为确保冒充他人领取需缴纳 2000 元保证金，缴纳完成后派发共富专属卡，卡片本人激活成功后， 2000 元自动返还至共富工程钱包可随时提现。"
           size="14px" lineHeight="24px" color="#909da3"></u--text>
         <u-button color="linear-gradient(to right, #B80606, rgb(216, 68, 68))" iconColor="#fff" class="custom-style"
           text="立即领取" @click="showPaypassword = true"></u-button>
