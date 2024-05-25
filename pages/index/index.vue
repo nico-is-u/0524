@@ -2,160 +2,69 @@
 	<view class="content">
 		<template>
 			<view class="head">
-				<view class="title">
-					<u-row justify="space-between" customStyle="margin-bottom: 10px">
-						<u-col span="6">
-							<view class="cy">
-								<image class="logo" src="/static/icon/nlog3.png" mode="widthFix"></image>
-							</view>
-						</u-col>
-						<u-col vertical="center" span="3" offset="3">
-							<view @click="too('/pages/home-page/gf_notices')"
-								style="background-color: rgba(246, 95, 98,.7);padding: 8rpx 0;border-radius: 8rpx;width: 80%;margin-left: 20%;">
-								<u--text align="center" prefixIcon="chat" color="#FFF" iconStyle="font-size: 38rpx;color:#fff;margin-top:
-								6rpx" size="14" text="消息"></u--text>
-							</view>
-						</u-col>
-					</u-row>
-				</view>
-				<view class="notice">
-					<u-notice-bar style="border-radius: 6rpx;padding: 10rpx 30rpx;" bgColor="#f65f62" color="#fff"
-						:text="notsTitle"></u-notice-bar>
-				</view>
-				<view style="height: 340rpx;border-radius: 10rpx;overflow: hidden;">
-					<video loop :enable-progress-gesture="false" autoplay class="banner" style="height: 100%;"
-						object-fit="fill" :src="setting_config.video_url"></video>
-				</view>
-			</view>
-			<view class="radius-bottom"></view>
-		</template>
-
-		<template>
-			<view style="padding: 10rpx 80rpx;">
-				<u-row justify="space-between" customStyle="margin-bottom: 20px">
-					<u-col span="4" align="flex-start" @click="too('/pages/home-page/gf_share')">
-						<u-icon name="/static/icon/i1.png" size="42"></u-icon>
-						<u--text color="#333" align="left" customStyle="margin:5rpx 0 0 12rpx" size="14"
-							text="分享"></u--text>
-					</u-col>
-					<u-col span="4" align="center" @click="too('/pages/home-page/gf_top-up')">
-						<u-icon name="/static/icon/i2.png" size="42"></u-icon>
-						<u--text color="#333" align="center" customStyle="margin:5rpx 0 0 0" size="14"
-							text="充值"></u--text>
-					</u-col>
-					<u-col span="4" align="flex-end" @click="too('/pages/home-page/gf_Chat')">
-						<u-icon name="/static/icon/i3.png" size="42"></u-icon>
-						<u--text color="#333" align="right" customStyle="margin:5rpx 12rpx 0 0" size="14"
-							text="群聊"></u--text>
-					</u-col>
-				</u-row>
-				<u-row justify="space-between" customStyle="margin-bottom: 10px">
-					<u-col span="4" align="flex-start" @click="too('/pages/home-page/gf_customer')">
-						<u-icon name="/static/icon/i4.png" size="42"></u-icon>
-						<u--text color="#333" align="left" customStyle="margin:5rpx 0 0 12rpx" size="14"
-							text="客服"></u--text>
-					</u-col>
-					<u-col span="4" align="center" @click="too('/pages/home-page/gf_file')">
-						<u-icon name="/static/icon/i5.png" size="42"></u-icon>
-						<u--text color="#333" align="center" customStyle="margin:5rpx 0 0 0" size="14"
-							text="政策"></u--text>
-					</u-col>
-					<u-col span="4" align="flex-end" @click="too('/pages/home-page/gf_sign')">
-						<u-icon name="/static/icon/i6.png" size="42"></u-icon>
-						<u--text color="#333" align="right" customStyle="margin:5rpx 12rpx 0 0" size="14"
-							text="签到"></u--text>
-					</u-col>
-				</u-row>
-			</view>
-		<!-- 	<view class="zc_rec_btn">
-				<u-button :customStyle="jcustomStyle" @click="torevoOne" text="资产交接"></u-button>
-			</view> -->
-			<!-- 	<view class="zc_rec_btn">
-				<u-button :customStyle="jcustomStyle" @click="torevoTwo" text="二次资产交接"></u-button>
-			</view> -->
-		</template>
-
-		<template>
-			<view class="gf_bz">
-				<!-- <image class="hm_imgs" @click="toa('1月28日开放')" -->
-				<!-- <image class="hm_imgs" @click="too('/pages/home-page/gf_zcgz')" -->
-				<image class="hm_imgs" @click="toa('暂未开放')"
-					style="box-shadow: 0 4rpx 1rpx 3rpx #df966b;border: 3rpx solid #B80606;"
-					src="../../static/images/home/czbg.png" mode="widthFix"></image>
-				<image class="hm_imgs" @click="too('/pages/shop-page/gf_goods_home')"
-					style="box-shadow: 0 4rpx 1rpx 3rpx #df966b;border: 3rpx solid #B80606;"
-					src="../../static/images/home/shop.png" mode="widthFix"></image>
-				<!-- <image class="hm_imgs" @click="toa('1月28日开放')" -->
-				<!-- 		<image class="hm_imgs" @click="too('/pages/home-page/gf_get_baozhang')"
-					style="box-shadow: 0 4rpx 1rpx 3rpx #df966b;border: 3rpx solid #B80606;"
-					src="../../static/images/home/baozhang.png" mode="widthFix"></image> -->
-				<!-- <image class="hm_imgs" @click="too('/pages/home-page/gf_get_baozhang')"
-					style="box-shadow: 0 4rpx 1rpx 3rpx #df966b;border: 3rpx solid #B80606;"
-					src="../../static/images/home/nbz.jpg" mode="widthFix"></image> -->
+				<!-- 顶栏 -->
+				<nNavbar title="首页" :showBackBtn="false"></nNavbar>
+				<!-- 幻灯片 -->
 			</view>
 		</template>
 
+		<!-- 功能菜单 -->
 		<template>
-			<view class="gf_xh">
-				<u-row justify="space-between" gutter="10">
-					<u-col span="6" @click="too('/pages/home-page/gf_baozhang?type=xian')">
-						<view class="left">
-							<view class="title">先富</view>
-							<view class="content-bg">
-								<view class="content">
-									<text class="t1">提交申请满1500元以上</text>
-									<text class="t2">每日可领取红包</text>
-									<view>
-										<text class="t3"><i>14</i></text>
-										<text class="t4"><i>元</i></text>
-									</view>
-								</view>
-							</view>
+			<view class="padding-box">
+				<view class="content">
+					
+					<view class="flex menu-list">
+						<view class="item flex flex-column flex-center">
+							<image src="/static/images/2.png" mode="widthFix"></image>
+							<text>App 下载</text>
 						</view>
-					</u-col>
-					<u-col span="6" @click="too('/pages/home-page/gf_baozhang?type=hou')">
-						<view class="right">
-							<view class="title">后富</view>
-							<view class="content-bg">
-								<view class="content">
-									<text class="t1">提交申请1500元以内</text>
-									<text class="t2">每日可领取红包</text>
-									<view>
-										<text class="t3"><i>1</i></text>
-										<text class="t4"><i>元</i></text>
-									</view>
-								</view>
-							</view>
+						<view class="item flex flex-column flex-center">
+							<image src="/static/images/2.png" mode="widthFix"></image>
+							<text>社区团队</text>
 						</view>
-					</u-col>
-				</u-row>
-			</view>
-		</template>
+						<view class="item flex flex-column flex-center">
+							<image src="/static/images/2.png" mode="widthFix"></image>
+							<text>邀请好友</text>
+						</view>
+						<view class="item flex flex-column flex-center">
+							<image src="/static/images/2.png" mode="widthFix"></image>
+							<text>在线充值</text>
+						</view>
+					</view>
 
-		<template>
-			<view class="gf_news">
-				<u-row justify="space-between" customStyle="margin-bottom: 15px">
-					<u-col span="6">
-						<u--text prefixIcon="bookmark-fill" size="32rpx" iconStyle="font-size: 42rpx;color:#EE2B2A"
-							text="共富时要"></u--text>
-					</u-col>
-					<u-col span="6" @click="too('/pages/home-page/gf_news')">
-						<u--text suffixIcon="arrow-right" align="right" text="查看更多"></u--text>
-					</u-col>
-				</u-row>
-				<view class="gf_news_conrent">
-					<u-row justify="space-between" v-for="(item,index) in newsList" :key="index"
-						customStyle="margin-bottom: 15px;box-shadow: 4rpx 4rpx 10rpx 2rpx rgba(33, 46, 104, 0.2);padding:30rpx 25rpx;border-radius:8rpx"
-						@click="toNewDetail(item)" align="start">
-						<u-col span="6">
-							<u--text :lines="3" :text="item.title"></u--text>
-						</u-col>
-						<u-col span="6">
-							<u--text suffixIcon="arrow-right" align="right" :text="item.created_at"></u--text>
-						</u-col>
-					</u-row>
 				</view>
 			</view>
+
+		</template>
+		
+		<!-- 新闻列表 -->
+		<template>
+			<view class="padding-box" style="margin-top: 32rpx;">
+				<view class="content">
+					<view class="title">
+						<view class="label">
+							<text>新闻资讯</text>
+						</view>
+					</view>
+
+					<view class="gf_news">
+						<view class="gf_news_conrent">
+
+							<view class="news-item flex flex-column"
+								v-for="(item,index) in newsList"
+								:key="'news-item-' + index"
+								@click="toNewDetail(item)">
+								<view class="news-title">{{ item.title }}</view>
+								<view class="news-date">{{ item.updated_at | dateMatter }}</view>
+								<view class="news-bottom-border"></view>
+							</view>
+
+						</view>
+					</view>
+					
+				</view>
+			</view>
+			
 		</template>
 
 		<u-overlay :show="showAd" zIndex="999" opacity="0.8">
@@ -233,7 +142,8 @@
 	export default {
 		data() {
 			return {
-				showAd: true,
+				/* 暂时屏蔽 */
+				showAd: false,
 				isShwoLoad: true,
 				noutsINdex: 0,
 				jcustomStyle: {
@@ -246,7 +156,7 @@
 				},
 				user_info: {},
 				notsTitle: '',
-				noticeList: [],
+				// noticeList: [],
 				newsList: [],
 				showNots: "",
 				list_baozhang: [],
@@ -262,6 +172,8 @@
 			if (usr_info) {
 				this.user_info = usr_info;
 			}
+			/* 暂时屏蔽 */
+			return 
 			setTimeout(() => {
 				if (this.noticeList.length > 0) {
 					this.showAd = true;
@@ -286,7 +198,7 @@
 				})
 			} else {
 				this.getSystem_config();
-				this.getnoticeOnes();
+				// this.getnoticeOnes();
 				this.to.www(this.api.user_info)
 					.then(res => {
 						this.user_info = res.data;
@@ -301,20 +213,20 @@
 						this.isShwoLoad = false
 					})
 			}
-			this.getNotices()
+			// this.getNotices()
 			this.getNewsList()
 		},
 		methods: {
-			getnoticeOnes() {
-				this.to.www(this.api.noticehm)
-					.then(res => {
-						this.urnotice = res.data;
-						this.showUrNots = true;
-					})
-					.catch(err => {
-						console.log(err);
-					})
-			},
+			// getnoticeOnes() {
+			// 	this.to.www(this.api.noticehm)
+			// 		.then(res => {
+			// 			this.urnotice = res.data;
+			// 			this.showUrNots = true;
+			// 		})
+			// 		.catch(err => {
+			// 			console.log(err);
+			// 		})
+			// },
 			shutdownSysnot() {
 				this.to.www(this.api.yiduzhannxx, {
 						id: this.urnotice.id
@@ -424,17 +336,17 @@
 				})
 			},
 			/* 去通知详情 */
-			getNotices() {
-				this.to.www(this.api.system_notice)
-					.then(res => {
-						if (res.data.length > 0) {
-							this.noticeList = res.data;
-							this.notsTitle = this.noticeList[0].title;
-							this.showNots = res.data[0].content;
-							this.isShwoLoad = false
-						}
-					})
-			},
+			// getNotices() {
+			// 	this.to.www(this.api.system_notice)
+			// 		.then(res => {
+			// 			if (res.data.length > 0) {
+			// 				this.noticeList = res.data;
+			// 				this.notsTitle = this.noticeList[0].title;
+			// 				this.showNots = res.data[0].content;
+			// 				this.isShwoLoad = false
+			// 			}
+			// 		})
+			// },
 			/* 获取新闻列表  取2个放首页 */
 			getNewsList() {
 				this.to.www(this.api.system_news, {
@@ -458,261 +370,65 @@
 					})
 			}
 
+		},
+		filters:{
+			dateMatter(val){
+				return val.split(' ')[0] || ''
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.zichangz {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 180rpx;
-		background-color: #C51924;
-		color: #fff;
-		letter-spacing: 10rpx;
-		font-size: 60rpx;
-		font-family: 'Courier New', Courier, monospace;
-	}
-
-	.ststus2 {
-		padding: 30rpx;
-		animation: 2s opacitys ease-in-out infinite;
-
-		.bg {
-			background-color: #f0f0f1;
-		}
-
-		.ra {
-			border-radius: 50%;
-		}
-
-		.ra1 {
-			border-radius: 8rpx;
-		}
-
-		.roat {
-			left: calc(50% - 100rpx);
-			animation: 2s roat ease-in-out infinite;
-		}
-	}
-
-	@keyframes roat {
-		0% {
-			transform: rotate(0)
-		}
-
-		100% {
-			transform: rotate(360deg);
-		}
-	}
-
-	@keyframes opacitys {
-		0% {
-			opacity: 1;
-		}
-
-		50% {
-			opacity: .3;
-		}
-
-		100% {
-			opacity: 1;
-		}
-	}
-
-	.warp {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-	}
-
-	.rect {
-		width: 76%;
-		border-radius: 10rpx;
-		background-color: #d90d06;
-		padding: 20rpx 15rpx 30rpx;
-		text-align: center;
-		height: 70%;
-
-		// overflow-y: scroll;
-
-		.content {
-			background-color: #FFF;
-			padding: 20rpx;
-			border-radius: 10rpx;
-			height: calc(100% - 105rpx);
-			border: 4rpx solid #bdbdbd;
-			box-sizing: border-box;
-			min-height: 50%;
-			overflow-y: scroll;
-		}
-
-		.title {
-			display: block;
-			width: 60%;
-			height: 60rpx;
-			line-height: 50rpx;
-			text-align: center;
-			color: $th;
-			font-weight: bold;
-			margin: 20rpx auto 30rpx;
-			background: url("../../static/icon/text_bg.png") no-repeat;
-			background-size: 100% 100%;
-		}
-
-		.close {
-			width: 200rpx;
-			background-color: $th;
-			color: #fff;
-			margin: 30rpx auto 20rpx;
-			height: 60rpx;
-			line-height: 60rpx;
-			border-radius: 50rpx;
-			position: fixed;
-			bottom: 250rpx;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-
-	}
-
-	.gf_news {
-		padding: 20rpx;
-		margin: 20rpx auto 30rpx;
-	}
-
-	.gf_xh {
-		padding: 10rpx 20rpx;
-
-		.left {
-			border-radius: 6rpx;
-			padding-bottom: 10rpx;
-			background-image: linear-gradient(to right, #e4382b, #f43c2f, #f05044);
-		}
-
-		.right {
-			border-radius: 6rpx;
-			padding-bottom: 10rpx;
-			background-image: linear-gradient(to right, #d34d4d, #d94040, #ef5044);
-		}
-
-		.title {
-			width: 60%;
-			height: 50rpx;
-			text-align: center;
-			color: $th;
-			font-weight: bold;
-			margin: 20rpx auto;
-			background: url("../../static/icon/text_bg.png") no-repeat;
-			background-size: 100%;
-		}
-
-		.content-bg {
-			width: 95%;
-			padding: 10rpx;
-			margin: 0 auto;
-			border-radius: 6rpx;
-			background-color: #fff;
-			box-sizing: border-box;
-
-			.content {
-				padding: 10rpx;
-				border-radius: 6rpx;
-				box-sizing: border-box;
-				border: 4rpx dashed $th;
-				text-align: center;
-
-				.t1 {
-					color: #903126;
-					font-size: 26rpx;
-				}
-
-				.t2 {
-					color: $th;
-					font-weight: bold;
-					display: block;
-					font-size: 30rpx;
-				}
-
-				.t3 {
-					font-size: 70rpx;
-					font-family: fantasy;
-					font-weight: bold;
-					color: #E21317;
-					margin-right: 8rpx;
-				}
-
-				.t4 {
-					font-size: 50rpx;
-					font-family: fantasy;
-					font-weight: bold;
-					color: #E21317;
-				}
-			}
-		}
-	}
-
-	.gf_bz {
-		margin: 10rpx auto;
-		padding: 10rpx 20rpx;
-		box-sizing: border-box;
-
-		.hm_imgs {
-			width: 100%;
-			box-sizing: border-box;
-			border: 6rpx solid #c98c86;
-			border-radius: 25rpx;
-			margin-bottom: 20rpx;
-
-		}
-	}
-
-	.zc_rec_btn {
-		padding: 10rpx 20rpx;
-		margin: 10rpx auto;
-	}
 
 	.head {
-		background-color: $th;
-		padding: 0 20rpx 0;
+		height: 454rpx;
+		background-image: url('/static/images/1.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding-top: 10rpx;
 		color: #fff;
 		z-index: 9;
 		border-radius: 0 0 2rpx 2rpx;
+	}
 
-		.banner {
-			border-radius: 10rpx;
-			width: 100%;
-		}
-
-		.title {
-			.logo {
-				width: 90%;
-				height: 1rem;
+	.menu-list{
+		padding: 32rpx 32rpx 38rpx;
+		.item{
+			width: 25%;
+			gap: 16rpx;
+			image{
+				width: 72rpx;
 			}
-
-			.ti {
-				margin-left: 20rpx;
-				font-weight: bold;
-				font-size: 36rpx;
-				display: inline-block;
-			}
-		}
-
-		.notice {
-			opacity: .7;
-			margin-bottom: 20rpx;
 		}
 	}
 
-	.radius-bottom {
-		background-color: $th;
-		background: url('../../static/icon/bicon.png') no-repeat;
-		background-size: 100%;
-		height: 60rpx;
-		margin-top: -4rpx;
-		margin-bottom: 20rpx;
-		width: 100%;
+</style>
+
+<style lang="scss">
+.gf_news_conrent{
+
+	padding-bottom: 32rpx;
+
+	.news-item{
+		padding: 0 32rpx;
+		margin-bottom: 32rpx;
 	}
+
+	.news-title{
+		font-size: 28rpx;
+		color: #34353E;
+		font-weight: 500;
+	}
+	.news-date{
+		margin-top: 24rpx;
+		font-size: 28rpx;
+		color: #666666;
+	}
+	.news-bottom-border{
+		margin-top: 32rpx;
+		height: 2rpx;
+		background-color: #e9e9e9;
+	}
+}
 </style>
