@@ -82,6 +82,7 @@ export default {
     }
     
     .center-block{
+        color: white;
         font-size: 36rpx;
     }
 

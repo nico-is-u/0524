@@ -6,8 +6,21 @@
 				"navigationStyle": "custom"
 			}
 		},
-
-
+		// 新闻详情
+		{
+			"path": "pages/home-page/gf_news_detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+		// 诺亚方舟
+		{
+			"path": "pages/index/ranking",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		
 
 
 
@@ -26,12 +39,7 @@
 			废弃
 		*/
 		
-		{
-			"path": "pages/index/ranking",
-			"style": {
-				"navigationBarTitleText": "共富功臣"
-			}
-		},
+		
 		{
 			"path": "pages/index/gongfu",
 			"style": {
@@ -92,12 +100,6 @@
 			"path": "pages/home-page/gf_notices",
 			"style": {
 				"navigationBarTitleText": "站内消息"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_news_detail",
-			"style": {
-				"navigationBarTitleText": "详情"
 			}
 		},
 		{

@@ -88,35 +88,83 @@
 		font-size: 26rpx;
 	}
 
+	view{
+		color: #222;
+		box-sizing: border-box;
+		line-height: 1.5;
+	}
+
 	.padding-box{
 		padding: 0 32rpx;
 		.content{
 			background-color: white;
 			border-radius: 24rpx;
+		}
+	}
 
-			/* 标题容器 */
-			.title{
-				padding: 32rpx;
+	.content{
+		/* 标题容器 */
+		.title{
+			padding: 32rpx;
+			position: relative;
+
+			display: flex;
+			justify-content: space-between;
+
+			.label{
+				font-weight: bold;
 				position: relative;
-				.label{
-					font-weight: bold;
-					position: relative;
-					z-index: 2;
-					margin-left: 16rpx;
-					margin-top: 4rpx;
-					font-size: 34rpx;
-				}
-				&::before{
-					width: 22rpx;
-					height: 22rpx;
-					content: '';
-					position: absolute;
-					background: linear-gradient(150.95deg, #0182EF 0%, #0283F000 100%);
-					border-radius: 50%;
-					z-index: 1;
+				z-index: 2;
+				margin-left: 16rpx;
+				margin-top: 4rpx;
+				font-size: 34rpx;
+			}
+
+			.more-info{
+				display: flex;
+				color: #666;
+				align-items: center;
+				font-size: 28rpx;
+				.arrow{
+					margin-left: 8rpx;
 				}
 			}
+
+			&::before{
+				width: 22rpx;
+				height: 22rpx;
+				content: '';
+				position: absolute;
+				background: linear-gradient(150.95deg, #0182EF 0%, #0283F000 100%);
+				border-radius: 50%;
+				z-index: 1;
+			}
 		}
+	}
+
+	.padding-box-2{
+		padding: 0 40rpx;
+		.content{
+			padding: 32rpx;
+			background-color: white;
+			border-radius: 16rpx;
+		}
+	}
+
+	.n-button{
+		color: white;
+		background-color: #0182EF;
+		font-size: 36rpx;
+
+		display: flex;
+		justify-content: center;
+		padding: 16rpx 0;
+
+		border-radius: 40rpx;
+	}
+
+	.font-blue{
+		color: #0182EF;
 	}
 
 </style>

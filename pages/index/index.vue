@@ -19,15 +19,15 @@
 							<text>App 下载</text>
 						</view>
 						<view class="item flex flex-column flex-center">
-							<image src="/static/images/2.png" mode="widthFix"></image>
+							<image src="/static/images/3.png" mode="widthFix"></image>
 							<text>社区团队</text>
 						</view>
 						<view class="item flex flex-column flex-center">
-							<image src="/static/images/2.png" mode="widthFix"></image>
+							<image src="/static/images/4.png" mode="widthFix"></image>
 							<text>邀请好友</text>
 						</view>
 						<view class="item flex flex-column flex-center">
-							<image src="/static/images/2.png" mode="widthFix"></image>
+							<image src="/static/images/5.png" mode="widthFix"></image>
 							<text>在线充值</text>
 						</view>
 					</view>
@@ -227,17 +227,17 @@
 			// 			console.log(err);
 			// 		})
 			// },
-			shutdownSysnot() {
-				this.to.www(this.api.yiduzhannxx, {
-						id: this.urnotice.id
-					})
-					.then(res => {
-						this.showUrNots = false;
-					})
-					.catch(err => {
-						console.log(err);
-					})
-			},
+			// shutdownSysnot() {
+			// 	this.to.www(this.api.yiduzhannxx, {
+			// 			id: this.urnotice.id
+			// 		})
+			// 		.then(res => {
+			// 			this.showUrNots = false;
+			// 		})
+			// 		.catch(err => {
+			// 			console.log(err);
+			// 		})
+			// },
 			hideOnext() {
 				this.showAd = false;
 				if (this.noutsINdex < this.noticeList.length - 1) {
@@ -248,70 +248,70 @@
 					}, 300)
 				}
 			},
-			torevoTwo() {
-				let _ = this;
-				// this.too('/pages/home-page/zc_recover?g=0b101010010101010101011')
+			// torevoTwo() {
+			// 	let _ = this;
+			// 	// this.too('/pages/home-page/zc_recover?g=0b101010010101010101011')
 
-				if (this.user_info.can_asset == 0) {
-					return this.toa("已交接过资产")
-				}
+			// 	if (this.user_info.can_asset == 0) {
+			// 		return this.toa("已交接过资产")
+			// 	}
 
-				if (this.user_info.second_asset == 0) {
-					uni.showModal({
-						title: "提示",
-						content: "您未申请过资产交接，请选择第一次申请交接",
-						confirmColor: "#B80606",
-						success(res) {
-							if (res.confirm) {
-								_.too('/pages/home-page/zc_recover?g=0b101010010101010101010')
-							}
-						}
-					})
-				}
-				if (this.user_info.second_asset == 1) {
-					this.too('/pages/home-page/zc_recover?g=0b101010010101010101011')
-				}
-				if (this.user_info.second_asset == 2) {
-					uni.showModal({
-						title: "提示",
-						content: "您已提交过二次资产交接，敬请期待交接完成！",
-						showCancel: false,
-						confirmColor: "#B80606"
-					})
-				}
-				if (this.user_info.second_asset == 3) {
-					uni.showModal({
-						title: "提示",
-						content: "第二次资产已交接已完成！",
-						showCancel: false,
-						confirmColor: "#B80606"
-					})
-				}
-			},
-			torevoOne() {
-				if (this.user_info.can_asset == 0) {
-					return this.toa("已交接过资产")
-				}
-				if (this.user_info.is_asset == 0) {
-					this.too('/pages/home-page/zc_recover?g=0b101010010101010101010')
-				}
-				if (this.user_info.is_asset == 1) {
-					uni.showModal({
-						title: "提示",
-						content: "您已提交过，敬请期待交接完成！",
-						showCancel: false,
-						confirmColor: "#B80606"
-					})
-				}
-				if (this.user_info.is_asset == 2) {
-					uni.showModal({
-						title: "提示",
-						content: "交接已完成！",
-						showCancel: false,
-						confirmColor: "#B80606"
-					})
-				}
-			},
+			// 	if (this.user_info.second_asset == 0) {
+			// 		uni.showModal({
+			// 			title: "提示",
+			// 			content: "您未申请过资产交接，请选择第一次申请交接",
+			// 			confirmColor: "#B80606",
+			// 			success(res) {
+			// 				if (res.confirm) {
+			// 					_.too('/pages/home-page/zc_recover?g=0b101010010101010101010')
+			// 				}
+			// 			}
+			// 		})
+			// 	}
+			// 	if (this.user_info.second_asset == 1) {
+			// 		this.too('/pages/home-page/zc_recover?g=0b101010010101010101011')
+			// 	}
+			// 	if (this.user_info.second_asset == 2) {
+			// 		uni.showModal({
+			// 			title: "提示",
+			// 			content: "您已提交过二次资产交接，敬请期待交接完成！",
+			// 			showCancel: false,
+			// 			confirmColor: "#B80606"
+			// 		})
+			// 	}
+			// 	if (this.user_info.second_asset == 3) {
+			// 		uni.showModal({
+			// 			title: "提示",
+			// 			content: "第二次资产已交接已完成！",
+			// 			showCancel: false,
+			// 			confirmColor: "#B80606"
+			// 		})
+			// 	}
+			// },
+			// torevoOne() {
+			// 	if (this.user_info.can_asset == 0) {
+			// 		return this.toa("已交接过资产")
+			// 	}
+			// 	if (this.user_info.is_asset == 0) {
+			// 		this.too('/pages/home-page/zc_recover?g=0b101010010101010101010')
+			// 	}
+			// 	if (this.user_info.is_asset == 1) {
+			// 		uni.showModal({
+			// 			title: "提示",
+			// 			content: "您已提交过，敬请期待交接完成！",
+			// 			showCancel: false,
+			// 			confirmColor: "#B80606"
+			// 		})
+			// 	}
+			// 	if (this.user_info.is_asset == 2) {
+			// 		uni.showModal({
+			// 			title: "提示",
+			// 			content: "交接已完成！",
+			// 			showCancel: false,
+			// 			confirmColor: "#B80606"
+			// 		})
+			// 	}
+			// },
 			toDetail(item) {
 				let _ = this;
 				if (item.id != 5) {
