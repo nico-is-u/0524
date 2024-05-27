@@ -20,7 +20,13 @@
 				"navigationStyle": "custom"
 			}
 		},
-		
+		// 云数币
+		{
+			"path": "pages/index/gongfu",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
 
 
 
@@ -40,13 +46,7 @@
 		*/
 		
 		
-		{
-			"path": "pages/index/gongfu",
-			"style": {
-				"navigationBarTitleText": "2024分配新方案",
-				"enablePullDownRefresh": true
-			}
-		},
+		
 		{
 			"path": "pages/index/gf_buy_card",
 			"style": {

@@ -167,4 +167,12 @@
 		color: #0182EF;
 	}
 
+	.font-red{
+		color: #FF2732;
+	}
+
+	.font-green{
+		color: #12D148;
+	}
+
 </style>

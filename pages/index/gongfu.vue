@@ -1,331 +1,323 @@
 <template>
-	<view>
-		<view class="top_tab_nav">
-			<view class="page_title_tab">
-				<text :class="['title',ProCurIndex==1?'cur':'']" @click="ProCurIndex=1">共富工程</text>
-				<text :class="['title',ProCurIndex==2?'cur':'']" @click="ProCurIndex=2">领取记录</text>
+	<view class="page">
+		<view class="head">
+			<!-- 顶栏 -->
+			<nNavbar title="云数币" :showBackBtn="false"></nNavbar>
+			<!-- K线图 -->
+			<view class="k-line-shell">
+				<view class="k-line-box">
+
+					<!-- 顶部信息 -->
+					<!-- <view class="title-info">
+						<text>交易结束</text>
+						<text style="margin-left: 16rpx">05-18  05:00  北京时间</text>
+					</view> -->
+					<!-- 小菜单 -->
+					<!-- <view class="menu-list">
+						<view class="item">
+							<view class="label">
+								<text>今</text>
+								<text>开</text>
+							</view>
+							<view class="text">483931.0000</view>
+						</view>
+						<view class="item">
+							<view class="label">
+								<text>最</text>
+								<text>高</text>
+							</view>
+							<view class="text font-red">483931.0000</view>
+						</view>
+						<view class="item">
+							<view class="label">
+								<text>买</text>
+								<text>入</text>
+								<text>价</text>
+							</view>
+							<view class="text font-red">483931.0000</view>
+						</view>
+						<view class="item">
+							<view class="label">
+								<text>昨</text>
+								<text>收</text>
+							</view>
+							<view class="text">483931.0000</view>
+						</view>
+						<view class="item">
+							<view class="label">
+								<text>最</text>
+								<text>低</text>
+							</view>
+							<view class="text font-green">483931.0000</view>
+						</view>
+						<view class="item">
+							<view class="label">
+								<text>卖</text>
+								<text>出</text>
+								<text>价</text>
+							</view>
+							<view class="text font-red">483931.0000</view>
+						</view>
+					</view> -->
+
+					<!-- 小菜单2 -->
+					<view class="menu-list-2">
+						<view class="menu-item active">分时</view>
+						<view class="menu-item">日K</view>
+						<view class="menu-item">周K</view>
+						<view class="menu-item">月K</view>
+						<view class="menu-item">季K</view>
+						<view class="menu-item more">
+							<text>更多</text>
+							<image src="/static/images/10.png" mode="widthFix"></image>
+						</view>
+					</view>
+
+					<!-- K线插件 -->
+					<view class="chart-shell">
+						<view id="chart"></view>
+					</view>
+
+				</view>
 			</view>
 		</view>
-		<!-- 共富工程的页面 包含共富工程和领取记录 -->
-		<template>
-			<!-- 共富工程 -->
-			<view v-if="ProCurIndex==1">
-				<view style="margin: 160rpx;" v-if="!project_list.length">
-					<u-empty mode="list"></u-empty>
+
+		<!-- 菜单2 -->
+		<view class="padding-box">
+			<view class="menu-2">
+				<view class="menu-item" style="background-image: url(/static/images/11.png)">
+					<view class="item-content">
+						<view class="title">我的资产</view>
+						<view class="desc">个人资产详情</view>
+					</view>
 				</view>
-				<view class="project_box">
-					<view class="project_item" v-for="(item,index) in project_list" @click="topay(item)" :key="index">
-						<view class="p_red">
-							<view class="p_title">
-								<text>{{item.name}}</text>
-								<text class="p_dobuy">立即领取</text>
-							</view>
-							<view class="p_price">
-								<text class="num">{{item.sum_amount}}</text>
-							</view>
-						</view>
-						<view class="p_info">
-              <view class="flex">
-                <view>认购金额：</view>
-                <text>{{item.single_amount}}</text>
-              </view>
-              <view class="flex">
-                <view>开放周期：</view>
-                <text>{{item.period}}</text>
-                <view>天</view>
-              </view>
-              <view class="flex">
-                <view>项目份额：</view>
-                <text>{{item.total_quota}}</text>
-                <view>份</view>
-              </view>
-              <view class="flex">
-                <view>持有每日收益：</view>
-                <text>{{item.daily_bonus_ratio}}</text>
-                <view>元</view>
-              </view>
-              <view class="flex">
-                <view>持有到期收益：</view>
-                <text>{{item.sum_amount}}</text>
-              </view>
-							<!-- <view v-if="item.underline_price=='0.00'">提交<text>{{item.single_amount}}</text>元审核金</view> -->
-							<!-- <view v-else>提交<text style="text-decoration: line-through;">{{item.underline_price}}</text>元审核金。 <text>现价：{{item.single_amount}}</text> </view> -->
-							<!-- <view>审核期<text>{{item.review_period}}</text>小时</view> -->
-							<!-- <view>{{item.intro}}</view> -->
-							<!-- <view>审核金将于<text>{{item.period}}</text>天后返回数字人民币</view> -->
-							<!-- <view>审核金将于<text>{{item.review_period}}</text>小时后返回数字人民币</view> -->
-						</view>
-						<view class="p_line">
-							<text class="text">幸福生活进度</text>
-							<view style="display: flex;justify-content: space-between;width: 100%;">
-								<u-line-progress :percentage="Number(item.virtually_progress).toFixed(0)" height="18"
-									activeColor="#F2C118"></u-line-progress>
-							<text style="color: #d3d3d3;font-size: 24rpx;padding-left: 10rpx;">{{item.virtually_progress}}%</text>
-							</view>
-						</view>
+				<view class="menu-item" style="background-image: url(/static/images/12.png)">
+					<view class="item-content">
+						<view class="title">我的持仓</view>
+						<view class="desc">详细持仓查询</view>
+					</view>
+				</view>
+				<view class="menu-item" style="background-image: url(/static/images/13.png)">
+					<view class="item-content">
+						<view class="title">买入</view>
+						<view class="desc">购入升值产品</view>
+					</view>
+				</view>
+				<view class="menu-item" style="background-image: url(/static/images/14.png)">
+					<view class="item-content">
+						<view class="title">卖出</view>
+						<view class="desc">售出获取收益</view>
 					</view>
 				</view>
 			</view>
-			<!-- 领取记录 -->
-			<view v-else>
-				<view class="ser_list">
-					<view style="margin: 60rpx auto;" v-if="!projectlog.length">
-						<u-empty mode="list" icon-size="50"></u-empty>
-					</view>
-					<view class="box" v-for="(item,index) in projectlog" :key="index">
-						<view class="item">
-							<u--text :text="item.project_name"></u--text>
-							<u--text align="right" size="14px" color="#991313" :text="item.single_amount"></u--text>
-						</view>
-						<view class="item">
-							<u--text :text="item.order_sn" size="12px"></u--text>
-							<u--text align="right" size="12px" :text="item.pay_date"></u--text>
-						</view>
-					</view>
-				</view>
+		</view>
+
+		<!-- 币种列表 -->
+		<view class="padding-box bizhong-list">
+			<view class="title-2">
+				币种/24H
 			</view>
-		</template>
+		</view>
 
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				type: 1, //共富工程  2 激活数字人民币钱包  3激活数字人民币账单 4商城
-				page: 1,
-				ProCurIndex: 1,
-				isReload: true,
-				project_list: [],
-				projectlog: [],
-			};
-		},
-		onLoad() {
-			this.getList()
-		},
-		watch: {
-			ProCurIndex() {
-				if (this.ProCurIndex == 2) {
-					this.getOrderLog()
-				}
-			}
-		},
-		methods: {
-			topay(obj) {
-				if (obj.virtually_progress < 100) {
-					uni.setStorage({
-						data: obj,
-						key: "WHITE_DO_BUY",
-						success() {
-							uni.navigateTo({
-								url: '/pages/shop-page/gf_buy_project'
-							})
-						}
-					})
-				} else {
-					this.toa("分配已满")
-				}
-			},
-			getList(w) {
-				this.to.www(this.api.project_list, {
-						// project_group_id: this.type,
-						project_group_id: 5,
-						page: this.page,
-					}, 'p')
-					.then(res => {
-            console.log(res);
-						this.project_list = res.data.data;
-						if (w) {
-							this.toa("已刷新")
-							uni.stopPullDownRefresh();
-						}
-						this.getOrderLog()
-					})
-			},
-			getOrderLog(w) {
-				this.to.www(this.api.order_log, {
-						// project_group_id: this.type,
-						project_group_id: 5,
-					}, 'p')
-					.then(res => {
-						this.projectlog = res.data.data;
-						if (w) {
-							this.toa("已刷新")
-							uni.stopPullDownRefresh();
-						}
-					})
-			}
-		},
-		onPullDownRefresh() {
-			if (this.isReload) {
-				this.isReload = false;
-				setInterval(() => {
-					this.isReload = true;
-				}, 15000)
-				this.getList('reload')
-			} else {
-				this.toa("操作频繁");
-				uni.stopPullDownRefresh();
-			}
+import { init, dispose } from 'klinecharts'
+export default {
+	data(){
+		return {
+			
 		}
+	},
+	mounted(){
+		const chart = init('chart')
+		
+		/* 样式配置 */
+		chart.setStyles({
+			candle:{
+				type:'area',
+				tooltip:{
+					// showRule:'none'
+					custom:[
+						{ title: '交易结束：', value: '{time} 北京时间' },
+						{ title: '今 开: ', value:'{open}'},
+						{ title: '最 高: ', value:{
+							text:'{high}',
+							color:'red'
+						}},
+					]
+				}
+			}
+		})
 
+		/* 变更事件 */
+		// chart.subscribeAction('onCrosshairChange',event => {
+		// 	console.log(event)
+		// })
+
+		// chart.subscribeAction('onCandleBarClick',event => {
+		// 	console.log('onCandleBarClick')
+		// })
+
+		chart.applyNewData([
+			{ close: 4976.16, high: 4977.99, low: 4970.12, open: 4972.89, timestamp: 1587660000000, volume: 204 },
+			{ close: 4977.33, high: 4979.94, low: 4971.34, open: 4973.20, timestamp: 1587660060000, volume: 194 },
+			{ close: 4977.93, high: 4977.93, low: 4974.20, open: 4976.53, timestamp: 1587660120000, volume: 197 },
+			{ close: 4966.77, high: 4968.53, low: 4962.20, open: 4963.88, timestamp: 1587660180000, volume: 28 },
+			{ close: 4961.56, high: 4972.61, low: 4961.28, open: 4961.28, timestamp: 1587660240000, volume: 184 },
+			{ close: 4964.19, high: 4964.74, low: 4961.42, open: 4961.64, timestamp: 1587660300000, volume: 191 },
+			{ close: 4968.93, high: 4972.70, low: 4964.55, open: 4966.96, timestamp: 1587660360000, volume: 105 },
+			{ close: 4979.31, high: 4979.61, low: 4973.99, open: 4977.06, timestamp: 1587660420000, volume: 35 },
+			{ close: 4977.02, high: 4981.66, low: 4975.14, open: 4981.66, timestamp: 1587660480000, volume: 135 },
+			{ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 }
+		])
+		/* 样式配置 */
+		
+		// dispose('chart')
 	}
+}
 </script>
 
-<style lang="scss">
-	// .top_tab_nav {
-	// 	position: sticky;
-	// 	top: 0;
-	// 	z-index: 1000;
-	// }
+<style lang="scss" scoped>
+.head {
+	height: 672rpx;
+	background-image: url('/static/images/9.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 
-	.ser_list {
-		background-color: #fff;
-		border-radius: 10rpx;
-		padding: 20rpx 40rpx;
+	padding-top: 10rpx;
+	color: #fff;
 
-		.box {
-			box-shadow: 2rpx 2rpx 5rpx 2rpx rgba(33, 46, 104, 0.15);
-			margin-bottom: 20rpx;
-			padding: 20rpx;
-			border-radius: 10rpx;
-			box-sizing: border-box;
-		}
+	.k-line-shell{
+		margin-top: 18rpx;
+		padding: 0 32rpx;
+		.k-line-box{
+			height: 484rpx;
+			border-radius: 24rpx;
+			background-color: white;
+			padding: 12rpx 0 24rpx 20rpx;
+			color: #999;
 
-		.item {
 			display: flex;
+			flex-direction: column;
 			justify-content: space-between;
-			align-items: center;
-			padding: 8rpx 0;
-		}
-	}
 
-	.project_box {
-		padding: 20rpx 50rpx;
+			.title-info{
+				color: #999;
+				font-size: 20rpx;
+			}
 
-		.project_item {
-			box-shadow: 2rpx 2rpx 10rpx 5rpx rgba(33, 46, 104, 0.3);
-			margin-bottom: 30rpx;
-			border-radius: 6rpx;
-			overflow: hidden;
+			.menu-list{
+				display: flex;
+				flex-wrap: wrap;
 
-			.p_red {
-				background-color: #d20d19;
-				color: #FFF;
-				border-radius: 0 0 60% 60%;
-				overflow: hidden;
-				box-shadow: 2rpx 2rpx 15rpx 5rpx rgba(33, 46, 104, 0.4);
+				margin-top: 16rpx;
 
-				.p_title {
+				.item{
 					display: flex;
-					font-size: 30rpx;
-					justify-content: space-between;
-					align-items: center;
-					padding: 15rpx;
 
-					.p_dobuy {
-						display: block;
-						width: 150rpx;
-						text-align: center;
-						border-radius: 8rpx;
-						height: 60rpx;
-						line-height: 60rpx;
-						background-color: #fc5f5f;
+					width: 33.33%;
+					font-size: 20rpx;
+
+					margin-bottom: 6rpx;
+
+					.label{
+						width: 50rpx;
+						color: #999;
+
+						display: flex;
+						justify-content: space-between;
+					}
+
+					.text{
+						margin-left: 18rpx;
 					}
 				}
+			}
 
-				.p_price {
-					background-color: #FCE2A7;
-					color: $th;
-					width: 80%;
-					height: 160rpx;
-					margin: 30rpx auto 0;
+			.menu-list-2{
+				margin-top: 16rpx;
+				font-size: 24rpx;
+
+				display: flex;
+				justify-content: space-between;
+
+				padding: 0 24rpx 0 0;
+				.menu-item{
+					width: 92rpx;
+					height: 44rpx;
+
+					color: #7A7079;
+					background-color: #F4F4F4;
+
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					font-size: 70rpx;
-					font-weight: bold;
-					border-radius: 15rpx 15rpx 0 0;
+
+					&.more{
+						image{
+							width: 20rpx;
+						}
+					}
+
+					&.active{
+						color: black;
+					}
+
 				}
 			}
 
-			.p_info {
-				padding: 20rpx 40rpx;
-				line-height: 60rpx;
-
-				text {
-					color: $th;
-					font-weight: bold;
+			/* K线插件 */
+			.chart-shell{
+				padding-right: 24rpx;
+				#chart{
+					height: 380rpx;
+					margin-top: 16rpx;
 				}
 			}
 
-			.p_line {
-				text-align: center;
-				padding: 20rpx 30rpx;
-				height: 180rpx;
-				margin-top: -80rpx;
-				background-image: linear-gradient(to bottom, #fff, #CF1824);
-
-				.text {
-					margin-top: 60rpx;
-					font-weight: bold;
-					// font-style:oblique;
-					letter-spacing: 6rpx;
-					text-shadow:
-						1px 0 3px #fffde4,
-						0 1px 3px #ececf7,
-						-1px 0 3px #e6e0d3,
-						0 -1px 3px #f6ff9c;
-					font-size: 40rpx;
-					display: block;
-					margin-bottom: 15rpx;
-					color: $th;
-				}
-			}
 		}
-
 	}
 
-	.page_title_tab {
-		background-color: #B80606;
-		height: 80rpx;
-		color: #fff;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
+}
 
-		.title {
-			opacity: .7;
-			font-size: 30rpx;
-			transition: all .3s;
-			position: relative;
-			display: block;
-			width: 50%;
-			text-align: center;
-		}
+/* 菜单2 */
+.menu-2{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 22rpx;
 
-		.title::before {
-			content: '';
-			position: absolute;
-			left: 25%;
-			bottom: -15rpx;
-			width: 0;
-			transition: all .3s;
-			height: 4rpx;
-			background-color: #fff;
-		}
+	.menu-item{
+		width: calc(50% - 12rpx);
+		height: 176rpx;
+		background-size: 100% 100%;
 
-		.cur {
-			opacity: 1;
-			font-size: 40rpx;
-		}
-
-		.title.cur::before {
-			width: 50%;
+		.item-content{
+			padding: 10% 7.5%;
+			.title{
+				font-size: 28rpx;
+				color: white;
+			}
+			.desc{
+				margin-top: 2.5rpx;
+				font-size: 22rpx;
+				color: rgba(255,255,255,.5);
+			}
 		}
 	}
-  .flex {
-    display: flex;
-  }
+
+
+}
+
+/* 币种列表 */
+.bizhong-list{
+	margin-top: 64rpx;
+	.title-2{
+		color: #222;
+		font-size: 36rpx;
+		font-weight: 800;
+	}
+}
 </style>

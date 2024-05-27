@@ -6,7 +6,7 @@
 			<nNavbar title="诺亚方舟" :showBackBtn="false"></nNavbar>
 			<!-- 总资产 -->
 			<view class="padding-box" style="padding: 0 40rpx">
-				<view class="zichan-info">
+				<view class="zichan-info" style="border: 3rpx solid white">
 					<view class="info-1 flex flex-y-center">
 						<image src="/static/images/7.png"></image>
 						<text>总资产</text>
