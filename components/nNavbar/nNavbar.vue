@@ -4,7 +4,7 @@
         <!-- 左侧 -->
         <view class="left-side flex" @click="clickLeft">
             <!-- 显示返回箭头 -->
-            <uni-icons v-if="showBackBtn" type="left" size="24"></uni-icons>
+            <uni-icons v-if="showBackBtn" @click="goBack" type="left" size="24"></uni-icons>
         </view>
         <view class="center-block flex flex-y-center">{{ title }}</view>
         <view class="right-side flex"></view>
@@ -57,6 +57,10 @@ export default {
             }else{
                 if(typeof this.backFunc == 'function')  this.backFunc()
             }
+        },
+        /* 点击返回上一页 */
+        goBack(){
+            uni.navigateBack({delta: 1})
         }
     }
 }
@@ -66,6 +70,9 @@ export default {
 .app-nav-bar{
     height: 88rpx;
     padding: var(--status-bar-height) 11rpx 0;
+
+    position: relative;
+    z-index: 99;
 
     .left-side,.right-side{
         width: 100rpx;

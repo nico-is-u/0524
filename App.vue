@@ -88,6 +88,74 @@
 		font-size: 26rpx;
 	}
 
+	.page{
+
+		&.with-bg{
+			position: relative;
+
+			.fixed-image{
+				width: 286rpx;
+
+				position: absolute;
+				top: var(--status-bar-height);
+				right: 32rpx;
+
+				z-index: 2;
+
+			}
+
+			.menu-card{
+				position: relative;
+				z-index: 2;
+
+				padding: 24rpx 32rpx;
+
+				background: linear-gradient(180deg, rgba(226,242,255,0.5) 0%, #FFFFFF 100%);
+				box-shadow: 0px 4rpx 24rpx 0rpx rgba(0,0,0,0.05);
+				border-radius: 24rpx;
+
+				border: 3rpx solid white;
+				.label{
+					color: #34353E;
+					font-size: 40rpx;
+				}
+				.value{
+					color: #575861;
+					font-size: 28rpx;
+				}
+				.line{
+					background-color: white;
+				}
+			}
+
+			.padding-box{
+				position: relative;
+				z-index: 2;
+			}
+
+			&::after{
+				content: '';
+
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+
+				width: 100%;
+				height: 500rpx;
+				background-image: url('/static/images/44.png');
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+		}
+
+		/* 公共头部 */
+		.page-head{
+			padding-top: 10rpx;
+        	color: #fff;
+		}
+	}
+
 	view{
 		color: #222;
 		box-sizing: border-box;
@@ -99,6 +167,24 @@
 		.content{
 			background-color: white;
 			border-radius: 24rpx;
+		}
+
+		.list{
+			font-size: 28rpx;
+			padding: 10rpx 40rpx 0;
+			.item{
+				border-bottom: 2rpx solid #E9E9E9;
+				margin-bottom: 32rpx;
+				.row{
+					margin-bottom: 32rpx;
+				}
+			}
+			.left-side{
+				color:#222;
+			}
+			.right-side{
+				color:black;
+			}
 		}
 	}
 
@@ -205,6 +291,14 @@
 
 	}
 
+	.head-card{
+		border-radius: 32rpx;
+		background: linear-gradient(180deg, rgba(226,242,255,0.5) 0%, rgba(255,255,255,1) 100%);
+		backdrop-filter: blur(8rpx);
+		box-shadow: 0px 4rpx 24rpx 0rpx rgba(0,0,0,0.05);
+
+	}
+
 	.n-tab{
 		display: flex;
 		align-items: center;
@@ -279,6 +373,10 @@
 
 	.font-green{
 		color: #12D148;
+	}
+
+	.font-bold{
+		font-weight: bold;
 	}
 
 

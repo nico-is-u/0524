@@ -6,7 +6,7 @@
 			<nNavbar title="诺亚方舟" :showBackBtn="false"></nNavbar>
 			<!-- 总资产 -->
 			<view class="padding-box" style="padding: 0 40rpx">
-				<view class="zichan-info" style="border: 3rpx solid white">
+				<view class="zichan-info head-card" style="border: 3rpx solid white">
 					<view class="info-1 flex flex-y-center">
 						<image src="/static/images/7.png"></image>
 						<text>总资产</text>
@@ -73,6 +73,45 @@
 					</view>
 					<view class="n-button" @click="too('/pages/home-page/gf_draw')">领取</view>
 					<image src="/static/images/8.png" mode="widthFix"></image>
+				</view>
+			</view>
+		</view>
+
+		<!-- 释放条件 -->
+		<view class="padding-box shifang-tiaojian" style="margin: 32rpx 0;">
+			<view class="content">
+				<view class="title">
+					<view class="label">释放条件</view>
+				</view>
+
+				<!-- 列表 -->
+				<view class="list">
+					<view class="item">
+						<view class="row flex flex-between">
+							<view class="left-side">直推人数</view>
+							<view class="right-side">--</view>
+						</view>
+						<view class="row flex flex-between">
+							<view class="left-side">团队人数</view>
+							<view class="right-side">--</view>
+						</view>
+					</view>
+
+					<view class="item">
+						<view class="row flex flex-between">
+							<view class="left-side font-bold">个人业绩</view>
+							<view class="right-side">--</view>
+						</view>
+						<view class="row flex flex-between">
+							<view class="left-side font-bold">团队业绩</view>
+							<view class="right-side">--</view>
+						</view>
+						<view class="row flex flex-between">
+							<view class="left-side font-bold">云币持仓</view>
+							<view class="right-side">--</view>
+						</view>
+					</view>
+
 				</view>
 			</view>
 		</view>
@@ -168,10 +207,7 @@
 
 		padding: 38rpx 20rpx;
 
-		border-radius: 32rpx;
-		background: linear-gradient(180deg, rgba(226,242,255,0.5) 0%, rgba(255,255,255,1) 100%);
-		backdrop-filter: blur(8rpx);
-		box-shadow: 0px 4rpx 24rpx 0rpx rgba(0,0,0,0.05);
+		
 
 		.info-1{
 			font-size: 32rpx;
@@ -282,25 +318,5 @@
 
 }
 
-/* 释放列表 */
-.shifang-list{
-	.list{
-		font-size: 28rpx;
-		padding: 10rpx 40rpx 0;
-		.item{
-			border-bottom: 2rpx solid #E9E9E9;
-			margin-bottom: 32rpx;
-			.row{
-				margin-bottom: 32rpx;
-			}
-		}
-		.left-side{
-			color:#222;
-		}
-		.right-side{
-			color:black;
-		}
-	}
-}
 
 </style>
