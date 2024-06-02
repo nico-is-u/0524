@@ -20,6 +20,15 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 提现
+		{
+			"path": "pages/home-page/gf_draw",
+			"style": {
+				"navigationBarTitleText": "提现",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 		// 云数币
 		{
 			"path": "pages/index/gongfu",
@@ -27,7 +36,15 @@
 				"navigationStyle": "custom"
 			}
 		},
-
+		//数字魅力
+		{
+			"path": "pages/index/team",
+			"style": {
+				"navigationBarTitleText": "数字魅力",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 
 
 
@@ -66,12 +83,7 @@
 				"enablePullDownRefresh": true
 			}
 		},
-		{
-			"path": "pages/index/team",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
+		
 		{
 			"path": "pages/index/my",
 			"style": {
@@ -177,12 +189,7 @@
 				"navigationBarTitleText": "关于我们"
 			}
 		},
-		{
-			"path": "pages/home-page/gf_draw",
-			"style": {
-				"navigationBarTitleText": "提现申请"
-			}
-		},
+		
 		{
 			"path": "pages/home-page/gf_draw_ecny",
 			"style": {

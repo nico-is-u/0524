@@ -1,427 +1,332 @@
 <template>
-  <view class="the_page_mine">
-    <view class="page_head">
-      <u-row justify="space-between" customStyle="margin:20rpx 0;" gutter="1">
-        <u-col align="center" span="2">
-          <view class="logo">
-            <avatar selWidth="400upx" noTab selHeight="400upx" @upload="myUpload" :avatarSrc="avatarurl"
-              avatarStyle="width: 100upx; height: 100upx; border-radius: 100%;"></avatar>
+  <view class="page">
+    <view class="head">
+        <!-- 顶栏 -->
+				<nNavbar title="我的" :showBackBtn="false"></nNavbar>
+        <!-- 用户信息 -->
+        <view class="userinfo flex flex-between flex-y-center">
+          <view class="left-side flex flex-y-center">
+            <!-- 用户头像 -->
+            <avatar 
+              selWidth="400upx" 
+              selHeight="400upx"
+              :avatarSrc="avatarurl"
+              avatarStyle="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"
+              noTab>
+            </avatar>
+
+            <!-- 文字讯息 -->
+            <view class="text-info">
+              <view class="username">{{ user_info.realname || '' }}</view>
+              <view class="desc flex">
+                <image src="/static/images/21.png" mode="widthFix" class="level-2"></image>
+                <view class="text-part">
+                  <text>我的等级特权</text>
+                  <text>></text>
+                </view>
+              </view>
+            </view>
+            
           </view>
-        </u-col>
-        <u-col align="center" span="6">
-          <u--text color="#fff" :text="user_info.phone.slice(0, 3) + '****' + user_info.phone.slice(7, 11)"></u--text>
-          <u--text color="#fff" :text="user_info.level_text" customStyle="margin:8rpx 0" prefixIcon="integral-fill"
-            @click="too('/pages/home-page/gf_baozhang?type=zce')"
-            iconStyle="color:#fff;font-size:34rpx;margin:5rpx 6rpx 0 0"></u--text>
-          <u--text v-if="user_info.ic_number" :mode="showName" :text="user_info.realname" format="encrypt"
-            :suffixIcon="showNameIcon" iconStyle="color:#fff;margin-left:25rpx" color="#fff"
-            @click="showNameBtn"></u--text>
-          <u--text v-else text="未实名认证" color="#fff"
-            @click="too('/pages/system-page/gf_real-name_auth?v=' + user_info.is_set_pay_password)"></u--text>
-        </u-col>
-        <u-col align="center" span="4" @click="too('/pages/shop-page/gf_baozhang')">
-          <u-icon name="gift" color="#fff" size="35"></u-icon>
-          <u--text color="#fff" text="共富保障" align="center"></u--text>
-        </u-col>
-      </u-row>
-      <view class="ur_acc">
-        <view>总资产</view>
-        <view>
-          <u--text :text="'￥' + Number(user_info.total_balance).toFixed(2)" color="#fff" align="right"></u--text>
+
+          <view class="right-side">
+            <image src="/static/images/16.png" mode="widthFix"></image>
+          </view>
+
         </view>
-      </view>
+        <!-- 底栏 -->
+        <view class="bottom-bar"></view>
     </view>
 
-    <view class="content-box">
-      <u--text prefixIcon="bookmark-fill" size="30rpx" iconStyle="font-size: 32rpx;color:#EE2B2A" text="其他资金"></u--text>
-      <u-row justify="space-between" gutter="8">
-        <u-col align="center" span="6">
-          <view class="n-ecny" @click="toecny">
-            <!-- <view class="n-ecny" @click="toa('1月28日开放')"> -->
-            <view style="display: flex">
-              <image src="/static/icon/wecny.png" mode="widthFix"
-                style="width: 80rpx; margin-right: 10rpx; height: 1rpx"></image>
-              <view class="">
-                <view>数字钱包</view>
-                <view style="font-size: 28rpx; margin-top: 5rpx">E-CNY</view>
-              </view>
-            </view>
-            <!-- <text>{{user_info.digit_balance}}元</text> -->
+    <!-- 内容正文 -->
+    <view class="section">
+      <!-- 菜单1 -->
+      <view class="menu-list">
+        <view class="menu-item" style="background-image: url(/static/images/31.png);">
+          <view class="text-info">
+            <view class="title">签到送积分</view>
+            <view class="label">累计积分换豪礼</view>
           </view>
-        </u-col>
-        <u-col align="center" span="6">
-          <view class="n-ecny" style="background-color: #e7847e" @click="too('/pages/home-page/gf_draw?type=gfgc')">
-            <!-- <view class="n-ecny" @click="toa('1月28日开放')"> -->
-            <view style="display: flex">
-              <image src="/static/icon/logo-r.png" mode="widthFix"
-                style="width: 80rpx; margin-right: 10rpx; height: 1rpx"></image>
-              <view class="">
-                <view>共富工程钱包</view>
-                <u--text mode="price" align="left" size="28rpx" margin="5rpx 0 0" color="#fff"
-                  :text="user_info.gf_purse"></u--text>
-              </view>
-            </view>
-            <!-- <text>{{user_info.digit_balance}}元</text> -->
+        </view>
+        <view class="menu-item" style="background-image: url(/static/images/32.png);">
+          <view class="text-info">
+            <view class="title">积分兑换</view>
+            <view class="label">多重好礼等你兑换</view>
           </view>
-        </u-col>
-      </u-row>
-      <u-row justify="space-between" customStyle="margin:20rpx 0;" gutter="1">
-        <u-col align="center" span="4">
-          <view class="zj_item it1" @click="too('/pages/system-page/gf_amount-detail')">
-            <u--text :text="'￥' + Number(user_info.cash).toFixed(2)" color="#fff" align="center"></u--text>
-            <u--text color="#fff" text="现金" align="center"></u--text>
+        </view>
+        <view class="menu-item" style="background-image: url(/static/images/33.png);">
+          <view class="text-info">
+            <view class="title">领取礼包</view>
+            <view class="label">海量权益月月领</view>
           </view>
-        </u-col>
-        <u-col align="center" span="4" @click="toyuanCny">
-          <view class="zj_item it2">
-            <u--text :text="'￥' + Number(user_info.digital_yuan_amount).toFixed(1)" color="#fff"
-              align="center"></u--text>
-            <u--text color="#fff" text="数字人民币" align="center"></u--text>
+        </view>
+        <view class="menu-item" style="background-image: url(/static/images/34.png);">
+          <view class="text-info">
+            <view class="title">等级提升</view>
+            <view class="label">升级会员专属福利</view>
           </view>
-        </u-col>
-        <u-col align="center" span="4" @click="too('/pages/home-page/gf_baozhang?type=live')">
-          <view class="zj_item it3">
-            <u--text :text="'￥' + Number(user_info.poverty_subsidy_amount).toFixed(2)" color="#fff"
-              align="center"></u--text>
-            <u--text color="#fff" text="生活补助" align="center"></u--text>
-          </view>
-        </u-col>
-      </u-row>
+        </view>
+      </view>
 
-      <!-- 	<image class="banner_img" @click="too('/pages/shop-page/gf_active')" src="../../static/images/mine/b1.jpg"
-				mode="widthFix">
-			</image> -->
-      <!-- <image class="banner_img" @click="too('/pages/shop-page/gf_up')" src="../../static/images/mine/b2.jpg"
-				mode="widthFix">
-			</image> -->
-
+      <!-- 菜单2 -->
       <view class="ser_list">
-        <view class="item" @click="too('/pages/home-page/gf_rzzc')">
-          <u--text prefixIcon="tags" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="认领资产"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="too('/pages/home-page/gf_zcgzs')">
-          <u--text prefixIcon="fingerprint" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
-            text="资产公证书"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="too('/pages/system-page/gf_zc_detail')">
-          <u--text prefixIcon="attach" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="交接资产详情"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="too('/pages/system-page/sys_user_info')">
-          <u--text prefixIcon="account" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="个人信息"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
-            text="内容"></u--text>
-        </view>
-        <view class="item" @click="too('/pages/home-page/gf_top-up')">
-          <u--text prefixIcon="coupon" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户充值"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
-            text="点击即可充值"></u--text>
-        </view>
-        <view class="item" @click="too('/pages/home-page/gf_draw')">
-          <u--text prefixIcon="order" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户提现"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="too('/pages/home-page/gf_tr-money')">
-          <u--text prefixIcon="scan" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户转账"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="too('/pages/system-page/gf_amount_fund')">
-          <u--text prefixIcon="file-text" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="资金明细"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="too('/pages/system-page/gf_band-card')">
-          <u--text prefixIcon="rmb-circle" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
-            text="收款方式"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
-            text="银行卡"></u--text>
-        </view>
-        <view class="item" @click="too('/pages/home-page/gf_customer')">
-          <u--text prefixIcon="kefu-ermai" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
-            text="我的客服"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" color="#999" iconStyle="font-size: 16px;color:#999"
-            text="在线咨询"></u--text>
-        </view>
-        <view class="item" @click="too('/pages/system-page/gf_secure?v=' + user_info.is_set_pay_password)">
-          <u--text prefixIcon="setting" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="账户安全"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
+        <view class="item">
+          <view class="left-side flex flex-y-center">
+            <image src="/static/images/35.png"></image>
+            <text>我的资料</text>
+          </view>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
-        <view class="item" @click="too('/pages/system-page/gf_about')">
-          <u--text prefixIcon="server-man" size="20" iconStyle="font-size: 18px;margin-right:8rpx"
-            text="关于我们"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-        <view class="item" @click="logOut">
-          <u--text prefixIcon="reload" size="20" iconStyle="font-size: 18px;margin-right:8rpx" text="安全退出"></u--text>
-          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 16px;color:#999" text=""></u--text>
-        </view>
-      </view>
-      <view style="margin-top: 50rpx">
-        <!-- <u--text align="center" color="#cacaca" text="TEST V.6.0.0"></u--text> -->
-        <u--text align="center" color="#cacaca" text="V.3.5.6"></u--text>
-      </view>
-    </view>
-    <u-overlay :show="ecnyts" zIndex="999" opacity="0.8">
-      <view class="warp">
-        <view class="rect" @tap.stop>
-          <view>提示</view>
-          <view style="color: #c03328; padding: 40rpx">您还未激活数字人民币钱包，是否去激活？</view>
-          <view style="display: flex; justify-content: space-between; width: 70%; margin: 20rpx auto">
-            <view @click="ecnyts = false">取消</view>
-            <view @click="tourl" style="color: #c03328">确定</view>
+        <view class="item">
+          <view class="left-side flex flex-y-center">
+            <image src="/static/images/36.png"></image>
+            <text>我的资产</text>
           </view>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
+
+        <view class="item">
+          <view class="left-side flex flex-y-center">
+            <image src="/static/images/37.png"></image>
+            <text>账户充值</text>
+          </view>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
+        </view>
+
+        <view class="item">
+          <view class="left-side flex flex-y-center">
+            <image src="/static/images/38.png"></image>
+            <text>我的团队</text>
+          </view>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
+        </view>
+
+        <view class="item">
+          <view class="left-side flex flex-y-center">
+            <image src="/static/images/39.png"></image>
+            <text>在线客服</text>
+          </view>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
+        </view>
+
+        <view class="item">
+          <view class="left-side flex flex-y-center">
+            <image src="/static/images/40.png"></image>
+            <text>提现通道</text>
+          </view>
+          <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
+        </view>
+
       </view>
-    </u-overlay>
+
+    </view>
+
   </view>
 </template>
 
 <script>
-import avatar from '../../components/yq-avatar/yq-avatar.vue';
+import avatar from '../../components/yq-avatar/yq-avatar.vue'
 export default {
-  components: {
-    avatar
-  },
   data() {
     return {
-      ecnyts: false,
-      avatarurl: '../../static/icon/logo.png',
-      showName: 'name',
-      showNameIcon: 'eye-off',
+      avatarurl: '/static/images/30.png',
       user_info: {
         balance: '0.00', //账户余额
-        digital_yuan_amount: 20000, //数字人民币
-        ic_number: '', //身份证
-        invite_code: '...',
-        digit_balance: '',
-        is_active: 0, //是否激活 0否
-        is_set_pay_password: 0, //是否设置支付密码 0 否
-        level: 0,
-        phone: '...',
-        poverty_subsidy_amount: 0, //生活补助
-        realname: '', //实名
-        topup_balance: '0.00', //现金,
-        cash: '0',
-        /* 修改值 */
-        level_text: '...',
-        gf_purse: 0 //共富工程钱包
       }
-    };
+    }
   },
-  onShow() {
-    this.getUserInfo();
-  },
-  onLoad(option) {},
-  methods: {
-    toecny() {
-      if (this.user_info.level < 1) {
-        this.toa('未达成共富一级');
-      } else {
-        this.too('/pages/system-page/gf_ecny_money');
-      }
-    },
-    myUpload(rsp) {
-      const domain = uni.getStorageSync('ok_api');
-      let _ = this;
-      uni.uploadFile({
-        url: domain + 'common/uploadFile',
-        filePath: rsp.base64,
-        name: 'file',
-        success(res) {
-          // console.log(res);
-          let data = JSON.parse(res.data);
-          _.to
-            .www(
-              _.api.usr_avatar,
-              {
-                avatar: data.data.url
-              },
-              'p'
-            )
-            .then((res) => {
-              _.avatarurl = rsp.path;
-              _.toa('已更新头像');
-            });
-        }
-      });
-    },
-    tourl() {
-      uni.navigateTo({
-        url: '/pages/shop-page/gf_active'
-      });
-    },
-    toyuanCny() {
-      if (this.user_info.can_open_digital == 0) {
-        this.ecnyts = true;
-      } else {
-        this.too('/pages/shop-page/gf_ecny?mon=' + this.user_info.digital_yuan_amount);
-      }
-    },
-    showNameBtn() {
-      if (this.showName == 'name') this.showName = '';
-      else this.showName = 'name';
-      if (this.showNameIcon == 'eye-off') this.showNameIcon = 'eye';
-      else this.showNameIcon = 'eye-off';
-    },
+  methods:{
     getUserInfo() {
-      this.to.www(this.api.user_info).then((res) => {
-        this.user_info = res.data;
-        this.avatarurl = res.data.avatar;
-        if (res.data.avatar == '' || res.data.avatar == 'undefined') {
-          this.avatarurl = '../../static/icon/logo.png';
-        }
+      this.to.www(this.api.user_info).then(res => {
 
-        let lvs = [, '共富一级', '共富二级', '共富三级', '共富四级', '共富五级'];
-        if (res.data.level == 0) this.user_info.level_text = '未加入共富';
-        else this.user_info.level_text = lvs[res.data.level];
+        console.log(res)
+
+        this.user_info = res.data
+        this.avatarurl = res.data.avatar
+
+        if (res.data.avatar == '' || res.data.avatar == 'undefined') {
+          this.avatarurl = '/static/images/30.png'
+        }
+        
         uni.setStorage({
           data: this.user_info,
           key: 'user_info'
-        });
+        })
+        
+        // 作用？
         uni.setStorage({
           data: 'first-launch',
           key: 'use-page-type'
-        });
-      });
+        })
+
+      })
     },
-    logOut() {
-      let _ = this;
-      uni.showModal({
-        title: '提示',
-        content: '安全退出此账号 ? ',
-        confirmColor: '#c03328',
-        success: (res) => {
-          if (res.confirm) {
-            uni.clearStorage();
-            _.too('/pages/system-page/gf_login', 'lau');
-          }
-        }
-      });
-    }
-  }
-};
+  },
+  onShow() {
+    this.getUserInfo()
+  },
+  components: {
+    avatar
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-.warp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+page{
   height: 100%;
 }
+.page{
+  height: 100%;
+  background-color: #F9F9F9;
 
-.rect {
-  width: 76%;
-  border-radius: 10rpx;
-  background-color: #fff;
-  padding: 20rpx 15rpx 30rpx;
-  text-align: center;
-  height: 320rpx;
-  .close {
-    width: 200rpx;
-    background-color: #fff;
-    color: #fff;
-    margin: 30rpx auto 20rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    border-radius: 50rpx;
-    position: fixed;
-    bottom: 250rpx;
-    left: 50%;
-    transform: translateX(-50%);
+  .head{
+    height: 500rpx;
+    
+    /* #ifdef WEB */
+    height: 350rpx;
+    /* #endif */
+    
+    background-image: url('/static/images/29.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    /* 用户信息 */
+    .userinfo{
+      height: 175rpx;
+      padding: 0 48rpx;
+      margin-top: 20rpx;
+      
+      .left-side{
+
+        .text-info{
+
+          width: 280rpx;
+          overflow: hidden;
+
+          font-size: 32rpx;
+          margin-left: 18rpx;
+
+          .username{
+            color: white;
+            white-space: nowrap;
+          }
+
+          .desc{
+            font-size: 22rpx;
+            margin-top: 12rpx;
+            
+            .text-part{
+              color: white;
+              opacity: .8;
+              margin-left: 6rpx;
+            }
+
+          }
+
+          .level-2{
+            width: 130rpx;
+          }
+
+
+        }
+      }
+
+      /* 用户等级 */
+      .right-side{
+        image{
+          width: 160rpx;
+        }
+      }
+
+    }
+
+    /* 底栏 */
+    .bottom-bar{
+      width: 100%;
+      height: 48rpx;
+      background-color: #F9F9F9;
+
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      border-top-left-radius: 36rpx;
+      border-top-right-radius: 36rpx;
+
+    }
+
+
   }
-}
 
-.n-ecny {
-  background-color: #df5d67;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15rpx 20rpx;
-  border-radius: 15rpx;
-  width: 100%;
-  margin: 10rpx auto 0;
-  box-sizing: border-box;
-}
-
-.content-box {
-  padding: 30rpx;
-
-  .ser_list {
-    background-color: #fff;
-    border-radius: 10rpx;
-    padding: 20rpx;
-
-    .item {
+  .section{
+    padding: 0 48rpx;
+    /* 小菜单1 */
+    .menu-list{
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border-bottom: 3rpx solid #f9f9f9;
-      padding: 12rpx 0;
+      flex-wrap: wrap;
+      gap: 30rpx;
+
+      .menu-item{
+        width: calc(50% - 16rpx);
+        height: 144rpx;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        border-radius: 18rpx;
+
+        padding: 34rpx 34rpx;
+        .title{
+          font-size: 28rpx;
+          font-weight: 600;
+          color: white;
+        }
+        .label{
+          opacity: .8;
+          color: white;
+          margin-top: 4rpx;
+        }
+
+      }
+
     }
-  }
 
-  .zj_item {
-    width: 95%;
-    padding: 40rpx 0;
-    box-sizing: border-box;
-    border-radius: 10rpx;
-  }
+    /* 菜单2 */
+    .ser_list {
+      background-color: white;
+      border-radius: 10rpx;
+      padding: 10rpx 20rpx;
 
-  .zj_item.it1 {
-    background-color: #df5d67;
-  }
+      margin-top: 32rpx;
 
-  .zj_item.it2 {
-    background-color: #e2a76b;
-  }
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3rpx solid #e9e9e9;
+        padding: 24rpx 6rpx;
 
-  .zj_item.it3 {
-    background-color: #4fb315;
-  }
+        .left-side{
+          font-size: 28rpx;
+          color: #222;
 
-  .banner_img {
-    width: 100%;
-    margin: 10rpx auto;
-    border-radius: 6rpx;
-    background-color: #fff;
-    padding: 8rpx;
-    border-radius: 6rpx;
-    box-sizing: border-box;
-  }
-}
+          image{
+            width: 36rpx;
+            height: 36rpx;
 
-.page_head {
-  background-color: #b80606;
-  padding: 10rpx 30rpx;
-  color: #fff;
+            margin-right: 12rpx;
+          }
+        }
 
-  .logo {
-    width: 100upx;
-    height: 100upx;
-  }
+      }
 
-  .ur_acc {
-    background-color: rgba(255, 255, 255, 0.25);
-    width: 95%;
-    height: 50rpx;
-    line-height: 50rpx;
-    border-radius: 10rpx;
-    display: flex;
-    padding: 10rpx 0;
-    justify-content: space-around;
-    margin: 50rpx auto 20rpx;
-
-    text {
-      font-weight: bold;
     }
-  }
-}
 
-.the_page_mine {
-  background-color: #f8f8f8;
+
+  }
+
 }
 </style>

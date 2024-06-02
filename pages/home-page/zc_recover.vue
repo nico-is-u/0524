@@ -12,7 +12,6 @@
 						<text class="des">{{item.min_asset}}万 {{item.max_asset=='max'?'以上': ' ~ '+item.max_asset+'万'}}入口</text>
 					</u-col>
 				</u-row>
-				<image class="icon2" src="../../static/images/background.png" mode="widthFix"></image>
 			</view>
 		</view>
 

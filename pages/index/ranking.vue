@@ -38,17 +38,17 @@
 			<view class="content" style="padding-bottom: 0">
 
 				<view class="flex flex-column">
-					<view class="menu-item flex flex-between" style="margin-bottom: 32rpx">
+					<view class="menu-item flex flex-between" style="margin-bottom: 32rpx; background-image: url('/static/images/26.png')">
 						<view class="left-side">当前等级</view>
 						<view class="right-side font-blue">大众会员</view>
 					</view>
 		
-					<view class="menu-item flex flex-between" style="margin-bottom: 32rpx">
+					<view class="menu-item flex flex-between" style="margin-bottom: 32rpx; background-image: url('/static/images/27.png')">
 						<view class="left-side">考核周期</view>
 						<view class="right-side font-blue">45天</view>
 					</view>
 		
-					<view class="menu-item flex flex-between">
+					<view class="menu-item flex flex-between" style="background-image: url('/static/images/28.png')">
 						<view class="left-side">节点额度</view>
 						<view class="right-side font-blue">60%</view>
 					</view>
@@ -71,7 +71,7 @@
 							<text class="desc">已释放额度</text>
 						</view>
 					</view>
-					<view class="n-button">领取</view>
+					<view class="n-button" @click="too('/pages/home-page/gf_draw')">领取</view>
 					<image src="/static/images/8.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -219,6 +219,8 @@
 		padding: 28rpx 28rpx 0;
 
 		font-size: 32rpx;
+		background-repeat: no-repeat;
+		background-size: cover;
 
 		.left-side{
 			color: #34353E;

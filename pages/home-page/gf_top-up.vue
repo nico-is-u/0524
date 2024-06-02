@@ -1,7 +1,6 @@
 <template>
 	<view class="the_page_up">
 		<!-- <u-swiper :list="list1" :circular="true" height="160"></u-swiper> -->
-		<image style="width: 100%;" src="../../static/images/c-bg.jpg" mode="widthFix"></image>
 		<template>
 			<view class="top_up_box">
 				<text class="title" style="float: right;" @click="too('/pages/system-page/gf_amount_draw?type=1')">充值明细</text>
@@ -32,7 +31,6 @@
 		data() {
 			return {
 				isDone: false,
-				// list1: ['../../static/images/c-bg.png'],
 				money_list: [100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000],
 				pay_list: [],
 				pay_list_def: [],

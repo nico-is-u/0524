@@ -151,6 +151,17 @@
 		}
 	}
 
+	.padding-box-3{
+		padding: 32rpx;
+		.content-3{
+			background-color: white;
+			border-radius: 16rpx;
+		}
+		.u-form{
+			padding: 32rpx;
+		}
+	}
+
 	.n-button{
 		color: white;
 		background-color: #0182EF;
@@ -173,6 +184,24 @@
 
 	.font-green{
 		color: #12D148;
+	}
+
+
+	/** u-view 的样式重写 */
+	.u-form{
+		/* label */
+		.u-form-item__body__left__content__label{
+			color: #838282 !important;
+			font-size: 30rpx !important;
+		}
+
+		/* content */
+		.u-input__content{
+			background-color: #F9F9F9 !important;
+			padding: 20rpx 32rpx;
+			margin: 16rpx 0;
+			border-radius: 8rpx;
+		}
 	}
 
 </style>
