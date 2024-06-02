@@ -38,15 +38,29 @@
 		},
 		//数字魅力
 		{
-			"path": "pages/index/team",
+			"path": "pages/index/szml",
 			"style": {
 				"navigationBarTitleText": "数字魅力",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
 			}
 		},
-
-
+		// 我的
+		{
+			"path": "pages/index/my",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		// 我的团队
+		{
+			"path": "pages/home-page/team",
+			"style":{
+				"navigationBarTitleText": "我的团队",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 
 
 
@@ -84,12 +98,7 @@
 			}
 		},
 		
-		{
-			"path": "pages/index/my",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
+		
 		{
 			"path": "pages/home-page/zc_recover",
 			"style": {
@@ -440,7 +449,7 @@
 				"text": "数字魅力",
 				"iconPath": "static/images/tabbar/t4.png",
 				"selectedIconPath": "static/images/tabbar/t4c.png",
-				"pagePath": "pages/index/team"
+				"pagePath": "pages/index/szml"
 			},
 			{
 				"text": "我的",

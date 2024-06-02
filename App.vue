@@ -162,6 +162,101 @@
 		}
 	}
 
+	.menu-card{
+		background-color: rgba(255,255,255,.8);
+		border-radius: 16rpx;
+		box-shadow: 0px 8rpx 32rpx 0px rgba(0,56,121,0.03);
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		padding: 0 32rpx;
+
+		.menu-item{
+			min-width: 25%;
+			min-height: 150rpx;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			gap: 6rpx;
+
+			.label{
+				font-size: 28rpx;
+				color: #272E3B;
+			}
+
+			.value{
+				font-size: 28rpx;
+				color:#86909C;
+			}
+
+		}
+
+		.line{
+			width: 2rpx;
+			height: 80rpx;
+			background-color: #E5E6EB;
+		}
+
+
+	}
+
+	.n-tab{
+		display: flex;
+		align-items: center;
+		gap: 16rpx;
+
+		.tab-item{
+			color: #86909C;
+			min-height: 56rpx;
+			background-color: #F2F2F2;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			padding: 0 32rpx;
+			border-radius: 32rpx;
+
+			&.active{
+				color: white;
+				background-color: #0182EF;
+			}
+		}
+	}
+
+	.n-card{
+		background-color: white;
+		border-radius: 16rpx;
+		padding: 32rpx;
+
+		color: #272E3B;
+
+		display: flex;
+		flex-direction: column;
+		gap: 20rpx;
+
+		.row{
+			display: flex;
+			align-items: center;
+			
+
+			.label{
+				min-width: 136rpx;
+				color: #86909C;
+			}
+			.value{
+				display: flex;
+				align-items: center;
+			}
+		}
+
+	}
+
 	.n-button{
 		color: white;
 		background-color: #0182EF;

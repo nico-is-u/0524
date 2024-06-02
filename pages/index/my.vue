@@ -94,7 +94,7 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
-        <view class="item">
+        <view class="item" @click="too('/pages/home-page/team')">
           <view class="left-side flex flex-y-center">
             <image src="/static/images/38.png"></image>
             <text>我的团队</text>
