@@ -70,7 +70,7 @@
 
       <!-- 菜单2 -->
       <view class="ser_list">
-        <view class="item">
+        <view class="item" @click="too('/pages/home-page/my_list')">
           <view class="left-side flex flex-y-center">
             <image src="/static/images/35.png"></image>
             <text>我的资料</text>
@@ -175,10 +175,10 @@ export default {
 <style lang="scss" scoped>
 page{
   height: 100%;
+  background-color: #F9F9F9;
 }
 .page{
   height: 100%;
-  background-color: #F9F9F9;
 
   .head{
     height: 500rpx;
@@ -293,38 +293,6 @@ page{
       }
 
     }
-
-    /* 菜单2 */
-    .ser_list {
-      background-color: white;
-      border-radius: 10rpx;
-      padding: 10rpx 20rpx;
-
-      margin-top: 32rpx;
-
-      .item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 3rpx solid #e9e9e9;
-        padding: 24rpx 6rpx;
-
-        .left-side{
-          font-size: 28rpx;
-          color: #222;
-
-          image{
-            width: 36rpx;
-            height: 36rpx;
-
-            margin-right: 12rpx;
-          }
-        }
-
-      }
-
-    }
-
 
   }
 

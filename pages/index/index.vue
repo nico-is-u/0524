@@ -380,29 +380,31 @@
 </script>
 
 <style lang="scss" scoped>
+page{
+	background-color: #f9f9f9;
+}
 
-	.head {
-		height: 454rpx;
-		background-image: url('/static/images/1.png');
-		background-repeat: no-repeat;
-		background-size: cover;
-		padding-top: 10rpx;
-		color: #fff;
-		z-index: 9;
-		border-radius: 0 0 2rpx 2rpx;
-	}
+.head {
+	height: 454rpx;
+	background-image: url('/static/images/1.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 10rpx;
+	color: #fff;
+	z-index: 9;
+	border-radius: 0 0 2rpx 2rpx;
+}
 
-	.menu-list{
-		padding: 32rpx 32rpx 38rpx;
-		.item{
-			width: 25%;
-			gap: 16rpx;
-			image{
-				width: 72rpx;
-			}
+.menu-list{
+	padding: 32rpx 32rpx 38rpx;
+	.item{
+		width: 25%;
+		gap: 16rpx;
+		image{
+			width: 72rpx;
 		}
 	}
-
+}
 </style>
 
 <style lang="scss">

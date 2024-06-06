@@ -71,7 +71,7 @@
 							<text class="desc">已释放额度</text>
 						</view>
 					</view>
-					<view class="n-button" @click="too('/pages/home-page/gf_draw')">领取</view>
+					<view class="n-button" @click="too('/pages/index/nyfz_detail')">领取</view>
 					<image src="/static/images/8.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -191,6 +191,11 @@
 </script>
 
 <style lang="scss" scoped>
+
+page{
+	background-color: #f9f9f9;
+}
+
 .head {
 	height: 512rpx;
 	background-image: url('/static/images/6.png');

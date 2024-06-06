@@ -84,7 +84,7 @@
 	// }
 
 	page {
-		background-color: #F9F9F9 !important;
+		// background-color: #F9F9F9 !important;
 		font-size: 26rpx;
 	}
 
@@ -160,6 +160,43 @@
 		color: #222;
 		box-sizing: border-box;
 		line-height: 1.5;
+	}
+
+	.card{
+		background-color: white;
+		border-radius: 16rpx;
+		padding: 32rpx;
+
+		color: #222;
+
+		.card-header{
+			font-size: 34rpx;
+			font-weight: 600;
+		}
+
+		.card-content{
+			margin-top: 12rpx;
+
+			.u-form-item__body__left{
+				width: 240rpx !important;
+			}
+
+			.u-form-item__body__left__content__label{
+				color: #222 !important;
+				font-weight: 600;
+			}
+
+			.u-upload__wrap{
+				>uni-view{
+					width: 100%;
+				}
+			}
+		}
+
+	}
+
+	.card + .card{
+		margin-top: 32rpx;
 	}
 
 	.padding-box{
@@ -248,6 +285,10 @@
 		}
 	}
 
+	.padding-box-4{
+		padding: 32rpx;
+	}
+
 	.menu-card{
 		background-color: rgba(255,255,255,.8);
 		border-radius: 16rpx;
@@ -297,6 +338,36 @@
 		backdrop-filter: blur(8rpx);
 		box-shadow: 0px 4rpx 24rpx 0rpx rgba(0,0,0,0.05);
 
+	}
+
+	// 卡片列表 样式1
+	.card-list-type-1{
+		.card-item{
+			background-color: white;
+			border-radius: 24rpx;
+
+			padding: 32rpx;
+
+			.title{
+				font-size: 32rpx;
+				color: #222;
+				font-weight: bold;
+			}
+
+			.section{
+				color: #222;
+				font-size: 28rpx;
+				margin-top: 24rpx;
+			}
+
+			.line{
+				width: 100%;
+				height: 2rpx;
+				background-color: #E9E9E9;
+
+				margin: 24rpx 0;
+			}
+		}
 	}
 
 	.n-tab{
@@ -363,6 +434,13 @@
 		border-radius: 40rpx;
 	}
 
+	.n-upload-box{
+		width: 100%;
+		background-color: #f9f9f9;
+		padding: 90rpx 0;
+		font-size: 28rpx;
+	}
+
 	.font-blue{
 		color: #0182EF;
 	}
@@ -379,6 +457,37 @@
 		font-weight: bold;
 	}
 
+
+	/** 原有样式的重写 */
+    .ser_list {
+      background-color: white;
+      border-radius: 10rpx;
+      padding: 10rpx 20rpx;
+
+      margin-top: 32rpx;
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3rpx solid #e9e9e9;
+        padding: 24rpx 6rpx;
+
+        .left-side{
+          font-size: 28rpx;
+          color: #222;
+
+          image{
+            width: 36rpx;
+            height: 36rpx;
+
+            margin-right: 12rpx;
+          }
+        }
+
+      }
+
+    }
 
 	/** u-view 的样式重写 */
 	.u-form{

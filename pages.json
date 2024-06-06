@@ -1,5 +1,6 @@
 {
 	"pages": [
+		/* 首页 */
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -8,16 +9,25 @@
 		},
 		// 新闻详情
 		{
-			"path": "pages/home-page/gf_news_detail",
+			"path": "pages/index/news_detail",
 			"style": {
 				"navigationBarTitleText": "详情"
 			}
 		},
 		// 诺亚方舟
 		{
-			"path": "pages/index/ranking",
+			"path": "pages/index/nyfz",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		// 诺亚方舟 - 资产申请
+		{
+			"path":"pages/index/nyfz_detail",
+			"style":{
+				"navigationBarTitleText": "资产申请",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
 			}
 		},
 		// 提现
@@ -50,6 +60,24 @@
 			"path": "pages/index/my",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		// 我的资料
+		{
+			"path": "pages/home-page/my_list",
+			"style":{
+				"navigationBarTitleText": "我的资料",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 我的资料 - 收货地址
+		{
+			"path": "pages/home-page/my_shdz",
+			"style":{
+				"navigationBarTitleText": "收货地址",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
 			}
 		},
 		// 我的团队
@@ -444,7 +472,7 @@
 				"text": "诺亚方舟",
 				"iconPath": "static/images/tabbar/t2.png",
 				"selectedIconPath": "static/images/tabbar/t2c.png",
-				"pagePath": "pages/index/ranking"
+				"pagePath": "pages/index/nyfz"
 			},
 			{
 				"text": "云数币",

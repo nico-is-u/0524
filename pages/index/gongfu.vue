@@ -180,6 +180,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+page{
+	background-color: #f9f9f9;
+}
+
 .head {
 	height: 672rpx;
 	background-image: url('/static/images/9.png');

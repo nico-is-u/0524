@@ -14,6 +14,7 @@
 <style lang="scss">
 page{
 	height: 100%;
+	background-color: #f9f9f9;
 }
 .page{
 	height: 100%;
