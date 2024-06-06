@@ -191,6 +191,11 @@
 					width: 100%;
 				}
 			}
+
+			.card-list-type-2{
+				padding: 0 12rpx;
+			}
+
 		}
 
 	}
@@ -204,24 +209,6 @@
 		.content{
 			background-color: white;
 			border-radius: 24rpx;
-		}
-
-		.list{
-			font-size: 28rpx;
-			padding: 10rpx 40rpx 0;
-			.item{
-				border-bottom: 2rpx solid #E9E9E9;
-				margin-bottom: 32rpx;
-				.row{
-					margin-bottom: 32rpx;
-				}
-			}
-			.left-side{
-				color:#222;
-			}
-			.right-side{
-				color:black;
-			}
 		}
 	}
 
@@ -367,6 +354,25 @@
 
 				margin: 24rpx 0;
 			}
+		}
+	}
+
+	// 卡片列表 样式2
+	.card-list-type-2{
+		font-size: 28rpx;
+		padding: 10rpx 40rpx 0;
+		.item{
+			border-bottom: 2rpx solid #E9E9E9;
+			margin-bottom: 32rpx;
+			.row{
+				margin-bottom: 32rpx;
+			}
+		}
+		.left-side{
+			color:#222;
+		}
+		.right-side{
+			color:black;
 		}
 	}
 

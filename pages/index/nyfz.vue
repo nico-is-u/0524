@@ -85,7 +85,7 @@
 				</view>
 
 				<!-- 列表 -->
-				<view class="list">
+				<view class="card-list-type-2">
 					<view class="item">
 						<view class="row flex flex-between">
 							<view class="left-side">直推人数</view>
@@ -123,14 +123,14 @@
 					<view class="label">
 						<text>释放列表</text>
 					</view>
-					<view class="more-info">
+					<view class="more-info" @click="too('/pages/index/nyfz_list')">
 						<text>申请记录</text>
 						<view class="arrow">></view>
 					</view>
 				</view>
 
 				<!-- 列表 -->
-				<view class="list">
+				<view class="card-list-type-2">
 					<view class="item">
 						<view class="row flex flex-between">
 							<view class="left-side">申请的释放金额</view>

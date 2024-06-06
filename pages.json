@@ -30,6 +30,15 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
+		// 诺亚方舟 - 申请记录
+		{
+			"path":"pages/index/nyfz_list",
+			"style":{
+				"navigationBarTitleText": "申请记录",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 		// 提现
 		{
 			"path": "pages/home-page/gf_draw",
