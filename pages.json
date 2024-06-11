@@ -39,18 +39,9 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
-		// 提现
-		{
-			"path": "pages/home-page/gf_draw",
-			"style": {
-				"navigationBarTitleText": "提现",
-				"navigationBarBackgroundColor":"#FFF",
-				"navigationBarTextStyle":"black"
-			}
-		},
 		// 云数币
 		{
-			"path": "pages/index/gongfu",
+			"path": "pages/index/ysb",
 			"style": {
 				"navigationStyle": "custom"
 			}
@@ -103,6 +94,15 @@
 			"path":"pages/home-page/gf_zc",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		// 提现
+		{
+			"path": "pages/home-page/withdraw",
+			"style": {
+				"navigationBarTitleText": "提现",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
 			}
 		},
 
@@ -487,7 +487,7 @@
 				"text": "云数币",
 				"iconPath": "static/images/tabbar/t3.png",
 				"selectedIconPath": "static/images/tabbar/t3c.png",
-				"pagePath": "pages/index/gongfu"
+				"pagePath": "pages/index/ysb"
 			},
 			{
 				"text": "数字魅力",

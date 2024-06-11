@@ -16,13 +16,13 @@
 
       <!-- 提现表单 -->
       <view class="content-3" style="margin-top: 32rpx;">
-        <!-- 菜单 -->
-        <view class="menu flex flex-between">
-          <view :class="type == 'USDT' ? 'active' : ''" @click="type = 'USDT'" class="menu-item menu-item-usdt flex flex-center">
+        <!-- tab 菜单 -->
+        <view class="tab-menu-type-1 flex flex-between flex-y-end">
+          <view :class="type == 'USDT' ? 'active' : ''" @click="type = 'USDT'" class="menu-item menu-item-1 flex flex-center">
             <view class="triangle"></view>
             <text>USDT</text>
           </view>
-          <view :class="type == 'CNY' ? 'active' : ''" @click="type = 'CNY'" class="menu-item menu-item-cny flex flex-center">
+          <view :class="type == 'CNY' ? 'active' : ''" @click="type = 'CNY'" class="menu-item menu-item-2 flex flex-center">
             <view class="triangle"></view>
             <text>CNY</text>
           </view>
@@ -121,6 +121,10 @@ export default {
 </script>
 
 <style lang="scss">
+page{
+  background-color: #f9f9f9;
+}
+
 #gf_draw{
   /* 余额信息 */
   .balance-info{
@@ -157,68 +161,6 @@ export default {
   .content-3{
     overflow: hidden;
   }
-
-  /* 菜单 */
-  .menu{
-    .menu-item{
-      width: 50%;
-      height: 84rpx;
-      position: relative;
-
-      font-size: 36rpx;
-      color: #828383;
-      background-color: #EFF6FE;
-
-      .triangle{
-        display: none;
-      }
-
-      &.active{
-        color: #222;
-        font-weight: bold;
-        background-color: white;
-        
-        .triangle{
-          display: block;
-        }
-
-      }
-    }
-
-    .menu-item-usdt{
-      .triangle{
-        width: 0;
-        height: 0;
-        position: absolute;
-        right: -21rpx;
-        top: 0;
-  
-        border-top: 84rpx solid white;
-        border-right: 21rpx solid transparent;
-        transform: rotateX(180deg);
-  
-        z-index: 1;
-      }
-    }
-
-    .menu-item-cny{
-      .triangle{
-        width: 0;
-        height: 0;
-        position: absolute;
-        left: -21rpx;
-        top: 0;
-  
-        border-top: 84rpx solid white;
-        border-left: 21rpx solid transparent;
-        transform: rotateX(180deg);
-  
-        z-index: 1;
-      }
-    }
-
-  }
-
 
 }
 </style>

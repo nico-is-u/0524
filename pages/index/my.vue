@@ -110,7 +110,7 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
-        <view class="item">
+        <view class="item" @click="too('/pages/home-page/withdraw')">
           <view class="left-side flex flex-y-center">
             <image src="/static/images/40.png"></image>
             <text>提现通道</text>

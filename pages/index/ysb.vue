@@ -2,64 +2,24 @@
 	<view class="page">
 		<view class="head">
 			<!-- 顶栏 -->
-			<nNavbar title="云数币" :showBackBtn="false"></nNavbar>
+			<nNavbar :title="navbarTitle" :back="!navbarShowBackBtn" :showBackBtn="navbarShowBackBtn" :backFunc="() => scene = 'index'"></nNavbar>
 			<!-- K线图 -->
 			<view class="k-line-shell">
-				<view class="k-line-box">
 
-					<!-- 顶部信息 -->
-					<!-- <view class="title-info">
-						<text>交易结束</text>
-						<text style="margin-left: 16rpx">05-18  05:00  北京时间</text>
-					</view> -->
-					<!-- 小菜单 -->
-					<!-- <view class="menu-list">
-						<view class="item">
-							<view class="label">
-								<text>今</text>
-								<text>开</text>
-							</view>
-							<view class="text">483931.0000</view>
-						</view>
-						<view class="item">
-							<view class="label">
-								<text>最</text>
-								<text>高</text>
-							</view>
-							<view class="text font-red">483931.0000</view>
-						</view>
-						<view class="item">
-							<view class="label">
-								<text>买</text>
-								<text>入</text>
-								<text>价</text>
-							</view>
-							<view class="text font-red">483931.0000</view>
-						</view>
-						<view class="item">
-							<view class="label">
-								<text>昨</text>
-								<text>收</text>
-							</view>
-							<view class="text">483931.0000</view>
-						</view>
-						<view class="item">
-							<view class="label">
-								<text>最</text>
-								<text>低</text>
-							</view>
-							<view class="text font-green">483931.0000</view>
-						</view>
-						<view class="item">
-							<view class="label">
-								<text>卖</text>
-								<text>出</text>
-								<text>价</text>
-							</view>
-							<view class="text font-red">483931.0000</view>
-						</view>
-					</view> -->
+				<!-- tab 菜单 -->
+				<view class="tab-menu-type-1 flex flex-between flex-y-end" v-if="scene == 'mr' || scene == 'mc'">
+					<view :class="scene == 'mr' ? 'active' : ''" @click="scene = 'mr'" class="menu-item menu-item-1 flex flex-center">
+						<view class="triangle"></view>
+						<text>买入</text>
+					</view>
+					<view :class="scene == 'mc' ? 'active' : ''" @click="scene = 'mc'" class="menu-item menu-item-2 flex flex-center">
+						<view class="triangle"></view>
+						<text>卖出</text>
+					</view>
+				</view>
 
+				<!-- K线部分 -->
+				<view class="k-line-box" :class="scene != 'index' ? 'with-tab-menu' : ''">
 					<!-- 小菜单2 -->
 					<view class="menu-list-2">
 						<view class="menu-item active">分时</view>
@@ -79,11 +39,52 @@
 					</view>
 
 				</view>
+
+				<!-- 买入 -- 操作区域 -->
+				<view class="mr-section padding-box-3">
+					<view class="flex flex-between">
+						<!-- tab 菜单2 -->
+						<view class="tab-menu-type-2 left-side">
+							<view class="menu-item active menu-item-first">限价</view>
+							<view class="menu-item">市价</view>
+							<view class="menu-item">止盈止亏</view>
+							<view class="menu-item">计划委托</view>
+						</view>
+						<view class="right-side">
+							<u-icon size="18px" name="info-circle" color="#6D6D6D"></u-icon>
+						</view>
+					</view>
+					<!-- 操作表单 -->
+					<view class="form-group margin-t-40">
+						<view class="form-control">
+							<input type="text" placeholder="最优价格">
+						</view>
+						<view class="form-control form-control-2">
+							<view class="left-side">
+								<view style="padding-right: 24rpx">
+									<text>交易额</text>
+								</view>
+								<text>▼</text>
+							</view>
+							<view class="right-side">
+								<u--input>
+									<u--text
+										text="USDT"
+										slot="prefix"
+		
+										type="tips"
+									></u--text>
+								</u--input>
+							</view>
+						</view>
+					</view>
+				</view>
+
 			</view>
 		</view>
 
-		<!-- 菜单2 -->
-		<view class="padding-box">
+		<!-- 首页 - 菜单 -->
+		<view class="padding-box" v-if="scene == 'index'">
 			<view class="menu-2">
 				<view class="menu-item" style="background-image: url(/static/images/11.png)">
 					<view class="item-content">
@@ -97,13 +98,13 @@
 						<view class="desc">详细持仓查询</view>
 					</view>
 				</view>
-				<view class="menu-item" style="background-image: url(/static/images/13.png)">
+				<view class="menu-item" style="background-image: url(/static/images/13.png)" @click="scene = 'mr'">
 					<view class="item-content">
 						<view class="title">买入</view>
 						<view class="desc">购入升值产品</view>
 					</view>
 				</view>
-				<view class="menu-item" style="background-image: url(/static/images/14.png)">
+				<view class="menu-item" style="background-image: url(/static/images/14.png)" @click="scene = 'mc'">
 					<view class="item-content">
 						<view class="title">卖出</view>
 						<view class="desc">售出获取收益</view>
@@ -112,12 +113,14 @@
 			</view>
 		</view>
 
-		<!-- 币种列表 -->
-		<view class="padding-box bizhong-list">
+		<!-- 首页 - 币种列表 -->
+		<view class="padding-box bizhong-list" v-if="scene == 'index'">
 			<view class="title-2">
 				币种/24H
 			</view>
 		</view>
+
+
 
 	</view>
 </template>
@@ -127,7 +130,31 @@ import { init, dispose } from 'klinecharts'
 export default {
 	data(){
 		return {
-			
+			scene:'mr',				// 页面场景	index：首页	mr：买入  mc：卖出
+		}
+	},
+	computed:{
+		/* 导航栏文字 */
+		navbarTitle(){
+			switch(this.scene){
+				case 'index':
+					return '云数币'
+				case 'mr':
+					return '买入'
+				case 'mc':
+					return '卖出'
+			}
+		},
+		/* 导航栏显示返回按钮 */
+		navbarShowBackBtn(){
+			switch(this.scene){
+				case 'index':
+					return false
+				case 'mr':
+					return true
+				case 'mc':
+					return true
+			}
 		}
 	},
 	mounted(){
@@ -281,6 +308,11 @@ page{
 				}
 			}
 
+			/* 顶部需要渲染tab菜单 */
+			&.with-tab-menu{
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
 		}
 	}
 
@@ -324,4 +356,10 @@ page{
 		font-weight: 800;
 	}
 }
+
+/* 买入和卖出 */
+.mr-section,.mc-section{
+	background-color: white;
+}
+
 </style>

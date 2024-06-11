@@ -276,6 +276,65 @@
 		padding: 32rpx;
 	}
 
+	/* 公共表单 */
+	.form-group{
+		display: flex;
+		flex-direction: column;
+		gap: 32rpx;
+
+		.form-control{
+			min-height: 72rpx;
+			box-sizing: border-box;
+			background-color: #F9F9F9;
+			border-radius: 6rpx;
+
+			display: flex;
+			align-items: center;
+
+			uni-input{
+				width: 100%;
+				height: auto;
+			}
+			.input-placeholder{
+				font-size: 24rpx;
+				color: #C3C3C3;
+				padding-left: 32rpx;
+			}
+			.uni-input-input{
+				font-size: 26rpx;
+				width: calc(100% - 64rpx);
+				padding: 18rpx 0;
+				margin-left: 32rpx;
+			}
+			&.without-bg{
+				background-color: inherit;
+			}
+			&.form-control-2{
+				background-color: inherit;
+
+				display: flex;
+				justify-content: space-between;
+
+				.left-side{
+					width: 30%;
+					min-height: 72rpx;
+					background-color: #F9F9F9;
+
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.right-side{
+					width: calc(70% - 12rpx);
+					min-height: 72rpx;
+					background-color: #F9F9F9;
+				}
+				
+			}
+		}
+	}
+
 	.menu-card{
 		background-color: rgba(255,255,255,.8);
 		border-radius: 16rpx;
@@ -373,6 +432,91 @@
 		}
 		.right-side{
 			color:black;
+		}
+	}
+
+	/* tab菜单 样式1 */
+	.tab-menu-type-1{
+		border-top-left-radius: 16rpx;
+		border-top-right-radius: 16rpx;
+		overflow: hidden;
+		.menu-item{
+			width: 50%;
+			height: 72rpx;
+			position: relative;
+
+			font-size: 36rpx;
+			color: #828383;
+			background-color: #EFF6FE;
+
+			.triangle{
+				display: none;
+			}
+
+			&.active{
+				height: 84rpx;
+				color: #222;
+				font-weight: bold;
+				background-color: white;
+				
+				.triangle{
+					display: block;
+				}
+
+			}
+		}
+
+		.menu-item-1{
+			.triangle{
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: -21rpx;
+				top: 0;
+		
+				border-top: 84rpx solid white;
+				border-right: 21rpx solid transparent;
+				transform: rotateX(180deg) translateX(-1rpx);
+		
+				z-index: 1;
+			}
+		}
+
+    	.menu-item-2{
+			.triangle{
+				width: 0;
+				height: 0;
+				position: absolute;
+				left: -21rpx;
+				top: 0;
+		
+				border-top: 84rpx solid white;
+				border-left: 21rpx solid transparent;
+				transform: rotateX(180deg);
+		
+				z-index: 1;
+			}
+		}
+	}
+
+	/* tab菜单 样式2 */
+	.tab-menu-type-2{
+		display: flex;
+		align-content: center;
+		font-size: 26rpx;
+		.menu-item{
+			display: flex;
+			flex-direction: column;
+			min-width: 70rpx;
+			color: #838282;
+			padding: 0 12rpx;
+			&.active{
+				color: #222;
+			}
+		}
+		.menu-item-first{
+			padding-left: 6rpx;
+			align-items: flex-start;
 		}
 	}
 

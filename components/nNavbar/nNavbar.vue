@@ -4,7 +4,7 @@
         <!-- 左侧 -->
         <view class="left-side flex" @click="clickLeft">
             <!-- 显示返回箭头 -->
-            <uni-icons v-if="showBackBtn" @click="goBack" type="left" size="24"></uni-icons>
+            <uni-icons v-if="showBackBtn" type="left" size="24"></uni-icons>
         </view>
         <view class="center-block flex flex-y-center">{{ title }}</view>
         <view class="right-side flex"></view>
@@ -49,9 +49,9 @@ export default {
 
                 let pages = getCurrentPages()
                 if(pages.length == 1){
-                    this.$helper.goTab('/pages/index/index')
+                    this.too('/pages/index/index')
                 }else{
-                    this.$helper.goBack()
+                    this.goBack()
                 }
 
             }else{
