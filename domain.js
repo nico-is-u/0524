@@ -118,7 +118,7 @@ var
 
 export default {
   www: (a, b = {}, c = 'GET', d) => new Promise((resolve, reject) => {
-    console.log(a, 'a');
+    // console.log(a, 'a');
     async function getApiFn() {
       // console.log('step1：[Request]. Get ciphertext.');
       console.log(oss_index, oss_list[oss_index]);
@@ -344,7 +344,7 @@ export default {
         'undefined'
       )
         return void(0);
-      var ウホア = decryptCBC(a);
+      var ウホア = a;
       uni.request({
         url: `${api}` +
           ウホア,
@@ -355,16 +355,9 @@ export default {
         method: ME,
         header: header,
         success: res => {
-          // let parseRes = res.data;
-          let parseRes;
+          let parseRes = res.data;
           try {
-            // parseRes = decryptCBC(res.data.c);
-            // parseRes = JSON.parse(parseRes)''
-
-            /* 暂时屏蔽（解密） */
-            // parseRes = JSON.parse(decryptCBC(res.data.c));
-
-            parseRes = res.data
+            parseRes = JSON.parse(decryptCBC(res.data.c));
           } catch (e) {
             parseRes = {
               code: -1,
@@ -378,7 +371,9 @@ export default {
             console.log(parseRes);
             console.log("====================");
           }
-          // console.log(parseRes);
+
+          console.log(parseRes);
+
           if (parseRes.code == 200) {
             resolve(parseRes);
           } else if (parseRes.code == 403) {
@@ -403,6 +398,7 @@ export default {
               title: parseRes.msg,
               icon: 'none'
             });
+            reject(parseRes)
           } else if (parseRes.code == 10001) {
             // console.log(encryptCBC(JSON.stringify(b)));
             // console.log(decryptCBC(encryptCBC(JSON.stringify(b))));

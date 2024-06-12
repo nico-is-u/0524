@@ -157,6 +157,58 @@
 		}
 	}
 
+	.page2{
+		position: relative;
+
+		padding-top: 6vh;
+		// 装饰
+		.decoration{
+			position: absolute;
+			top: -102rpx;
+			left: -107rpx;
+
+			width: 270px;
+			height: 270px;
+
+			background-color: #E1F1FF;
+			border-radius: 50%;
+			filter: blur(107rpx);
+		}
+		// 标题
+		.h1{
+			padding: 0 32rpx;
+			font-size: 44rpx;
+
+			color: #333;
+			font-weight: 600;
+
+			position: relative;
+		}
+
+		// 表单部分
+		.u-form{
+			margin-top: 112rpx;
+			padding: 0 54rpx;
+
+			position: relative;
+
+			.u-form-item__body__left__content__label{
+				color:#333 !important;
+			}
+
+			.u-input__content{
+				background-color: #F5F6F8 !important;
+			}
+
+			.uni-input-placeholder{
+				color: #AEB6C6 !important;
+			}
+
+		}
+
+
+	}
+
 	view{
 		color: #222;
 		box-sizing: border-box;
@@ -521,6 +573,12 @@
 		}
 	}
 
+	/* 注解信息 */
+	.tips-row{
+		padding-top: 32rpx;
+		font-size: 30rpx;
+	}
+
 	.n-tab{
 		display: flex;
 		align-items: center;
@@ -574,15 +632,15 @@
 	}
 
 	.n-button{
-		color: white;
-		background-color: #0182EF;
-		font-size: 36rpx;
+		color: white !important;
+		background-color: #0182EF !important;
+		font-size: 36rpx !important;
 
 		display: flex;
 		justify-content: center;
 		padding: 16rpx 0;
 
-		border-radius: 40rpx;
+		border-radius: 40rpx !important;
 	}
 
 	.n-upload-box{
@@ -590,6 +648,10 @@
 		background-color: #f9f9f9;
 		padding: 90rpx 0;
 		font-size: 28rpx;
+	}
+
+	.font-gray{
+		color: #9B9DA6;
 	}
 
 	.font-blue{

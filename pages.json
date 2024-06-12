@@ -91,7 +91,7 @@
 		},
 		// 我的资产
 		{
-			"path":"pages/home-page/gf_zc",
+			"path":"pages/home-page/my_zc",
 			"style": {
 				"navigationStyle": "custom"
 			}
@@ -105,7 +105,22 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
-
+		
+		// 登录
+		{
+			"path": "pages/system-page/login",
+			"style": {
+				"navigationStyle": "custom"
+				// "disableScroll": true
+			}
+		},
+		// 注册
+		{
+			"path": "pages/system-page/register",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
 
 
 
@@ -325,19 +340,7 @@
 				"navigationBarTitleText": "修改登录密码"
 			}
 		},
-		{
-			"path": "pages/system-page/gf_login",
-			"style": {
-				"navigationStyle": "custom"
-				// "disableScroll": true
-			}
-		},
-		{
-			"path": "pages/system-page/gf_register",
-			"style": {
-				"navigationBarTitleText": "注册"
-			}
-		},
+		
 		{
 			"path": "pages/system-page/gf_real-name_auth",
 			"style": {

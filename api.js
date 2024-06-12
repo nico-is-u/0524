@@ -1,7 +1,11 @@
 const apis = {
 	api_test:'common/test',
+	system_captcha:'common/captchaImg',
 	user_login:'common/login',
 	user_register:'common/register',
+
+
+	/* 已废弃 */
 	user_info:'user/userInfo',
 	user_real:'user/submitProfile',
 	user_paypwd:'user/changePassword',
@@ -26,8 +30,8 @@ const apis = {
 	order_log:'order/orderList',
 	buy_project:'order/placeOrder',
 	user_draw:'capital/applyWithdraw',
-  user_draw_purse:'capital/applyWithdrawPurse',
-  user_balancelog_purse:'user/balanceLogPurse',
+  	user_draw_purse:'capital/applyWithdrawPurse',
+  	user_balancelog_purse:'user/balanceLogPurse',
 	system_info:'common/systemInfo',
 	get_xinafu_houfu:'signin/dayReceive',
 	sys_transAccount:'user/transferAccounts',
