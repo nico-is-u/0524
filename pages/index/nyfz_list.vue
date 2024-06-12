@@ -1,61 +1,55 @@
 <template>
     <view class="page">
         <view class="padding-box-3">
-            <view class="card">
+            <view class="card" v-if="dataList.length">
                 <view class="card-content">
                     <view class="card-list-type-2">
-                        <view class="item">
+                        <view class="item" v-for="(item,index) in dataList" :key="index">
                             <view class="row flex flex-between">
                                 <view class="left-side">申请的释放金额</view>
-                                <view class="right-side">999元</view>
+                                <view class="right-side">{{item.apply_amount || '0.00'}}元</view>
                             </view>
                             <view class="row flex flex-between">
                                 <view class="left-side">实际释放金额</view>
-                                <view class="right-side">999元</view>
+                                <view class="right-side">{{item.real_amount || '0.00'}}元</view>
                             </view>
                             <view class="row flex flex-between">
                                 <view class="left-side">释放时间</view>
-                                <view class="right-side">2024-05-20</view>
+                                <view class="right-side">{{item.time || '--'}}</view>
                             </view>
                         </view>
-
-                        <view class="item">
-                            <view class="row flex flex-between">
-                                <view class="left-side">申请的释放金额</view>
-                                <view class="right-side">999元</view>
-                            </view>
-                            <view class="row flex flex-between">
-                                <view class="left-side">实际释放金额</view>
-                                <view class="right-side">999元</view>
-                            </view>
-                            <view class="row flex flex-between">
-                                <view class="left-side">释放时间</view>
-                                <view class="right-side">2024-05-20</view>
-                            </view>
-                        </view>
-
-                        <view class="item">
-                            <view class="row flex flex-between">
-                                <view class="left-side">申请的释放金额</view>
-                                <view class="right-side">999元</view>
-                            </view>
-                            <view class="row flex flex-between">
-                                <view class="left-side">实际释放金额</view>
-                                <view class="right-side">999元</view>
-                            </view>
-                            <view class="row flex flex-between">
-                                <view class="left-side">释放时间</view>
-                                <view class="right-side">2024-05-20</view>
-                            </view>
-                        </view>
-
                     </view>
-
                 </view>
             </view>
+            <view class="flex flex-x-center" style="padding-top: 10vh" v-else>暂无数据</view>
         </view>
     </view>
 </template>
+
+<script>
+export default {
+    data(){
+        return {
+            /* 申请列表 */
+            dataList:[],
+        }
+    },
+    onLoad(){
+        this.getDataList()
+    },
+    methods:{
+        getDataList(){
+            this.to.www(this.api.nyfz_list,{type:0})
+            .then(res => {
+                const {code = 0} = res
+                if(code == 200){
+                    this.dataList = res.data.data.data || []
+                }
+            })
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 page{
