@@ -33,6 +33,7 @@
 				:borderBottom="false"
 			>
 				<u--input
+					type="password"
 					v-model="formData.password"
 					placeholder="请输入登录密码"
 					border="none"></u--input>
@@ -46,6 +47,7 @@
 				:borderBottom="false"
 			>
 				<u--input
+					type="password"
 					v-model="formData.re_password"
 					placeholder="请输入登录密码"
 					border="none"></u--input>
@@ -102,11 +104,11 @@
 				isLoading:false,				// 请求等待
 				regStatus: '正在注册...',		 // loading text
 				formData:{
-					phone:'1',
-					password:'1',
-					re_password:'1',
-					invite_code:'11',
-					captcha:'1',				// 图形验证码 键值
+					phone:'',
+					password:'',
+					re_password:'',
+					invite_code:'',
+					captcha:'',				// 图形验证码 键值
 					uniqid:''
 				},
 				formRules:{
@@ -161,6 +163,7 @@
 					/* 注册成功 */
 					const {code = 0,data:resData = {}} = response
 					if(code == 200){
+						const _this = this
 						setTimeout(() => {
 							this.regStatus = '正在登录...'
 							uni.setStorage({
@@ -168,20 +171,23 @@
 								key: "TK",
 								success() {
 									setTimeout(() => {
-										this.regStatus = '登录成功'
+										_this.regStatus = '登录成功'
 										setTimeout(() => {
-											this.isLoading = false
-											this.too('/', 'lau')
+											_this.isLoading = false
+											_this.too('/', 'lau')
 										}, 300)
 									}, 1000)
 								}
 							})
 						}, 600)
 					}else{
+						/* 重新拉取验证码 */
+						this.getCaptchaImg()
 						this.isLoading = false
 					}
 
 				}catch(e){
+					this.getCaptchaImg()
 					this.isLoading = false
 				}
 				

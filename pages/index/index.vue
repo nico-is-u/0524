@@ -193,9 +193,7 @@
 		},
 		onLoad() {
 			/* 暂时屏蔽 */
-			this.isShwoLoad = false
-			this.getSystem_config()
-			return 
+			// this.isShwoLoad = false
 			var usr_isLogin = uni.getStorageSync("TK");
 			if (!usr_isLogin) {
 				uni.showToast({
@@ -204,9 +202,9 @@
 					success() {
 						setTimeout(() => {
 							uni.reLaunch({
-								url: '/pages/system-page/gf_login'
+								url: '/pages/system-page/login'
 							})
-						}, 2500)
+						}, 1000)
 					}
 				})
 			} else {

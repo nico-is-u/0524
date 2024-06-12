@@ -204,6 +204,14 @@
 				color: #AEB6C6 !important;
 			}
 
+			.u-form-item{
+				padding-bottom: 10rpx;
+			}
+
+			.u-form-item__body{
+				padding-bottom: 0;
+			}
+
 		}
 
 
