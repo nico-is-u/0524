@@ -85,7 +85,7 @@ export default {
 			regStatus: '正在登录...',		 // loading text
 
 			formData:{
-				phone:'13000000001',
+				phone:'',
 				password:'',
 				captcha:'',				// 图形验证码 键值
 				uniqid:''

@@ -3,12 +3,12 @@ const apis = {
 	system_captcha:'common/captchaImg',
 	user_login:'common/login',
 	user_register:'common/register',
+	user_paypwd:'user/changePassword',
 
 
 	/* 已废弃 */
 	user_info:'user/userInfo',
 	user_real:'user/submitProfile',
-	user_paypwd:'user/changePassword',
 	user_pay_list:'user/payChannelList',
 	user_top_up:'capital/topup',
 	user_sign:'signin/userSignin',

@@ -121,7 +121,13 @@
 				"navigationStyle": "custom"
 			}
 		},
-
+		// 修改登录密码
+		{
+			"path": "pages/system-page/login-pwd",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
 
 
 
@@ -334,12 +340,7 @@
 				"navigationBarTitleText": "支付密码"
 			}
 		},
-		{
-			"path": "pages/system-page/login-pwd",
-			"style": {
-				"navigationBarTitleText": "修改登录密码"
-			}
-		},
+		
 		
 		{
 			"path": "pages/system-page/gf_real-name_auth",

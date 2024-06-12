@@ -1,80 +1,185 @@
 <template>
-	<view>
-		<view class="content">
-			<u--text text="登录密码/旧密码"></u--text>
-			<view style="margin: 30rpx 0 90rpx;">
-				<input type="password" v-model="old_password" class="input" placeholder="设置密码或输入旧密码" />
+	<view class="page2">
+		<!-- 装饰 -->
+		<view class="decoration"></view>
+		<!-- 标题 -->
+		<view class="h1">忘记密码</view>
+
+		<!-- 表单部分 -->
+		<u--form
+			ref="uForm"
+			:model="formData"
+			:rules="formRules"
+			labelPosition="top"
+			:borderBottom="false"
+        >
+			<!-- 手机号 -->
+			<u-form-item
+				label="手机号"
+				labelWidth="200rpx"
+				prop="phone"
+				:borderBottom="false"
+			>
+				<u--input type="number"
+					v-model="formData.phone"
+					placeholder="请输入手机号"
+					border="none"></u--input>
+			</u-form-item>
+
+			<!-- 旧登录密码 -->
+			<u-form-item
+				label="旧登录密码"
+				labelWidth="200rpx"
+				prop="old_password"
+				:borderBottom="false"
+			>
+				<u--input
+					type="password"
+					v-model="formData.old_password"
+					placeholder="请输入旧登录密码"
+					border="none"></u--input>
+			</u-form-item>
+
+			<!-- 新登录密码 -->
+			<u-form-item
+				label="新登录密码"
+				labelWidth="200rpx"
+				prop="new_password"
+				:borderBottom="false"
+			>
+				<u--input
+					type="password"
+					v-model="formData.old_password"
+					placeholder="请输入新登录密码"
+					border="none"></u--input>
+			</u-form-item>
+
+			<!-- 图形验证码 -->
+			<u-form-item
+				label="验证码"
+				labelWidth="200rpx"
+				prop="captcha"
+				:borderBottom="false"
+			>
+				<u--input
+					v-model="formData.captcha"
+					placeholder="请输入验证码"
+					border="none">
+					<!-- 验证码插件 -->
+					<image v-if="captchaImage" @click="getCaptchaImg" :src="captchaImage" style="width: 200rpx;" mode="widthFix" slot="suffix"></image>
+				</u--input>
+
+			</u-form-item>
+
+			<!-- 提交按钮 -->
+			<u-button class="n-button" style="margin-top: 64rpx"  iconColor="#fff" text="提交" :loading="isLoading" @click="checkForm" :loadingText="regStatus"></u-button>
+
+			<view class="tips-row flex flex-x-center">
+				<view class="font-blue" @click="too('/pages/system-page/login')">返回登录</view>
 			</view>
-			<u--text text="确认登录密码/新密码"></u--text>
-			<view style="margin: 30rpx 0 90rpx;">
-				<input type="password" v-model="new_password" class="input" placeholder="再次确认密码或输入新密码" />
-			</view>
-			<template>
-				<u-notify ref="uNotify" message=""></u-notify>
-			</template>
-			<u-button  iconColor="#fff" class="custom-style"
-				text="确认提交" :loading="isDone" @click="doLoginPwd" loadingText="请稍等"></u-button>
-		</view>
+
+		</u--form>
+
 	</view>
 </template>
 
 <script>
 	export default {
-		data() {
+		data(){
 			return {
-				isDone: false,
-				old_password: '',
-				new_password: ''
-			};
+				apiUrl:'',
+				captchaImage:'',				// 图形验证码 图片
+				isLoading:false,				// 请求等待
+				regStatus: '正在请求...',		 // loading text
+		
+				formData:{
+					phone:'',
+					old_password:'',
+					new_password:'',
+					captcha:'',				// 图形验证码 键值
+					uniqid:''
+				},
+				formRules:{
+					phone:[{
+						required: true,
+						message: '请输入手机号',
+					}],
+					old_password:[{
+						required: true,
+						message: '请输入旧登录密码',
+					}],
+					new_password:[{
+						required: true,
+						message: '请输入新登录密码',
+					}],
+					captcha:[{
+						required: true,
+						message: '请输入验证码'
+					}]
+				},
+			}
 		},
-		methods: {
-			doLoginPwd() {
-				let _ = this;
-				if (!this.new_password) return this.toa('请输入新密码');
-				_.isDone = true;
-				this.to.www(this.api.user_paypwd, {
-						type: 1,
-						old_password: this.old_password,
-						new_password: this.new_password
-					}, 'p')
-					.then(res => {
+		methods:{
+			// 拉取图形验证码
+			async getCaptchaImg(){
+				this.captchaImage = ''
+				try{
+					const response = await this.to.www(this.api.system_captcha)
+					const {image,uniqid} = response.data
+					if(image && uniqid)	{
+						this.captchaImage = image
+						this.formData.uniqid = uniqid
+					}
+				}catch(e){}
+			},
+			/* 表单验证 */
+			async checkForm(){
+				this.$refs.uForm.validate().then(res => {
+					/* 发送请求 */
+					this.goRequest()
+				}).catch(()=>null)
+			},
+			/* 发送请求 */
+			async goRequest(){
+				this.isLoading = true
+				try{
+					const response = await this.to.www(this.api.user_paypwd, {
+						...this.formData,
+						type:1
+					}
+					,'p')
+				
+					/* 注册成功 */
+					const {code = 0,data:resData = {}} = response
+					if(code == 200){
+						const _this = this
 						this.toa('已设置新的支付密码')
 						uni.setStorage({
 							data: 'need-reload-page',
 							key: "use-page-type",
 							success() {
 								setTimeout(() => {
-									_.too('/pages/index/my', 'tab')
+									_this.too('/pages/index/my', 'tab')
 								}, 1500)
 							}
 						})
-					})
-				setTimeout(() => {
-					_.isDone = false
-				}, 2000)
+					}else{
+						/* 重新拉取验证码 */
+						this.getCaptchaImg()
+						this.isLoading = false
+					}
+
+				}catch(e){
+					this.getCaptchaImg()
+					this.isLoading = false
+				}
+				
 			}
+		},
+		mounted(){
+			const apiUrl = uni.getStorageSync('ok_api') || ''
+			this.apiUrl = apiUrl
+			this.getCaptchaImg()
 		}
 	}
 </script>
-
-<style lang="scss" scoped>
-	.custom-style {
-		margin-top: 200rpx;
-		border-radius: 50rpx;
-		height: 80rpx;
-		line-height: 80rpx;
-		background-color: $th;
-		color: #FFF;
-	}
-
-	.content {
-		padding: 40rpx;
-		background-image: linear-gradient(to bottom ,#B80606 ,#fff,#fff,#fff);
-		.input {
-			margin: 30rpx 20rpx;
-			border-radius: 10rpx;
-			border: 2rpx solid #e0e0e0;
-			padding: 15rpx 20rpx;
-		}
-	}
-</style>
