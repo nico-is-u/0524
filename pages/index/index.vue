@@ -5,6 +5,11 @@
 				<!-- 顶栏 -->
 				<nNavbar title="首页" :showBackBtn="false"></nNavbar>
 				<!-- 幻灯片 -->
+				<swiper class="swiper">
+					<swiper-item v-for="(item,index) in banner_list" :key="'swiper-item-'+index">
+						<image :src="apiUrl + item.img_url" ></image>
+					</swiper-item>
+				</swiper>
 			</view>
 		</template>
 
@@ -142,7 +147,9 @@
 	export default {
 		data() {
 			return {
-				/* 暂时屏蔽 */
+				/* api地址 */
+				apiUrl:'',
+
 				showAd: false,
 				isShwoLoad: true,
 				noutsINdex: 0,
@@ -157,12 +164,14 @@
 				user_info: {},
 				notsTitle: '',
 				// noticeList: [],
+
+				banner_list:[],
+				setting_conf:{},
+
 				newsList: [],
 				showNots: "",
 				list_baozhang: [],
-				setting_config: {
-					video_url: ''
-				},
+	
 				urnotice: {},
 				showUrNots: false
 			}
@@ -172,7 +181,7 @@
 			if (usr_info) {
 				this.user_info = usr_info;
 			}
-			/* 暂时屏蔽 */
+			/* 暂时屏蔽（弹出公告图） */
 			return 
 			setTimeout(() => {
 				if (this.noticeList.length > 0) {
@@ -183,6 +192,10 @@
 			}, 500)
 		},
 		onLoad() {
+			/* 暂时屏蔽 */
+			this.isShwoLoad = false
+			this.getSystem_config()
+			return 
 			var usr_isLogin = uni.getStorageSync("TK");
 			if (!usr_isLogin) {
 				uni.showToast({
@@ -215,6 +228,10 @@
 			}
 			// this.getNotices()
 			this.getNewsList()
+		},
+		mounted(){
+			const apiUrl = uni.getStorageSync('ok_api') || ''
+			this.apiUrl = apiUrl
 		},
 		methods: {
 			// getnoticeOnes() {
@@ -358,15 +375,13 @@
 						this.isShwoLoad = false
 					})
 			},
-			// 获取系统配置
+			// 获取系统配置(配置项、轮播图、app下载)
 			getSystem_config() {
-				// this.to.www(this.api.gf_bz_list)
-				// 	.then(res => {
-				// 		this.list_baozhang = res.data;
-				// 	})
 				this.to.www(this.api.system_info)
 					.then(res => {
-						this.setting_config = res.data.setting_conf;
+						const {banner = [] , setting_conf = {}} = res.data
+						this.banner_list = banner
+						this.setting_conf = setting_conf
 					})
 			}
 
@@ -393,6 +408,17 @@ page{
 	color: #fff;
 	z-index: 9;
 	border-radius: 0 0 2rpx 2rpx;
+
+	/* 幻灯片部分 */
+	.swiper{
+		margin-top: 16rpx;
+		height: 299rpx;
+		image{
+			width: calc(100% - 30px);
+			height: 100%;
+			margin-left: 15px;
+		}
+	}
 }
 
 .menu-list{

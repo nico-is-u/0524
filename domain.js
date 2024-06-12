@@ -360,7 +360,11 @@ export default {
           try {
             // parseRes = decryptCBC(res.data.c);
             // parseRes = JSON.parse(parseRes)''
-            parseRes = JSON.parse(decryptCBC(res.data.c));
+
+            /* 暂时屏蔽（解密） */
+            // parseRes = JSON.parse(decryptCBC(res.data.c));
+
+            parseRes = res.data
           } catch (e) {
             parseRes = {
               code: -1,
@@ -440,3 +444,8 @@ export default {
     }
   })
 }
+
+/* 测试解密 */
+// const strA = 'FzwyuDMFeLUpYACr0EzRDirfAm98oPETG6wa5Z7CIVw7/xszVJ2kCvVXG/0K/yVHxnW/tZd5TAeEJVMCDBBaCA==;'
+// console.log('测试解密')
+// console.log(JSON.parse(decryptCBC(strA)))

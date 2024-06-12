@@ -1,4 +1,5 @@
 <script>
+	import Vue from 'vue'
 	import CryptoJS from 'crypto-js'
 	import AUX_Audio from 'LOCKED.js'
 	const customUnlock_k = AUX_Audio.fewagfagretgataGRGvreawdwafewaf
