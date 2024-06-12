@@ -130,7 +130,7 @@
 				</view>
 
 				<!-- 列表 -->
-				<view class="card-list-type-2">
+				<view class="card-list-type-2" v-if="indexList.length">
 
 					<view class="item" v-for="(item,index) in indexList" :key="'sf-item-' + index">
 						<view class="row flex flex-between">
@@ -149,6 +149,11 @@
 
 					
 
+				</view>
+				
+				<!-- 暂无数据 -->
+				<view class="card-list-type-2 margin-b-30" v-else>
+					<view class="flex flex-x-center" style="padding: 2.5vh 0">暂无数据</view>
 				</view>
 
 			</view>

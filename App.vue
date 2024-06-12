@@ -247,6 +247,10 @@
 				font-weight: 600;
 			}
 
+			.u-input__content{
+				margin-bottom: 0 !important;
+			}
+
 			.u-upload__wrap{
 				>uni-view{
 					width: 100%;
@@ -725,6 +729,19 @@
 			margin: 16rpx 0;
 			border-radius: 8rpx;
 		}
+
+		.u-form-item{
+			padding-bottom: 10rpx;
+		}
+
+		.u-form-item__body{
+			padding-bottom: 0;
+		}
 	}
 
+	.u-upload__wrap__preview{
+		.u-upload__wrap__preview__image{
+			height: 300rpx !important;
+		}
+	}
 </style>

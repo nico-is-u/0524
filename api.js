@@ -11,6 +11,12 @@ const apis = {
 	nyfz_info:'noahOrder/index',
 	/* 诺亚方舟 - 释放列表 / 申请记录 */
 	nyfz_list:'noahOrder/applyOrderList',
+	// 诺亚方舟 提交申请
+	nyfz_request:'noahOrder/apply',
+	// 诺亚方舟 申请凭证上传
+	nyfz_upload:'noahOrder/tokenUpload',
+
+	
 
 	/* 已废弃 */
 	user_info:'user/userInfo',
