@@ -153,11 +153,7 @@
 				showAd: false,
 				isShwoLoad: true,
 				noutsINdex: 0,
-				jcustomStyle: {
-					backgroundColor: '#B80606',
-					borderRadius: '20rpx',
-					color: '#fff'
-				},
+
 				style: {
 					img: 'width:100%;margin:10px 0'
 				},

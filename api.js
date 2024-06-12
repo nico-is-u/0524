@@ -1,10 +1,16 @@
 const apis = {
+	// 测试接口
 	api_test:'common/test',
+	// 拉取验证码
 	system_captcha:'common/captchaImg',
+	// 用户登录，注册，修改登录密码
 	user_login:'common/login',
 	user_register:'common/register',
 	user_paypwd:'user/changePassword',
-
+	// 诺亚方舟首页
+	nyfz_info:'noahOrder/index',
+	/* 诺亚方舟 - 释放列表 / 申请记录 */
+	nyfz_list:'noahOrder/applyOrderList',
 
 	/* 已废弃 */
 	user_info:'user/userInfo',

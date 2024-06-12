@@ -14,7 +14,7 @@
 
 					<view class="info-2">
 						<text>￥</text>
-						<text>123123123.0000</text>
+						<text>{{indexInfo.totalAmount || '0.00'}}</text>
 					</view>
 
 					<view class="info-3">
@@ -40,17 +40,17 @@
 				<view class="flex flex-column">
 					<view class="menu-item flex flex-between" style="margin-bottom: 32rpx; background-image: url('/static/images/26.png')">
 						<view class="left-side">当前等级</view>
-						<view class="right-side font-blue">大众会员</view>
+						<view class="right-side font-blue">{{indexInfo.currentLevel || 0}}</view>
 					</view>
 		
 					<view class="menu-item flex flex-between" style="margin-bottom: 32rpx; background-image: url('/static/images/27.png')">
 						<view class="left-side">考核周期</view>
-						<view class="right-side font-blue">45天</view>
+						<view class="right-side font-blue">{{indexInfo.noahDays ? indexInfo.noahDays + '天' : ''}}</view>
 					</view>
 		
 					<view class="menu-item flex flex-between" style="background-image: url('/static/images/28.png')">
 						<view class="left-side">节点额度</view>
-						<view class="right-side font-blue">60%</view>
+						<view class="right-side font-blue">{{indexInfo.nodeRate || 0}}%</view>
 					</view>
 				</view>
 
@@ -63,11 +63,11 @@
 				<view class="content-2">
 					<view class="list flex flex-between">
 						<view class="item flex flex-column flex-y-center">
-							<text class="label">999</text>
+							<text class="label">{{indexInfo.totalAmountType0 || '0.00'}}</text>
 							<text class="desc">待释放额度</text>
 						</view>
 						<view class="item flex flex-column flex-y-center">
-							<text class="label">999</text>
+							<text class="label">{{indexInfo.totalAmountType1 || '0.00'}}</text>
 							<text class="desc">已释放额度</text>
 						</view>
 					</view>
@@ -89,26 +89,26 @@
 					<view class="item">
 						<view class="row flex flex-between">
 							<view class="left-side">直推人数</view>
-							<view class="right-side">--</view>
+							<view class="right-side">{{ indexInfo.noah_layer1_count || '--' }}</view>
 						</view>
 						<view class="row flex flex-between">
 							<view class="left-side">团队人数</view>
-							<view class="right-side">--</view>
+							<view class="right-side">{{ indexInfo.noah_team_count || '--' }}</view>
 						</view>
 					</view>
 
 					<view class="item">
 						<view class="row flex flex-between">
 							<view class="left-side font-bold">个人业绩</view>
-							<view class="right-side">--</view>
+							<view class="right-side">{{ indexInfo.noah_achievements || '--' }}</view>
 						</view>
 						<view class="row flex flex-between">
 							<view class="left-side font-bold">团队业绩</view>
-							<view class="right-side">--</view>
+							<view class="right-side">{{ indexInfo.noah_team_achievements || '--' }}</view>
 						</view>
 						<view class="row flex flex-between">
 							<view class="left-side font-bold">云币持仓</view>
-							<view class="right-side">--</view>
+							<view class="right-side">{{ indexInfo.coin_hold || '--' }}</view>
 						</view>
 					</view>
 
@@ -131,35 +131,23 @@
 
 				<!-- 列表 -->
 				<view class="card-list-type-2">
-					<view class="item">
+
+					<view class="item" v-for="(item,index) in indexList" :key="'sf-item-' + index">
 						<view class="row flex flex-between">
 							<view class="left-side">申请的释放金额</view>
-							<view class="right-side">999元</view>
+							<view class="right-side">{{item.apply_amount || '0.00'}}元</view>
 						</view>
 						<view class="row flex flex-between">
 							<view class="left-side">实际释放金额</view>
-							<view class="right-side">999元</view>
+							<view class="right-side">{{item.real_amount || '0.00'}}元</view>
 						</view>
 						<view class="row flex flex-between">
 							<view class="left-side">释放时间</view>
-							<view class="right-side">2024-05-20</view>
+							<view class="right-side">{{item.time || '--'}}</view>
 						</view>
 					</view>
 
-					<view class="item">
-						<view class="row flex flex-between">
-							<view class="left-side">申请的释放金额</view>
-							<view class="right-side">999元</view>
-						</view>
-						<view class="row flex flex-between">
-							<view class="left-side">实际释放金额</view>
-							<view class="right-side">999元</view>
-						</view>
-						<view class="row flex flex-between">
-							<view class="left-side">释放时间</view>
-							<view class="right-side">2024-05-20</view>
-						</view>
-					</view>
+					
 
 				</view>
 
@@ -173,19 +161,35 @@
 	export default {
 		data(){
 			return {
-
+				/* 首页信息 */
+				indexInfo:false,
+				/* 释放列表 */
+				indexList:[],
 			}
 		},
-		onLoad() {
-			// this.getdata()
+		onShow() {
+			this.getData()
+			this.getDataList()
 		},
 		methods: {
-			// getdata() {
-			// 	this.to.www(this.api.sys_rank_list)
-			// 		.then(res => {
-			// 			this.list = res.data
-			// 		})
-			// }
+			getData() {
+				this.to.www(this.api.nyfz_info)
+				.then(res => {
+					const {code = 0} = res
+					if(code == 200){
+						this.indexInfo = res.data
+					}
+				})
+			},
+			getDataList(){
+				this.to.www(this.api.nyfz_list,{type:1})
+				.then(res => {
+					const {code = 0} = res
+					if(code == 200){
+						this.indexList = res.data.data.data || []
+					}
+				})
+			},
 		}
 	}
 </script>
