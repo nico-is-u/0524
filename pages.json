@@ -489,6 +489,15 @@
 				"navigationBarBackgroundColor": "#fff",
 				"navigationBarTextStyle":"black"
 			}
+		},
+		{
+			"path" : "pages/home-page/gf_level",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {
