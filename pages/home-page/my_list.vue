@@ -28,7 +28,7 @@
                     <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
                 </view>
 
-                <view class="item">
+                <view class="item" @click="too('/pages/home-page/pay-account')">
                     <view class="left-side flex flex-y-center">
                         <image src="/static/images/49.png"></image>
                         <text>收款账号</text>

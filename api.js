@@ -27,6 +27,8 @@ const apis = {
 	shdz_info:'delivery/saveDelivery',
 	// 实名认证
 	user_real:'user/submitProfile',
+	// 收款账号
+	bank_list:'capital/payAccountList',
 
 	
 	/* 已废弃 */
@@ -45,7 +47,7 @@ const apis = {
 	reg_check_code:'common/captchaImg',
 	sys_share:'user/invite',
 	sys_rank_list:'rank/rankList',
-	bank_list:'capital/payAccountList',
+	
 	del_bank:'capital/payAccountDel',
 	balance_log:'user/balanceLog',
 	order_log:'order/orderList',
