@@ -42,13 +42,13 @@
     <view class="section">
       <!-- 菜单1 -->
       <view class="menu-list">
-        <view class="menu-item" style="background-image: url(/static/images/31.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_sign')" style="background-image: url(/static/images/31.png);">
           <view class="text-info">
             <view class="title">签到送积分</view>
             <view class="label">累计积分换豪礼</view>
           </view>
         </view>
-        <view class="menu-item" style="background-image: url(/static/images/32.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_score')" style="background-image: url(/static/images/32.png);">
           <view class="text-info">
             <view class="title">积分兑换</view>
             <view class="label">多重好礼等你兑换</view>

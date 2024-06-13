@@ -470,6 +470,25 @@
 		  {
 		    "navigationBarTitleText" : "认领资产"
 		  }
+		},
+		{
+			"path" : "pages/home-page/gf_score",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_gift",
+			"style" : 
+			{
+				"navigationBarTitleText" : "礼品领取",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle":"black"
+			}
 		}
 	],
 	"tabBar": {

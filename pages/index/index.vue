@@ -204,24 +204,24 @@
 					}
 				})
 			} else {
-				this.getSystem_config();
-				// this.getnoticeOnes();
-				this.to.www(this.api.user_info)
-					.then(res => {
-						this.user_info = res.data;
-						uni.setStorage({
-							data: this.user_info,
-							key: 'user_info'
-						});
-						uni.setStorage({
-							data: 'first-launch',
-							key: "use-page-type"
-						})
+				// this.getSystem_config();
+				// // this.getnoticeOnes();
+				// this.to.www(this.api.user_info)
+				// 	.then(res => {
+				// 		this.user_info = res.data;
+				// 		uni.setStorage({
+				// 			data: this.user_info,
+				// 			key: 'user_info'
+				// 		});
+				// 		uni.setStorage({
+				// 			data: 'first-launch',
+				// 			key: "use-page-type"
+				// 		})
 						this.isShwoLoad = false
-					})
+				// 	})
 			}
 			// this.getNotices()
-			this.getNewsList()
+			// this.getNewsList()
 		},
 		mounted(){
 			const apiUrl = uni.getStorageSync('ok_api') || ''

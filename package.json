@@ -17,7 +17,7 @@
         ]
     },
     "dependencies": {
-        "klinecharts": "^9.8.8",
+        "klinecharts": "^9.8.10",
         "qiniu-js": "^3.4.2",
         "spark-md5": "^3.0.2"
     }

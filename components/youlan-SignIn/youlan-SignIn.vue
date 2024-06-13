@@ -1,21 +1,13 @@
 <template>
 	<view class="calendar-box">
-		<!-- <view class="top">
-			<view>
-				<h4>已连续签到 <span> 9 </span> 天</h4>
-				<p>今日获得+7积分</p>
-			</view>
-			<view class="rig">
-			</view>
-		</view> -->
 		<view class="miss_box">
 			<view class="month">
 				<view class="prv" @click="lastMonth">
-					<span v-show="prv">上个月</span>
+					<span v-show="prv"><u-icon name="arrow-left" color="#333" size="22"></u-icon></span>
 				</view>
 				<view>{{year}}年{{month}}月</view>
 				<view class="prv" @click="nextMonth">
-					<span v-show="next">下个月</span>
+					<span v-show="next"><u-icon name="arrow-right" color="#333" size="22"></u-icon></span>
 				</view>
 				<picker v-if="checkDate" class="picker" mode="date" fields="month" @change="changeDate" />
 			</view>
@@ -23,11 +15,12 @@
 				<view :style="'color:'+(weeks==weeked?bgweek:'')+';'" v-for="weeks in weekArr" :key="weeks">{{weeks}}</view>
 			</view>
 			<view class="day">
-				<view :class="[{'checkday':days.date==''},{'choose':days.date==localDate || days.flag }]"
-					:style="'background:'+(days.date==localDate || days.flag ? bgday:'')+';'" v-for="(days,index) in dayArr" :key="index"
+				<view :class="[{'checkday':days.nowMonth==0},{'choose':days.date==localDate }]"
+					:style="'background:'+(days.date==localDate ? bgday:'')+';'" v-for="(days,index) in dayArr" :key="index"
 					@click="signToday(days,index)">
 					{{days.day}}
-					<view :class="[{'circle':days.flag},{'repair':days.day<day},{'sign':days.day==day}]"></view>
+					<view :class="[{'circle':days.flag},{'sign':days.day==day}]"></view>
+					<!-- {'repair':days.day<day}, -->
 				</view>
 			</view>
 		</view>
@@ -54,45 +47,52 @@
 			},
 			bgweek: {
 				type: String,
-				default: '#B80606'
+				default: '#5AB3FF'
 			},
 			bgday: {
 				type: String,
-				default: '#B80606'
+				default: '#5AB3FF'
 			},
 			supplementary: {
 				type: Boolean,
 				default: false
+			},
+			sgList: {
+				type: Array,
+				default: []
 			}
 		},
 		data() {
 			return {
-				weeked: '', // 今天周几
-				dayArr: [], // 当前月每日
+				weeked: '', 
+				dayArr: [], 
 				signList:[10,11,13,14,16,18,20],
-				localDate: '', // 今天日期
-				day: new Date().getDate(), // 当前日
-				year: new Date().getFullYear(), // 当前年
-				month: new Date().getMonth() + 1, // 当前月
-				weekArr: ['日', '一', '二', '三', '四', '五', '六'], // 每周
-				aheadDay: 0,	// 前方空白天数数量
+				localDate: '',
+				day: new Date().getDate(),
+				year: new Date().getFullYear(),
+				month: new Date().getMonth() + 1,
+				weekArr: ['日', '一', '二', '三', '四', '五', '六'],
+				aheadDay: 0,
 				thisMonth: new Date().getMonth() + 1,
-				// 2023年4月4日11:50:03
 				prv: true,
 				next: true
 			}
 		},
+		watch: {
+			sgList(newValue, oldValue) {
+				this.dayArr.forEach(item => {
+					if(this.sgList.findIndex(item1 => item1.date == item.date && item1.type == 'normal') > -1){
+						item.flag = true;
+					}
+				})
+			}
+		},
 		mounted() {
 			let that = this;
-			// 初始日期
 			that.initDate();
-			// 今天日期
 			that.localDate = that.year + '-' + that.formatNum(that.month) + '-' + that.formatNum(that.day);
-			// 中英切换
 			if (that.lang != 'zh') that.weekArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-			// 今天周几
 			that.weeked = that.weekArr[new Date().getDay()];
-			// 签到功能
 			if (that.type != 'calendar') {
 				for (let i in that.dayArr) {
 					that.$set(that.dayArr[i], 'flag', false);
@@ -100,103 +100,89 @@
 			}
 		},
 		methods: {
-			// 选择年月
 			changeDate(e) {
 				let that = this;
 				that.year = parseInt(e.detail.value.split('-')[0]);
 				that.month = parseInt(e.detail.value.split('-')[1]);
 				that.initDate();
 			},
-			// 今日签到
 			daySign(obj) {
-				// 今天日期加上前方空白日期数量
 				let index = this.aheadDay + this.day - 1
 				this.$set(this.dayArr[index], 'flag', true);
 				this.$emit('change', obj.date);
-				// uni.showToast({
-				// 	title: '已签到',
-				// 	icon: 'success'
-				// });
 			},
-			// 点击补签
 			signToday(obj, index) {
 				let that = this;
-				// 指定签到类型可访问
 				if (that.type == 'calendar') return;
-				// 限制本月可进行签到
 				if ((new Date().getMonth() + 1) != parseInt(obj.date.split('-')[1])) return;
-				// 禁用非本月点击签到且限制签到日期小于本日
 				if (obj.date != '' && obj.day < that.day) {
-					// 开启已签到提醒
 					if (that.dayArr[index].flag) {
-						// uni.showToast({
-						// 	title: '已签到',
-						// 	icon: 'none'
-						// });
 					} else {
 						if(that.day > obj.day && !that.supplementary) {
 							return
 						}
-						// console.log(obj.day);
-						// uni.showToast({
-						// 	title: that.day > obj.day ? '补签成功' : '签到成功',
-						// 	icon: 'success'
-						// });
 						that.$set(that.dayArr[index], 'flag', true);
 						that.$emit('change', obj.date);
 					}
 				}
 			},
-			// 初始化日期
 			initDate() {
 				let that = this;
 				that.dayArr = [];
-				// 当前月总天数
 				let totalDay = new Date(that.year, that.month, 0).getDate();
-				// 遍历总天数将日期逐个添加至数组
 				for (let i = 1; i <= totalDay; i++) {
-					// 得到需补充天数
 					let value = (new Date(that.year, that.month - 1, i)).getDay();
-					// 补充前面空白日期
 					if (i == 1 && value != 0) {
 						that.addBefore(value);
 						that.aheadDay = value;
 					}
-					// 添加本月日期
 					let obj = {};
 					obj.date = that.year + '-' + that.formatNum(that.month) + '-' + that.formatNum(i);
 					obj.day = i;
 					that.dayArr.push(obj);
-					// 补充后面空白日期
 					if (i == totalDay && value != 6) that.addAfter(value);
 				}
 			},
-			// 补充前面空白日期
 			addBefore(value) {
 				let that = this;
+				let beforeYear = that.year;
+				let beforeMonth = that.month;
+				if(beforeMonth == 0){
+					beforeYear--;
+					beforeMonth = 11;
+				}else{
+					beforeMonth--;
+				}
 				let totalDay = new Date(that.year, that.month - 1, 0).getDate();
 				for (let i = 0; i < value; i++) {
 					let obj = {};
-					obj.date = '';
 					obj.day = totalDay - (value - i) + 1;
+					obj.date = beforeYear + '-' + that.formatNum(beforeMonth) + '-' + that.formatNum(obj.day);
+					obj.nowMonth = 0;
 					that.dayArr.push(obj);
 				}
 			},
-			// 补充后空白日期
 			addAfter(value) {
 				let that = this;
+				let beforeYear = that.year;
+				let beforeMonth = that.month;
+				if(beforeMonth == 11){
+					beforeYear++;
+					beforeMonth = 0;
+				}else{
+					beforeMonth++;
+				}
 				for (let i = 0; i < (6 - value); i++) {
 					let obj = {};
-					obj.date = '';
 					obj.day = i + 1;
+					obj.date = beforeYear + '-' + that.formatNum(beforeMonth) + '-' + that.formatNum(obj.day);
+					obj.nowMonth = 0;
 					that.dayArr.push(obj);
 				}
 			},
-			// 格式化日期位数
 			formatNum(num) {
 				return num < 10 ? ('0' + num) : num;
 			},
-			// 上一个月
 			lastMonth() {
 				let that = this;
 				if (that.month == 1) {
@@ -218,11 +204,7 @@
 				}else {
 					this.next = false
 				}
-				
-				
-				
 			},
-			// 下一个月
 			nextMonth() {
 				let that = this;
 				if (that.month == 12) {
@@ -254,13 +236,10 @@
 		width: 100%;
 		flex-direction: column;
 		justify-content: center;
-		
-		
 	}
-	
 	.miss_box {
 		width: 100%;
-		padding: 20rpx 40rpx;
+		padding: 0 40rpx 20rpx 40rpx;
 		box-sizing: border-box;
 		background-color: #FFFFFF;
 		border-radius: 25rpx;
@@ -301,16 +280,28 @@
 	.day {
 		flex-wrap: wrap;
 	}
-	
-	.week>view,
-	.day>view {
-		width: 70rpx;
-		height: 70rpx;
-		margin: 10rpx;
+	.week,
+	.day{
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
 		text-align: center;
-		position: relative;
-		line-height: 70rpx;
+		>view{
+			aspect-ratio: 1/1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+		}
 	}
+	// .week>view,
+	// .day>view {
+	// 	width: 70rpx;
+	// 	height: 70rpx;
+	// 	margin: 10rpx;
+	// 	text-align: center;
+	// 	position: relative;
+	// 	line-height: 70rpx;
+	// }
 	
 	.checkday {
 		color: #999;
@@ -329,6 +320,7 @@
 		bottom: 10%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		background: #FF871E;
 	}
 	
 	.sign {
@@ -349,7 +341,7 @@
 		width: 450rpx;
 		height: 80rpx;
 		line-height: 80rpx;
-		border-radius: 10rpx;
+		border-radius: 20rpx;
 		border: 1px solid transparent;
 		outline: none;
 		color: #FFFFFF;
