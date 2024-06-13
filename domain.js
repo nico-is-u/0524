@@ -59,7 +59,7 @@ function decrypt(content, keyStr) {
   });
   return CryptoJS.enc.Utf8.stringify(decrypt).toString();
 }
-// console.log('加密接口', encryptCBC("order/authPlaceOrder"));
+console.log('加密接口', encryptCBC("order/authPlaceOrder"));
 // console.log('加密接口', encryptCBC("order/authOrderList"));
 // console.log(encrypt("","zOEnsWQi"));
 // console.log(decrypt("vgNYx1S8bflBCxJs/UOmDDVrXFPlII7fD3GUVJo6zd2F72XMzaJA5+nxOTHR8dhp","zOEnsWQi"));
@@ -413,11 +413,3 @@ export default {
     }
   })
 }
-
-/* 测试解密 */
-// const strA = 'FzwyuDMFeLUpYACr0EzRDirfAm98oPETG6wa5Z7CIVw7/xszVJ2kCvVXG/0K/yVHxnW/tZd5TAeEJVMCDBBaCA==;'
-// console.log('测试解密')
-// console.log(JSON.parse(decryptCBC(strA)))
-
-console.log(encryptCBC("order/authPlaceOrder"))
-console.log(decryptCBC("K23/3Pm9fzyjiiK9xRYLdDGkOLruXQGk3AAWx6JmTwc="))
