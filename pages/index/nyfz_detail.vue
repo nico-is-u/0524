@@ -130,6 +130,7 @@ export default {
         return {
             apiUrl:'',
             regStatus: '正在提交...',		 // loading text
+            isLoading:false,				// 请求等待
             formData:{
                 name:'',
                 account:'',
@@ -195,6 +196,7 @@ export default {
                             console.log('上传成功', res2)
                         /* 上传失败 */
                         }else{
+                            console.log(res1)
                             console.log('上传失败')
                             this.fileList = []
                         }

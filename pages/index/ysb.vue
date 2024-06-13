@@ -21,16 +21,16 @@
 				<!-- K线部分 -->
 				<view class="k-line-box" :class="scene != 'index' ? 'with-tab-menu' : ''">
 					<!-- 小菜单2 -->
-					<view class="menu-list-2">
-						<view class="menu-item active">分时</view>
-						<view class="menu-item">日K</view>
-						<view class="menu-item">周K</view>
-						<view class="menu-item">月K</view>
-						<view class="menu-item">季K</view>
-						<view class="menu-item more">
+					<view class="menu-list-2" style="justify-content: flex-start; gap:30rpx">
+						<view class="menu-item" @click="bar = '30m'" :class="bar == '30m' ? 'active' : ''">30分</view>
+						<view class="menu-item" @click="bar = '1D'" :class="bar == '1D' ? 'active' : ''">日K</view>
+						<view class="menu-item" @click="bar = '1W'" :class="bar == '1W' ? 'active' : ''">周K</view>
+						<view class="menu-item" @click="bar = '1M'" :class="bar == '1M' ? 'active' : ''">月K</view>
+						<view class="menu-item" @click="bar = '3M'" :class="bar == '3M' ? 'active' : ''">季K</view>
+						<!-- <view class="menu-item more">
 							<text>更多</text>
 							<image src="/static/images/10.png" mode="widthFix"></image>
-						</view>
+						</view> -->
 					</view>
 
 					<!-- K线插件 -->
@@ -41,7 +41,7 @@
 				</view>
 
 				<!-- 买入 -- 操作区域 -->
-				<view class="mr-section padding-box-3">
+				<view class="mr-section padding-box-3" v-if="scene == 'mr' || scene == 'mc'">
 					<view class="flex flex-between">
 						<!-- tab 菜单2 -->
 						<view class="tab-menu-type-2 left-side">
@@ -118,6 +118,26 @@
 			<view class="title-2">
 				币种/24H
 			</view>
+
+			<view class="card margin-t-30 c-list">
+
+				<scroll-view :scroll-y="true"></scroll-view>
+				<view class="row" v-for="(item,index) in cList2" :key="'cList-item-' + index">
+					<view class="flex flex-y-center left-side">
+						<image mode="widthFix" :src="item.icon"></image>
+						<view class="flex flex-column">
+							<view class="font-333" style="font-size: 32rpx;">{{ item.name || ''}}</view>
+						</view>
+					</view>
+					<view class="right-side">
+						<view class="n-fee" :class="item.isPos ? 'n-fee-pos' : 'n-fee-pos2'">
+							<view>{{ item.isPos ? '+' : '-'}}</view>
+							<view>{{ item.change3 }}%</view>
+						</view>
+					</view>
+				</view>
+				
+			</view>
 		</view>
 
 
@@ -126,11 +146,16 @@
 </template>
 
 <script>
-import { init, dispose } from 'klinecharts'
+import { init } from 'klinecharts'
 export default {
 	data(){
 		return {
-			scene:'mr',				// 页面场景	index：首页	mr：买入  mc：卖出
+			scene:'index',								// 页面场景	index：首页	mr：买入  mc：卖出
+			kLine:false,								// K线插件
+			cType:'BTC',								// 币种
+			barList:['30m','1D','1W','1M','3M'],		// k线的时区
+			bar:'30m',
+			cList:[],									// 币种列表
 		}
 	},
 	computed:{
@@ -155,7 +180,49 @@ export default {
 				case 'mc':
 					return true
 			}
-		}
+		},
+		/* 币种列表 */
+		cList2(){
+			let result = []
+			if(Array.isArray(this.cList) && this.cList.length){
+				for(let len = 0; len < this.cList.length; len ++){
+					let item = this.cList[len]
+					item.change2 = parseFloat(item.change)
+					item.isPos = item.change2 > 0 ? true : false
+					if(item.isPos){
+						item.change3 = item.change
+					}else{
+						item.change3 = item.change.slice(1)
+					}
+					result.push(item)
+				}
+			}
+			return result
+		},
+	},
+	methods:{
+		getKLineDatas(){
+			this.to.www(this.api.k_line,{
+				code:this.cType,
+				bar:this.bar
+			})
+			.then(res => {
+				const {code,data=[]} = res
+				if(code == 200){
+					this.kLine.applyNewData(data)
+				}
+			})
+		},
+		/* 拉取币种数据 */
+		getCDatas(){
+			this.to.www(this.api.c_list)
+			.then(res => {
+				const {code,data=[]} = res
+				if(code == 200){
+					this.cList = data
+				}
+			})
+		},
 	},
 	mounted(){
 		const chart = init('chart')
@@ -166,17 +233,19 @@ export default {
 				type:'area',
 				tooltip:{
 					// showRule:'none'
-					custom:[
-						{ title: '交易结束：', value: '{time} 北京时间' },
-						{ title: '今 开: ', value:'{open}'},
-						{ title: '最 高: ', value:{
-							text:'{high}',
-							color:'red'
-						}},
-					]
+					custom:function(){
+						return [
+							{ title: '交易结束：', value: '{time} 北京时间' },
+							{ title: '今 开: ', value:'{open}'},
+							{ title: '最 高: ', value:{text:'{high}',color:'red'}},
+						]
+					}
 				}
 			}
 		})
+
+		/* 缓存插件实例 */
+		this.kLine = chart
 
 		/* 变更事件 */
 		// chart.subscribeAction('onCrosshairChange',event => {
@@ -187,22 +256,29 @@ export default {
 		// 	console.log('onCandleBarClick')
 		// })
 
-		chart.applyNewData([
-			{ close: 4976.16, high: 4977.99, low: 4970.12, open: 4972.89, timestamp: 1587660000000, volume: 204 },
-			{ close: 4977.33, high: 4979.94, low: 4971.34, open: 4973.20, timestamp: 1587660060000, volume: 194 },
-			{ close: 4977.93, high: 4977.93, low: 4974.20, open: 4976.53, timestamp: 1587660120000, volume: 197 },
-			{ close: 4966.77, high: 4968.53, low: 4962.20, open: 4963.88, timestamp: 1587660180000, volume: 28 },
-			{ close: 4961.56, high: 4972.61, low: 4961.28, open: 4961.28, timestamp: 1587660240000, volume: 184 },
-			{ close: 4964.19, high: 4964.74, low: 4961.42, open: 4961.64, timestamp: 1587660300000, volume: 191 },
-			{ close: 4968.93, high: 4972.70, low: 4964.55, open: 4966.96, timestamp: 1587660360000, volume: 105 },
-			{ close: 4979.31, high: 4979.61, low: 4973.99, open: 4977.06, timestamp: 1587660420000, volume: 35 },
-			{ close: 4977.02, high: 4981.66, low: 4975.14, open: 4981.66, timestamp: 1587660480000, volume: 135 },
-			{ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 }
-		])
+		// chart.applyNewData([
+		// 	{ close: 4976.16, high: 4977.99, low: 4970.12, open: 4972.89, timestamp: 1587660000000, volume: 204 },
+		// 	{ close: 4977.33, high: 4979.94, low: 4971.34, open: 4973.20, timestamp: 1587660060000, volume: 194 },
+		// 	{ close: 4977.93, high: 4977.93, low: 4974.20, open: 4976.53, timestamp: 1587660120000, volume: 197 },
+		// 	{ close: 4966.77, high: 4968.53, low: 4962.20, open: 4963.88, timestamp: 1587660180000, volume: 28 },
+		// 	{ close: 4961.56, high: 4972.61, low: 4961.28, open: 4961.28, timestamp: 1587660240000, volume: 184 },
+		// 	{ close: 4964.19, high: 4964.74, low: 4961.42, open: 4961.64, timestamp: 1587660300000, volume: 191 },
+		// 	{ close: 4968.93, high: 4972.70, low: 4964.55, open: 4966.96, timestamp: 1587660360000, volume: 105 },
+		// 	{ close: 4979.31, high: 4979.61, low: 4973.99, open: 4977.06, timestamp: 1587660420000, volume: 35 },
+		// 	{ close: 4977.02, high: 4981.66, low: 4975.14, open: 4981.66, timestamp: 1587660480000, volume: 135 },
+		// 	{ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 }
+		// ])
+
 		/* 样式配置 */
-		
 		// dispose('chart')
-	}
+	},
+	onShow(){
+		/* 重新拉取K线 */
+		this.getKLineDatas()
+		if(this.scene == 'index'){
+			this.getCDatas()
+		}
+	},
 }
 </script>
 
@@ -212,7 +288,7 @@ page{
 }
 
 .head {
-	height: 672rpx;
+	height: 636rpx;
 	background-image: url('/static/images/9.png');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -354,6 +430,18 @@ page{
 		color: #222;
 		font-size: 36rpx;
 		font-weight: 800;
+	}
+
+	.c-list{
+		.row{
+			border-bottom: 4rpx solid #eee;
+		}
+		.left-side{
+			image{
+				width: 88rpx;
+				height: 88rpx;
+			}
+		}
 	}
 }
 

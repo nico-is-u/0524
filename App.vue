@@ -263,6 +263,13 @@
 
 		}
 
+		.row{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 24rpx 0;
+		}
+
 	}
 
 	.card + .card{
@@ -660,6 +667,31 @@
 		background-color: #f9f9f9;
 		padding: 90rpx 0;
 		font-size: 28rpx;
+	}
+
+	.n-fee{
+		display: flex;
+		font-size: 26rpx;
+		padding: 10rpx 24rpx;
+		border-radius: 8rpx;
+
+		&.n-fee-pos{
+			uni-view{
+				color: #5ED47F !important;
+			}
+			background-color: rgba(94, 212, 127, .1);
+		}
+
+		&.n-fee-pos2{
+			uni-view{
+				color: #FF2732 !important;
+			}
+			background-color: rgba(255, 39, 50, .1);
+		}
+	}
+
+	.font-333{
+		color: #333;
 	}
 
 	.font-gray{

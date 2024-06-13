@@ -15,7 +15,10 @@ const apis = {
 	nyfz_request:'noahOrder/apply',
 	// 诺亚方舟 申请凭证上传
 	nyfz_upload:'noahOrder/tokenUpload',
-
+	// K线数据
+	k_line:'yun/kline',
+	// 币种数据
+	c_list:'yun/productsPrice24h',
 	
 
 	/* 已废弃 */
