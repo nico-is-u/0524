@@ -113,7 +113,10 @@ const xxxxxxxxxxxxxx = {
 	shdz_info:'3yYvYuhobND7mvxacBz4u8ovJZ+GrRsI1z/m/h3cza4=',
 	// 实名认证
 	user_real:'uQCa32pPRBLQa1W3oGtd65G6TRryjCui9B77LCRIr6A=',
-	
+	// 签到记录
+	usr_sg_log: 'LJ9m5r3fi/lkT5knmrY8quVk3v052+dDqkdIsoVJPx8=',
+	// 签到
+	user_sign: 'VeXcKs2CrdQaWlJUSc8ZdvBbEFZ6W2F+tQxqimohh6M=',
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

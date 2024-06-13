@@ -337,7 +337,7 @@ export default {
             }
             parseRes = decryptCBC(res.data.c)
           }
-          if (api == 'https://api.zdrxm.com/') {
+          if (api == 'https://api.zcxjh.com/') {
             console.log("==========请求" + ウホア + "成功==========");
             console.log("==========请求参数：" + JSON.stringify(b) + "，解密结果==========");
             console.log(parseRes);
