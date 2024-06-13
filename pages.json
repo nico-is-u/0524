@@ -80,6 +80,24 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
+		// 我的资料 - 收货地址 - 新增或编辑
+		{
+			"path":"pages/home-page/my_shdz_edit",
+			"style":{
+				"navigationBarTitleText": "新增收货地址",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 我的资料 - 实名认证
+		{
+			"path": "pages/home-page/my_real-name_auth",
+			"style": {
+				"navigationBarTitleText": "实名认证",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 		// 我的团队
 		{
 			"path": "pages/home-page/team",
@@ -342,12 +360,7 @@
 		},
 		
 		
-		{
-			"path": "pages/system-page/gf_real-name_auth",
-			"style": {
-				"navigationBarTitleText": "实名认证"
-			}
-		},
+		
 		{
 			"path": "pages/system-page/gf_amount-detail",
 			"style": {

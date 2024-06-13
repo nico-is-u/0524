@@ -270,6 +270,46 @@
 			padding: 24rpx 0;
 		}
 
+		&.card-u-from{
+			.u-form{
+				padding: 0;
+
+				// .u-form-item{
+				// }
+				
+				.u-form-item__body{
+					padding: 0;
+					border-bottom: 3rpx solid #E9E9E9;
+				}
+
+				.u-form-item__body__left__content__label{
+					color:#222 !important;
+				}
+
+				.u-input__content{
+					background-color: inherit !important;
+				}
+
+				.u-form-item__body__right__message{
+					margin-top: 16rpx !important;
+				}
+			}
+		}
+
+		&.card-u-from-2{
+			.u-form{
+				padding: 0;
+			}
+
+			.u-form-item__body__left__content__label{
+				color:#222 !important;
+			}
+		}
+
+		&.card-2{
+			border-radius: 24rpx;
+		}
+
 	}
 
 	.card + .card{
@@ -405,6 +445,22 @@
 				
 			}
 		}
+	}
+
+	/* 悬浮按钮 */
+	.fixed-button-group{
+		position: fixed;
+		left: 0;
+		bottom: 0;
+
+		width: 100%;
+		height: 10vh;
+
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+
+		padding: 0 32rpx;
 	}
 
 	.menu-card{
@@ -651,15 +707,23 @@
 	}
 
 	.n-button{
+		height: 80rpx !important;
+		
 		color: white !important;
 		background-color: #0182EF !important;
 		font-size: 36rpx !important;
 
 		display: flex;
 		justify-content: center;
-		padding: 16rpx 0;
+		padding: 16rpx 0 !important;
 
 		border-radius: 40rpx !important;
+
+		.u-button__text{
+			font-size: 36rpx !important;
+		}
+
+
 	}
 
 	.n-upload-box{

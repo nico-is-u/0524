@@ -19,8 +19,15 @@
             <view class="text-info">
               <view class="username">{{ user_info.realname || '' }}</view>
               <view class="desc flex">
-                <image src="/static/images/21.png" mode="widthFix" class="level-2"></image>
-                <view class="text-part" @click="too('/pages/home-page/gf_level')">
+
+                <!-- 用户等级 -->
+                <image src="/static/images/21.png" v-if="user_info.level == 0" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/22.png" v-if="user_info.level == 1" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/23.png" v-if="user_info.level == 2" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/24.png" v-if="user_info.level == 3" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/25.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
+
+                <view class="text-part">
                   <text>我的等级特权</text>
                   <text>></text>
                 </view>
@@ -30,7 +37,14 @@
           </view>
 
           <view class="right-side">
-            <image src="/static/images/16.png" mode="widthFix"></image>
+
+            <!-- 用户等级 -->
+            <image src="/static/images/16.png" v-if="user_info.level == 0" mode="widthFix"></image>
+            <image src="/static/images/17.png" v-if="user_info.level == 1" mode="widthFix"></image>
+            <image src="/static/images/18.png" v-if="user_info.level == 2" mode="widthFix"></image>
+            <image src="/static/images/19.png" v-if="user_info.level == 3" mode="widthFix"></image>
+            <image src="/static/images/20.png" v-if="user_info.level == 4" mode="widthFix"></image>
+
           </view>
 
         </view>
@@ -54,13 +68,13 @@
             <view class="label">多重好礼等你兑换</view>
           </view>
         </view>
-        <view class="menu-item" @click="too('/pages/home-page/gf_gift')" style="background-image: url(/static/images/33.png);">
+        <view class="menu-item" style="background-image: url(/static/images/33.png);">
           <view class="text-info">
             <view class="title">领取礼包</view>
             <view class="label">海量权益月月领</view>
           </view>
         </view>
-        <view class="menu-item" @click="too('/pages/home-page/gf_level')" style="background-image: url(/static/images/34.png);">
+        <view class="menu-item" style="background-image: url(/static/images/34.png);">
           <view class="text-info">
             <view class="title">等级提升</view>
             <view class="label">升级会员专属福利</view>
@@ -130,17 +144,14 @@ import avatar from '../../components/yq-avatar/yq-avatar.vue'
 export default {
   data() {
     return {
+      // 默认头像
       avatarurl: '/static/images/30.png',
-      user_info: {
-        balance: '0.00', //账户余额
-      }
+      user_info: {}
     }
   },
   methods:{
     getUserInfo() {
       this.to.www(this.api.user_info).then(res => {
-
-        console.log(res)
 
         this.user_info = res.data
         this.avatarurl = res.data.avatar

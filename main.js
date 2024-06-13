@@ -1,6 +1,6 @@
 import App from './App'
-// import AUX_Audio from 'LOCKED.js'
-import apis from './api'
+import AUX_Audio from 'LOCKED.js'
+
 import domain from 'domain.js'
  
 /* 测试中  模拟接口设置 */
@@ -16,11 +16,10 @@ import uView from '@/uni_modules/uview-ui'
 import "./static/scss/flex.scss"
 import "./static/scss/layout.scss"
 
-
 Vue.use(uView)
 Vue.config.productionTip = false
 Vue.prototype.to = domain;
-Vue.prototype.api = apis;
+Vue.prototype.api = AUX_Audio;
 Vue.prototype.too = function(url, type = 'sub') {
 	// 跳转
 	"sub" == type && uni.navigateTo({

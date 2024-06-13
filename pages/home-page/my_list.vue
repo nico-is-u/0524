@@ -12,7 +12,7 @@
                     <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
                 </view>
 
-                <view class="item">
+                <view class="item" @click="too('/pages/home-page/my_real-name_auth')">
                     <view class="left-side flex flex-y-center">
                         <image src="/static/images/47.png"></image>
                         <text>实名认证</text>

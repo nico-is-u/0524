@@ -1,6 +1,8 @@
 const apis = {
 	// 测试接口
 	api_test:'common/test',
+	// 用户信息
+	user_info:'user/userInfo',
 	// 拉取验证码
 	system_captcha:'common/captchaImg',
 	// 用户登录，注册，修改登录密码
@@ -19,11 +21,15 @@ const apis = {
 	k_line:'yun/kline',
 	// 币种数据
 	c_list:'yun/productsPrice24h',
-	
-
-	/* 已废弃 */
-	user_info:'user/userInfo',
+	// 收货地址
+	shdz_list:'delivery/userDeliveryList',
+	// 收货地址 - 新增编辑
+	shdz_info:'delivery/saveDelivery',
+	// 实名认证
 	user_real:'user/submitProfile',
+
+	
+	/* 已废弃 */
 	user_pay_list:'user/payChannelList',
 	user_top_up:'capital/topup',
 	user_sign:'signin/userSignin',

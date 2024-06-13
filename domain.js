@@ -59,11 +59,10 @@ function decrypt(content, keyStr) {
   });
   return CryptoJS.enc.Utf8.stringify(decrypt).toString();
 }
-console.log('加密接口', encryptCBC("order/authPlaceOrder"));
-// console.log('加密接口', encryptCBC("order/authOrderList"));
-// console.log(encrypt("","zOEnsWQi"));
-// console.log(decrypt("vgNYx1S8bflBCxJs/UOmDDVrXFPlII7fD3GUVJo6zd2F72XMzaJA5+nxOTHR8dhp","zOEnsWQi"));
-// console.log('解密',decryptCBC("9yTeHoDsU0ClaZrRBLwJWvTHV4PNb2MfAMCqzWNrVU0=",'i9hys6gdb5stfzge')) ;
+
+/* 测试加密 */
+// console.log(encryptCBC("user/submitProfile"))
+
 var
   api_index = 0,
   api = '',
@@ -317,7 +316,7 @@ export default {
         'undefined'
       )
         return void(0);
-      var ウホア = a;
+      var ウホア = decryptCBC(a);
       uni.request({
         url: `${api}` +
           ウホア,
