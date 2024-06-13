@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("capital/payAccountDel"))
+console.log(encryptCBC("capital/capitalRecord"))
 
 var
   api_index = 0,

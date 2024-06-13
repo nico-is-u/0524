@@ -92,7 +92,7 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
-        <view class="item" @click="too('/pages/home-page/gf_zc')">
+        <view class="item" @click="too('/pages/home-page/my_zc')">
           <view class="left-side flex flex-y-center">
             <image src="/static/images/36.png"></image>
             <text>我的资产</text>

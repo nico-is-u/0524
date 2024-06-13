@@ -123,6 +123,8 @@ const xxxxxxxxxxxxxx = {
 	bank_account:'MzyTPpV2xxXW7Nunt9zDnu9nycvT7HXLW9I/QEBSHgA=',
 	// 删除收款账号
 	bank_del:'vfIspA5Dsl0Sjesx0rEy7U6xY5kTd17wsnWo2k56sxs=',
+	// 充值列表
+	capital_record:'dEz88eNIw4c89JafFlzEA1ksuHsLpVk897gWEgAueTU=',
 
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }

@@ -5,22 +5,22 @@
         <!-- 头部 -->
 		<view class="page-head">
             <!-- 顶栏 -->
-			<nNavbar title="我的资产" :showBackBtn="true"></nNavbar>
+			<nNavbar title="我的资产" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
             <!-- 小菜单 -->
             <view class="padding-box-3">
                 <view class="menu-card">
                     <view class="menu-item">
-                        <view class="label">88888</view>
+                        <view class="label">{{userInfo.yun || ''}}</view>
                         <view class="value">云数币</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
-                        <view class="label">88888</view>
+                        <view class="label">{{userInfo.usdt || ''}}</view>
                         <view class="value">USDT</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
-                        <view class="label">88888</view>
+                        <view class="label">{{userInfo.balance || ''}}</view>
                         <view class="value">CNY</view>
                     </view>
                 </view>
@@ -36,34 +36,29 @@
 				</view>
 
                 <!-- 列表 -->
-				<view class="list">
-                    <view class="item">
+				<view class="card-list-type-2" v-if="Array.isArray(dataList) && dataList.length">
+                    <view class="item" v-for="(item,index) in dataList" :key="index">
                         <view class="row flex flex-between">
 							<view class="left-side">充值USDT</view>
-							<view class="right-side">1000U</view>
+							<view class="right-side">{{item.amount || ''}}</view>
 						</view>
                         <view class="row flex flex-between">
-							<view class="left-side">充值USDT</view>
-							<view class="right-side">1000U</view>
+							<view class="left-side">操作日期</view>
+							<view class="right-side">{{item.date || ''}}</view>
 						</view>
-                    </view>
+                    </view>                    
+                </view>
 
-                    <view class="item">
-                        <view class="row flex flex-between">
-							<view class="left-side">充值USDT</view>
-							<view class="right-side">1000U</view>
-						</view>
-                        <view class="row flex flex-between">
-							<view class="left-side">充值USDT</view>
-							<view class="right-side">1000U</view>
-						</view>
-                    </view>
-                    
+                <!-- 没有数据 -->
+                <view style="padding: 2.5vh 0" class="flex flex-column flex-center" v-else>
+                    <image src="/static/images/54.png" style="width: 400rpx" mode="widthFix"></image>
+                    <view class="flex flex-x-center margin-t-80 font-333">暂无数据</view>
                 </view>
 
             </view>
         </view>
-
+        <!-- 加载动画 -->
+        <u-loading-page :loading="dataList === false" style="z-index: 3"></u-loading-page>
     </view>
 </template>
 
@@ -72,11 +67,50 @@
  * 我的资产
  */
 export default {
-    
+    data(){
+        return {
+            /* 充值列表 */
+            dataList:false,
+            /* 用户信息 */
+            userInfo:false,
+        }
+    },
+    methods:{
+        /* 拉取充值列表 */
+        async getDataList(){
+            try {
+                const response = await this.to.www(this.api.capital_record)
+                const {code,data={}} = response
+                if(code == 200){
+
+                    this.dataList = data.data || []
+                }else{
+                    this.dataList = []
+                }
+            }catch(e){
+                this.dataList = []
+            }
+        },
+        /* 返回上一页 */
+        backPrev(){
+            uni.switchTab({
+                 url: '/pages/index/my'
+            })
+        }
+    },
+    onLoad(){
+        this.getDataList()
+        const userInfo = uni.getStorageSync('user_info')
+        if(userInfo)    this.userInfo = userInfo
+    }
 }
 </script>
 
 <style lang="scss">
+page{
+    height: 100%;
+    background-color: #F9F9F9;
+}
 #my-zc{
     .right-side{
         color: #666;
