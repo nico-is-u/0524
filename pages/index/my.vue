@@ -20,7 +20,7 @@
               <view class="username">{{ user_info.realname || '' }}</view>
               <view class="desc flex">
                 <image src="/static/images/21.png" mode="widthFix" class="level-2"></image>
-                <view class="text-part">
+                <view class="text-part" @click="too('/pages/home-page/gf_level')">
                   <text>我的等级特权</text>
                   <text>></text>
                 </view>
@@ -54,13 +54,13 @@
             <view class="label">多重好礼等你兑换</view>
           </view>
         </view>
-        <view class="menu-item" style="background-image: url(/static/images/33.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_gift')" style="background-image: url(/static/images/33.png);">
           <view class="text-info">
             <view class="title">领取礼包</view>
             <view class="label">海量权益月月领</view>
           </view>
         </view>
-        <view class="menu-item" style="background-image: url(/static/images/34.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_level')" style="background-image: url(/static/images/34.png);">
           <view class="text-info">
             <view class="title">等级提升</view>
             <view class="label">升级会员专属福利</view>

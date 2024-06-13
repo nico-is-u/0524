@@ -498,6 +498,24 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/home-page/gf_shequn",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_appdown",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

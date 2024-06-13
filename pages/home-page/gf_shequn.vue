@@ -3,16 +3,19 @@
 		<view class="back_head" @click="too('/','bac')">
 			<u--text prefixIcon="arrow-left" iconStyle="font-size: 38rpx;color:#000" color="#ebebeb" align="left"
 				text=""></u--text>
-			<u--text color="#000" bold align="center" text="邀请好友"></u--text>
+			<u--text color="#000" bold align="center" text="社群"></u--text>
 			<u--text color="#d7d7d7" align="right" text=""></u--text>
 		</view>
 		<view class="content">
 			<view class="card">
-				<view style="text-align: center;font-size: 16px;">我的邀请码</view>
+				<view style="text-align: center;margin: 10px 0;">
+					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+				</view>
 				<view class="footer">
-					<view>链接：<text>http://gasgdkadgal/455.html</text></view>
+					<view>群号：<text>http://gasgdkadgal/455.html</text></view>
 					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
 				</view>
+				<image src="/static/images/my/sq.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
 			<view class="card">
 				<view style="text-align: center;margin: 10px 0;">
