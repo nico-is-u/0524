@@ -1,9 +1,11 @@
 <template>
 	<view class="page2">
+
 		<!-- 装饰 -->
 		<view class="decoration"></view>
 		<!-- 标题 -->
-		<view class="h1">忘记密码</view>
+		<view class="h1" v-if="scene == 1">忘记密码</view>
+		<view class="h1" v-else>修改登录密码</view>
 
 		<!-- 表单部分 -->
 		<u--form
@@ -75,7 +77,8 @@
 			<u-button class="n-button" style="margin-top: 64rpx"  iconColor="#fff" text="提交" :loading="isLoading" @click="checkForm" :loadingText="regStatus"></u-button>
 
 			<view class="tips-row flex flex-x-center">
-				<view class="font-blue" @click="too('/pages/system-page/login')">返回登录</view>
+				<view class="font-blue" @click="too('/pages/system-page/login')" v-if="scene == 1">返回登录</view>
+				<view class="font-blue" @click="too('/pages/home-page/my_list')" v-else>返回个人中心</view>
 			</view>
 
 		</u--form>
@@ -87,6 +90,7 @@
 	export default {
 		data(){
 			return {
+				scene:1,						// 1：登录	2：个人中心
 				apiUrl:'',
 				captchaImage:'',				// 图形验证码 图片
 				isLoading:false,				// 请求等待
@@ -153,13 +157,13 @@
 					const {code = 0,data:resData = {}} = response
 					if(code == 200){
 						const _this = this
-						this.toa('已设置新的支付密码')
+						this.toa('已设置新的登录密码')
 						uni.setStorage({
 							data: 'need-reload-page',
 							key: "use-page-type",
 							success() {
 								setTimeout(() => {
-									_this.too('/pages/index/my', 'tab')
+									_this.too('/pages/index/my')
 								}, 1500)
 							}
 						})
@@ -175,6 +179,10 @@
 				}
 				
 			}
+		},
+		onLoad(options){
+			const {type = 1} = options
+			this.scene = type
 		},
 		mounted(){
 			const apiUrl = uni.getStorageSync('ok_api') || ''
