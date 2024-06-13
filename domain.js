@@ -68,51 +68,24 @@ var
   api_index = 0,
   api = '',
   api_list = [],
-  // def_api_list = ['https://api.zdrxm.com/'];
+  def_api_list = ['http://api.zcxjh.com/'],
   def_api = false,
   def_api_list = [
-    'https://api.kabapa.com/',
-    'https://api.dezete.com/',
-    'https://api.dezege.com/',
-    'https://api.cedehe.com/',
+    // 'https://api.kabapa.com/',
+    // 'https://api.dezete.com/',
+    // 'https://api.dezege.com/',
+    // 'https://api.cedehe.com/',
   ],
-  // oss_list = [
-  //   'https://e1652mydysx.oss4323-rg-china-mainland.aliyuncs.com/e1652ymyrrym.txt',
-  //   'https://e1652mydysx.oss-rg-china-mainland.aliyuncs.com/e1652ymyrrym.txt',
-  //   'https://ydysxe1652.oss-cn-shenzhen.aliyuncs.com/e1652szmymyrrym.txt',
-  //   'https://wsxy1908wsx.oss-rg-china-mainland.aliyuncs.com/y1908mymyrrym.txt',
-  //   'https://ysxy1908ysx.oss-cn-hangzhou.aliyuncs.com/y1908hzmymyrrym.txt',
-  //   'https://m1656jswsxwsx.oss-rg-china-mainland.aliyuncs.com/m1656wsxym.txt',
-  //   'https://dysxm1656.oss-cn-qingdao.aliyuncs.com/m1656qdopgym.txt',
-  //   'https://ossqny.yjtno.com/gf888ym.txt',
-  //   'https://niubei.fanglkj.com/gf888ym.txt',
-  //   'https://niudehua.mygcsm.com/gf888ym.txt',
-  // ]
-  // 'https://wsxy1908wsx.oss-rg-china-mainland.aliyuncs.com/y1908mymyrrym.txt',
-  // 'https://ysxy1908ysx.oss-cn-hangzhou.aliyuncs.com/y1908hzmymyrrym.txt',
-  // 'https://m1656jswsxwsx.oss-rg-china-mainland.aliyuncs.com/m1656wsxym.txt',
-  // 'https://dysxm1656.oss-cn-qingdao.aliyuncs.com/m1656qdopgym.txt',
-  // 'https://e1652mydysx.oss-rg-china-mainland.aliyuncs.com/e1652ymyrrym.txt',
-  // 'https://ydysxe1652.oss-cn-shenzhen.aliyuncs.com/e1652szmymyrrym.txt',
-  // 'https://ossqny.yjtno.com/gf888ym.txt',
-  // 'https://niubei.fanglkj.com/gf888ym.txt',
-    // 'https://ysxy1908ysx.oss-cn-hangzhou.aliyuncs.com/y1908hz
-    // 'https://m1656jswsxwsx.oss-rg-china-mainland.aliyuncs.com/m1656wsxym.txt',
-    // 'https://dysxm1656.oss-cn-qingdao.aliyuncs.com/m1656qdopgym.txt',
-    // 'https://e1652mydysx.oss-rg-china-mainland.aliyuncs.com/e1652ymyrrym.txt',
-    // 'https://ydysxe1652.oss-cn-shenzhen.aliyuncs.com/e1652szmymyrrym.txt',
-    // 'https://wsxy1908wsx.oss-rg-china-mainland.aliyuncs.com/y1908mymyrrym.txt',
-    // 'https://ysxy1908ysx.oss-cn-hangzhou.aliyuncs.com/y1908hzmymyrrym.txt'
   oss_list = [
-    'https://sadasdax.oss-cn-beijing.aliyuncs.com/1675bjxjckfym.txt',
-    'https://cvcvzwdw.oss-rg-china-mainland.aliyuncs.com/fshufh1675ym.txt',
-    'https://cbcbcbcb.oss-rg-china-mainland.aliyuncs.com/wu1654zzzym.txt',
-    'https://sfsfsf.oss-cn-zhangjiakou.aliyuncs.com/zjkyouyou1654ym.txt',
-    'https://jkjkjklllll.oss-cn-qingdao.aliyuncs.com/qdqdyou1656ym.txt',
-    'https://dasdaddsfs.oss-rg-china-mainland.aliyuncs.com/d1656dfbwuym.txt',
+    // 'https://sadasdax.oss-cn-beijing.aliyuncs.com/1675bjxjckfym.txt',
+    // 'https://cvcvzwdw.oss-rg-china-mainland.aliyuncs.com/fshufh1675ym.txt',
+    // 'https://cbcbcbcb.oss-rg-china-mainland.aliyuncs.com/wu1654zzzym.txt',
+    // 'https://sfsfsf.oss-cn-zhangjiakou.aliyuncs.com/zjkyouyou1654ym.txt',
+    // 'https://jkjkjklllll.oss-cn-qingdao.aliyuncs.com/qdqdyou1656ym.txt',
+    // 'https://dasdaddsfs.oss-rg-china-mainland.aliyuncs.com/d1656dfbwuym.txt',
 
-    'https://niubei.fanglkj.com/gf888ym.txt',
-    'https://ossqny.yjtno.com/gf888ym.txt',
+    // 'https://niubei.fanglkj.com/gf888ym.txt',
+    // 'https://ossqny.yjtno.com/gf888ym.txt',
   ],
   oss_index = 0
 
@@ -445,3 +418,6 @@ export default {
 // const strA = 'FzwyuDMFeLUpYACr0EzRDirfAm98oPETG6wa5Z7CIVw7/xszVJ2kCvVXG/0K/yVHxnW/tZd5TAeEJVMCDBBaCA==;'
 // console.log('测试解密')
 // console.log(JSON.parse(decryptCBC(strA)))
+
+console.log(encryptCBC("order/authPlaceOrder"))
+console.log(decryptCBC("K23/3Pm9fzyjiiK9xRYLdDGkOLruXQGk3AAWx6JmTwc="))
