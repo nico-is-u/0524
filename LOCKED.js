@@ -77,71 +77,43 @@ var PPPPPPPPPPPPYYYYYYYYYYYYY = '';
 X_____00101010101001011010101101.forEach(CCCCCCCCCCCCCCCCCCCC => {
 	PPPPPPPPPPPPYYYYYYYYYYYYY += CCCCCCCCCCCCCCCCCCCC
 })
+
+
+
+
+
+
+
 const xxxxxxxxxxxxxx = {
-	api_test: 'vZ1DN0UDQpwAEB/i4+EQcA==',
-	user_login: 'AT+m7+KVGhZ26+k857d+yA==',
-	user_register: 'IYKJ9SFR92FGM6ycz598hw==',
-	user_info: 'S7QDYSnZUHR3FJ4bp4uDqQ==',
-	user_real: 'uQCa32pPRBLQa1W3oGtd65G6TRryjCui9B77LCRIr6A=',
-	user_paypwd: '3w7hwTg8w4LQ8kVoudXr1QEzoMYSfsOcLmQgvUAzg2g=',
-	user_pay_list: 'p1YEG8JS5GNlN9Inz+QcnyVF6BA+Lxg7EjJFSArMrgo=',
-	user_top_up: 'Gp5NgPIaND18aX627h7t2w==',
-	user_sign: 'VeXcKs2CrdQaWlJUSc8ZdvBbEFZ6W2F+tQxqimohh6M=',
-	user_team: 'oWG7ZRtxUrwpS5G/GdzMRw==',
-	user_team_list: '8ZVGYK6DPnj8m3RRJMAVzP9tpihqHjUz2W3Y6xpcxbU=',
-	system_notice: 'j8TX/gISBUE0P+tvthwl7A==',
-	zc_recover_list: 'OC/Um9nQu2LehOthA/gy84qEQgHebdNXlHMfsS45/k0=',
-	zc_recover_subject: 'f3wHJt1t5ANm2ViAsJWeK4vegrJt/imhB07r36z+SP0=',
-	gf_baozhang: 'OC/Um9nQu2LehOthA/gy88uaLLMXBph2r+jrpddTZuI=',
-	gf_band_card: 'MzyTPpV2xxXW7Nunt9zDnu9nycvT7HXLW9I/QEBSHgA=',
-	project_list: '71Hese4weK2GJvXMnlUSq34zSNoKzmVDhiHnWCLTNss=',
-	system_news: 'whoqUKIwlRA39raRJJs9QGul/wX13/t9+5zKnbFMbXY=',
-	reg_check_code: '+s7CfH4/MYhyy0mSao2Lvcg6rI+mMIfhMeGRHjYDPuI=',
-	sys_share: '01lNxoSp1FQ0XIBp2GDmiA==',
-	sys_rank_list: 'QkNnpM+VLePAei/r5WHElA==',
-	bank_list: 'vfIspA5Dsl0Sjesx0rEy7YkbJH3oNW3W9NmfcuXBLp4=',
-	del_bank: 'vfIspA5Dsl0Sjesx0rEy7U6xY5kTd17wsnWo2k56sxs=',
-	balance_log: 'plZNV62dgdwhrpxKvKuOjw==',
-	order_log: 'Y4N8QW49b07mnkeU5pOTag==',
-	buy_project: 'is5+wsxioEWhzp7DMkGqgeo5Xhidr3mMMpYLHMtgUC0=',
-	user_draw: 'wTGz3KuLWNUyjR/2GtPDDR7tQitFgX2aW684cBGUVK8=',
-	system_info: 'whoqUKIwlRA39raRJJs9QEqAecYdeH/rFZALa8yFBao=',
-	get_xinafu_houfu: 'LvxxJX2JG4l2UpLk4km7qEiszHURP6Cvk5u6OLjFoSk=',
-	sys_transAccount: 'rC+dWqQCK0l2BuKbzSVXDUDh5A08UZOYbOQUwcODWZ8=',
-	gf_bz_list: 'OC/Um9nQu2LehOthA/gy88uaLLMXBph2r+jrpddTZuI=',
-	buy_gf_det: 'Cnp2jYEE5K2S9GMczSzvxr16ja+7sCqEIfptoN3olGc=',
-	qq_address: 'vo3aqnUE8Y05v7mAXEoiArSEwBscDqMAxL5Ls9QNyu8=',
-	up_load_file: '8E/uZJ+ZkT1tnU4jyugf4brxWDuE+NNzu6gt3L6BedA=',
-	usr_avatar: "Eff0TSmQOVGdKCOM2tTKdA==",
-	usr_sg_log: 'LJ9m5r3fi/lkT5knmrY8quVk3v052+dDqkdIsoVJPx8=',
-	live_my: '6Z2rAOdSnWwpa+MUmWIg9Y2YpUm4GgYEpEY5YjrZRzg=',
-	odzc_det: '9yTeHoDsU0ClaZrRBLwJWvTHV4PNb2MfAMCqzWNrVU0=',
-	czotxli: 'dEz88eNIw4c89JafFlzEA1ksuHsLpVk897gWEgAueTU=',
-  user_draw_purse:'wTGz3KuLWNUyjR/2GtPDDezP19Fvwrgq09pUjW83syA=',
-  user_balancelog_purse:'ilPgmYe4EQu18hssvaP0W/pXYfXTzXEnDGhqYQ1takw=',
-  auth_place_order:'K23/3Pm9fzyjiiK9xRYLdDGkOLruXQGk3AAWx6JmTwc=',
-  auth_order_list:'u3WSZWSxwK4/Y11UIGrXrus1jONjXuIwnwz6mTIYefA=',
-	buy_shop: 'G3BhMtKtz7FmpL+Mw9+3xxR/XC7knIhgB1A8d4mIi8U=',
-	scnytoshop: 'wTGz3KuLWNUyjR/2GtPDDUKNRm6P/TekmutE74N7Owk=',
-	ecnytobank: 'wTGz3KuLWNUyjR/2GtPDDZmnMCARzxhy/F0GRxkkYtY=',
-	hmasetls: 'OC/Um9nQu2LehOthA/gy878Xi6ibSGbywbuosIN4rKc=',
-	liuzhuanls: 's0TwTIGrgYOXY+C4Oo7An58JZpxcGys/TO86T5CpK3o=',
-	encylistsi: '+irKZew+63pkzxSHWSQsModfQSUgJQ/ada6mZr033gk=',
-	noticehm: '93NMluOs0z3bslmRw+Y79gCPItylePycMBoPMXcLKbw=',
-	shuiwuwiyls: '22v3UMK0tZroLExI/YKnoTjbE4960CxQWFsviGIwxK8=',
-	buyshuiwuqu: '/bg/yvPOOKBg5CkwsQVbkEZ0BhLnc7IZe4/bSXbwmRU=',
-	gongfuzhuansk: 'Xzg0jH3ua2xuFqTASqk6xuCimUNYxcbwLFuJJwHZWQo=',
-	getgfkfqw3dsa: 'qBCSxWIei8mo33GYdhOYJI1ME2QYm8pqYmg7pZajQ50=',
-	getylqgfbzk: 'Xzg0jH3ua2xuFqTASqk6xk9qq3Fdhcuj14sqdEu/Q74=',
-	xiaoxilists: 'OjgC5ggVj21NRRO9BhGDr3r/ZPYFUM9pima1ur2caP8=',
-	yiduzhannxx: 'Sl99Lyn6t/enrZSmChatkQXc4J6qPpNDz3/KxxnEGSY=',
-	dsiafdgkjsas: 'Xbouw+1KuKDxYKFSWLFecAZxKPTvzIKGgbUl7hgJc7Y=',
-	gtsrhgfdshgw: 'jy2esdEo0As8nM66XttNSnRu/MBZ4E3MOZvQVtSLQpQ=',
-	ckisopencard: 'qBCSxWIei8mo33GYdhOYJEzluyz8WrRoMFBsOI1yfng=',
-	qiniutoken: '3OMiHvMU4KMv41mg1b6kVA==',
+	// 测试接口
+	api_test:'vZ1DN0UDQpwAEB/i4+EQcA==',
+	// 用户信息
+	user_info:'S7QDYSnZUHR3FJ4bp4uDqQ==',
+	// 拉取验证码
+	system_captcha:'+s7CfH4/MYhyy0mSao2Lvcg6rI+mMIfhMeGRHjYDPuI=',
+	// 用户登录，注册，修改登录密码
+	user_login:'AT+m7+KVGhZ26+k857d+yA==',
+	user_register:'IYKJ9SFR92FGM6ycz598hw==',
+	user_paypwd:'3w7hwTg8w4LQ8kVoudXr1QEzoMYSfsOcLmQgvUAzg2g=',
+	// 诺亚方舟首页
+	nyfz_info:'4T88shOj23oenaAW1n7oxw==',
+	/* 诺亚方舟 - 释放列表 / 申请记录 */
+	nyfz_list:'J/lnmpC9icaduKru7OPx33awe023I/cXAWaBAIixcBk=',
+	// 诺亚方舟 提交申请
+	nyfz_request:'7jg8vzDY7mh4/DKBB1PGIw==',
+	// 诺亚方舟 申请凭证上传
+	nyfz_upload:'+f6jtXuq7jhZlP4RvytRXjDfpTrvsiUcRPHZNlhDrV8=',
+	// K线数据
+	k_line:'TIds/F4atC+GhcKjXhNWRw==',
+	// 币种数据
+	c_list:'8gxO1T/OPRbSy4XJuR6xq43buN/60JmyHdA4NQ01nEo=',
+	// 收货地址
+	shdz_list:'ra2J3vjXDKQYlr+fSQ4bORHoHT6deJsBMu0IpwlUkFM=',
+	// 收货地址 - 新增编辑
+	shdz_info:'3yYvYuhobND7mvxacBz4u8ovJZ+GrRsI1z/m/h3cza4=',
+	// 实名认证
+	user_real:'uQCa32pPRBLQa1W3oGtd65G6TRryjCui9B77LCRIr6A=',
+	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
-	gongzhengxiixijielk: 'v1u67R98+xBGUG3mgcLNjYdnNAJRKz7b2PaQmQ0njfs=',
-	xaidanxiadanxiadan: 'v1u67R98+xBGUG3mgcLNjZMp0wRAdGUa1DWtH3T4Yps=',
-	lilislsfhkasddsadd:'v1u67R98+xBGUG3mgcLNjRBzfv48xqLbP/iICpHVCSM='
 }
 export default xxxxxxxxxxxxxx
