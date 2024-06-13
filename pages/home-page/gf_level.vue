@@ -6,7 +6,7 @@
 			<u--text color="#fff" bold align="center" text="等级提升"></u--text>
 			<u--text color="#d7d7d7" align="right" text=""></u--text>
 		</view>
-		<u-swiper previousMargin="30"
+		<u-swiper previousMargin="30" bgColor="#40496F"
                 nextMargin="30"
                 circular :list="list1" @change="change" @click="click"></u-swiper>
 	</view>
@@ -43,7 +43,7 @@
 	}
 .container{
 		padding-bottom: 20px;
-		background: linear-gradient( 166deg, #40496F 0%, #1C2D55 100%);
+		background: #40496F;
 		min-height: 100vh;
 	}
 </style>
