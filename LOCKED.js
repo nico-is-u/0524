@@ -125,6 +125,9 @@ const xxxxxxxxxxxxxx = {
 	bank_del:'vfIspA5Dsl0Sjesx0rEy7U6xY5kTd17wsnWo2k56sxs=',
 	// 充值列表
 	capital_record:'dEz88eNIw4c89JafFlzEA1ksuHsLpVk897gWEgAueTU=',
+	// 团队信息
+	team_info:'oWG7ZRtxUrwpS5G/GdzMRw==',
+
 
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
