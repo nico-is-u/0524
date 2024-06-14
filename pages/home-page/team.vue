@@ -7,17 +7,17 @@
                 <view class="menu-card">
                     <view class="menu-item">
                         <view class="label">团队人数</view>
-                        <view class="value">1</view>
+                        <view class="value">{{ teamInfo.level1_total + teamInfo.level2_total + teamInfo.level3_total || 1}}</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
                         <view class="label">我的等级</view>
-                        <view class="value">1</view>
+                        <view class="value">{{ userInfo.level || 1 }}</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
                         <view class="label">我的奖励</view>
-                        <view class="value">1</view>
+                        <view class="value">{{ teamInfo.invite_bonus_sum || '0' }}</view>
                     </view>
                 </view>
 
@@ -32,45 +32,33 @@
                 <view class="level-member-info">
                     <view class="inner flex flex-y-center">
                         <image src="/static/images/42.png" mode="widthFix"></image>
-                        <text>层级人员：3</text>
+                        <text>层级人员：{{ teamList.length || '' }}</text>
                     </view>
                 </view>
 
                 <!-- 人员列表 -->
                 <view class="level-member-list">
-                    <view class="n-card">
+                    <view class="n-card" v-for="(item,index) in teamList" :key="level + '-' +index">
                         <view class="row">
                             <view class="label">用户名:</view>
                             <view class="value">
-                                <text>jessmen</text>
-                                <image src="/static/images/43.png" style="width:82rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <text>{{item.realname || ''}}</text>
+                                <image v-if="item.level == 0" src="/static/images/21.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 1" src="/static/images/22.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 2" src="/static/images/23.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 3" src="/static/images/24.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 4" src="/static/images/25.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
                             </view>
                         </view>
 
                         <view class="row">
                             <view class="label">联系方式:</view>
                             <view class="value">
-                                <text>120654989</text>
+                                <text>{{item.phone || ''}}</text>
                             </view>
                         </view>
                     </view>
 
-                    <view class="n-card">
-                        <view class="row">
-                            <view class="label">用户名:</view>
-                            <view class="value">
-                                <text>jessmen</text>
-                                <image src="/static/images/43.png" style="width:82rpx; margin-left: 12rpx;" mode="widthFix"></image>
-                            </view>
-                        </view>
-
-                        <view class="row">
-                            <view class="label">联系方式:</view>
-                            <view class="value">
-                                <text>120654989</text>
-                            </view>
-                        </view>
-                    </view>
                 </view>
 
             </view>
@@ -89,7 +77,9 @@ export default {
             isLoading:false,				// 请求等待
             regStatus: '正在请求...',		 // loading text
 
-            teamList:false,                 // 团队信息
+            userInfo:false,                 // 用户信息
+            teamInfo:false,                 // 团队信息
+            teamList:false,                 // 团队列表
             level:1,
         }
     },
@@ -100,8 +90,7 @@ export default {
                 const {code,data={}} = response
 
                 if(code == 200){
-                    console.log('here?')
-                    console.log(data)
+                    this.teamInfo = data
                 }else{
                 }
 
@@ -130,11 +119,12 @@ export default {
         },
         changeLevel(level){
             this.level = level
-            this.getData()
+            this.getDataList()
         }
     },
     onLoad(){
         this.getDataInfo()
+        this.userInfo = uni.getStorageSync("user_info") || {}
     }
 }
 </script>
