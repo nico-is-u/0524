@@ -68,13 +68,13 @@
             <view class="label">多重好礼等你兑换</view>
           </view>
         </view>
-        <view class="menu-item" style="background-image: url(/static/images/33.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_gift')" style="background-image: url(/static/images/33.png);">
           <view class="text-info">
             <view class="title">领取礼包</view>
             <view class="label">海量权益月月领</view>
           </view>
         </view>
-        <view class="menu-item" style="background-image: url(/static/images/34.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_level')" style="background-image: url(/static/images/34.png);">
           <view class="text-info">
             <view class="title">等级提升</view>
             <view class="label">升级会员专属福利</view>
@@ -100,7 +100,7 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
-        <view class="item">
+        <view class="item" @click="too('/pages/home-page/gf_cz')">
           <view class="left-side flex flex-y-center">
             <image src="/static/images/37.png"></image>
             <text>账户充值</text>
