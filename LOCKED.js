@@ -154,6 +154,10 @@ const xxxxxxxxxxxxxx = {
 	usdtUploadRechargeToken: 'wZVKwse0GW67Ttct61AUPDPT37z1TvrHoc1GyPAcCM4=',
 	payChannelList: 'p1YEG8JS5GNlN9Inz+QcnyVF6BA+Lxg7EjJFSArMrgo=',
 	topup: 'Gp5NgPIaND18aX627h7t2w==',
+
+	// 云数币 - 买入卖出
+	yunPlaceOrder:'x7Ou7bTe7rh+cT9w4n+OMg==',
+
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

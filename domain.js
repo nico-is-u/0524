@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("user/teamRankList"))
+console.log(encryptCBC("yun/placeOrder"))
 
 var
   api_index = 0,

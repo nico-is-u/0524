@@ -48,11 +48,45 @@
 				"navigationStyle": "custom"
 			}
 		},
-		//数字魅力
+		// 云数币 - 买入卖出
+		{
+			"path": "pages/index/ysb-mrmc",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
+		// 数字魅力 - 存币生息
 		{
 			"path": "pages/index/szml",
 			"style": {
 				"navigationBarTitleText": "数字魅力",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 数字魅力 - 理财产品
+		{
+			"path": "pages/index/szml-2",
+			"style":{
+				"navigationBarTitleText": "数字魅力",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 数字魅力 - 存币生息 - 订单列表
+		{
+			"path":"pages/index/szml-order-list",
+			"style":{
+				"navigationBarTitleText": "订单列表",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 数字魅力 - 理财产品 - 订单列表
+		{
+			"path":"pages/index/szml-2-order-list",
+			"style":{
+				"navigationBarTitleText": "订单列表",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
 			}
@@ -625,7 +659,7 @@
 		},
 		"enablePullDownRefresh": false,
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "共富工程",
+		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#0182EF",
 		"backgroundColor": "#B80606"
 	},

@@ -398,7 +398,7 @@
 			min-height: 72rpx;
 			box-sizing: border-box;
 			background-color: #F9F9F9;
-			border-radius: 6rpx;
+			border-radius: 12rpx;
 
 			display: flex;
 			align-items: center;
@@ -407,17 +407,20 @@
 				width: 100%;
 				height: auto;
 			}
+
 			.input-placeholder{
-				font-size: 24rpx;
+				font-size: 26rpx;
 				color: #C3C3C3;
 				padding-left: 32rpx;
 			}
+
 			.uni-input-input{
 				font-size: 26rpx;
 				width: calc(100% - 64rpx);
 				padding: 18rpx 0;
 				margin-left: 32rpx;
 			}
+
 			&.without-bg{
 				background-color: inherit;
 			}
@@ -445,6 +448,14 @@
 				
 			}
 		}
+
+		.form-tips{
+			display: flex;
+			justify-content: space-between;	
+
+			padding: 0 32rpx;
+		}
+
 	}
 
 	/* 悬浮按钮 */
@@ -565,8 +576,6 @@
 
 	/* tab菜单 样式1 */
 	.tab-menu-type-1{
-		border-top-left-radius: 16rpx;
-		border-top-right-radius: 16rpx;
 		overflow: hidden;
 		.menu-item{
 			width: 50%;
@@ -595,6 +604,7 @@
 		}
 
 		.menu-item-1{
+			border-top-left-radius: 16rpx;
 			.triangle{
 				width: 0;
 				height: 0;
@@ -611,6 +621,7 @@
 		}
 
     	.menu-item-2{
+			border-top-right-radius: 16rpx;
 			.triangle{
 				width: 0;
 				height: 0;
@@ -631,7 +642,7 @@
 	.tab-menu-type-2{
 		display: flex;
 		align-content: center;
-		font-size: 26rpx;
+		font-size: 28rpx;
 		.menu-item{
 			display: flex;
 			flex-direction: column;
@@ -640,6 +651,9 @@
 			padding: 0 12rpx;
 			&.active{
 				color: #222;
+				font-size: 30rpx;
+				font-weight: bold;
+				transform: translateY(-2rpx);
 			}
 		}
 		.menu-item-first{
@@ -647,6 +661,128 @@
 			align-items: flex-start;
 		}
 	}
+
+	/* K线页面 头部 */
+	.k-line-head {
+		height: 636rpx;
+		background-image: url('/static/images/9.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		padding-top: 10rpx;
+		color: #fff;
+
+		.k-line-shell{
+			margin-top: 18rpx;
+			padding: 0 32rpx;
+			.k-line-box{
+				height: 484rpx;
+				// border-radius: 24rpx;
+				background-color: white;
+				padding: 12rpx 0 24rpx 20rpx;
+				color: #999;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				.title-info{
+					color: #999;
+					font-size: 20rpx;
+				}
+
+				.menu-list{
+					display: flex;
+					flex-wrap: wrap;
+
+					margin-top: 16rpx;
+
+					.item{
+						display: flex;
+
+						width: 33.33%;
+						font-size: 20rpx;
+
+						margin-bottom: 6rpx;
+
+						.label{
+							width: 50rpx;
+							color: #999;
+
+							display: flex;
+							justify-content: space-between;
+						}
+
+						.text{
+							margin-left: 18rpx;
+						}
+					}
+				}
+
+				.menu-list-2{
+					margin-top: 16rpx;
+					font-size: 24rpx;
+
+					display: flex;
+					justify-content: space-between;
+
+					padding: 0 24rpx 0 0;
+					.menu-item{
+						width: 92rpx;
+						height: 44rpx;
+
+						color: #7A7079;
+						background-color: #F4F4F4;
+
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						&.more{
+							image{
+								width: 20rpx;
+							}
+						}
+
+						&.active{
+							color: black;
+							font-weight: bold;
+						}
+
+					}
+				}
+
+				/* K线插件 */
+				.chart-shell{
+					position: relative;
+					padding-right: 24rpx;
+					#chart,#chart-loading{
+						height: 380rpx;
+						margin-top: 16rpx;
+					}
+
+					#chart-loading{
+						position: absolute;
+						width: 100%;
+						height: 100%;
+
+						top: 0;
+						left: 0;
+						
+						background-color: white;
+						z-index: 100;
+					}
+				}
+
+				/* 顶部需要渲染tab菜单 */
+				&.with-tab-menu{
+					border-top-left-radius: 0;
+					border-top-right-radius: 0;
+				}
+			}
+		}
+	}
+
 
 	/* 注解信息 */
 	.tips-row{
