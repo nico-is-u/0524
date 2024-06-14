@@ -529,6 +529,35 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/home-page/gf_cz",
+			"style" : 
+			{
+				"navigationBarTitleText" : "在线充值",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_ucz",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/home-page/gf_ugm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "购买USDT",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle":"black",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

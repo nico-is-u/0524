@@ -3,33 +3,24 @@
 		<view class="back_head" @click="too('/','bac')">
 			<u--text prefixIcon="arrow-left" iconStyle="font-size: 38rpx;color:#000" color="#ebebeb" align="left"
 				text=""></u--text>
-			<u--text color="#000" bold align="center" text="邀请好友"></u--text>
+			<u--text color="#000" bold align="center" text="USDT充值"></u--text>
 			<u--text color="#d7d7d7" align="right" text=""></u--text>
 		</view>
 		<view class="content">
 			<view class="card">
-				<view style="text-align: center;font-size: 16px;font-weight: bold;">我的邀请码</view>
-				<view class="code">
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-				</view>
-				<view class="footer">
-					<view>链接：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
-				</view>
-			</view>
-			<view class="card">
-				<view style="text-align: center;font-size: 16px;font-weight: bold;">邀请邀请码</view>
-				<view style="text-align: center;margin: 10px 0;">
+				<view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">该地址仅支持TRX/TRC20相关资产</view>
+				<view style="text-align: center;margin: 20px 0;">
 					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
 				</view>
-				<view class="btn">保存二维码</view>
+				<view class="footer">
+					<view>接收地址：<text>http://gasgdkadgal/455.html</text></view>
+				</view>
+				<view class="footer1">
+					<view><image src="/static/images/my/fx.png" style="width: 20px;margin-right: 5px;" mode="widthFix"></image>分享</view>
+					<view @click="copy('http://gasgdkadgal/455.html')"><image src="/static/images/my/fz.png" style="width: 20px;margin-right: 5px;" mode="widthFix"></image>复制</view>
+				</view>
 			</view>
+			<view class="btn">转账凭证提交</view>
 		</view>
 	</view>
 </template>
@@ -52,32 +43,29 @@
 </script>
 
 <style lang="scss">
-	.btn{
-		background: linear-gradient( 90deg, #2E9FFF 0%, #0182EF 100%);
-		border-radius: 36px 36px 36px 36px;
-		color: #fff;
-		width: 80%;
-		text-align: center;
-		margin: 0 auto;
-		padding: 5px 20px;
-	}
-	.code{
-		display: grid;
-		grid-template-columns: repeat(7,1fr);
-		text-align: center;
-		grid-gap: 10px;
-		margin: 15px 0;
+	.footer1{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0 0 0;
 		>view{
-			background: #F9F9F9;
-			width: 100%;
-			aspect-ratio: 1/1;
+			flex: 1;
 			display: flex;
-			align-items: center;
 			justify-content: center;
-			font-size: 24px;
-			color: #0182EF;
-			border-radius: 8px;
+			align-items: center;
 		}
+		>view + view{
+			border-left: 1px solid #d9d9d9;
+		}
+	}
+.btn{
+		background: linear-gradient( 90deg, #2E9FFF 0%, #0182EF 100%);
+		margin-top: 20px;
+		border-radius: 8px;
+		color: #fff;
+		width: 100%;
+		text-align: center;
+		padding: 10px 20px;
 	}
 	.footer{
 		background: #F2F7FB;
