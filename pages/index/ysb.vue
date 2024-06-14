@@ -156,6 +156,7 @@ export default {
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
 			bar:'30m',
 			cList:[],									// 币种列表
+			intervalId:null,
 		}
 	},
 	computed:{
@@ -276,9 +277,17 @@ export default {
 		/* 重新拉取K线 */
 		this.getKLineDatas()
 		if(this.scene == 'index'){
+			/* 轮询币种数据 */
 			this.getCDatas()
+			this.intervalId = setInterval(this.getCDatas, 5000)
 		}
 	},
+	beforeDestroy(){
+		if (this.intervalId) {
+			clearInterval(this.intervalId)
+			this.intervalId = null
+		}
+	}
 }
 </script>
 

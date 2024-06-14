@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("user/team"))
+console.log(encryptCBC("user/teamRankList"))
 
 var
   api_index = 0,
@@ -357,7 +357,6 @@ export default {
 				}
 				parseRes = decryptCBC(res.data.c)
 			  }
-			  console.log(encryptCBC('common/systemInfoList'));
 			  if (api == 'https://api.zcxjh.com/') {
 				console.log("==========请求" + ウホア + "成功==========");
 				console.log("==========请求参数：" + JSON.stringify(b) + "，解密结果==========");

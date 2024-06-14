@@ -132,6 +132,10 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
+        <view class="item">
+          <u-button class="n-button n-button-3" text="退出登录" @click="userLogout" ></u-button>
+        </view>
+
       </view>
 
     </view>
@@ -172,6 +176,20 @@ export default {
         })
 
       })
+    },
+    userLogout(){
+      const _this = this
+      uni.showModal({
+        title: '提示',
+        content: '是否要退出登录',
+        success(res) {
+          if (res.confirm) {
+            uni.removeStorageSync('TK')
+            _this.too('/pages/system-page/login')
+          }
+        }
+      })
+
     },
   },
   onShow() {

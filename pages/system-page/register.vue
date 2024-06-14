@@ -166,7 +166,7 @@
 						const _this = this
 						setTimeout(() => {
 							this.regStatus = '正在登录...'
-							uni.setStorage({
+							uni.setStorageSync({
 								data: resData.token,
 								key: "TK",
 								success() {

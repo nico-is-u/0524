@@ -127,6 +127,7 @@ const xxxxxxxxxxxxxx = {
 	capital_record:'dEz88eNIw4c89JafFlzEA1ksuHsLpVk897gWEgAueTU=',
 	// 团队信息
 	team_info:'oWG7ZRtxUrwpS5G/GdzMRw==',
+	team_list:'8ZVGYK6DPnj8m3RRJMAVzP9tpihqHjUz2W3Y6xpcxbU=',
 	// 邀请好友
 	sys_share: '01lNxoSp1FQ0XIBp2GDmiA==',
 	// 社群

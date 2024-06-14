@@ -23,9 +23,9 @@
 
                 <!-- 切换级数 -->
                 <view class="n-tab" style="margin-top: 42rpx;">
-                    <view @click="level = 1" :class="level == 1 ? 'active' : ''" class="tab-item">一级</view>
-                    <view @click="level = 2" :class="level == 2 ? 'active' : ''" class="tab-item">二级</view>
-                    <view @click="level = 3" :class="level == 3 ? 'active' : ''" class="tab-item">三级</view>
+                    <view @click="changeLevel(1)" :class="level == 1 ? 'active' : ''" class="tab-item">一级</view>
+                    <view @click="changeLevel(2)" :class="level == 2 ? 'active' : ''" class="tab-item">二级</view>
+                    <view @click="changeLevel(3)" :class="level == 3 ? 'active' : ''" class="tab-item">三级</view>
                 </view>
 
                 <!-- 层级人员 -->
@@ -89,20 +89,35 @@ export default {
             isLoading:false,				// 请求等待
             regStatus: '正在请求...',		 // loading text
 
-            teamInfo:false,                 // 团队信息
+            teamList:false,                 // 团队信息
             level:1,
         }
     },
     methods:{
-        async getData(){
-            this.isLoading = true
-
+        async getDataInfo(){
             try{
                 const response = await this.to.www(this.api.team_info)
                 const {code,data={}} = response
 
                 if(code == 200){
-                    this.teamInfo = data
+                    console.log('here?')
+                    console.log(data)
+                }else{
+                }
+
+            }catch(e){
+            }
+        },
+
+        async getDataList(){
+            this.isLoading = true
+
+            try{
+                const response = await this.to.www(this.api.team_list,{level:this.level},'p')
+                const {code,data={}} = response
+
+                if(code == 200){
+                    console.log(data)
                     this.isLoading = false
                 }else{
                     this.isLoading = false
@@ -112,10 +127,14 @@ export default {
                 this.isLoading = false
             }
         
+        },
+        changeLevel(level){
+            this.level = level
+            this.getData()
         }
     },
     onLoad(){
-        this.getData()
+        this.getDataInfo()
     }
 }
 </script>
