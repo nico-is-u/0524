@@ -10,25 +10,26 @@
 			<view class="card">
 				<view style="text-align: center;font-size: 16px;font-weight: bold;">我的邀请码</view>
 				<view class="code">
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
-					<view>1</view>
+					<view>{{user_info.invite_code[0]}}</view>
+					<view>{{user_info.invite_code[1]}}</view>
+					<view>{{user_info.invite_code[2]}}</view>
+					<view>{{user_info.invite_code[3]}}</view>
+					<view>{{user_info.invite_code[4]}}</view>
+					<view>{{user_info.invite_code[5]}}</view>
+					<view>{{user_info.invite_code[6]}}</view>
 				</view>
 				<view class="footer">
-					<view>链接：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
+					<view style="flex: 8;">链接：
+					<text>{{code.url}}</text></view>
+					<view style="color: #0182EF;flex: 1;" @click="copy(code.url)">复制</view>
 				</view>
 			</view>
 			<view class="card">
 				<view style="text-align: center;font-size: 16px;font-weight: bold;">邀请邀请码</view>
 				<view style="text-align: center;margin: 10px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="code.img" style="width: 150px;" mode="widthFix"></image>
 				</view>
-				<view class="btn">保存二维码</view>
+				<view class="btn" @click="copy(user_info.invite_code)">保存二维码</view>
 			</view>
 		</view>
 	</view>
@@ -38,7 +39,13 @@
 	export default {
 		data() {
 			return {
-				
+				user_info: {
+					invite_code: '.......'
+				},
+				code: {
+					url: '',
+					img:''
+				}
 			};
 		},
 		methods: {
@@ -48,6 +55,24 @@
 				})
 			}
 		},
+		onLoad() {
+			this.to.www(this.api.sys_share)
+				.then(res => {
+					this.code = res.data
+				})
+			this.to.www(this.api.user_info)
+				.then(res => {
+					this.user_info = res.data;
+					uni.setStorage({
+						data: this.user_info,
+						key: 'user_info'
+					});
+					uni.setStorage({
+						data: 'first-launch',
+						key: "need-reload-page"
+					})
+				})
+		}
 	}
 </script>
 
@@ -84,6 +109,7 @@
 		border-radius: 4px 4px 4px 4px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		padding: 10px;
 		font-weight: bold;
 		text{

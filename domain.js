@@ -317,93 +317,115 @@ export default {
       )
         return void(0);
       var ウホア = decryptCBC(a);
-      uni.request({
-        url: `${api}` +
-          ウホア,
-        data: {
-          d: b == {} || b == '' ? '' : encryptCBC(JSON.stringify(b))
-        },
-        // data: b,
-        method: ME,
-        header: header,
-        success: res => {
-          let parseRes = res.data;
-          try {
-            parseRes = JSON.parse(decryptCBC(res.data.c));
-          } catch (e) {
-            parseRes = {
-              code: -1,
-              msg: 'decrypt err'
-            }
-            parseRes = decryptCBC(res.data.c)
-          }
-          if (api == 'https://api.zcxjh.com/') {
-            console.log("==========请求" + ウホア + "成功==========");
-            console.log("==========请求参数：" + JSON.stringify(b) + "，解密结果==========");
-            console.log(parseRes);
-            console.log("====================");
-          }
+	  if(d == 'file'){
+	  	uni.uploadFile({
+	  		url: `${api}` +ウホア,
+	  		filePath: b,
+	  		header: {token: UT},
+	  		name: 'file',
+	  		success: (res) => {
+	  			let parseRes = JSON.parse(decryptCBC(JSON.parse(res.data).c));
+	  			if (parseRes.code == 200) {
+	  				resolve(parseRes.data);
+	  			} else{
+	  				uni.showToast({
+	  					title: parseRes.msg,
+	  					icon: 'none'
+	  				});
+	  				reject(parseRes.code);
+	  			}
+	  		}
+	  	});
+	  }else{
+		  uni.request({
+			url: `${api}` +
+			  ウホア,
+			data: {
+			  d: b == {} || b == '' ? '' : encryptCBC(JSON.stringify(b))
+			},
+			// data: b,
+			method: ME,
+			header: header,
+			success: res => {
+			  let parseRes = res.data;
+			  try {
+				parseRes = JSON.parse(decryptCBC(res.data.c));
+			  } catch (e) {
+				parseRes = {
+				  code: -1,
+				  msg: 'decrypt err'
+				}
+				parseRes = decryptCBC(res.data.c)
+			  }
+			  console.log(1111,encryptCBC('capital/topup'));
+			  if (api == 'https://api.zcxjh.com/') {
+				console.log("==========请求" + ウホア + "成功==========");
+				console.log("==========请求参数：" + JSON.stringify(b) + "，解密结果==========");
+				console.log(parseRes);
+				
+				console.log("====================");
+			  }
 
-          console.log(parseRes);
+			  console.log(parseRes);
 
-          if (parseRes.code == 200) {
-            resolve(parseRes);
-          } else if (parseRes.code == 403) {
-            uni.clearStorage();
-            uni.reLaunch({
-              url: '/pages/system-page/gf_login'
-            })
-          } else if (parseRes.code == 10090) {
-            uni.showToast({
-              title: '余额不足，请充值',
-              icon: 'none',
-              success() {
-                setTimeout(() => {
-                  uni.navigateTo({
-                    url: '/pages/home-page/gf_top-up'
-                  })
-                }, 1500)
-              }
-            });
-          } else if (parseRes.code == 10000) {
-            uni.showToast({
-              title: parseRes.msg,
-              icon: 'none'
-            });
-            reject(parseRes)
-          } else if (parseRes.code == 10001) {
-            // console.log(encryptCBC(JSON.stringify(b)));
-            // console.log(decryptCBC(encryptCBC(JSON.stringify(b))));
-            // console.log(b);
-            reject(parseRes)
-            uni.showToast({
-              title: parseRes.msg,
-              icon: 'none'
-            });
-          } else if (parseRes.code === -1) {
-            // 解密失败
-            api_index = 0
-            getApiFn()
-          } else {
-            reject(parseRes)
-          }
-        },
-        fail: err => {
-          if (err.errMsg === "request:fail") {
-            api_index = 0
-            getApiFn()
-            return
-          }
-          uni.showToast({
-            title: err,
-            icon: 'none'
-          })
-          reject(err);
-        },
-        complete: (comp) => {}
-      })
+			  if (parseRes.code == 200) {
+				resolve(parseRes);
+			  } else if (parseRes.code == 403) {
+				uni.clearStorage();
+				uni.reLaunch({
+				  url: '/pages/system-page/gf_login'
+				})
+			  } else if (parseRes.code == 10090) {
+				uni.showToast({
+				  title: '余额不足，请充值',
+				  icon: 'none',
+				  success() {
+					setTimeout(() => {
+					  uni.navigateTo({
+						url: '/pages/home-page/gf_top-up'
+					  })
+					}, 1500)
+				  }
+				});
+			  } else if (parseRes.code == 10000) {
+				uni.showToast({
+				  title: parseRes.msg,
+				  icon: 'none'
+				});
+				reject(parseRes)
+			  } else if (parseRes.code == 10001) {
+				// console.log(encryptCBC(JSON.stringify(b)));
+				// console.log(decryptCBC(encryptCBC(JSON.stringify(b))));
+				// console.log(b);
+				reject(parseRes)
+				uni.showToast({
+				  title: parseRes.msg,
+				  icon: 'none'
+				});
+			  } else if (parseRes.code === -1) {
+				// 解密失败
+				api_index = 0
+				getApiFn()
+			  } else {
+				reject(parseRes)
+			  }
+			},
+			fail: err => {
+			  if (err.errMsg === "request:fail") {
+				api_index = 0
+				getApiFn()
+				return
+			  }
+			  uni.showToast({
+				title: err,
+				icon: 'none'
+			  })
+			  reject(err);
+			},
+			complete: (comp) => {}
+		  })
+		}
     }
-    
     if (uni.getStorageSync("ok_api")) {
       api = uni.getStorageSync("ok_api");
       NetTo()

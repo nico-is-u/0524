@@ -9,21 +9,21 @@
 		<view class="content">
 			<view class="card">
 				<view style="text-align: center;margin: 10px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="obj.img1" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>群号：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
+					<view>群号：<text>{{obj.group_num_1}}</text></view>
+					<view style="color: #0182EF;" @click="copy(obj.group_num_1)">复制</view>
 				</view>
 				<image src="/static/images/my/sq.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
 			<view class="card">
 				<view style="text-align: center;margin: 10px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="obj.img2" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>群号：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
+					<view>群号：<text>{{obj.group_num_2}}</text></view>
+					<view style="color: #0182EF;" @click="copy(obj.group_num_2)">复制</view>
 				</view>
 				<image src="/static/images/my/sq.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
@@ -35,7 +35,10 @@
 	export default {
 		data() {
 			return {
-				
+				obj: {
+					img1: '',
+					img2: '',
+				}
 			};
 		},
 		methods: {
@@ -45,6 +48,14 @@
 				})
 			}
 		},
+		onLoad() {
+			this.to.www(this.api.shequn)
+				.then(res => {
+					this.obj = res.data.data;
+					this.obj.img1 = uni.getStorageSync("ok_api") + this.obj.img1;
+					this.obj.img2 = uni.getStorageSync("ok_api") + this.obj.img2;
+				})
+		}
 	}
 </script>
 

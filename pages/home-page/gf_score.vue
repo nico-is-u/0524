@@ -19,56 +19,39 @@
 		</view>
 		<view class="content">
 			<view class="list">
-				<view class="list-item">
-					<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
+				<view class="list-item" v-for="(item,index) in list" :key="index">
+					<image :src="item.cover_img" style="width: 100%;" mode="widthFix"></image>
 					<view>
-						<view>100元加油卡</view>
-						<view>兑换要求：兑换要求兑换要求兑换要求</view>
+						<view>{{item.name}}</view>
+						<view>兑换要求：{{item.description}}</view>
 						<view>
 							<view class="ad">
 								<image src="/static/images/my/coin.png" style="width: 20px;margin-right: 2px;" mode="widthFix"></image>
-								666
+								{{item.single_amount}}
 							</view>
 							<view>
-								<view class="btn">兑换</view>
-							</view>
-						</view>
-					</view>
-				</view>
-				<view class="list-item">
-					<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
-					<view>
-						<view>100元加油卡</view>
-						<view>兑换要求：兑换要求兑换要求兑换要求</view>
-						<view>
-							<view class="ad">
-								<image src="/static/images/my/coin.png" style="width: 20px;margin-right: 2px;" mode="widthFix"></image>
-								666
-							</view>
-							<view>
-								<view class="btn">兑换</view>
-							</view>
-						</view>
-					</view>
-				</view>
-				<view class="list-item">
-					<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
-					<view>
-						<view>100元加油卡</view>
-						<view>兑换要求：兑换要求兑换要求兑换要求</view>
-						<view>
-							<view class="ad">
-								<image src="/static/images/my/coin.png" style="width: 20px;margin-right: 2px;" mode="widthFix"></image>
-								666
-							</view>
-							<view>
-								<view class="btn">兑换</view>
+								<view class="btn" @click="buy(item.id)">兑换</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
 		</view>
+		<u-overlay :show="showPay" @click="showPay = false">
+			<view class="warp" style="padding: 0 20px;">
+				<view class="rect1">
+					<view style="margin-top: 40rpx;">
+						<u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+							size="14" text="请输入支付密码"></u--text>
+						<view style="margin: 30rpx 0 0;">
+							<xt-verify-code :isPassword="true" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
+						</view>
+					</view>
+					<u-button iconColor="#fff" class="custom-style" text="立即支付" :loading="isDone"
+						:loadingText="regStatus" @click="pay()"></u-button>
+				</view>
+			</view>
+		</u-overlay>
 	</view>
 </template>
 
@@ -78,13 +61,69 @@
 			return {
 				user_info: {
 					integral: 0
-				}
+				},
+				list: [],
+				showPay: false,
+				isDone: false,
+				regStatus: '处理中...',
+				pay_password: '',
+				id: 0
 			};
+		},
+		methods: {
+			buy(id){
+				this.id = id;
+				this.showPay = true;
+			},
+			pay(){
+				if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
+				this.to.www(this.api.integralPlaceOrder, {id: this.id, pay_password: this.pay_password}, 'p').then(res => {
+					this.toa('兑换成功')
+					setTimeout(() => {
+						uni.navigateBack()
+					}, 1500)
+				}).catch(err => {
+					this.isDone = false
+				})
+			},
+		},
+		onLoad() {
+			this.to.www(this.api.user_info).then(res => {
+				this.user_info = res.data;
+			})
+			this.to.www(this.api.integralList)
+				.then(res => {
+					this.list = res.data.data;
+				})
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+		z-index: 3;
+	}
+	
+	.rect1 {
+		border-radius: 10px;
+		padding: 20px;
+		width: 100%;
+		box-sizing: border-box;
+		background: #fff;
+	
+		.custom-style {
+			width: 30vw;
+			border-radius: 8px;
+			margin-top: 30px;
+			background: #1292FF;
+			color: #fff;
+		}
+	}
 	.list{
 		display: grid;
 		grid-template-columns: repeat(2,1fr);

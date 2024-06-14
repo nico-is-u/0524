@@ -10,17 +10,17 @@
 			<view class="card">
 				<view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">该地址仅支持TRX/TRC20相关资产</view>
 				<view style="text-align: center;margin: 20px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="cz.qrcode" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>接收地址：<text>http://gasgdkadgal/455.html</text></view>
+					<view>接收地址：<text>{{cz.address}}</text></view>
 				</view>
 				<view class="footer1">
 					<view><image src="/static/images/my/fx.png" style="width: 20px;margin-right: 5px;" mode="widthFix"></image>分享</view>
-					<view @click="copy('http://gasgdkadgal/455.html')"><image src="/static/images/my/fz.png" style="width: 20px;margin-right: 5px;" mode="widthFix"></image>复制</view>
+					<view @click="copy(cz.address)"><image src="/static/images/my/fz.png" style="width: 20px;margin-right: 5px;" mode="widthFix"></image>复制</view>
 				</view>
 			</view>
-			<view class="btn">转账凭证提交</view>
+			<view class="btn" @click="upload">转账凭证提交</view>
 		</view>
 	</view>
 </template>
@@ -29,7 +29,7 @@
 	export default {
 		data() {
 			return {
-				
+				cz: {}
 			};
 		},
 		methods: {
@@ -37,8 +37,33 @@
 				uni.setClipboardData({
 					data: val
 				})
-			}
+			},
+			upload(){
+				let that = this;
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['compressed'],
+					sourceType: ['album'],
+					success: function (res) {
+						uni.showLoading();
+						that.to.www(that.api.usdtUploadRechargeToken, res.tempFilePaths[0], "p", "file")
+							.then(res => {
+								that.toa('上传成功')
+								uni.hideLoading();
+							})
+							.catch((err) => {
+								console.log(err)
+								// uni.hideLoading();
+							})
+					}
+				});
+			},
 		},
+		onLoad() {
+			this.to.www(this.api.usdtRechargeInfo).then(res => {
+				this.cz = res.data;
+			})
+		}
 	}
 </script>
 

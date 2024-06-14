@@ -127,8 +127,30 @@ const xxxxxxxxxxxxxx = {
 	capital_record:'dEz88eNIw4c89JafFlzEA1ksuHsLpVk897gWEgAueTU=',
 	// 团队信息
 	team_info:'oWG7ZRtxUrwpS5G/GdzMRw==',
-
-
+	// 邀请好友
+	sys_share: '01lNxoSp1FQ0XIBp2GDmiA==',
+	// 社群
+	shequn: '14so1mC3hkX5t47dMa8VPg==',
+	// 系统配置
+	systemInfo: 'whoqUKIwlRA39raRJJs9QEqAecYdeH/rFZALa8yFBao=',
+	// 等级列表
+	levelList: 'On2vxJ4o5yWRoZ/pcsHKicG7G/G6LZcw/DiV6kHF9n4=',
+	// 购买等级
+	levelPlaceOrder: '4XBG7qYY8DsT/aufw0s3utJB2Hd1WdZUrvGodBmLZ9Q=',
+	// 积分列表
+	integralList: '/F0/nZaYgwdTvNOscZF1+EeToiLj+ceBuETQo6K33O8=',
+	// 购买积分产品
+	integralPlaceOrder: '0yJhE0fDJe+0qBboxTow0cDBnRNgkuzQVRCbXvvK7Tg=',
+	// 礼品列表
+	vipGiftList: 'lHdsdfSi0RFCVlfAqQMMJzZNIaeQoiB8DV/L/Cghz24=',
+	// 领取礼品
+	vipPlaceOrder: 'ktTM4/N7lmEIaE5Dh1DiphNm1gQ/NIcxbGFhu/eiSAc=',
+	// USDT充值信息
+	usdtRechargeInfo: '1O53xhDGtMiPW+HK3F4l6zrd74lRvIqpclQOiPeIctg=',
+	// USDT充值凭证提交
+	usdtUploadRechargeToken: 'wZVKwse0GW67Ttct61AUPDPT37z1TvrHoc1GyPAcCM4=',
+	payChannelList: 'p1YEG8JS5GNlN9Inz+QcnyVF6BA+Lxg7EjJFSArMrgo=',
+	topup: 'Gp5NgPIaND18aX627h7t2w==',
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

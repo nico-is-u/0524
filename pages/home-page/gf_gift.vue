@@ -1,40 +1,13 @@
 <template>
 	<view class="container">
-		<image src="/static/images/my/level1.png" style="width: 100%;" mode="widthFix"></image>
+		<image :src="'/static/images/my/level'+(user_info.level + 1) +'.png'" style="width: 100%;" mode="widthFix"></image>
 		<view class="list">
-			<view class="list-item">
-				<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
+			<view class="list-item" v-for="(item,index) in list" :key="index">
+				<image :src="item.cover_img" style="width: 100%;" mode="widthFix"></image>
 				<view>
-					<view>100元加油卡</view>
+					<view>{{item.name}}</view>
 					<view>
-						<view class="btn">领取</view>
-					</view>
-				</view>
-			</view>
-			<view class="list-item">
-				<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
-				<view>
-					<view>100元加油卡</view>
-					<view>
-						<view class="btn">领取</view>
-					</view>
-				</view>
-			</view>
-			<view class="list-item">
-				<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
-				<view>
-					<view>100元加油卡</view>
-					<view>
-						<view class="btn">领取</view>
-					</view>
-				</view>
-			</view>
-			<view class="list-item">
-				<image src="/static/images/my/score.png" style="width: 100%;" mode="widthFix"></image>
-				<view>
-					<view>100元加油卡</view>
-					<view>
-						<view class="btn">领取</view>
+						<view class="btn" @click="buy(item.id)">领取</view>
 					</view>
 				</view>
 			</view>
@@ -46,11 +19,29 @@
 	export default {
 		data() {
 			return {
-				
+				user_info: {
+					level: 0
+				},
+				list: [],
 			};
 		},
+		methods: {
+			buy(id) {
+				this.to.www(this.api.vipPlaceOrder, {id: id}, 'p').then(res => {
+					this.toa('领取成功')
+				}).catch(err => {
+					// this.isDone = false
+				})
+			}
+		},
 		onLoad() {
-			
+			this.to.www(this.api.user_info).then(res => {
+				this.user_info = res.data;
+			})
+			this.to.www(this.api.vipGiftList)
+				.then(res => {
+					this.list = res.data.data;
+				})
 		}
 	}
 </script>

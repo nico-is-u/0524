@@ -14,11 +14,11 @@
 					<image src="/static/images/my/r.png" style="width: 50px;" mode="widthFix"></image>
 				</view>
 				<view style="text-align: center;margin: 10px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="systemInfo.apk_download_url_qrcode" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>链接：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
+					<view>链接：<text>{{systemInfo.apk_download_url}}</text></view>
+					<view style="color: #0182EF;" @click="copy(systemInfo.apk_download_url)">复制</view>
 				</view>
 				<image src="/static/images/my/az.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
@@ -29,11 +29,11 @@
 					<image src="/static/images/my/r.png" style="width: 50px;" mode="widthFix"></image>
 				</view>
 				<view style="text-align: center;margin: 10px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="systemInfo.ios_download_url_qrcode" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>链接：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
+					<view>链接：<text>{{systemInfo.ios_download_url}}</text></view>
+					<view style="color: #0182EF;" @click="copy(systemInfo.ios_download_url)">复制</view>
 				</view>
 				<image src="/static/images/my/pg.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
@@ -44,11 +44,11 @@
 					<image src="/static/images/my/r.png" style="width: 50px;" mode="widthFix"></image>
 				</view>
 				<view style="text-align: center;margin: 10px 0;">
-					<image src="/static/images/my/qrcode.png" style="width: 150px;" mode="widthFix"></image>
+					<image :src="systemInfo.pc_download_url_qrcode" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>链接：<text>http://gasgdkadgal/455.html</text></view>
-					<view style="color: #0182EF;" @click="copy('http://gasgdkadgal/455.html')">复制</view>
+					<view>链接：<text>{{systemInfo.pc_download_url}}</text></view>
+					<view style="color: #0182EF;" @click="copy(systemInfo.pc_download_url)">复制</view>
 				</view>
 				<image src="/static/images/my/pc.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
@@ -60,7 +60,14 @@
 	export default {
 		data() {
 			return {
-				
+				systemInfo: {
+					ios_download_url: '',
+					pc_download_url: '',
+					apk_download_url: '',
+					pc_download_url_qrcode: '',
+					ios_download_url_qrcode: '',
+					apk_download_url_qrcode: '',
+				}
 			};
 		},
 		methods: {
@@ -70,6 +77,12 @@
 				})
 			}
 		},
+		onLoad() {
+			this.to.www(this.api.systemInfo)
+				.then(res => {
+					this.systemInfo = res.data.setting_conf;
+				})
+		}
 	}
 </script>
 
