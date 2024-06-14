@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-// console.log(encryptCBC("user/submitProfile"))
+console.log(encryptCBC("user/team"))
 
 var
   api_index = 0,

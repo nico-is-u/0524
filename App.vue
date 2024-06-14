@@ -710,6 +710,7 @@
 		height: 80rpx !important;
 		
 		color: white !important;
+		border: 2rpx solid #0182EF !important;
 		background-color: #0182EF !important;
 		font-size: 36rpx !important;
 
@@ -723,7 +724,24 @@
 			font-size: 36rpx !important;
 		}
 
+		&.n-button-3{
+			color: #0182EF !important;
+			background-color: white !important;
+		}
+	}
 
+	.n-btn-group{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		gap: 44rpx;
+		padding: 0 32rpx;
+
+		.n-button{
+			height: 96rpx !important;
+			border-radius: 48rpx !important;
+		}
 	}
 
 	.n-upload-box{

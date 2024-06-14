@@ -28,7 +28,7 @@
                     <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
                 </view>
 
-                <view class="item">
+                <view class="item" @click="too('/pages/home-page/pay-account')">
                     <view class="left-side flex flex-y-center">
                         <image src="/static/images/49.png"></image>
                         <text>收款账号</text>
@@ -36,7 +36,7 @@
                     <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
                 </view>
 
-                <view class="item">
+                <view class="item" @click="too('/pages/home-page/pay-pwd')">
                     <view class="left-side flex flex-y-center">
                         <image src="/static/images/50.png"></image>
                         <text>支付密码</text>
@@ -44,7 +44,7 @@
                     <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
                 </view>
 
-                <view class="item">
+                <view class="item" @click="too('/pages/system-page/login-pwd?type=2')">
                     <view class="left-side flex flex-y-center">
                         <image src="/static/images/51.png"></image>
                         <text>登录密码</text>

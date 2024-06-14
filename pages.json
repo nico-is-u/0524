@@ -98,6 +98,33 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
+		// 我的资料 - 收款账号
+		{
+			"path": "pages/home-page/pay-account",
+			"style":{
+				"navigationBarTitleText": "收款账号",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 我的资料 - 收款账号 - 编辑
+		{
+			"path": "pages/home-page/pay-account-edit",
+			"style":{
+				"navigationBarTitleText": "新增",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
+		// 我的资料 - 支付密码
+		{
+			"path":"pages/home-page/pay-pwd",
+			"style": {
+				"navigationBarTitleText": "支付密码",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 		// 我的团队
 		{
 			"path": "pages/home-page/team",
@@ -352,12 +379,7 @@
 				"disableScroll": true
 			}
 		},
-		{
-			"path": "pages/system-page/gf_pay-pwd",
-			"style": {
-				"navigationBarTitleText": "支付密码"
-			}
-		},
+		
 		
 		
 		

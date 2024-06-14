@@ -2,6 +2,7 @@
     <view class="page" id="my-team">
         <view class="padding-box-3">
             <view class="content-4">
+
                 <!-- 信息总览 -->
                 <view class="menu-card">
                     <view class="menu-item">
@@ -74,6 +75,10 @@
 
             </view>
         </view>
+
+        <!-- 加载动画 -->
+        <u-loading-page :loading="isLoading"></u-loading-page>
+
     </view>
 </template>
 
@@ -81,13 +86,46 @@
 export default {
     data(){
         return {
+            isLoading:false,				// 请求等待
+            regStatus: '正在请求...',		 // loading text
+
+            teamInfo:false,                 // 团队信息
             level:1,
         }
+    },
+    methods:{
+        async getData(){
+            this.isLoading = true
+
+            try{
+                const response = await this.to.www(this.api.team_info)
+                const {code,data={}} = response
+
+                if(code == 200){
+                    this.teamInfo = data
+                    this.isLoading = false
+                }else{
+                    this.isLoading = false
+                }
+
+            }catch(e){
+                this.isLoading = false
+            }
+        
+        }
+    },
+    onLoad(){
+        this.getData()
     }
 }
 </script>
 
 <style lang="scss">
+page{
+    height: 100%;
+    background-color: #f9f9f9;
+}
+
 #my-team{
     .level-member-info{
         height: 60rpx;

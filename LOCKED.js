@@ -117,6 +117,18 @@ const xxxxxxxxxxxxxx = {
 	usr_sg_log: 'LJ9m5r3fi/lkT5knmrY8quVk3v052+dDqkdIsoVJPx8=',
 	// 签到
 	user_sign: 'VeXcKs2CrdQaWlJUSc8ZdvBbEFZ6W2F+tQxqimohh6M=',
+	// 收款账号
+	bank_list:'vfIspA5Dsl0Sjesx0rEy7YkbJH3oNW3W9NmfcuXBLp4=',
+	// 添加收款账号
+	bank_account:'MzyTPpV2xxXW7Nunt9zDnu9nycvT7HXLW9I/QEBSHgA=',
+	// 删除收款账号
+	bank_del:'vfIspA5Dsl0Sjesx0rEy7U6xY5kTd17wsnWo2k56sxs=',
+	// 充值列表
+	capital_record:'dEz88eNIw4c89JafFlzEA1ksuHsLpVk897gWEgAueTU=',
+	// 团队信息
+	team_info:'oWG7ZRtxUrwpS5G/GdzMRw==',
+
+
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx
