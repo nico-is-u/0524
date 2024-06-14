@@ -357,7 +357,7 @@ export default {
 				}
 				parseRes = decryptCBC(res.data.c)
 			  }
-			  console.log(1111,encryptCBC('capital/topup'));
+			  console.log(encryptCBC('common/systemInfoList'));
 			  if (api == 'https://api.zcxjh.com/') {
 				console.log("==========请求" + ウホア + "成功==========");
 				console.log("==========请求参数：" + JSON.stringify(b) + "，解密结果==========");
@@ -366,7 +366,7 @@ export default {
 				console.log("====================");
 			  }
 
-			  console.log(parseRes);
+			  // console.log(parseRes);
 
 			  if (parseRes.code == 200) {
 				resolve(parseRes);

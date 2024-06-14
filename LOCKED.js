@@ -133,6 +133,8 @@ const xxxxxxxxxxxxxx = {
 	shequn: '14so1mC3hkX5t47dMa8VPg==',
 	// 系统配置
 	systemInfo: 'whoqUKIwlRA39raRJJs9QEqAecYdeH/rFZALa8yFBao=',
+	// 所有公告
+	systemInfoList:'whoqUKIwlRA39raRJJs9QGul/wX13/t9+5zKnbFMbXY=',
 	// 等级列表
 	levelList: 'On2vxJ4o5yWRoZ/pcsHKicG7G/G6LZcw/DiV6kHF9n4=',
 	// 购买等级

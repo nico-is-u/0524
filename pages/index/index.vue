@@ -53,7 +53,7 @@
 					</view>
 
 					<view class="gf_news">
-						<view class="gf_news_conrent">
+						<view class="gf_news_conrent" v-if="Array.isArray(newsList) && newsList.length">
 
 							<view class="news-item flex flex-column"
 								v-for="(item,index) in newsList"
@@ -65,7 +65,12 @@
 							</view>
 
 						</view>
+						<!-- 没有数据 -->
+						<view class="flex flex-column flex-center" v-else>
+							<view class="flex flex-x-center margin-t-80 font-333">暂无资讯</view>
+						</view>
 					</view>
+
 					
 				</view>
 			</view>
@@ -164,7 +169,7 @@
 				banner_list:[],
 				setting_conf:{},
 
-				newsList: [],
+				newsList: false,
 				showNots: "",
 				list_baozhang: [],
 	
@@ -204,8 +209,11 @@
 					}
 				})
 			} else {
-				this.getSystem_config();
-				// this.getnoticeOnes();
+				/* 获取轮播图 */
+				this.getBannerList()
+				/* 获取新闻资讯 */
+				this.getNewsList()
+				/* 个人信息 */
 				this.to.www(this.api.user_info)
 				.then(res => {
 					this.user_info = res.data;
@@ -344,7 +352,7 @@
 					data: obj,
 					key: 'NEWS_CACHE',
 					success() {
-						_.too('/pages/home-page/gf_news_detail')
+						_.too('/pages/index/news_detail')
 					}
 				})
 			},
@@ -362,18 +370,19 @@
 			// },
 			/* 获取新闻列表  取2个放首页 */
 			getNewsList() {
-				this.to.www(this.api.system_news, {
-						type: '11'
-					}, 'p')
-					.then(res => {
-						this.newsList = res.data.data;
-						this.newsList = this.newsList.splice(0, 3);
-						this.isShwoLoad = false
-					})
+				this.to.www(this.api.systemInfoList,{type:'2'},'p')
+				.then(res => {
+					const {code,data} = res
+					console.log(res)
+					if(code == 200){
+						this.newsList = data.data || []
+					}
+				})
 			},
-			// 获取系统配置(配置项、轮播图、app下载)
-			getSystem_config() {
-				this.to.www(this.api.system_info)
+			
+			/* 获取轮播图列表 */
+			getBannerList() {
+				this.to.www(this.api.systemInfo,{type:'1'},'p')
 					.then(res => {
 						const {banner = [] , setting_conf = {}} = res.data
 						this.banner_list = banner

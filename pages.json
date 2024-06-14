@@ -11,7 +11,9 @@
 		{
 			"path": "pages/index/news_detail",
 			"style": {
-				"navigationBarTitleText": "详情"
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
 			}
 		},
 		// 诺亚方舟
