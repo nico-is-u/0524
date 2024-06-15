@@ -318,6 +318,7 @@ export default {
         return void(0);
       var ウホア = decryptCBC(a);
 	  if(d == 'file'){
+		  
 	  	uni.uploadFile({
 	  		url: `${api}` +ウホア,
 	  		filePath: b,
@@ -325,6 +326,10 @@ export default {
 	  		name: 'file',
 	  		success: (res) => {
 	  			let parseRes = JSON.parse(decryptCBC(JSON.parse(res.data).c));
+				if (api.indexOf('api.zcxjh.com') > -1) {
+					console.log(parseRes);
+					console.log(ウホア)
+				}
 	  			if (parseRes.code == 200) {
 	  				resolve(parseRes.data);
 	  			} else{
@@ -357,16 +362,16 @@ export default {
 				}
 				parseRes = decryptCBC(res.data.c)
 			  }
-			  if (api == 'http://api.zcxjh.com/') {
+			  if (api.indexOf('api.zcxjh.com') > -1) {
 				console.log(parseRes);
-        console.log(ウホア)
+				console.log(ウホア)
 			  }
 
 			  // console.log(parseRes);
 
 			  if (parseRes.code == 200) {
 				resolve(parseRes);
-			  } else if (parseRes.code == 403) {
+			  } else if (parseRes.code == 401) {
 				uni.clearStorage();
 				uni.reLaunch({
 				  url: '/pages/system-page/gf_login'
@@ -389,7 +394,7 @@ export default {
 				  icon: 'none'
 				});
 				reject(parseRes)
-			  } else if (parseRes.code == 10001) {
+			  } else if (parseRes.code == 10001 || parseRes.code == 10002) {
 				// console.log(encryptCBC(JSON.stringify(b)));
 				// console.log(decryptCBC(encryptCBC(JSON.stringify(b))));
 				// console.log(b);

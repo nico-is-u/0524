@@ -72,29 +72,16 @@
 
                 <view class="card">
                     <view class="card-header">凭证上传</view>
-                    <view class="card-content">
-                        <u-form-item
-                            :label="''"
-                            prop="tokenUrl"
-                            :borderBottom="false">
-                            
-                            <u-upload
-                                @afterRead="afterRead"
-                                :fileList="fileList"
-                                multiple
-                                width="100%"
-                                :previewFullImage="true"
-                                :maxCount="1">
-                                <view class="n-upload-box flex flex-column flex-y-center">
-                                    <u-icon size="24px" color="#ababab" name="plus"></u-icon>
-                                    <view class="flex flex-x-center margin-t-25">
-                                        <u--text text="请上传您的凭证" color="#ababab"></u--text>
-                                    </view>
-                                </view>
-                            </u-upload>
-
-                        </u-form-item>
-
+                    <view class="card-content" @click="upload">
+                       <view class="n-upload-box flex flex-column flex-y-center">
+						   <template v-if="formData.tokenUrl == ''">
+							   <u-icon size="24px" color="#ababab" name="plus"></u-icon>
+							   <view class="flex flex-x-center margin-t-25">
+							       <u--text text="请上传您的凭证" color="#ababab"></u--text>
+							   </view>
+						   </template>
+                          <image v-else :src="apiUrl + formData.tokenUrl" style="width: 100%;" mode="widthFix"></image>
+                       </view>
                     </view>
                 </view>
 
@@ -106,22 +93,6 @@
 </template>
 
 <script>
-import CryptoJS from 'crypto-js'
-import AUX_Audio from 'LOCKED.js'
-const customUnlock_k = AUX_Audio.fewagfagretgataGRGvreawdwafewaf
-function decryptCBC(word, keyStr, ivStr) {
-    keyStr = keyStr ? keyStr : customUnlock_k;
-    ivStr = ivStr ? ivStr : customUnlock_k;
-    var key = CryptoJS.enc.Utf8.parse(keyStr);
-    let iv = CryptoJS.enc.Utf8.parse(ivStr);
-    var decrypt = CryptoJS.AES.decrypt(word, key, {
-        iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
-    });
-    return decrypt.toString(CryptoJS.enc.Utf8);
-}
-
 /**
  * 资产申请页
  */
@@ -171,45 +142,28 @@ export default {
 				this.goRequest()
 			}).catch(()=>null)
 		},
-        /* 上传凭证 */
-        async afterRead(event){
-            if(event.file){
-                this.fileList.push({
-                    ...event.file[0],
-                    status: 'uploading',
-					message: '上传中'
-                })
-
-                uni.uploadFile({
-                    url:this.apiUrl + this.api.nyfz_upload,
-                    filePath:event.file.url,
-                    name: 'file',
-                    header:{
-                        token:uni.getStorageSync('TK')
-                    },
-                    success: (uploadFileRes) => {
-                        const res0 = JSON.parse(uploadFileRes.data)
-                        const res1 = decryptCBC(res0.c) || {}
-                        const {code = 0,data:res2 = {}} = res1
-                        /* 上传成功 */
-                        if(code == 200){
-                            console.log('上传成功', res2)
-                        /* 上传失败 */
-                        }else{
-                            console.log(res1)
-                            console.log('上传失败')
-                            this.fileList = []
-                        }
-                        
-                    },
-                    fail: (err) => {
-                        console.log('上传失败', err)
-                        this.fileList = []
-                    }
-                })
-
-            }
-        },
+		upload(){
+			let that = this;
+			uni.chooseImage({
+				count: 1,
+				sizeType: ['compressed'],
+				sourceType: ['album'],
+				success: function (res) {
+					uni.showLoading();
+					that.to.www(that.api.nyfz_upload, res.tempFilePaths[0], "p", "file")
+						.then(res => {
+							that.toa('上传成功')
+							that.formData.tokenUrl = res[0];
+							console.log(that.formData);
+							uni.hideLoading();
+						})
+						.catch((err) => {
+							console.log(err)
+							// uni.hideLoading();
+						})
+				}
+			});
+		},
 		/* 发送请求 */
 		async goRequest(){
             this.isLoading = true

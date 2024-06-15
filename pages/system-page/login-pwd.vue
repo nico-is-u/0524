@@ -51,7 +51,7 @@
 			>
 				<u--input
 					type="password"
-					v-model="formData.old_password"
+					v-model="formData.new_password"
 					placeholder="请输入新登录密码"
 					border="none"></u--input>
 			</u-form-item>
@@ -163,7 +163,7 @@
 							key: "use-page-type",
 							success() {
 								setTimeout(() => {
-									_this.too('/pages/index/my')
+									uni.navigateBack()
 								}, 1500)
 							}
 						})
