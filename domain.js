@@ -187,7 +187,6 @@ export default {
           url: api_list[api_index] + 'common/test',
           method: "POST",
           success: (res) => {
-            console.log(res);
             // console.log("返回的密文",res.data.c);
             // console.log("解密密文",decryptCBC(res.data.c));
             try {
@@ -236,7 +235,7 @@ export default {
                         api_index = 0
                         uni.clearStorage();
                         uni.reLaunch({
-                          url: '/pages/system-page/gf_login'
+                          url: '/pages/system-page/login'
                         })
                       }
                     }
@@ -282,7 +281,7 @@ export default {
                       api_index = 0
                       uni.clearStorage();
                       uni.reLaunch({
-                        url: '/pages/system-page/gf_login'
+                        url: '/pages/system-page/login'
                       })
                     }
                   }
@@ -318,6 +317,7 @@ export default {
         return void(0);
       var ウホア = decryptCBC(a);
 	  if(d == 'file'){
+		  
 	  	uni.uploadFile({
 	  		url: `${api}` +ウホア,
 	  		filePath: b,
@@ -325,6 +325,10 @@ export default {
 	  		name: 'file',
 	  		success: (res) => {
 	  			let parseRes = JSON.parse(decryptCBC(JSON.parse(res.data).c));
+				if (api.indexOf('api.zcxjh.com') > -1) {
+					console.log(parseRes);
+					console.log(ウホア)
+				}
 	  			if (parseRes.code == 200) {
 	  				resolve(parseRes.data);
 	  			} else{
@@ -357,7 +361,7 @@ export default {
 				}
 				parseRes = decryptCBC(res.data.c)
 			  }
-			  if (api == 'http://api.zcxjh.com/') {
+			  if (api.indexOf('api.zcxjh.com') > -1) {
 				console.log(parseRes);
 			  }
 
@@ -381,7 +385,7 @@ export default {
 			  } else if (parseRes.code == 403) {
 				uni.clearStorage();
 				uni.reLaunch({
-				  url: '/pages/system-page/gf_login'
+				  url: '/pages/system-page/login'
 				})
 			  } else if (parseRes.code == 10090) {
 				uni.showToast({
@@ -401,7 +405,7 @@ export default {
 				  icon: 'none'
 				});
 				reject(parseRes)
-			  } else if (parseRes.code == 10001) {
+			  } else if (parseRes.code == 10001 || parseRes.code == 10002) {
 				// console.log(encryptCBC(JSON.stringify(b)));
 				// console.log(decryptCBC(encryptCBC(JSON.stringify(b))));
 				// console.log(b);

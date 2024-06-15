@@ -4,7 +4,7 @@
 			<image src="/static/images/my/usdt.png" style="width: 22px;" mode="widthFix"></image>
 			USDT充值通道
 		</view>
-		<view class="cny">
+		<view class="cny" @click="too('gf_rgm')">
 			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
 			CNY充值通道
 		</view>

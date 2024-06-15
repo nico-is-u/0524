@@ -92,6 +92,7 @@ export default {
             
                 /* 注册成功 */
                 const {code = 0} = response
+				console.log(response)
                 if(code == 200){
                     const _this = this
                     this.toa('已设置新的支付密码')

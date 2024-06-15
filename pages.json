@@ -621,6 +621,16 @@
 				"navigationBarTextStyle":"black",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/home-page/gf_rgm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "人民币充值",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
 		}
 	],
 	"tabBar": {
