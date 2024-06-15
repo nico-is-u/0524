@@ -17,10 +17,10 @@
                         </view>
                     </view>
                     <view class="right-side">
-                        <view class="btn flex flex-center">
+                        <!-- <view class="btn flex flex-center">
                             <image src="/static/images/56.png" mode="widthFix"></image>
                             <text>编辑</text>
-                        </view>
+                        </view> -->
 
                         <view class="btn flex flex-center" @click="delItem(index)">
                             <image src="/static/images/57.png" mode="widthFix"></image>

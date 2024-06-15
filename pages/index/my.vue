@@ -7,14 +7,14 @@
         <view class="userinfo flex flex-between flex-y-center">
           <view class="left-side flex flex-y-center">
             <!-- 用户头像 -->
-            <avatar 
+           <!-- <avatar 
               selWidth="400upx" 
               selHeight="400upx"
               :avatarSrc="avatarurl"
               avatarStyle="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"
               noTab>
-            </avatar>
-
+            </avatar> -->
+			<image :src="avatarurl" style="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"></image>
             <!-- 文字讯息 -->
             <view class="text-info">
               <view class="username">{{ user_info.realname || '' }}</view>
