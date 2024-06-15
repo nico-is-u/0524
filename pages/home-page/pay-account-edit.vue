@@ -116,7 +116,7 @@ export default {
                         key: "use-page-type",
                         success() {
                             _this.isLoading = false
-                            _this.too('/pages/home-page/pay-account')
+							uni.navigateBack()
                         }
                     })
                 }else{

@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("order/pledgeOrderList"))
+console.log(encryptCBC("capital/applyWithdraw"))
 
 var
   api_index = 0,

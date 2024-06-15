@@ -5,12 +5,12 @@
       <view class="balance-info flex flex-y-center flex-between">
         <view class="text-block flex flex-column">
           <view class="label">USDT余额</view>
-          <view class="title">{{userInfo.usdt || ''}}</view>
+          <view class="title">{{ Number(userInfo.usdt).toFixed(6) || '0'}}</view>
         </view>
         <view class="line"></view>
         <view class="text-block flex flex-column">
           <view class="label">CNY余额</view>
-          <view class="title">{{userInfo.balance || ''}}</view>
+          <view class="title">{{userInfo.topup_balance || '0'}}</view>
         </view>
       </view>
 
@@ -35,6 +35,7 @@
           :rules="formRules"
           labelPosition="top"
           :borderBottom="false"
+		  labelWidth="auto"
         >
           <!-- 提现金额 -->
           <u-form-item
@@ -55,7 +56,28 @@
               ></u--text>
             </u--input>
           </u-form-item>
-
+			<u-form-item v-if="formData.pay_channel == 0"
+			    label="钱包地址"
+			    prop="usdt_address"
+			    :borderBottom="false"
+			>
+			  <u--input
+			    v-model="formData.usdt_address"
+			    placeholder="请输入钱包地址"
+			    border="none">
+			  </u--input>
+			</u-form-item>
+			<u-form-item v-if="formData.pay_channel == 1"
+			    label="收款账号"
+			    :borderBottom="false"
+			>
+			  <u--input
+				@focus="too('/pages/home-page/pay-account?select=1')"
+			    v-model="bankInfo.bank_name"
+			    placeholder="请选择银行"
+			    border="none">
+			  </u--input>
+			</u-form-item>
           <!-- 支付密码 -->
           <u-form-item
               label="密码"
@@ -78,7 +100,7 @@
       <u-loading-page :loading="isLoading" :loading-text="regStatus" style="z-index: 3"></u-loading-page>
 
       <!-- 提交按钮 -->
-      <view class="n-button" style="margin-top: 64rpx" @click="checkForm">提现</view>
+      <view class="n-button" style="margin-top: 64rpx;height: initial!important;" @click="checkForm">提现</view>
 
     </view>
   </view>
@@ -97,11 +119,13 @@ export default {
       regStatus: '正在提交...',		     // loading text
 
       dataList:false,             // 收款账号
-      
+      bankInfo: {},
       formData:{
         pay_channel:0,            // 0:cny  1:usdt(收款渠道)
         amount:'',                // 收款金额
         pay_password:'',          // 支付密码
+		usdt_address: '',
+		bank_id: 0,
       },
       formRules:{
         amount:[
@@ -124,17 +148,45 @@ export default {
       return this.formData.pay_channel == 0 ? 'USDT' : 'CNY'
     }
   },
+  onShow() {
+  	let bank_info = uni.getStorageSync("BANK_DRAW");
+  	if (bank_info) {
+  		this.bankInfo = bank_info;
+		console.log(this.bankInfo);
+		uni.removeStorage({
+			key: "BANK_DRAW"
+		})
+  	}
+  },
   methods:{
     /* 检查表单 */
     checkForm(){
       this.$refs.uForm.validate().then(res => {
-        uni.$u.toast('校验通过')
+        if(this.formData.pay_channel == 0 && this.formData.usdt_address == ''){
+			return this.toa('请输入钱包地址')
+		}
+		if(this.formData.pay_channel == 1){
+			this.formData.bank_id = this.bankInfo.id;
+			console.log(this.formData);
+			if(this.formData.bank_id == 0){
+				return this.toa('请选择收款账户')
+			}
+		}
+		this.to.www(this.api.applyWithdraw, {...this.formData,is_usdt: !this.formData.pay_channel
+			}, 'p')
+			.then(res => {
+				this.toa('申请成功')
+				setTimeout(()=>{
+					uni.navigateBack()
+				},2000)
+			})
       }).catch(()=>null)
     }
   },
   onLoad(){
-      const userInfo = uni.getStorageSync('user_info')
-      if(userInfo)    this.userInfo = userInfo
+	  this.to.www(this.api.user_info).then(res => {
+			this.userInfo = res.data
+		})
   }
 }
 </script>

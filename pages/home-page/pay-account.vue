@@ -8,7 +8,7 @@
 
         <!-- 收款账号 -->
         <view class="padding-box-2 flex flex-column" style="padding-top:32rpx; gap:32rpx" v-if="Array.isArray(dataList) && dataList.length">
-            <view class="account-item" v-for="(item,index) in dataList" :key="'item' + index">
+            <view class="account-item" v-for="(item,index) in dataList" :key="'item' + index" @click="doselect(item)">
                 <view class="row flex flex-between">
                     <view class="left-side">
                         <view class="flex flex-column text-group">
@@ -22,11 +22,14 @@
                             <text>编辑</text>
                         </view> -->
 
-                        <view class="btn flex flex-center" @click="delItem(index)">
+                        <view class="btn flex flex-center" v-if="!type" @click="delItem(index)">
                             <image src="/static/images/57.png" mode="widthFix"></image>
                             <text>删除</text>
                         </view>
-
+						<view v-else class="btn flex flex-center">
+                            <u-icon name="checkbox-mark" color="#2979ff" size="28"></u-icon>
+                            <text>选择</text>
+                        </view>
                     </view>
                 </view>
 
@@ -61,7 +64,7 @@ export default {
         return {
             isLoading:false,				// 请求等待
             regStatus: '正在请求...',		 // loading text
-
+			type: false, // 是否选择银行卡
             dataList:false,                    // 数据列表
         }
     },
@@ -81,6 +84,18 @@ export default {
                 this.isLoading = false
             }
         },
+		/* 选择银行卡 */
+		doselect(obj){
+			if(this.type){
+				uni.setStorage({
+					data:obj,
+					key:"BANK_DRAW",
+					success() {
+						uni.navigateBack()
+					}
+				})
+			}
+		},
         /* 删除询问 */
         async delItem(index){
             const target = this.dataList[index]
@@ -101,9 +116,14 @@ export default {
             })
         }
     },
-    onLoad(){
-        this.getDataList()
-    }
+	onShow() {
+		this.getDataList()
+	},
+	onLoad(option) {
+		if(option.select){
+			this.type = true;
+		}
+	}
 }
 </script>
 

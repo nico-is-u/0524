@@ -170,7 +170,8 @@ const xxxxxxxxxxxxxx = {
 	pledgeOrderList: '6OXVihNdfsKoFrS7to9hmZiI7qmL7QxqYXmGxgMtTAQ=',
 	// 云数币 - 买入卖出
 	yunPlaceOrder:'x7Ou7bTe7rh+cT9w4n+OMg==',
-
+	// 提现
+	applyWithdraw: 'wTGz3KuLWNUyjR/2GtPDDR7tQitFgX2aW684cBGUVK8=',
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx
