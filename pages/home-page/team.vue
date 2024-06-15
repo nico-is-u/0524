@@ -7,7 +7,7 @@
                 <view class="menu-card">
                     <view class="menu-item">
                         <view class="label">团队人数</view>
-                        <view class="value">{{ teamInfo.level1_total + teamInfo.level2_total + teamInfo.level3_total || 1}}</view>
+                        <view class="value">{{ teamInfo.total_num }}</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
@@ -106,7 +106,7 @@ export default {
                 const {code,data={}} = response
 
                 if(code == 200){
-                    console.log(data)
+                    this.teamList = data.list.data || []
                     this.isLoading = false
                 }else{
                     this.isLoading = false
@@ -124,6 +124,7 @@ export default {
     },
     onLoad(){
         this.getDataInfo()
+        this.getDataList()
         this.userInfo = uni.getStorageSync("user_info") || {}
     }
 }

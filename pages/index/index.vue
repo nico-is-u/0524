@@ -178,6 +178,7 @@
 			}
 		},
 		onShow() {
+			console.log('?')
 			var usr_info = uni.getStorageSync("user_info");
 			if (usr_info) {
 				this.user_info = usr_info;

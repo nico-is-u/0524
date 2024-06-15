@@ -193,7 +193,7 @@
 		},
 		// 注册
 		{
-			"path": "pages/system-page/register",
+			"path": "pages/system-page/gf_register",
 			"style": {
 				"navigationStyle": "custom"
 			}
