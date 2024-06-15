@@ -73,14 +73,18 @@
 		{
 			"path":"pages/index/szml-order-list",
 			"style":{
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "订单记录",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
 			}
 		},
 		// 数字魅力 - 理财产品 - 订单列表
 		{
 			"path":"pages/index/szml-2-order-list",
 			"style":{
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "订单记录",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
 			}
 		},
 		// 我的

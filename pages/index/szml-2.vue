@@ -3,7 +3,7 @@
 		<view class="k-line-head k-line-head-2">
              <!-- 顶栏 -->
 			<nNavbar title="理财产品" :showBackBtn="false" >
-				<u--text color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
+				<u--text @click="too('szml-2-order-list')" color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
 			<!-- K线图 -->
@@ -23,36 +23,80 @@
 
 				<!-- 产品列表 -->
 				<view class="mr-section padding-box-3 product-list" style="background-color: white">
-					<view class="item flex flex-column" v-for="(item,index) in 5" :key="'item-' + index">
+					<view class="item flex flex-column" v-for="(item,index) in list" :key="'item-' + index">
                         <view class="title flex flex-y-center">
-                            <view>申万宏源快利短期债券</view>
-                            <view class="tips1">960026</view>
-                            <view class="tips2">非代销基金</view>
+                            <view>{{item.name}}</view>
+                            <view class="tips1">{{item.intro}}</view>
+                            <view class="tips2">{{item.intro}}</view>
                         </view>
 
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
-                                <view class="font-red2">2.60%</view>
+                                <view class="font-red2">{{item.income_rate}}%</view>
                                 <view class="font-gray">近1年收益率</view>
                             </view>
                             <view class="right-side flex flex-y-center">
-                                <u-button class="n-button n-button-4" text="立即购买"></u-button>
+                                <u-button class="n-button n-button-4" text="立即购买" @click="buy(item.id)"></u-button>
                             </view>
                         </view>
                     </view>
 				</view>
-				
 			</view>
-
-
         </view>
+		<u-overlay :show="showPay" @click="showPay = false">
+			<view class="warp" style="padding: 0 20px;">
+				<view class="rect1">
+					<view style="margin-top: 40rpx;">
+						<u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+							size="14" text="请输入支付密码"></u--text>
+						<view style="margin: 30rpx 0 0;">
+							<xt-verify-code :isPassword="true" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
+						</view>
+					</view>
+					<u-button iconColor="#fff" class="custom-style" text="立即支付" :loading="isDone"
+						:loadingText="regStatus" @click="pay()"></u-button>
+				</view>
+			</view>
+		</u-overlay>
     </view>
 </template>
 
 <script>
 export default {
+	data() {
+		return {
+			list: [],
+			user_info: {
+			},
+			showPay: false,
+			isDone: false,
+			regStatus: '处理中...',
+			pay_password: '',
+			id: 0
+		};
+	},
 	methods:{
-
+		buy(id){
+			this.id = id;
+			this.showPay = true;
+		},
+		pay(){
+			if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
+			this.to.www(this.api.licaPlaceOrder, {id: this.id, pay_password: this.pay_password}, 'p').then(res => {
+				this.toa('支付成功')
+			}).catch(err => {
+				this.isDone = false
+			})
+		}
+	},
+	onLoad() {
+		// this.to.www(this.api.user_info).then(res => {
+		// 	this.user_info = res.data;
+		// })
+		this.to.www(this.api.licaiList)
+			.then(res => {
+				this.list = res.data.data;
+			})
 	}
 }
 </script>
@@ -62,7 +106,30 @@ page{
 	height: 100%;
 	background-color: #f9f9f9;
 }
-
+.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+		z-index: 3;
+	}
+	
+	.rect1 {
+		border-radius: 10px;
+		padding: 20px;
+		width: 100%;
+		box-sizing: border-box;
+		background: #fff;
+	
+		.custom-style {
+			width: 30vw;
+			border-radius: 8px;
+			margin-top: 30px;
+			background: #1292FF;
+			color: #fff;
+		}
+	}
 .product-list{
     display: flex;
     flex-direction: column;

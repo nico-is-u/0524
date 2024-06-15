@@ -61,20 +61,20 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("yun/placeOrder"))
+console.log(encryptCBC("order/pledgeOrderList"))
 
 var
   api_index = 0,
   api = '',
   api_list = [],
-  def_api_list = ['http://api.zcxjh.com/'],
+  def_api_list = ['https://api.zcxjh.com/'],
   def_api = false,
-  def_api_list = [
-    // 'https://api.kabapa.com/',
-    // 'https://api.dezete.com/',
-    // 'https://api.dezege.com/',
-    // 'https://api.cedehe.com/',
-  ],
+  // def_api_list = [
+  //   'https://api.kabapa.com/',
+  //   'https://api.dezete.com/',
+  //   'https://api.dezege.com/',
+  //   'https://api.cedehe.com/',
+  // ],
   oss_list = [
     // 'https://sadasdax.oss-cn-beijing.aliyuncs.com/1675bjxjckfym.txt',
     // 'https://cvcvzwdw.oss-rg-china-mainland.aliyuncs.com/fshufh1675ym.txt',
@@ -357,12 +357,8 @@ export default {
 				}
 				parseRes = decryptCBC(res.data.c)
 			  }
-			  if (api == 'https://api.zcxjh.com/') {
-				console.log("==========请求" + ウホア + "成功==========");
-				console.log("==========请求参数：" + JSON.stringify(b) + "，解密结果==========");
+			  if (api == 'http://api.zcxjh.com/') {
 				console.log(parseRes);
-				
-				console.log("====================");
 			  }
 
 			  // console.log(parseRes);

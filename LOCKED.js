@@ -154,7 +154,20 @@ const xxxxxxxxxxxxxx = {
 	usdtUploadRechargeToken: 'wZVKwse0GW67Ttct61AUPDPT37z1TvrHoc1GyPAcCM4=',
 	payChannelList: 'p1YEG8JS5GNlN9Inz+QcnyVF6BA+Lxg7EjJFSArMrgo=',
 	topup: 'Gp5NgPIaND18aX627h7t2w==',
-
+	// 理财列表
+	licaiList: 'nrviYAmhutq8YSNY9VnRy8jG2X/AG1IAu9vigFQR/no=',
+	// 理财下单
+	licaPlaceOrder: '/dumjht33VUhZlQWsTNkcsu1P73cm5jo6KGa+OK2Uw8=',
+	// 理财订单
+	licaiOrderList: 'fbn2UuPkw8ILVIawloAJPtqwv8TuQSIwUlu5mvfF7cg=',
+	// 赎回理财
+	licaiRedemption: 'rosoPNMLdP3JbkDoMXDyUDqwjfXYbL0Y3GcKBDfOzGs=',
+	// 存币生息详情
+	pledgeInfo: '9Th/oqXIHPTQdgeoJ4X2NnJLH4sNkg1FIfEi8wzdgTU=',
+	// 存币生息下单
+	pledgePlaceOrder: 'VkrEemC4w8p5LVzKdSA8kBleMEKEggiEHJQ4RrmvkHw=',
+	// 存币生息订单列表
+	pledgeOrderList: '6OXVihNdfsKoFrS7to9hmZiI7qmL7QxqYXmGxgMtTAQ=',
 	// 云数币 - 买入卖出
 	yunPlaceOrder:'x7Ou7bTe7rh+cT9w4n+OMg==',
 

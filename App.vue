@@ -667,7 +667,7 @@
 		height: 636rpx;
 		background-image: url('/static/images/9.png');
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: 100% 100%;
 
 		padding-top: 10rpx;
 		color: #fff;
