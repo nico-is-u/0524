@@ -197,6 +197,10 @@
 			const apiUrl = uni.getStorageSync('ok_api') || ''
 			this.apiUrl = apiUrl
 			this.getCaptchaImg()
+		},
+		onLoad(options){
+			const {invite_code=''} = options
+			if(invite_code)	this.formData.invite_code = invite_code
 		}
 	}
 </script>

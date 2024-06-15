@@ -68,7 +68,7 @@
 
 			<view class="tips-row flex flex-x-center">
 				<view class="font-gray">没有账号？</view>
-				<view class="font-blue" @click="too('/pages/system-page/register')">立即注册</view>
+				<view class="font-blue" @click="too('/pages/system-page/gf_register')">立即注册</view>
 			</view>
 
 		</u--form>
