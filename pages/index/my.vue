@@ -27,7 +27,7 @@
                 <image src="/static/images/24.png" v-if="user_info.level == 3" mode="widthFix" class="level-2"></image>
                 <image src="/static/images/25.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
 
-                <view class="text-part">
+                <view class="text-part" @click="too('/pages/home-page/gf_level2')">
                   <text>我的等级特权</text>
                   <text>></text>
                 </view>
@@ -36,7 +36,7 @@
             
           </view>
 
-          <view class="right-side">
+          <view class="right-side" @click="too('/pages/home-page/gf_level2')">
 
             <!-- 用户等级 -->
             <image src="/static/images/16.png" v-if="user_info.level == 0" mode="widthFix"></image>

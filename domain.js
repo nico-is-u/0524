@@ -359,13 +359,25 @@ export default {
 			  }
 			  if (api == 'http://api.zcxjh.com/') {
 				console.log(parseRes);
-        console.log(ウホア)
 			  }
 
 			  // console.log(parseRes);
 
 			  if (parseRes.code == 200) {
-				resolve(parseRes);
+				  resolve(parseRes);
+        }else if(parseRes.code == 401){
+          uni.showToast({
+            title: parseRes.msg,
+            icon: 'none'
+          });
+
+          uni.removeStorageSync('TK')
+          uni.removeStorageSync('user_info')
+          uni.redirectTo({
+            url: '/pages/system-page/login'
+          })
+
+        
 			  } else if (parseRes.code == 403) {
 				uni.clearStorage();
 				uni.reLaunch({

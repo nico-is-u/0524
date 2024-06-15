@@ -567,6 +567,15 @@
 			}
 		},
 		{
+			"path" : "pages/home-page/gf_level2",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
 			"path" : "pages/home-page/gf_shequn",
 			"style" : 
 			{

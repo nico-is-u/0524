@@ -898,6 +898,83 @@
 		font-size: 28rpx;
 	}
 
+	.n-table{
+		box-sizing: border-box;
+		border-left: 2rpx solid rgba(255,255,255,.2);
+		tr{
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+
+		}
+		th{
+			box-sizing: border-box;
+			padding: 10rpx;
+			margin: 0;
+
+			background: rgba(255,255,255,0.1);
+			color: #fff !important;
+			// border-left: none;
+			// border-right: 1px solid rgba(255,255,255,.1);
+		}
+		td{
+			padding: 24rpx 0;
+			color: #fff !important;
+			word-wrap: break-word;
+
+			text-align: center;
+			border-right: 2rpx solid rgba(255,255,255,.2);
+
+			border-bottom: 2rpx solid rgba(255,255,255,.2);
+		}
+	}
+
+	.n-table-2{
+		border-left: 2rpx solid rgba(255,255,255,.2);
+		.th{
+			display: flex;
+			view{
+				flex-shrink: 0;
+
+				padding: 20rpx 10rpx;
+				margin: 0;
+
+				background: rgba(255,255,255,0.1);
+				color: #fff !important;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				text-align: center;
+
+				border-right: 2rpx solid rgba(255,255,255,.2);
+
+				border-bottom: 2rpx solid rgba(255,255,255,.2);
+			}
+		}
+
+		.td{
+			view{
+				flex-shrink: 0;
+
+				padding: 20rpx 10rpx;
+				margin: 0;
+
+				color: #fff !important;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				text-align: center;
+
+				border-right: 2rpx solid rgba(255,255,255,.2);
+				border-bottom: 2rpx solid rgba(255,255,255,.2);
+			}
+		}
+	}
+
 	.n-fee{
 		display: flex;
 		font-size: 26rpx;

@@ -4,7 +4,7 @@
 			<view class="head">
 				<!-- 顶栏 -->
 				<nNavbar title="首页" :showBackBtn="false"></nNavbar>
-				<!-- 幻灯片 -->
+				<!-- 轮播图 -->
 				<swiper class="swiper">
 					<swiper-item v-for="(item,index) in banner_list" :key="'swiper-item-'+index">
 						<image :src="apiUrl + item.img_url" ></image>
