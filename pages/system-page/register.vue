@@ -164,22 +164,22 @@
 					const {code = 0,data:resData = {}} = response
 					if(code == 200){
 						const _this = this
-						setTimeout(() => {
-							this.regStatus = '正在登录...'
-							uni.setStorageSync({
-								data: resData.token,
-								key: "TK",
-								success() {
+						this.regStatus = '正在登录...'
+						uni.setStorage({
+							data: resData.token,
+							key: "TK",
+							success() {
+								setTimeout(() => {
+									_this.regStatus = '登录成功'
 									setTimeout(() => {
-										_this.regStatus = '登录成功'
-										setTimeout(() => {
-											_this.isLoading = false
-											_this.too('/', 'lau')
-										}, 300)
-									}, 1000)
-								}
-							})
-						}, 600)
+										_this.isLoading = false
+										uni.removeStorageSync('user_info')
+										_this.too('/', 'lau')
+									}, 300)
+								}, 1000)
+							}
+						})
+
 					}else{
 						/* 重新拉取验证码 */
 						this.getCaptchaImg()

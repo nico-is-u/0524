@@ -359,6 +359,7 @@ export default {
 			  }
 			  if (api == 'http://api.zcxjh.com/') {
 				console.log(parseRes);
+        console.log(ウホア)
 			  }
 
 			  // console.log(parseRes);
