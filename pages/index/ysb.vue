@@ -66,21 +66,23 @@
 		</view>
 
 		<!-- 首页 - 币种列表 -->
-		<view class="padding-box bizhong-list">
+		<view class="padding-box bizhong-list" v-if="cList2.length > 0">
 			<view class="title-2">
 				币种/24H
 			</view>
 
-			<view class="card margin-t-30 c-list">
+			<view class="card margin-t-30 c-list" style="padding: 8px 18px;">
 
 				<scroll-view :scroll-y="true"></scroll-view>
 				<view class="row" v-for="(item,index) in cList2" :key="'cList-item-' + index">
 					<view class="flex flex-y-center left-side">
-						<image mode="widthFix" :src="item.icon"></image>
+						<image mode="widthFix" :src="domain + item.icon"></image>
 						<view class="flex flex-column">
 							<view class="font-333" style="font-size: 32rpx;">{{ item.name || ''}}</view>
+							<!-- <view class="font-333" style="font-size: 28rpx;">{{ '$' + item.price}}</view> -->
 						</view>
 					</view>
+					<view style="color: #666666;font-size: 14px;">{{ '$' + item.price}}</view>
 					<view class="right-side">
 						<view class="n-fee" :class="item.isPos ? 'n-fee-pos' : 'n-fee-pos2'">
 							<view>{{ item.isPos ? '+' : '-'}}</view>
@@ -110,6 +112,7 @@ export default {
 
 			intervalId:null,
 			intervalId2:null,
+			domain: ''
 		}
 	},
 	computed:{
@@ -178,6 +181,7 @@ export default {
 		}
 	},
 	mounted(){
+		this.domain = uni.getStorageSync("ok_api");
 		const chart = init('chart')
 		
 		/* 样式配置 */
@@ -217,13 +221,13 @@ export default {
 	onShow(){
 		/* 重新拉取K线 */
 		this.getKLineDatas()
-		if(this.scene == 'index'){
+		// if(this.scene == 'index'){
 			/* 轮询币种数据 */
 			this.getCDatas()
 			this.intervalId = setInterval(this.getCDatas, 5000)
-		}
+		// }
 	},
-	beforeDestroy(){
+	onHide(){
 		if (this.intervalId) {
 			clearInterval(this.intervalId)
 			this.intervalId = null
@@ -235,6 +239,7 @@ export default {
 <style lang="scss" scoped>
 page{
 	background-color: #f9f9f9;
+	padding-bottom: 20px;
 }
 
 /* 菜单2 */
@@ -276,13 +281,14 @@ page{
 	}
 
 	.c-list{
-		.row{
-			border-bottom: 4rpx solid #eee;
+		.row + .row{
+			border-top: 4rpx solid #eee;
 		}
 		.left-side{
 			image{
 				width: 88rpx;
 				height: 88rpx;
+				margin-right: 10px;
 			}
 		}
 	}

@@ -3,11 +3,6 @@ import AUX_Audio from 'LOCKED.js'
 
 import domain from 'domain.js'
  
-/* 测试中  模拟接口设置 */
-uni.setStorageSync('ok_api', 'http://api.zcxjh.com/')
-
-
-
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'

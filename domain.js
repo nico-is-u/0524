@@ -187,7 +187,6 @@ export default {
           url: api_list[api_index] + 'common/test',
           method: "POST",
           success: (res) => {
-            console.log(res);
             // console.log("返回的密文",res.data.c);
             // console.log("解密密文",decryptCBC(res.data.c));
             try {
@@ -236,7 +235,7 @@ export default {
                         api_index = 0
                         uni.clearStorage();
                         uni.reLaunch({
-                          url: '/pages/system-page/gf_login'
+                          url: '/pages/system-page/login'
                         })
                       }
                     }
@@ -282,7 +281,7 @@ export default {
                       api_index = 0
                       uni.clearStorage();
                       uni.reLaunch({
-                        url: '/pages/system-page/gf_login'
+                        url: '/pages/system-page/login'
                       })
                     }
                   }
@@ -371,10 +370,10 @@ export default {
 
 			  if (parseRes.code == 200) {
 				resolve(parseRes);
-			  } else if (parseRes.code == 401) {
+			  } else if (parseRes.code == 403) {
 				uni.clearStorage();
 				uni.reLaunch({
-				  url: '/pages/system-page/gf_login'
+				  url: '/pages/system-page/login'
 				})
 			  } else if (parseRes.code == 10090) {
 				uni.showToast({
