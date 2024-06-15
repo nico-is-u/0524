@@ -229,6 +229,9 @@
 
 					this.isShwoLoad = false
 				})
+				.catch(e => {
+					this.too('/pages/system-page/login')
+				})
 			}
 			// this.getNotices()
 			// this.getNewsList()

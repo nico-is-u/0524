@@ -781,6 +781,10 @@
 				}
 			}
 		}
+
+		&.k-line-head-2{
+			background-image: url('/static/images/58.png');
+		}
 	}
 
 
@@ -864,6 +868,13 @@
 			color: #0182EF !important;
 			background-color: white !important;
 		}
+
+		&.n-button-4{
+			padding: 0 28rpx !important;
+			.u-button__text{
+				font-size: 28rpx !important;
+			}
+		}
 	}
 
 	.n-btn-group{
@@ -922,6 +933,10 @@
 
 	.font-red{
 		color: #FF2732;
+	}
+
+	.font-red2{
+		color: #FE2F2F;
 	}
 
 	.font-green{

@@ -7,7 +7,9 @@
             <uni-icons v-if="showBackBtn" type="left" size="24"></uni-icons>
         </view>
         <view class="center-block flex flex-y-center">{{ title }}</view>
-        <view class="right-side flex"></view>
+        <view class="right-side flex flex-x-end">
+            <slot/>
+        </view>
     </view>
     
 </template>
@@ -75,7 +77,7 @@ export default {
     z-index: 99;
 
     .left-side,.right-side{
-        width: 100rpx;
+        width: 200rpx;
         height: 100%;
 
         align-items: center;
