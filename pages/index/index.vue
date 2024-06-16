@@ -5,7 +5,7 @@
 				<!-- 顶栏 -->
 				<nNavbar title="首页" :showBackBtn="false"></nNavbar>
 				<!-- 轮播图 -->
-				<swiper class="swiper">
+				<swiper class="swiper" :autoplay="true">
 					<swiper-item v-for="(item,index) in banner_list" :key="'swiper-item-'+index">
 						<image :src="apiUrl + item.img_url" ></image>
 					</swiper-item>
@@ -106,7 +106,7 @@
 		<view v-if="isShwoLoad"
 			style="position: fixed;width: 100%;top: 0;left: 0;z-index: 99999;background-color: #FFF;height: 100vh;">
 			<view class="ststus2" style="position: relative;">
-				<view style="position: absolute;top:45%;" class="roat">
+				<view style="position: absolute;top:calc(50vh - 50px);left: calc(50vw - 50px);" class="roat">
 					<svg t="1703417725659" class="icon" viewBox="0 0 1024 1024" version="1.1"
 						xmlns="http://www.w3.org/2000/svg" p-id="5948" width="100" height="100">
 						<path

@@ -174,7 +174,8 @@ export default {
 				const {code = 0} = response
 				if(code == 200){
 					this.toa('提交成功')
-                    this.too('/pages/index/nyfz')
+                    // this.too('/pages/index/nyfz')
+					uni.navigateBack()
 				}else{
 					this.isLoading = false
 				}

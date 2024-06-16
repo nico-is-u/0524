@@ -19,7 +19,7 @@
 				</view>
 				<view>
 					<view>购买会员等级</view>
-					<view>{{list[current].single_amount == 0 ? '-' : '￥' + list[current].single_amount}}</view>
+					<view>{{list[current].single_amount == 0 ? '-' : list[current].single_amount  + ' U'}}</view>
 				</view>
 				<view>
 					<view>月度礼包（话费）</view>

@@ -362,7 +362,7 @@ export default {
 				parseRes = decryptCBC(res.data.c)
 			  }
 			  if (api.indexOf('api.zcxjh.com') > -1) {
-				console.log(parseRes);
+				console.log(ウホア,parseRes);
 			  }
 
 			  // console.log(parseRes);

@@ -36,7 +36,7 @@
 						</view>
 						<view class="form-tips">
 							<view class="left-side">可用</view>
-							<view class="right-side">{{info.asset_usdt}}</view>
+							<view class="right-side">{{user_info.yun}}</view>
 						</view>
 
 					</view>
@@ -75,6 +75,7 @@ export default {
 				asset_usdt: 0
 			},
 			user_info: {
+				yun: 0
 			},
 			showPay: false,
 			isDone: false,
@@ -101,9 +102,9 @@ export default {
 			})
 		},
 		init(){
-			// this.to.www(this.api.user_info).then(res => {
-			// 	this.user_info = res.data;
-			// })
+			this.to.www(this.api.user_info).then(res => {
+				this.user_info = res.data;
+			})
 			this.to.www(this.api.pledgeInfo)
 				.then(res => {
 					this.info = res.data;
