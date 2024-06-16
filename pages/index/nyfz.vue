@@ -187,7 +187,7 @@
 				})
 			},
 			getDataList(){
-				this.to.www(this.api.nyfz_list,{type:1})
+				this.to.www(this.api.nyfz_list,{type:3})
 				.then(res => {
 					const {code = 0} = res
 					if(code == 200){

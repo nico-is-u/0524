@@ -10,17 +10,17 @@
             <view class="padding-box-3">
                 <view class="menu-card">
                     <view class="menu-item">
-                        <view class="label">{{userInfo.yun || ''}}</view>
+                        <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : ''}}</view>
                         <view class="value">云数币</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
-                        <view class="label">{{userInfo.usdt || ''}}</view>
+                        <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : ''}}</view>
                         <view class="value">USDT</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
-                        <view class="label">{{userInfo.balance || ''}}</view>
+                        <view class="label">{{userInfo && userInfo.topup_balance ? (parseFloat(userInfo.topup_balance).toFixed(2)) : ''}}</view>
                         <view class="value">CNY</view>
                     </view>
                 </view>
@@ -79,10 +79,10 @@ export default {
         /* 拉取充值列表 */
         async getDataList(){
             try {
-                const response = await this.to.www(this.api.capital_record)
+                const response = await this.to.www(this.api.balanceLog,{type:0})
                 const {code,data={}} = response
                 if(code == 200){
-
+                    console.log(data)
                     this.dataList = data.data || []
                 }else{
                     this.dataList = []
@@ -96,6 +96,12 @@ export default {
             uni.switchTab({
                  url: '/pages/index/my'
             })
+        }
+    },
+    filters:{
+        /* 小数处理 */
+        decimal(val){
+            return parseFloat(val).toFixed(2)
         }
     },
     onLoad(){

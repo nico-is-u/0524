@@ -17,6 +17,10 @@
                                 <view class="left-side">释放时间</view>
                                 <view class="right-side">{{item.time || '--'}}</view>
                             </view>
+                            <view class="row flex flex-between">
+                                <view class="left-side">状态</view>
+                                <view class="right-side">{{getStatusTxt(item.status)}}</view>
+                            </view>
                         </view>
                     </view>
                 </view>
@@ -46,6 +50,18 @@ export default {
                     this.dataList = res.data.data.data || []
                 }
             })
+        },
+        getStatusTxt(status){
+            switch(status){
+                case 0:
+                    return '待审核'
+                case 1:
+                    return '考核中'
+                case 2:
+                    return '审核驳回'
+                case 3:
+                    return '已领取'
+            }
         }
     }
 }

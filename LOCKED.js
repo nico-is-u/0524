@@ -172,6 +172,9 @@ const xxxxxxxxxxxxxx = {
 	yunPlaceOrder:'x7Ou7bTe7rh+cT9w4n+OMg==',
 	// 提现
 	applyWithdraw: 'wTGz3KuLWNUyjR/2GtPDDR7tQitFgX2aW684cBGUVK8=',
+	// 资金明细
+	balanceLog:'plZNV62dgdwhrpxKvKuOjw==',
+
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

@@ -38,7 +38,7 @@
 		<!-- 首页 - 菜单 -->
 		<view class="padding-box">
 			<view class="menu-2">
-				<view class="menu-item" style="background-image: url(/static/images/11.png)">
+				<view class="menu-item" style="background-image: url(/static/images/11.png)" @click="too('/pages/home-page/my_zc')">
 					<view class="item-content">
 						<view class="title">我的资产</view>
 						<view class="desc">个人资产详情</view>

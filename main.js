@@ -59,8 +59,7 @@ Vue.prototype.lookImg = function(img,t='仅查看一张') {
 		})
 	},
 
-
-	App.mpType = 'app'
+App.mpType = 'app'
 const app = new Vue({
 	...App
 })
