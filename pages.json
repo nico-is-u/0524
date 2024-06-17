@@ -55,6 +55,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 云数币
+		{
+			"path":"pages/index/ysb-cc",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 数字魅力 - 存币生息
 		{
 			"path": "pages/index/szml",

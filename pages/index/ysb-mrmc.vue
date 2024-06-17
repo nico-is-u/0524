@@ -66,7 +66,7 @@
 						</view>
                         <!-- 交易额 -->
 						<view class="form-control form-control-2">
-							<view class="left-side" @click="businessTypeShow = true" >
+							<view class="left-side" >
 								<view style="padding-right: 24rpx">
 									<text>{{businessTypeItem.label}}</text>
 								</view>
@@ -93,7 +93,7 @@
 
                         <!-- 滑动部分 -->
                         <template v-if="userInfo">
-                            <u-slider :min="0" :max="userInfo.usdt"></u-slider>
+                            <u-slider v-model="formData.amount" :min="0" :max="userInfo.usdt"></u-slider>
                             <view class="form-tips">
                                 <view class="left-side">可用</view>
                                 <view class="right-side">{{userInfo.usdt || ''}}</view>
@@ -136,11 +136,11 @@ export default {
 			bar:'30m',
 
             businessTypeShow:false,
-            businessTypeIndex:0,
+            businessTypeIndex:1,
             businessType: [
                 [
                     {label: '交易额', label2:'USDT', value: 1}, 
-                    {label: '数量', label2:'ETH', value: 2}
+                    {label: '数量', label2:'USDT', value: 2}
                 ]
             ],
 
@@ -177,6 +177,10 @@ export default {
 		getUserInfo() {
 			this.to.www(this.api.user_info).then(res => {
 				this.userInfo = res.data
+
+				/* 余额类型转换 */
+				res.data.usdt = parseFloat(res.data.usdt)
+
 				uni.setStorage({
 					data: this.userInfo,
 					key: 'user_info'
@@ -247,6 +251,7 @@ export default {
 		async goRequest(){
 			this.isLoading2 = true
 			try{
+				console.log(this.formData)
 				const response = await this.to.www(this.api.yunPlaceOrder,this.formData)
 				console.log(response)
 				const {code} = response

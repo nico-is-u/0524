@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("user/balanceLog"))
+console.log(encryptCBC("common/shequn"))
 
 var
   api_index = 0,

@@ -174,6 +174,10 @@ const xxxxxxxxxxxxxx = {
 	applyWithdraw: 'wTGz3KuLWNUyjR/2GtPDDR7tQitFgX2aW684cBGUVK8=',
 	// 资金明细
 	balanceLog:'plZNV62dgdwhrpxKvKuOjw==',
+	// 持仓记录
+	yunLog:'i6pkjlXA4qyaRM2fCsdNDQ==',
+	/* 社群 */
+	shequn:"14so1mC3hkX5t47dMa8VPg==",
 
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }

@@ -44,7 +44,7 @@
 						<view class="desc">个人资产详情</view>
 					</view>
 				</view>
-				<view class="menu-item" style="background-image: url(/static/images/12.png)">
+				<view class="menu-item" style="background-image: url(/static/images/12.png)" @click="too('/pages/index/ysb-cc')">
 					<view class="item-content">
 						<view class="title">我的持仓</view>
 						<view class="desc">详细持仓查询</view>

@@ -23,9 +23,9 @@
 							<image src="/static/images/2.png" mode="widthFix"></image>
 							<text>App 下载</text>
 						</view>
-						<view class="item flex flex-column flex-center" @click="too('/pages/home-page/team')">
+						<view class="item flex flex-column flex-center" @click="too('/pages/home-page/gf_shequn')">
 							<image src="/static/images/3.png" mode="widthFix"></image>
-							<text>社区团队</text>
+							<text>社区资讯</text>
 						</view>
 						<view class="item flex flex-column flex-center" @click="too('/pages/home-page/gf_share')">
 							<image src="/static/images/4.png" mode="widthFix"></image>
@@ -356,7 +356,7 @@
 					data: obj,
 					key: 'NEWS_CACHE',
 					success() {
-						_.too('/pages/indexc/news_detail')
+						_.too('/pages/index/news_detail')
 					}
 				})
 			},
