@@ -103,6 +103,8 @@ const xxxxxxxxxxxxxx = {
 	nyfz_request:'7jg8vzDY7mh4/DKBB1PGIw==',
 	// 诺亚方舟 申请凭证上传
 	nyfz_upload:'+f6jtXuq7jhZlP4RvytRXjDfpTrvsiUcRPHZNlhDrV8=',
+	// 诺亚方舟 领取
+	nyfz_lq:'zrK7IrYzaficP2dIof1LYn9bzVBHjkfTspyHHxm0xDg=',
 	// K线数据
 	k_line:'TIds/F4atC+GhcKjXhNWRw==',
 	// 币种数据

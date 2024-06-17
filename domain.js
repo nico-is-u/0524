@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("common/shequn"))
+console.log(encryptCBC("noahOrder/reward"))
 
 var
   api_index = 0,
@@ -388,17 +388,11 @@ export default {
 				  url: '/pages/system-page/login'
 				})
 			  } else if (parseRes.code == 10090) {
-				uni.showToast({
-				  title: '余额不足，请充值',
-				  icon: 'none',
-				  success() {
-					setTimeout(() => {
-					  uni.navigateTo({
-						url: '/pages/home-page/gf_top-up'
-					  })
-					}, 1500)
-				  }
-				});
+          uni.showToast({
+            title: parseRes.msg,
+            icon: 'none'
+          });
+          reject(parseRes)
 			  } else if (parseRes.code == 10000) {
 				uni.showToast({
 				  title: parseRes.msg,

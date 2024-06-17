@@ -29,6 +29,8 @@
 						<text>个条件以上即可领取</text>
 					</view>
 
+					<u-button class="n-button fixed-button" @click="too('/pages/index/nyfz_detail')">申请</u-button>
+
 				</view>
 			</view>
 		</view>
@@ -71,7 +73,7 @@
 							<text class="desc">已释放额度</text>
 						</view>
 					</view>
-					<view class="n-button" @click="too('/pages/index/nyfz_detail')">领取</view>
+					<view class="n-button" @click="goRequest()">领取</view>
 					<image src="/static/images/8.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -156,6 +158,9 @@
 					<view class="flex flex-x-center" style="padding: 2.5vh 0">暂无数据</view>
 				</view>
 
+				<!-- 加载动画 -->
+				<u-loading-page :loading="isLoading" :loading-text="regStatus"></u-loading-page>
+
 			</view>
 		</view>
 
@@ -166,6 +171,9 @@
 	export default {
 		data(){
 			return {
+				isLoading:false,                    // 请求中
+            	regStatus: '正在提交...',		     // loading text
+
 				/* 首页信息 */
 				indexInfo:false,
 				/* 释放列表 */
@@ -195,6 +203,24 @@
 					}
 				})
 			},
+			/* 请求领取 */
+			async goRequest(){
+				this.isLoading = true
+				try{
+					const response = await this.to.www(this.api.nyfz_lq,{},'p')
+					const {code} = response
+					if(code == 200){
+						this.toa('领取成功')
+						this.too('/pages/index/nyfz_list')
+
+						this.isLoading = false
+					}else{
+						this.isLoading = false
+					}
+				}catch(e){
+					this.isLoading = false
+				}
+			},
 		}
 	}
 </script>
@@ -221,6 +247,7 @@ page{
 
 		padding: 38rpx 20rpx;
 
+		position: relative;
 		
 
 		.info-1{
@@ -255,6 +282,17 @@ page{
 			font-size: 28rpx;
 			color: #34353E;
 			padding: 0 20rpx;
+		}
+
+		.fixed-button{
+			position: absolute;
+			width: 150rpx;
+			height: 60rpx !important;
+			padding: 6rpx 0 !important;
+			font-size: 34rpx !important;
+
+			right: 50rpx;
+			top: 20%;
 		}
 	}
 }
