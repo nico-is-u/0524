@@ -36,24 +36,30 @@
 				</view>
 
                 <!-- 列表 -->
-				<view class="card-list-type-2" v-if="Array.isArray(dataList) && dataList.length">
-                    <view class="item" v-for="(item,index) in dataList" :key="index">
-                        <view class="row flex flex-between">
-							<view class="left-side">充值USDT</view>
-							<view class="right-side">{{item.amount || ''}}</view>
-						</view>
-                        <view class="row flex flex-between">
-							<view class="left-side">操作日期</view>
-							<view class="right-side">{{item.date || ''}}</view>
-						</view>
-                    </view>                    
-                </view>
+                <scroll-view style="height: 60vh" :scroll-y="true">
 
-                <!-- 没有数据 -->
-                <view style="padding: 2.5vh 0" class="flex flex-column flex-center" v-else>
-                    <image src="/static/images/54.png" style="width: 400rpx" mode="widthFix"></image>
-                    <view class="flex flex-x-center margin-t-80 font-333">暂无数据</view>
-                </view>
+                    <view class="card-list-type-2" v-if="Array.isArray(dataList) && dataList.length">
+                        <view class="item" v-for="(item,index) in dataList" :key="index">
+                            <view class="row flex flex-between">
+                                <view class="left-side">{{item.type_text || ''}}</view>
+                                <view class="right-side">
+                                    <view :class="item.change_balance_color || ''">{{item.change_balance || ''}}</view>
+                                </view>
+                            </view>
+                            <view class="row flex flex-between">
+                                <view class="left-side">{{item.order_sn || ''}}</view>
+                                <view class="right-side">{{item.created_at || ''}}</view>
+                            </view>
+                        </view>                    
+                    </view>
+
+                    <!-- 没有数据 -->
+                    <view style="padding: 2.5vh 0" class="flex flex-column flex-center" v-else>
+                        <image src="/static/images/54.png" style="width: 400rpx" mode="widthFix"></image>
+                        <view class="flex flex-x-center margin-t-80 font-333">暂无数据</view>
+                    </view>
+
+                </scroll-view>
 
             </view>
         </view>
@@ -79,11 +85,24 @@ export default {
         /* 拉取充值列表 */
         async getDataList(){
             try {
-                const response = await this.to.www(this.api.balanceLog,{type:0})
+                const response = await this.to.www(this.api.balanceLog,{log_type:'0'})
                 const {code,data={}} = response
                 if(code == 200){
-                    console.log(data)
-                    this.dataList = data.data || []
+                    const resData = data.data || []
+                    if(Array.isArray(resData) && resData.length){
+                        resData.map(item => {
+                            if(item.change_balance){
+                                if(item.change_balance[0] == '-'){
+                                    item.change_balance_color = 'font-green'
+                                }else{
+                                    item.change_balance_color = 'font-red'
+                                }
+                            }else{
+                                item.change_balance_color = ''
+                            }
+                        })
+                    }
+                    this.dataList = resData
                 }else{
                     this.dataList = []
                 }
