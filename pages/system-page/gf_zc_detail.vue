@@ -46,7 +46,7 @@
 			return {
 				obj: {
 					digital_yuan_amount: '',
-					level: '0',
+					level: 1,
 					ensure: '',
 					rich: ''
 				},

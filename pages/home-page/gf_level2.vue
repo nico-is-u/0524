@@ -16,7 +16,7 @@
                 <swiper-item v-for="(item,index) in list1" :key="'swiper-item-'+index">
                     <image :src="item"></image>
                     <!-- 去升级按钮 -->
-                    <view v-if="(index + 1) > (userInfo.level + 1)" class="level-up" @click="levelUp">去升级 ></view>
+                    <view v-if="(index + 1) > (userInfo.level)" class="level-up" @click="levelUp">去升级 ></view>
                 </swiper-item>
             </swiper>
 
@@ -77,7 +77,7 @@
                         </view>
                         
                         <view class="td flex" v-for="(item,index) in levelList" :key="'level-row-' + index">
-                            <view style="width:200rpx">{{ item.name || '' }}V{{ item.level + 1 || '' }}</view>
+                            <view style="width:200rpx">{{ item.name || '' }}V{{ item.level || '' }}</view>
                             <view style="width:140rpx">{{ item.single_amount  ? item.single_amount + 'U' : '-' }}</view>
                             <view style="width:140rpx">{{ item.month_gift == 0 ? '-' : '￥' + item.month_gift }}</view>
                             <view style="width:140rpx">{{ item.speed_income == 0 ? '-' : item.speed_income}}</view>
@@ -145,7 +145,7 @@
             setList(){
                 const result = []
                 for(let i = 1; i <= 5; i++){
-                    if((this.userInfo.level + 1) == i){
+                    if((this.userInfo.level) == i){
                         result.push('/static/images/my/level2-' + i + '.png')
                     }else{
                         result.push('/static/images/my/level3-' + i + '.png')

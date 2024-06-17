@@ -21,11 +21,11 @@
               <view class="desc flex">
 
                 <!-- 用户等级 -->
-                <image src="/static/images/21.png" v-if="user_info.level == 0" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/22.png" v-if="user_info.level == 1" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/23.png" v-if="user_info.level == 2" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/24.png" v-if="user_info.level == 3" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/25.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/21.png" v-if="user_info.level == 1" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/22.png" v-if="user_info.level == 2" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/23.png" v-if="user_info.level == 3" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/24.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/25.png" v-if="user_info.level == 5" mode="widthFix" class="level-2"></image>
 
                 <view class="text-part" @click="too('/pages/home-page/gf_level2')">
                   <text>我的等级特权</text>
@@ -39,11 +39,11 @@
           <view class="right-side" @click="too('/pages/home-page/gf_level2')">
 
             <!-- 用户等级 -->
-            <image src="/static/images/16.png" v-if="user_info.level == 0" mode="widthFix"></image>
-            <image src="/static/images/17.png" v-if="user_info.level == 1" mode="widthFix"></image>
-            <image src="/static/images/18.png" v-if="user_info.level == 2" mode="widthFix"></image>
-            <image src="/static/images/19.png" v-if="user_info.level == 3" mode="widthFix"></image>
-            <image src="/static/images/20.png" v-if="user_info.level == 4" mode="widthFix"></image>
+            <image src="/static/images/16.png" v-if="user_info.level == 1" mode="widthFix"></image>
+            <image src="/static/images/17.png" v-if="user_info.level == 2" mode="widthFix"></image>
+            <image src="/static/images/18.png" v-if="user_info.level == 3" mode="widthFix"></image>
+            <image src="/static/images/19.png" v-if="user_info.level == 4" mode="widthFix"></image>
+            <image src="/static/images/20.png" v-if="user_info.level == 5" mode="widthFix"></image>
 
           </view>
 

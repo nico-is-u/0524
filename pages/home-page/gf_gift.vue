@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<image :src="'/static/images/my/level'+(user_info.level + 1) +'.png'" style="width: 100%;" mode="widthFix"></image>
+		<image :src="'/static/images/my/level'+(user_info.level) +'.png'" style="width: 100%;" mode="widthFix"></image>
 		<view class="list">
 			<view class="list-item" v-for="(item,index) in list" :key="index">
 				<image :src="item.cover_img" style="width: 100%;" mode="widthFix"></image>
@@ -20,7 +20,7 @@
 		data() {
 			return {
 				user_info: {
-					level: 0
+					level: 1
 				},
 				list: [],
 			};

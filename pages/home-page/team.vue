@@ -43,11 +43,11 @@
                             <view class="label">用户名:</view>
                             <view class="value">
                                 <text>{{item.realname || ''}}</text>
-                                <image v-if="item.level == 0" src="/static/images/21.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
-                                <image v-if="item.level == 1" src="/static/images/22.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
-                                <image v-if="item.level == 2" src="/static/images/23.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
-                                <image v-if="item.level == 3" src="/static/images/24.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
-                                <image v-if="item.level == 4" src="/static/images/25.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 1" src="/static/images/21.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 2" src="/static/images/22.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 3" src="/static/images/23.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 4" src="/static/images/24.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
+                                <image v-if="item.level == 5" src="/static/images/25.png" style="width:122rpx; margin-left: 12rpx;" mode="widthFix"></image>
                             </view>
                         </view>
 

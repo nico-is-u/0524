@@ -12,7 +12,7 @@
 			        circular :list="list1" @change="change" @click="click"></u-swiper>
 			<view class="form" v-if="list.length > 0">
 				<view class="title1">当前等级权益</view>
-				<view>{{list[current].name}}V{{list[current].level+1}}权益</view>
+				<view>{{list[current].name}}V{{list[current].level}}权益</view>
 				<view>
 					<view>资产要求</view>
 					<view>{{list[current].total_assets == 0 ? '-' : '￥' + list[current].total_assets}}</view>
@@ -74,7 +74,7 @@
 				],
 				list: [],
 				user_info: {
-					level: 0
+					level: 1
 				},
 				current: 0,
 				showPay: false,
