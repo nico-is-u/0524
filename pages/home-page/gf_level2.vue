@@ -42,22 +42,22 @@
                         <view class="item">
                             <image src="/static/images/59.png"></image>
                             <view class="label">超快晋级</view>
-                            <view class="desc">持仓2000U即可当级，可选现货、合约交易、持有资产任一式提升等级</view>
+                            <view class="desc">持仓8000U即可升级，购买会员等级永久尊享身份</view>
                         </view>
                         <view class="item">
                             <image src="/static/images/60.png"></image>
                             <view class="label">最优费率</view>
-                            <view class="desc">通享平台费率优惠折扣，HIX抵扣折上折</view>
+                            <view class="desc">独享加速收益叠加，更高比例下级收益奖励</view>
                         </view>
                         <view class="item">
                             <image src="/static/images/61.png"></image>
                             <view class="label">HTX特权</view>
-                            <view class="desc">持有HTX可享受1.5倍极速提升等级，抵扣交易手续费再享折扣</view>
+                            <view class="desc">尊享积分好礼兑换折扣</view>
                         </view>
                         <view class="item">
                             <image src="/static/images/62.png"></image>
                             <view class="label">专属权益</view>
-                            <view class="desc">超过15项专厘权益，共享全站Prime造富机会</view>
+                            <view class="desc">月度专属礼包等权益，畅享高品质财富机会</view>
                         </view>
 
                     </view>
@@ -72,7 +72,8 @@
                             <view style="width:140rpx">购买会员等级</view>
                             <view style="width:140rpx">月度列表（话费）</view>
                             <view style="width:140rpx">理财加速收益</view>
-                            <view style="width:250rpx">周期资产解冻最高等级</view>
+                            <!-- <view style="width:250rpx">周期资产解冻最高等级</view> -->
+                             <view style="width:250rpx">积分好礼，折扣</view>
                             <view style="width:250rpx">推荐会员奖励</view>
                         </view>
                         
@@ -81,7 +82,8 @@
                             <view style="width:140rpx">{{ item.single_amount  ? item.single_amount + 'U' : '-' }}</view>
                             <view style="width:140rpx">{{ item.month_gift == 0 ? '-' : '￥' + item.month_gift }}</view>
                             <view style="width:140rpx">{{ item.speed_income == 0 ? '-' : item.speed_income}}</view>
-                            <view style="width:250rpx">{{ item.thawing_level == 0 ? '-' : '￥' + item.thawing_level}}</view>
+                            <!-- <view style="width:250rpx">{{ item.thawing_level == 0 ? '-' : '￥' + item.thawing_level}}</view> -->
+                            <view style="width:250rpx">1</view>
                             <view style="width:250rpx">{{ item.recommend_reward == 0 ? '-' : item.recommend_reward +  '%'}}</view>
                         </view>
                     </view>
@@ -94,26 +96,32 @@
                         <tr>
                             <th style="width: 86px">等级权益</th>
                             <th>资产要求(总资产自动升级，日均资产按月考核，次月按日均资产匹配</th>
+                            <th>购买方式</th>
                         </tr>
                         <tr>
                             <td>大众会员V1</td>
                             <td>-</td>
+                            <td>{{ levelAmountList[0] || '-' }}</td>
                         </tr>
                         <tr>
                             <td>黄金会员V2</td>
                             <td>总资产8000U/日均5000U</td>
+                            <td>{{ levelAmountList[1] || '-' }}</td>
                         </tr>
                         <tr>
                             <td>白金会员V3</td>
                             <td>总资产18000U/日均10000U</td>
+                            <td>{{ levelAmountList[2] || '-' }}</td>
                         </tr>
                         <tr>
                             <td>铂金会员V4</td>
                             <td>总资产38000U/日均25000U</td>
+                            <td>{{ levelAmountList[3] || '-' }}</td>
                         </tr>
                         <tr>
                             <td>钻石会员V5</td>
                             <td>总资产88000U/日均6000U</td>
+                            <td>{{ levelAmountList[4] || '-' }}</td>
                         </tr>
                     </table>
                     
@@ -139,6 +147,21 @@
                 current: 0,
                 current2: 1,
             }
+        },
+        computed:{
+            /* 等级价格列表 */
+            levelAmountList(){
+                let result = []
+                if(Array.isArray(this.levelList) && this.levelList.length){
+                    this.levelList.map((item,index) => {
+                        result[index] = '-'
+                        if(item.single_amount){
+                            result[index] = item.single_amount + 'U'
+                        }
+                    })
+                }
+                return result
+            },
         },
         methods:{
             /* 轮播图图组 */
@@ -221,6 +244,7 @@
         }
         .desc{
             font-size: 20rpx;
+            text-align: center;
         }
     }
 }
