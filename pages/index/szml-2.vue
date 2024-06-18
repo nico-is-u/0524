@@ -44,12 +44,21 @@
         </view>
 		<u-overlay :show="showPay" @click="showPay = false">
 			<view class="warp" style="padding: 0 20px;">
-				<view class="rect1">
+				<view class="rect1" @tap.stop>
+
 					<view style="margin-top: 40rpx;">
-						<u--text prefixIcon="coupon-fill" iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+							size="14" text="购买金额"></u--text>
+						<view style="margin: 30rpx 0 0;">
+							<u-input type="number" placeholder="请输入购买金额" border="surround" v-model="amount"></u-input>
+						</view>
+					</view>
+
+					<view style="margin-top: 40rpx;">
+						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
 							size="14" text="请输入支付密码"></u--text>
 						<view style="margin: 30rpx 0 0;">
-							<xt-verify-code :isPassword="true" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
+							<xt-verify-code :isPassword="true" :isFocus="false" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
 						</view>
 					</view>
 					<u-button iconColor="#fff" class="custom-style" text="立即支付" :loading="isDone"
@@ -70,6 +79,7 @@ export default {
 			showPay: false,
 			isDone: false,
 			regStatus: '处理中...',
+			amount:0,									// 购买金额
 			pay_password: '',
 			id: 0
 		};
@@ -81,7 +91,13 @@ export default {
 		},
 		pay(){
 			if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
-			this.to.www(this.api.licaPlaceOrder, {id: this.id, pay_password: this.pay_password}, 'p').then(res => {
+			if (uni.$u.test.isEmpty(this.amount)) return this.toa('请输入购买金额');
+			// if (!/^-?\d+$/.test(this.amount)) return this.toa('暂不支持非整数交易')
+			this.to.www(this.api.licaPlaceOrder, {
+				id: this.id, 
+				amount: this.amount,
+				pay_password: this.pay_password
+			}, 'p').then(res => {
 				this.toa('支付成功')
 			}).catch(err => {
 				this.isDone = false

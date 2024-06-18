@@ -29,10 +29,10 @@
 					<view>理财加速收益</view>
 					<view>{{list[current].speed_income == 0 ? '-' : list[current].speed_income}}</view>
 				</view>
-				<view>
+				<!-- <view>
 					<view>周期资产解冻最高等级</view>
 					<view>{{list[current].thawing_level + (list[current].thawing_level ? ' U' : '-')}}</view>
-				</view>
+				</view> -->
 				<view>
 					<view>推荐会员奖励</view>
 					<view>{{list[current].recommend_reward == 0 ? '-' : list[current].recommend_reward +  '%'}}</view>

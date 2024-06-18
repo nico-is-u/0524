@@ -73,17 +73,17 @@
                             <view style="width:140rpx">月度列表（话费）</view>
                             <view style="width:140rpx">理财加速收益</view>
                             <!-- <view style="width:250rpx">周期资产解冻最高等级</view> -->
-                             <view style="width:250rpx">积分好礼，折扣</view>
+                             <view style="width:250rpx">积分折扣</view>
                             <view style="width:250rpx">推荐会员奖励</view>
                         </view>
                         
-                        <view class="td flex" v-for="(item,index) in levelList" :key="'level-row-' + index">
+                        <view class="td flex" v-for="(item,index) in levelList2" :key="'level-row-' + index">
                             <view style="width:200rpx">{{ item.name || '' }}V{{ item.level || '' }}</view>
                             <view style="width:140rpx">{{ item.single_amount  ? item.single_amount + 'U' : '-' }}</view>
                             <view style="width:140rpx">{{ item.month_gift == 0 ? '-' : '￥' + item.month_gift }}</view>
                             <view style="width:140rpx">{{ item.speed_income == 0 ? '-' : item.speed_income}}</view>
                             <!-- <view style="width:250rpx">{{ item.thawing_level == 0 ? '-' : '￥' + item.thawing_level}}</view> -->
-                            <view style="width:250rpx">1</view>
+                            <view style="width:250rpx">{{ item.integral_off }}</view>
                             <view style="width:250rpx">{{ item.recommend_reward == 0 ? '-' : item.recommend_reward +  '%'}}</view>
                         </view>
                     </view>
@@ -152,7 +152,7 @@
             /* 等级价格列表 */
             levelAmountList(){
                 let result = []
-                if(Array.isArray(this.levelList) && this.levelList.length){
+                if(Array.isArray(this.levelList2) && this.levelList2.length){
                     this.levelList.map((item,index) => {
                         result[index] = '-'
                         if(item.single_amount){
@@ -162,6 +162,21 @@
                 }
                 return result
             },
+            /* 会员权益列表 */
+            levelList2(){
+                let result = []
+                if(Array.isArray(this.levelList) && this.levelList.length){
+                    this.levelList.map((item) => {
+                        if(item.integral_off){
+                            item.integral_off = (item.integral_off / 10) + '折'
+                        }else{
+                            item.integral_off = '-'
+                        }
+                        result.push(item)
+                    })
+                }
+                return result
+            }
         },
         methods:{
             /* 轮播图图组 */
@@ -183,7 +198,6 @@
             getLevelList(){
                 this.to.www(this.api.levelList)
 				.then(res => {
-                    console.log(res.data.data)
                     this.levelList = res.data.data || [] 
 				})
             },
