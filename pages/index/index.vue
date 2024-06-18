@@ -41,7 +41,9 @@
 			</view>
 
 		</template>
-		
+		<view style="border-radius: 10rpx;overflow: hidden;">
+			<video class="bannervid" ref="vdi" :muted="isMuted" :autoplay="true" loop  objectFit="cover" :src="setting_conf.video_url" @click="isMuted = false"></video>
+		</view>
 		<!-- 新闻列表 -->
 		<template>
 			<view class="padding-box" style="margin-top: 32rpx;">
@@ -154,7 +156,7 @@
 			return {
 				/* api地址 */
 				apiUrl:'',
-
+				isMuted: true,
 				showAd: false,
 				isShwoLoad: true,
 				noutsINdex: 0,
@@ -404,6 +406,13 @@
 </script>
 
 <style lang="scss" scoped>
+	.bannervid {
+		width: calc(100% - 40px);
+		border-radius: 10rpx;
+		// height: 380rpx;
+		z-index: 55;
+		margin: 20px 20px 0 20px;
+	}
 page{
 	background-color: #f9f9f9;
 }
