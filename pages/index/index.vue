@@ -409,7 +409,7 @@ page{
 }
 
 .head {
-	height: 454rpx;
+	height: 494rpx;
 	background-image: url('/static/images/1.png');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -421,7 +421,7 @@ page{
 	/* 幻灯片部分 */
 	.swiper{
 		margin-top: 16rpx;
-		height: 299rpx;
+		height: 370rpx;
 		image{
 			width: calc(100% - 30px);
 			height: 100%;

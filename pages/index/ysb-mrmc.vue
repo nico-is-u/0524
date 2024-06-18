@@ -253,10 +253,10 @@ export default {
 			try{
 				console.log(this.formData)
 				const response = await this.to.www(this.api.yunPlaceOrder,this.formData)
-				console.log(response)
 				const {code} = response
 				if(code == 200){
-
+					this.toa('操作成功')
+					this.too('/pages/home-page/my_zc')
 					this.isLoading2 = false
 				}else{
 					this.isLoading2 = false

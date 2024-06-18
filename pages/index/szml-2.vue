@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
              <!-- 顶栏 -->
-			<nNavbar title="理财产品" :showBackBtn="false" >
+			<nNavbar title="理财产品" :showBackBtn="true" :back="true" :backFunc="backPrev">
 				<u--text @click="too('szml-2-order-list')" color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
@@ -87,6 +87,10 @@ export default {
 			}).catch(err => {
 				this.isDone = false
 			})
+		},
+		/* 返回上一页 */
+		backPrev(){
+			this.too('/pages/index/szml','tab')
 		}
 	},
 	onLoad() {

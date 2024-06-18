@@ -15,7 +15,7 @@
 				<view>{{list[current].name}}V{{list[current].level}}权益</view>
 				<view>
 					<view>资产要求</view>
-					<view>{{list[current].total_assets == 0 ? '-' : '￥' + list[current].total_assets}}</view>
+					<view>{{list[current].total_assets == 0 ? '-' : (list[current].total_assets + ' U')}}</view>
 				</view>
 				<view>
 					<view>购买会员等级</view>
@@ -31,14 +31,14 @@
 				</view>
 				<view>
 					<view>周期资产解冻最高等级</view>
-					<view>{{list[current].thawing_level == 0 ? '-' : '￥' + list[current].thawing_level}}</view>
+					<view>{{list[current].thawing_level + (list[current].thawing_level ? ' U' : '-')}}</view>
 				</view>
 				<view>
 					<view>推荐会员奖励</view>
 					<view>{{list[current].recommend_reward == 0 ? '-' : list[current].recommend_reward +  '%'}}</view>
 				</view>
 			</view>
-			<view class="btn active" v-if="user_info.level >= current">
+			<view class="btn active" v-if="(user_info.level - 1) >= current">
 				您已购买当前等级
 			</view>
 			<view v-else class="btn" @click="buy">购买</view>
@@ -76,7 +76,7 @@
 				user_info: {
 					level: 1
 				},
-				current: 0,
+				current: 1,
 				showPay: false,
 				isDone: false,
 				regStatus: '处理中...',
@@ -105,11 +105,11 @@
 		onLoad() {
 			this.to.www(this.api.user_info).then(res => {
 				this.user_info = res.data;
-				this.current = this.user_info.level;
+				this.current = (this.user_info.level - 1)
 			})
 			this.to.www(this.api.levelList)
 				.then(res => {
-					this.list = res.data.data;
+					this.list = res.data.data
 				})
 		}
 	}
