@@ -29,14 +29,13 @@
                             <view class="tips1">{{item.intro}}</view>
                             <view class="tips2">{{item.intro}}</view>
                         </view>
-
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
                                 <view class="font-red2">{{item.income_rate}}%</view>
                                 <view class="font-gray">近1年收益率</view>
                             </view>
                             <view class="right-side flex flex-y-center">
-                                <u-button class="n-button n-button-4" text="立即购买" @click="buy(item.id)"></u-button>
+                                <u-button class="n-button n-button-4" :text="item.amount + '元起'" @click="buy(item.id)"></u-button>
                             </view>
                         </view>
                     </view>
@@ -99,7 +98,8 @@ export default {
 		// })
 		this.to.www(this.api.licaiList)
 			.then(res => {
-				this.list = res.data.data;
+				console.log(res.data.data)
+				this.list = res.data.data
 			})
 	}
 }

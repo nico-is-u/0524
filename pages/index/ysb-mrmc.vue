@@ -1,8 +1,14 @@
 <template>
 	<view class="page">
 		<view class="k-line-head">
+
             <!-- 顶栏 -->
-			<nNavbar :title="navbarTitle" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
+			<nNavbar :title="navbarTitle" :showBackBtn="true" :back="false" :backFunc="backPrev">
+				<view class="navbar-right" @click="cTypeShow = true">
+					<view class="font-white cName">{{ $store.getters['cName'] }}</view>
+					<view class="arrow">▼</view>
+				</view>
+			</nNavbar>
             
             <!-- K线图 -->
 			<view class="k-line-shell">
@@ -73,9 +79,9 @@
 								<text>▼</text>
 							</view>
 							<view class="right-side">
-								<u--input border="none" v-model="formData.amount" type="number">
+								<u--input border="none" v-model="formData.amount" type="number" :step="1">
 									<u--text
-										:text="businessTypeItem.label2"
+										:text="$store.getters['cName']"
 										slot="suffix"
                                         size="13px"
                                         color="#222"
@@ -93,10 +99,10 @@
 
                         <!-- 滑动部分 -->
                         <template v-if="userInfo">
-                            <u-slider v-model="formData.amount" :min="0" :max="userInfo.usdt"></u-slider>
+                            <u-slider v-model="formData.amount" :min="0" :max="userBalance" v-if="userBalance && userBalance > 1"></u-slider>
                             <view class="form-tips">
                                 <view class="left-side">可用</view>
-                                <view class="right-side">{{userInfo.usdt || ''}}</view>
+                                <view class="right-side">{{userBalance || ''}}</view>
                             </view>
                         </template>
 					</view>
@@ -104,7 +110,11 @@
 
             </view>
 
-            <!-- 切换交易类型 -->
+
+			<!-- 切换币种 -->
+			<u-picker :show="cTypeShow" :columns="[$store.state.cList]" keyName="name" @confirm="changeCType" @cancel="cTypeShow = false" @close="cTypeShow = false"></u-picker>
+
+            <!-- 切换交易类型(暂时屏蔽) -->
             <u-picker :show="businessTypeShow" :columns="businessType" keyName="label" @confirm="changeBusinessType" @cancel="businessTypeShow = false" @close="businessTypeShow = false"></u-picker>
 
 			<!-- 加载动画 -->
@@ -121,7 +131,9 @@
 
 <script>
 import { init } from 'klinecharts'
+import uPicker from '../../uni_modules/uview-ui/components/u-picker/u-picker.vue'
 export default {
+  components: { uPicker },
     data(){
         return {
             isLoading:false,                    		// 请求中
@@ -129,9 +141,9 @@ export default {
             regStatus:'处理中...',
 
             userInfo:false,                             // 用户信息
+			userBalance:0,								// 用户（当前币种）余额
 
             kLine:false,								// K线插件
-			cType:'BTC',								// 币种
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
 			bar:'30m',
 
@@ -139,13 +151,15 @@ export default {
             businessTypeIndex:1,
             businessType: [
                 [
-                    {label: '交易额', label2:'USDT', value: 1}, 
-                    {label: '数量', label2:'USDT', value: 2}
+                    {label: '交易额', value: 1}, 
+                    {label: '数量', value: 2}
                 ]
             ],
 
+			cTypeShow:false,
+
             formData:{
-                code:'YUN',
+				code:'',
                 type:'buy',
                 operation_type:'market',
                 pay_password:'',                        // 支付密码
@@ -178,9 +192,6 @@ export default {
 			this.to.www(this.api.user_info).then(res => {
 				this.userInfo = res.data
 
-				/* 余额类型转换 */
-				res.data.usdt = parseFloat(res.data.usdt)
-
 				uni.setStorage({
 					data: this.userInfo,
 					key: 'user_info'
@@ -196,7 +207,7 @@ export default {
 		getKLineDatas(){
 			this.isLoading = true
 			this.to.www(this.api.k_line,{
-				code:this.cType,
+				code:this.$store.getters['cName'],
 				bar:this.bar
 			})
 			.then(res => {
@@ -236,13 +247,52 @@ export default {
 
             this.businessTypeShow = false
         },
+
+		/* 切换币种 */
+		changeCType(e){
+			const {indexs} = e
+            const index = indexs[0]
+
+			this.$store.commit('changeCListIndex',index)
+
+			/* 重新渲染K线 */
+			this.getKLineDatas()
+			/* 重新拉取余额 */
+			this.userCBalance()
+
+			this.cTypeShow = false
+		},
+
+		/* 拉取该币种的用户余额 */
+		async userCBalance(){
+			try{
+				const response = await this.to.www(this.api.user_balance,{
+					code:this.$store.getters['cName']
+				})
+
+				const {code,data} = response
+				if(code == 200){
+					const userBalance = parseFloat(data)
+					console.log(`当前币种${this.$store.getters['cName']},余额：${userBalance}`)
+
+					if(userBalance)	this.userBalance = userBalance
+				}
+
+			}catch(e){
+			}
+		},
+
         /* 检查表单 */
         checkForm(){
             if(!this.formData.amount){
                 this.toa(`请输入${this.businessTypeItem.label}`)
 			}else if(!this.formData.pay_password){
 				this.toa(`请输入交易密码`)
-            }else{
+            }else if(!/^-?\d+$/.test(this.formData.amount)){
+				this.toa(`暂不支持非整数交易`)
+			}else{
+				/* 设置当前交易币种 */
+				this.formData.code = this.$store.getters['cName']
 				/* 发起请求 */
 				this.goRequest()
 			}
@@ -299,6 +349,8 @@ export default {
     onShow(){
         /* 重新拉取K线 */
 		this.getKLineDatas()
+		/* 拉取该币种当前余额 */
+		this.userCBalance()
     },
 	onLoad(options){
 		const {type = ''} = options
@@ -312,5 +364,22 @@ page{
 	background-color: #f9f9f9;
 }
 
+.navbar-right{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	gap: 12rpx;
+
+	.cName{
+		font-size: 30rpx;
+		letter-spacing: 2rpx;
+	}
+
+	.arrow{
+		font-size: 20rpx;
+		color: white !important;
+	}
+}
 
 </style>

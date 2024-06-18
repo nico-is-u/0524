@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("noahOrder/reward"))
+console.log(encryptCBC("yun/codeAssets"))
 
 var
   api_index = 0,

@@ -180,7 +180,6 @@
 			}
 		},
 		onShow() {
-			console.log('?')
 			var usr_info = uni.getStorageSync("user_info");
 			if (usr_info) {
 				this.user_info = usr_info;
@@ -216,6 +215,8 @@
 				this.getBannerList()
 				/* 获取新闻资讯 */
 				this.getNewsList()
+				/* 获取币种列表 */
+				this.$store.dispatch('getCList')
 				/* 个人信息 */
 				this.to.www(this.api.user_info)
 				.then(res => {

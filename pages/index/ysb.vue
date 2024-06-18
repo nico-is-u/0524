@@ -107,10 +107,8 @@ export default {
 			isLoading:false,                    		// 请求中
 
 			kLine:false,								// K线插件
-			cType:'BTC',								// 币种
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
 			bar:'30m',
-			cList:[],									// 币种列表
 
 			intervalId:null,
 			intervalId2:null,
@@ -121,9 +119,9 @@ export default {
 		/* 币种列表 */
 		cList2(){
 			let result = []
-			if(Array.isArray(this.cList) && this.cList.length){
-				for(let len = 0; len < this.cList.length; len ++){
-					let item = this.cList[len]
+			if(Array.isArray(this.$store.state.cList) && this.$store.state.cList.length){
+				for(let len = 0; len < this.$store.state.cList.length; len ++){
+					let item = this.$store.state.cList[len]
 					item.change2 = parseFloat(item.change)
 					item.isPos = item.change2 > 0 ? true : false
 					if(item.isPos){
@@ -147,7 +145,7 @@ export default {
 		getKLineDatas(){
 			this.isLoading = true
 			this.to.www(this.api.k_line,{
-				code:this.cType,
+				code:this.$store.getters['cName'],
 				bar:this.bar
 			})
 			.then(res => {
@@ -165,13 +163,7 @@ export default {
 		},
 		/* 拉取币种数据 */
 		getCDatas(){
-			this.to.www(this.api.c_list)
-			.then(res => {
-				const {code,data=[]} = res
-				if(code == 200){
-					this.cList = data
-				}
-			})
+			this.$store.dispatch('getCList')
 		},
 		/* 切换场景 */
 		changeScene(scene){

@@ -89,6 +89,8 @@ const xxxxxxxxxxxxxx = {
 	api_test:'vZ1DN0UDQpwAEB/i4+EQcA==',
 	// 用户信息
 	user_info:'S7QDYSnZUHR3FJ4bp4uDqQ==',
+	// 用户余额(指定币种)
+	user_balance:'69n0PgctgjwCViP9//4iVQ==',
 	// 拉取验证码
 	system_captcha:'+s7CfH4/MYhyy0mSao2Lvcg6rI+mMIfhMeGRHjYDPuI=',
 	// 用户登录，注册，修改登录密码

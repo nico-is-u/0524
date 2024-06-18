@@ -996,6 +996,10 @@
 		}
 	}
 
+	.font-white{
+		color: white !important;
+	}
+
 	.font-333{
 		color: #333;
 	}

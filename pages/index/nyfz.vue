@@ -17,11 +17,11 @@
 						<text>{{indexInfo.totalAmount || '0.00'}}</text>
 					</view>
 
-					<view class="info-3">
+					<view class="info-3" v-if="pageShow">
 						<view class="line"></view>
 					</view>
 
-					<view class="info-4">
+					<view class="info-4" v-if="pageShow">
 						<text>按会员等级释放比例，每</text>
 						<text class="font-blue">45</text>
 						<text>天为一个周期考核，满足</text>
@@ -36,7 +36,7 @@
 		</view>
 
 		<!-- 小菜单 -->
-		<view class="padding-box-2 menu">
+		<view class="padding-box-2 menu" v-if="pageShow">
 			<view class="content" style="padding-bottom: 0">
 
 				<view class="flex flex-column">
@@ -60,7 +60,7 @@
 		</view>
 
 		<!-- 领取 -->
-		<view class="info-5">
+		<view class="info-5" v-if="pageShow">
 			<view class="content">
 				<view class="content-2">
 					<view class="list flex flex-between">
@@ -80,7 +80,7 @@
 		</view>
 
 		<!-- 释放条件 -->
-		<view class="padding-box shifang-tiaojian" style="margin: 32rpx 0;">
+		<view class="padding-box shifang-tiaojian" v-if="pageShow" style="margin: 32rpx 0;">
 			<view class="content">
 				<view class="title">
 					<view class="label">释放条件</view>
@@ -119,7 +119,7 @@
 		</view>
 
 		<!-- 释放列表 -->
-		<view class="padding-box shifang-list">
+		<view class="padding-box shifang-list" v-if="pageShow">
 			<view class="content">
 				<view class="title">
 					<view class="label">
@@ -178,6 +178,9 @@
 				indexInfo:false,
 				/* 释放列表 */
 				indexList:[],
+
+				/* 暂时隐藏 */
+				pageShow:false,
 			}
 		},
 		onShow() {
@@ -242,7 +245,7 @@ page{
 	
 	/* 总资产 */
 	.zichan-info{
-		height: 334rpx;
+		height: 224rpx;
 		margin-top: 32rpx;
 
 		padding: 38rpx 20rpx;

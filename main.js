@@ -5,6 +5,8 @@ import domain from 'domain.js'
  
 // #ifndef VUE3
 import Vue from 'vue'
+import store from './store'
+
 import './uni.promisify.adaptor'
 import uView from '@/uni_modules/uview-ui'
 
@@ -61,6 +63,7 @@ Vue.prototype.lookImg = function(img,t='仅查看一张') {
 
 App.mpType = 'app'
 const app = new Vue({
+	store,
 	...App
 })
 app.$mount()
@@ -72,6 +75,7 @@ import {
 } from 'vue'
 export function createApp() {
 	const app = createSSRApp(App)
+	app.use(store)
 	return {
 		app
 	}
