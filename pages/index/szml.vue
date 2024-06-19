@@ -42,10 +42,13 @@
 					</view>
 				</view>
 			</view>
-			<!-- 提交按钮 -->
+			<!-- 质押 & 赎回 -->
             <view class="margin-t-20" style="padding: 32rpx">
                 <u-button class="n-button n-button-2" text="质押" @click="buy"></u-button>
             </view>
+			<!-- <view style="padding: 0 32rpx">
+                <u-button class="n-button n-button-2" text="赎回" ></u-button>
+            </view> -->
         </view>
 		<u-overlay :show="showPay" @click="showPay = false">
 			<view class="warp" style="padding: 0 20px;">

@@ -85,7 +85,7 @@
                     </view>
                 </view>
 
-                <u-button class="n-button" style="margin-top: 64rpx" iconColor="#fff" text="提现" :loading="isLoading" @click="checkForm" :loadingText="regStatus"></u-button>
+                <u-button class="n-button" style="margin-top: 64rpx" iconColor="#fff" text="提交" :loading="isLoading" @click="checkForm" :loadingText="regStatus"></u-button>
 
             </u--form>
         </view>

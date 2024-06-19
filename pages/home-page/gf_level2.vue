@@ -46,12 +46,12 @@
                         </view>
                         <view class="item">
                             <image src="/static/images/60.png"></image>
-                            <view class="label">最优费率</view>
+                            <view class="label">收益叠加</view>
                             <view class="desc">独享加速收益叠加，更高比例下级收益奖励</view>
                         </view>
                         <view class="item">
                             <image src="/static/images/61.png"></image>
-                            <view class="label">HTX特权</view>
+                            <view class="label">兑换折扣</view>
                             <view class="desc">尊享积分好礼兑换折扣</view>
                         </view>
                         <view class="item">
@@ -68,23 +68,23 @@
 
                     <view class="n-table-2">
                         <view class="th flex">
-                            <view style="width:200rpx">等级权益</view>
-                            <view style="width:140rpx">购买会员等级</view>
-                            <view style="width:140rpx">月度列表（话费）</view>
-                            <view style="width:140rpx">理财加速收益</view>
+                            <view style="width:180rpx">等级权益</view>
+                            <!-- <view style="width:140rpx">购买会员等级</view> -->
+                            <view style="width:130rpx">月度列表（话费）</view>
+                            <view style="width:130rpx">理财加速收益</view>
                             <!-- <view style="width:250rpx">周期资产解冻最高等级</view> -->
-                             <view style="width:250rpx">积分折扣</view>
-                            <view style="width:250rpx">推荐会员奖励</view>
+                             <view style="width:150rpx">积分折扣</view>
+                            <view style="width:150rpx">推荐会员奖励</view>
                         </view>
                         
-                        <view class="td flex" v-for="(item,index) in levelList2" :key="'level-row-' + index">
-                            <view style="width:200rpx">{{ item.name || '' }}V{{ item.level || '' }}</view>
-                            <view style="width:140rpx">{{ item.single_amount  ? item.single_amount + 'U' : '-' }}</view>
-                            <view style="width:140rpx">{{ item.month_gift == 0 ? '-' : '￥' + item.month_gift }}</view>
-                            <view style="width:140rpx">{{ item.speed_income == 0 ? '-' : item.speed_income}}</view>
+                        <view class="td flex" v-for="(item,index) in levelList" :key="'level-row-' + index">
+                            <view style="width:180rpx">{{ item.name || '' }}V{{ item.level || '' }}</view>
+                            <!-- <view style="width:140rpx">{{ item.single_amount  ? item.single_amount + 'U' : '-' }}</view> -->
+                            <view style="width:130rpx">{{ item.month_gift == 0 ? '-' : '￥' + item.month_gift }}</view>
+                            <view style="width:130rpx">{{ item.speed_income == 0 ? '-' : item.speed_income}}</view>
                             <!-- <view style="width:250rpx">{{ item.thawing_level == 0 ? '-' : '￥' + item.thawing_level}}</view> -->
-                            <view style="width:250rpx">{{ item.integral_off }}</view>
-                            <view style="width:250rpx">{{ item.recommend_reward == 0 ? '-' : item.recommend_reward +  '%'}}</view>
+                            <view style="width:150rpx">{{ item.integral_off_name }}</view>
+                            <view style="width:150rpx">{{ item.recommend_reward == 0 ? '-' : item.recommend_reward +  '%'}}</view>
                         </view>
                     </view>
                     
@@ -141,8 +141,7 @@
 				list: [],
                 /* 用户信息 */
                 userInfo:false,
-                /* 等级列表 */
-                levelList:[],
+                
                 /* 选中项 */
                 current: 0,
                 current2: 1,
@@ -152,7 +151,7 @@
             /* 等级价格列表 */
             levelAmountList(){
                 let result = []
-                if(Array.isArray(this.levelList2) && this.levelList2.length){
+                if(Array.isArray(this.levelList) && this.levelList.length){
                     this.levelList.map((item,index) => {
                         result[index] = '-'
                         if(item.single_amount){
@@ -163,19 +162,8 @@
                 return result
             },
             /* 会员权益列表 */
-            levelList2(){
-                let result = []
-                if(Array.isArray(this.levelList) && this.levelList.length){
-                    this.levelList.map((item) => {
-                        if(item.integral_off){
-                            item.integral_off = (item.integral_off / 10) + '折'
-                        }else{
-                            item.integral_off = '-'
-                        }
-                        result.push(item)
-                    })
-                }
-                return result
+            levelList(){
+                return this.$store.getters['levelList']
             }
         },
         methods:{
@@ -195,11 +183,9 @@
             levelUp(){
                 this.too('/pages/home-page/gf_level')
             },
+            // 拉取用户等级列表
             getLevelList(){
-                this.to.www(this.api.levelList)
-				.then(res => {
-                    this.levelList = res.data.data || [] 
-				})
+                this.$store.dispatch('getLevelList')
             },
             change(){
 

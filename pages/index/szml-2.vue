@@ -98,9 +98,18 @@ export default {
 				amount: this.amount,
 				pay_password: this.pay_password
 			}, 'p').then(res => {
-				this.toa('支付成功')
+				const {code} = res
+				if(code == 200){
+					this.toa('支付成功')
+					this.showPay = false
+					this.too('/pages/index/szml-2-order-list')
+				}else{
+					this.isDone = false
+					this.showPay = false
+				}
 			}).catch(err => {
 				this.isDone = false
+				this.showPay = false
 			})
 		},
 		/* 返回上一页 */

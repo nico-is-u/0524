@@ -9,25 +9,26 @@
 		<view class="content">
 			<u-swiper :current="current" :autoplay="false" previousMargin="30" bgColor="#40496F"
 			        nextMargin="30"
-			        circular :list="list1" @change="change" @click="click"></u-swiper>
-			<view class="form" v-if="list.length > 0">
+			        circular :list="levelImgList" @change="change" @click="click"></u-swiper>
+
+			<view class="form" v-if="currentLevelItem">
 				<view class="title1">当前等级权益</view>
-				<view>{{list[current].name}}V{{list[current].level}}权益</view>
+				<view>{{currentLevelItem.name}}V{{currentLevelItem.level}}权益</view>
 				<view>
 					<view>资产要求</view>
-					<view>{{list[current].total_assets == 0 ? '-' : (list[current].total_assets + ' U')}}</view>
+					<view>{{currentLevelItem.total_assets == 0 ? '-' : (currentLevelItem.total_assets + ' U')}}</view>
 				</view>
 				<view>
 					<view>购买会员等级</view>
-					<view>{{list[current].single_amount == 0 ? '-' : list[current].single_amount  + ' U'}}</view>
+					<view>{{currentLevelItem.single_amount == 0 ? '-' : currentLevelItem.single_amount  + ' U'}}</view>
 				</view>
 				<view>
 					<view>月度礼包（话费）</view>
-					<view>{{list[current].month_gift == 0 ? '-' : '￥' + list[current].month_gift}}</view>
+					<view>{{currentLevelItem.month_gift == 0 ? '-' : '￥' + currentLevelItem.month_gift}}</view>
 				</view>
 				<view>
 					<view>理财加速收益</view>
-					<view>{{list[current].speed_income == 0 ? '-' : list[current].speed_income}}</view>
+					<view>{{currentLevelItem.speed_income == 0 ? '-' : currentLevelItem.speed_income}}</view>
 				</view>
 				<!-- <view>
 					<view>周期资产解冻最高等级</view>
@@ -35,14 +36,21 @@
 				</view> -->
 				<view>
 					<view>推荐会员奖励</view>
-					<view>{{list[current].recommend_reward == 0 ? '-' : list[current].recommend_reward +  '%'}}</view>
+					<view>{{currentLevelItem.recommend_reward == 0 ? '-' : currentLevelItem.recommend_reward +  '%'}}</view>
 				</view>
+
+				<view>
+					<view>积分折扣</view>
+					<view>{{currentLevelItem.integral_off_name}}</view>
+				</view>
+
 			</view>
 			<view class="btn active" v-if="(user_info.level - 1) >= current">
 				您已购买当前等级
 			</view>
 			<view v-else class="btn" @click="buy">购买</view>
 		</view>
+
 		<u-overlay :show="showPay" @click="showPay = false">
 			<view class="warp" style="padding: 0 20px;">
 				<view class="rect1">
@@ -65,14 +73,13 @@
 	export default {
 		data() {
 			return {
-				list1: [
+				levelImgList: [
 					'/static/images/my/level1.png',
 					'/static/images/my/level2.png',
 					'/static/images/my/level3.png',
 					'/static/images/my/level4.png',
 					'/static/images/my/level5.png',
 				],
-				list: [],
 				user_info: {
 					level: 1
 				},
@@ -82,6 +89,15 @@
 				regStatus: '处理中...',
 				pay_password: ''
 			};
+		},
+		computed:{
+			currentLevelItem(){
+				let result = false
+				if(this.$store.getters['levelList'].length){
+					return this.$store.getters['levelList'][this.current] || false
+				}
+				return result
+			}
 		},
 		methods: {
 			change(index) {
@@ -107,10 +123,7 @@
 				this.user_info = res.data;
 				this.current = (this.user_info.level - 1)
 			})
-			this.to.www(this.api.levelList)
-				.then(res => {
-					this.list = res.data.data
-				})
+			this.$store.dispatch('getLevelList')
 		}
 	}
 </script>

@@ -122,13 +122,13 @@ export default {
 			if(Array.isArray(this.$store.state.cList) && this.$store.state.cList.length){
 				for(let len = 0; len < this.$store.state.cList.length; len ++){
 					let item = this.$store.state.cList[len]
-					item.change2 = parseFloat(item.change)
-					item.isPos = item.change2 > 0 ? true : false
-					if(item.isPos){
-						item.change3 = item.change
-					}else{
-						item.change3 = item.change.slice(1)
-					}
+					item.change3 = parseFloat(item.change).toFixed(2)
+					item.isPos = item.change3 > 0 ? true : false
+					// if(item.isPos){
+					// 	item.change3 = item.change
+					// }else{
+					// 	item.change3 = item.change.slice(1)
+					// }
 					result.push(item)
 				}
 			}

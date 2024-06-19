@@ -47,7 +47,7 @@
 		}
 		width: 100%;
 		aspect-ratio: 3.43/1;
-		background: url(/static/images/my/ubg.png);
+		background: url(/static/images/63.png);
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		font-size: 16px;
