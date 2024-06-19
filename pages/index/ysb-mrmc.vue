@@ -91,6 +91,12 @@
 							</view>
 						</view>
 
+						<!-- 币种汇率 -->
+						<view class="rate-info">
+							<view class="left-side">当前所选{{ $store.getters['cName'] }}价值</view>
+							<view class="right-side">{{ currentRate }}</view>
+						</view>
+
 						<!-- 交易密码 -->
 						<view class="label">交易密码</view>
 						<view class="form-control">
@@ -143,6 +149,9 @@ export default {
             userInfo:false,                             // 用户信息
 			userBalance:0,								// 用户（当前币种）余额
 
+			usdtPrice:'',								// 当前USDT 价格
+			currentPrice:'',							// 当前选中币种 价格
+
             kLine:false,								// K线插件
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
 			bar:'30m',
@@ -180,7 +189,17 @@ export default {
 				case 'sell':
 					return '卖出'
 			}
-		}
+		},
+		/* 当前选中币种兑USDT（汇率） */
+		currentRate(){
+			let result = '--'
+			if(this.usdtPrice && this.currentPrice && this.formData.amount){
+				/* 注意，这里暂不支持浮点 */
+				const amount = parseInt(this.formData.amount)
+				result = parseFloat((this.currentPrice * amount)/ this.usdtPrice).toFixed(2) + 'USDT'
+			}
+			return result
+		},
     },
     methods:{
         /* 返回上一页 */
@@ -190,7 +209,9 @@ export default {
         /* 用户信息 */
 		getUserInfo() {
 			this.to.www(this.api.user_info).then(res => {
+
 				this.userInfo = res.data
+				this.usdtPrice = parseInt(res.data.cnyRate).toFixed(1)
 
 				uni.setStorage({
 					data: this.userInfo,
@@ -211,9 +232,15 @@ export default {
 				bar:this.bar
 			})
 			.then(res => {
-				const {code,data=[]} = res
+				let {code,data=[]} = res
 				if(code == 200){
-					this.kLine.applyNewData(data)
+
+					if(Array.isArray(data) && data.length){
+						/* 取当前币种最新价格 */
+						this.currentPrice = data[0].close
+					}
+
+					this.kLine.applyNewData(data.reverse())
 					this.isLoading = false
 				}else{
 					this.isLoading = false
@@ -341,16 +368,14 @@ export default {
 
 		/* 缓存插件实例 */
 		this.kLine = chart
-
-        /* 个人信息 */
-        this.getUserInfo()
-
     },
     onShow(){
         /* 重新拉取K线 */
 		this.getKLineDatas()
 		/* 拉取该币种当前余额 */
 		this.userCBalance()
+		/* 个人信息 */
+        this.getUserInfo()
     },
 	onLoad(options){
 		const {type = ''} = options
@@ -362,6 +387,15 @@ export default {
 <style lang="scss" scoped>
 page{
 	background-color: #f9f9f9;
+}
+
+.rate-info{
+	display: flex;
+	justify-content: space-between;
+
+	.left-side{
+		color: #838282;
+	}
 }
 
 .navbar-right{
