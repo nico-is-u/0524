@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<view class="k-line-head">
+		<view class="k-line-head" style="height: 530rpx">
 			<!-- 顶栏 -->
 			<nNavbar title="云数币" :showBackBtn="false">
 				<u--text @click="too('/pages/home-page/my_zc')" color="white" align="right" text="我的资产" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
@@ -10,31 +10,37 @@
 			<view class="k-line-shell">
 
 				<!-- K线部分 -->
-				<view class="k-line-box" style="border-radius: 16rpx">
+				<!-- <view class="k-line-box" style="border-radius: 16rpx"> -->
 					<!-- 小菜单2 -->
-					<view class="menu-list-2" style="justify-content: flex-start; gap:30rpx">
+					<!-- <view class="menu-list-2" style="justify-content: flex-start; gap:30rpx">
 						<view class="menu-item" @click="changeKLineDatas('30m')" :class="bar == '30m' ? 'active' : ''">30分</view>
 						<view class="menu-item" @click="changeKLineDatas('1D')" :class="bar == '1D' ? 'active' : ''">日K</view>
 						<view class="menu-item" @click="changeKLineDatas('1W')" :class="bar == '1W' ? 'active' : ''">周K</view>
 						<view class="menu-item" @click="changeKLineDatas('1M')" :class="bar == '1M' ? 'active' : ''">月K</view>
-						<view class="menu-item" @click="changeKLineDatas('3M')" :class="bar == '3M' ? 'active' : ''">季K</view>
+						<view class="menu-item" @click="changeKLineDatas('3M')" :class="bar == '3M' ? 'active' : ''">季K</view> -->
 						<!-- <view class="menu-item more">
 							<text>更多</text>
 							<image src="/static/images/10.png" mode="widthFix"></image>
 						</view> -->
-					</view>
+					<!-- </view> -->
 
 					<!-- K线插件 -->
-					<view class="chart-shell">
+					<!-- <view class="chart-shell">
 						<view id="chart"></view>
 						<view id="chart-loading" class="flex flex-center" v-if="isLoading">
 							加载中
 						</view>
-					</view>
-
-				</view>
+					</view> -->
+				<!-- </view> -->
+				
+				<image src="/static/images/64.jpg" style="width: 100%; border-radius: 12rpx" mode="widthFix"></image>
 
 			</view>
+		</view>
+
+		<!-- 私募申请通道 -->
+		<view style="padding: 32rpx; padding-top: 0">
+			<u-button class="n-button n-button-5" text="私募申请通道" @click="smtd"></u-button>
 		</view>
 
 		<!-- 首页 - 菜单 -->
@@ -100,13 +106,13 @@
 </template>
 
 <script>
-import { init } from 'klinecharts'
+// import { init } from 'klinecharts'
 export default {
 	data(){
 		return {
 			isLoading:false,                    		// 请求中
 
-			kLine:false,								// K线插件
+			//kLine:false,								// K线插件
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
 			bar:'30m',
 
@@ -137,68 +143,65 @@ export default {
 	},
 	methods:{
 		/* 更改K线查询 */
-		changeKLineDatas(bar){
-			this.bar = bar
-			this.getKLineDatas()
-		},
+		// changeKLineDatas(bar){
+		// 	this.bar = bar
+		// 	this.getKLineDatas()
+		// },
 		/* 执行K线查询 */
-		getKLineDatas(){
-			this.isLoading = true
-			this.to.www(this.api.k_line,{
-				code:this.$store.getters['cName'],
-				bar:this.bar
-			})
-			.then(res => {
-				const {code,data=[]} = res
-				if(code == 200){
-					this.kLine.applyNewData(data)
-					this.isLoading = false
-				}else{
-					this.isLoading = false
-				}
-			})
-			.catch(e => {
-				this.isLoading = false
-			})
-		},
+		// getKLineDatas(){
+		// 	this.isLoading = true
+		// 	this.to.www(this.api.k_line,{
+		// 		code:this.$store.getters['cName'],
+		// 		bar:this.bar
+		// 	})
+		// 	.then(res => {
+		// 		const {code,data=[]} = res
+		// 		if(code == 200){
+		// 			this.kLine.applyNewData(data)
+		// 			this.isLoading = false
+		// 		}else{
+		// 			this.isLoading = false
+		// 		}
+		// 	})
+		// 	.catch(e => {
+		// 		this.isLoading = false
+		// 	})
+		// },
 		/* 拉取币种数据 */
 		getCDatas(){
 			this.$store.dispatch('getCList')
 		},
-		/* 切换场景 */
-		changeScene(scene){
-			this.scene = scene
-			/* 再次渲染K线插件 */
-			this.intervalId2 = setTimeout(() => {
-				this.getKLineDatas()
-			},500)
-		}
+		/* 增加私募通道 */
+		smtd(){
+			this.toa('暂未开放')
+		},
+
 	},
 	mounted(){
 		this.domain = uni.getStorageSync("ok_api");
-		const chart = init('chart')
+		// const chart = init('chart')
 		
 		/* 样式配置 */
-		chart.setStyles({
-			candle:{
-				type:'area',
-				tooltip:{
-					// showRule:'none'
-					custom:function(){
-						return [
-							{ title: '交易结束：', value: '{time} 北京时间' },
-							{ title: '今 开: ', value:'{open}'},
-							{ title: '最 高: ', value:{text:'{high}',color:'red'}},
-							{ title: '最 低: ', value:'{low}'},
-							{ title: '昨 收: ', value:{text:'{close}',color:'green'}},
-						]
-					}
-				}
-			}
-		})
+		// chart.setStyles({
+		// 	candle:{
+		// 		type:'area',
+		// 		tooltip:{
+		// 			// showRule:'none'
+		// 			custom:function(){
+		// 				return [
+		// 					{ title: '交易结束：', value: '{time} 北京时间' },
+		// 					{ title: '今 开: ', value:'{open}'},
+		// 					{ title: '最 高: ', value:{text:'{high}',color:'red'}},
+		// 					{ title: '最 低: ', value:'{low}'},
+		// 					{ title: '昨 收: ', value:{text:'{close}',color:'green'}},
+		// 				]
+		// 			}
+		// 		}
+		// 	}
+		// })
 
 		/* 缓存插件实例 */
-		this.kLine = chart
+		// this.kLine = chart
 
 		/* 变更事件 */
 		// chart.subscribeAction('onCrosshairChange',event => {
@@ -214,12 +217,11 @@ export default {
 	},
 	onShow(){
 		/* 重新拉取K线 */
-		this.getKLineDatas()
-		// if(this.scene == 'index'){
-			/* 轮询币种数据 */
-			this.getCDatas()
-			this.intervalId = setInterval(this.getCDatas, 5000)
-		// }
+		// this.getKLineDatas()
+
+		/* 轮询币种数据 */
+		this.getCDatas()
+		this.intervalId = setInterval(this.getCDatas, 5000)
 	},
 	onHide(){
 		if (this.intervalId) {

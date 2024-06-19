@@ -875,6 +875,15 @@
 				font-size: 28rpx !important;
 			}
 		}
+
+		&.n-button-5{
+			color: white !important;
+			background-color: #0182EF !important;
+			padding: 48rpx 0 !important;
+
+			border-radius: 50rpx !important;
+		}
+
 	}
 
 	.n-btn-group{

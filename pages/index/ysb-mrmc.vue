@@ -299,10 +299,10 @@ export default {
 
 				const {code,data} = response
 				if(code == 200){
-					const userBalance = parseFloat(data)
+					const userBalance = parseFloat(data).toFixed(2)
 					console.log(`当前币种${this.$store.getters['cName']},余额：${userBalance}`)
 
-					if(userBalance)	this.userBalance = userBalance
+					this.userBalance = userBalance
 				}
 
 			}catch(e){

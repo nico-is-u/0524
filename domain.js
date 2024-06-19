@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("yun/codeAssets"))
+console.log(encryptCBC("order/pledgeRedemption"))
 
 var
   api_index = 0,

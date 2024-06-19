@@ -38,6 +38,12 @@
 							    <view class="left-side">下单时间</view>
 							    <view class="right-side">{{item.created_at}}</view>
 							</view>
+                            <view class="row flex flex-between" v-if="item.status == 2">
+							    <view class="left-side">操作</view>
+							    <view class="right-side">
+									<u-button class="btn" text="赎回" @click="shuhui(item.id)"></u-button>
+								</view>
+							</view>
                         </view>
                     </view>
                 </view>
@@ -66,13 +72,39 @@ export default {
 						return '收益中';
 					case 4:
 						return '已结束';
+                    case 5:
+                        return '赎回审核';
+					case 6:
+						return '已赎回'
+					case 7:
+						return '赎回审核拒绝'
 					default:
-						break;
+                        return ''
 				}
 			}
 		}
 	},
     methods:{
+        shuhui(id){
+			let _ = this;
+			uni.showModal({
+				title: '提示',
+				content: '确定要赎回吗',
+				success: function (res) {
+					if (res.confirm) {
+						_.to.www(_.api.licaiRedemption2, {id: id}, 'p').then(res => {
+							_.toa('操作成功')
+							setTimeout(() => {
+								_.getDataList();
+							}, 1500)
+						}).catch(err => {
+							
+						})
+					} else if (res.cancel) {
+					}
+				}
+			});
+		},
         getDataList(){
             this.to.www(this.api.pledgeOrderList)
             .then(res => {

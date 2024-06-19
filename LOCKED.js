@@ -166,6 +166,8 @@ const xxxxxxxxxxxxxx = {
 	licaiOrderList: 'fbn2UuPkw8ILVIawloAJPtqwv8TuQSIwUlu5mvfF7cg=',
 	// 赎回理财
 	licaiRedemption: 'rosoPNMLdP3JbkDoMXDyUDqwjfXYbL0Y3GcKBDfOzGs=',
+	// 赎回存币生息
+	licaiRedemption2: '12UGiu3pNSIctHAiNrfYWCTkEUzsAxNCfJNjHAxFXwU=',
 	// 存币生息详情
 	pledgeInfo: '9Th/oqXIHPTQdgeoJ4X2NnJLH4sNkg1FIfEi8wzdgTU=',
 	// 存币生息下单

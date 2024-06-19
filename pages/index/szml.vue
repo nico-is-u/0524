@@ -29,14 +29,24 @@
 				<!-- 操作区域 -->
 				<view class="mr-section padding-box-3" style="background-color: white">
 					<view class="form-group margin-t-40">
-						<!-- 交易密码 -->
-						<view class="label">质押云数币</view>
+
+						<!-- 切换币种 -->
+						<view class="change-coin-type flex flex-between">
+							<view class="left-side">质押</view>
+							<view class="right-side">
+								<view style="padding-right: 24rpx" @click="cTypeShow = true">
+									<text>{{$store.getters['cName']}}</text>
+								</view>
+								<text>▼</text>
+							</view>
+						</view>
+
 						<view class="form-control">
 							<u--input border="none" v-model="money" type="digit" placeholder="请输入质押的云数币数量"></u--input>
 						</view>
 						<view class="form-tips">
 							<view class="left-side">可用</view>
-							<view class="right-side">{{user_info.yun}}</view>
+							<view class="right-side">{{userBalance}}</view>
 						</view>
 
 					</view>
@@ -50,6 +60,9 @@
                 <u-button class="n-button n-button-2" text="赎回" ></u-button>
             </view> -->
         </view>
+
+		<u-picker :show="cTypeShow" :columns="[$store.state.cList]" keyName="name" @confirm="changeCType" @cancel="cTypeShow = false" @close="cTypeShow = false"></u-picker>
+
 		<u-overlay :show="showPay" @click="showPay = false">
 			<view class="warp" style="padding: 0 20px;">
 				<view class="rect1">
@@ -69,7 +82,7 @@
 </template>
 
 <script>
-import * as echarts from 'echarts';
+import * as echarts from 'echarts'
 export default {
 	data() {
 		return {
@@ -77,18 +90,54 @@ export default {
 			info: {
 				asset_usdt: 0
 			},
-			user_info: {
-				yun: 0
-			},
+			
+			userInfo:false,                             // 用户信息
+			userBalance:0,								// 用户（当前币种）余额
+
 			showPay: false,
 			isDone: false,
 			regStatus: '处理中...',
 			pay_password: '',
 			id: 0,
 			money: '',
+
+			cTypeShow:false,
+
 		};
 	},
 	methods:{
+		/* 用户信息 */
+		getUserInfo() {
+			this.to.www(this.api.user_info).then(res => {
+
+				this.userInfo = res.data
+				this.usdtPrice = parseInt(res.data.cnyRate).toFixed(1)
+
+				uni.setStorage({
+					data: this.userInfo,
+					key: 'user_info'
+				})
+			})
+		},
+		/* 拉取该币种的用户余额 */
+		async userCBalance(){
+			try{
+				const response = await this.to.www(this.api.user_balance,{
+					code:this.$store.getters['cName']
+				})
+
+				const {code,data} = response
+				if(code == 200){
+					const userBalance = parseFloat(data).toFixed(2)
+					console.log(`当前币种${this.$store.getters['cName']},余额：${userBalance}`)
+
+					this.userBalance = userBalance
+				}
+
+			}catch(e){
+			}
+		},
+
 		buy(id){
 			if(this.money > this.info.asset_usdt){
 				return this.toa('余额不足');
@@ -97,7 +146,11 @@ export default {
 		},
 		pay(){
 			if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
-			this.to.www(this.api.pledgePlaceOrder, {number: this.money, pay_password: this.pay_password}, 'p').then(res => {
+			this.to.www(this.api.pledgePlaceOrder, {
+				code: this.$store.getters['cName'],
+				number: this.money, 
+				pay_password: this.pay_password
+			}, 'p').then(res => {
 				this.toa('质押成功')
 				this.init();
 			}).catch(err => {
@@ -105,17 +158,18 @@ export default {
 			})
 		},
 		init(){
-			this.to.www(this.api.user_info).then(res => {
-				this.user_info = res.data;
-			})
+			/* 折线图 */
 			this.to.www(this.api.pledgeInfo)
-				.then(res => {
-					this.info = res.data;
-					this.$nextTick(() => {
-						this.initChart();
-					});
-				})
+			.then(res => {
+				this.info = res.data;
+				this.$nextTick(() => {
+					this.initChart();
+				});
+			})
+
 		},
+
+		/* 折线图 */
 		initChart() {
 			// 获取 canvas 元素
 			const chartDom = this.$refs.chartCanvas;
@@ -177,7 +231,24 @@ export default {
 
 			// 载入图表
 			this.chartInstance.setOption(option);
-		}
+		},
+
+		/* 拉取币种数据 */
+		getCDatas(){
+			this.$store.dispatch('getCList')
+		},
+
+		/* 切换币种 */
+		changeCType(e){
+			const {indexs} = e
+            const index = indexs[0]
+
+			this.$store.commit('changeCListIndex',index)
+
+			/* 重新拉取余额 */
+			this.userCBalance()
+			this.cTypeShow = false
+		},
 	},
 	destroyed() {
 		if (this.chartInstance) {
@@ -186,36 +257,63 @@ export default {
 		}
 	},
 	onLoad() {
-		this.init();
+		this.init()
+	},
+	onShow(){
+		/* 拉取币种信息 */
+		this.getCDatas()
+		/* 个人信息 */
+        this.getUserInfo()
+		/* 拉取该币种当前余额 */
+		this.userCBalance()
 	}
 }
 </script>
 
 <style lang="scss">
-	.warp {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			height: 100%;
-			z-index: 3;
-		}
-		
-		.rect1 {
-			border-radius: 10px;
-			padding: 20px;
-			width: 100%;
-			box-sizing: border-box;
-			background: #fff;
-		
-			.custom-style {
-				width: 30vw;
-				border-radius: 8px;
-				margin-top: 30px;
-				background: #1292FF;
-				color: #fff;
-			}
-		}
+.warp {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	z-index: 3;
+}
+
+.rect1 {
+	border-radius: 10px;
+	padding: 20px;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fff;
+
+	.custom-style {
+		width: 30vw;
+		border-radius: 8px;
+		margin-top: 30px;
+		background: #1292FF;
+		color: #fff;
+	}
+}
+
+.change-coin-type{
+	display: flex;
+	align-items: center;
+	
+	.left-side{
+		padding-left: 30rpx;
+	}
+
+	.right-side{
+		display: flex;
+		align-items: center;
+
+		min-height: 72rpx;
+		background-color: #F9F9F9;
+		padding: 0 36rpx;
+	}
+}
+
 page{
 	height: 100%;
 	background-color: #f9f9f9;
