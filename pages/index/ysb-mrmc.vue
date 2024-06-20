@@ -196,7 +196,7 @@ export default {
 			if(this.usdtPrice && this.currentPrice && this.formData.amount){
 				/* 注意，这里暂不支持浮点 */
 				const amount = parseInt(this.formData.amount)
-				result = parseFloat((this.currentPrice * amount)/ this.usdtPrice).toFixed(2) + 'USDT'
+				result = parseFloat(this.currentPrice * amount).toFixed(2) + ' USDT'
 			}
 			return result
 		},
