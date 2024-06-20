@@ -8,6 +8,10 @@
 			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
 			CNY充值通道
 		</view>
+		<view class="cny2 margin-t-40" @click="too('gf_cny2')">
+			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
+			CNY兑汇USDT
+		</view>
 	</view>
 </template>
 
@@ -38,7 +42,7 @@
 		font-weight: bold;
 		margin-bottom: 20px;
 	}
-	.cny{
+	.cny,.cny2{
 		display: flex;
 		align-items: center;
 		justify-content: center;

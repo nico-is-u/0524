@@ -184,6 +184,8 @@ const xxxxxxxxxxxxxx = {
 	yunLog:'i6pkjlXA4qyaRM2fCsdNDQ==',
 	/* 社群 */
 	shequn:"14so1mC3hkX5t47dMa8VPg==",
+	// CNY 汇兑 USDT
+	topup2:'D4EwTf5KgcNGp4G8Y1/pXA==',
 
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }

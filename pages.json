@@ -637,6 +637,16 @@
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
 			}
+		},
+		{
+			"path": "pages/home-page/gf_cny2",
+			"style" : 
+			{
+				"navigationBarTitleText" : "CNY兑汇USDT",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
 		}
 	],
 	"tabBar": {
