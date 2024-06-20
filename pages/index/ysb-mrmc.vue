@@ -121,7 +121,7 @@
 			<u-picker :show="cTypeShow" :columns="[$store.state.cList]" keyName="name" @confirm="changeCType" @cancel="cTypeShow = false" @close="cTypeShow = false"></u-picker>
 
             <!-- 切换交易类型(暂时屏蔽) -->
-            <u-picker :show="businessTypeShow" :columns="businessType" keyName="label" @confirm="changeBusinessType" @cancel="businessTypeShow = false" @close="businessTypeShow = false"></u-picker>
+            <!-- <u-picker :show="businessTypeShow" :columns="businessType" keyName="label" @confirm="changeBusinessType" @cancel="businessTypeShow = false" @close="businessTypeShow = false"></u-picker> -->
 
 			<!-- 加载动画 -->
 			<u-loading-page :loading="isLoading2"></u-loading-page>
@@ -172,7 +172,7 @@ export default {
                 type:'buy',
                 operation_type:'market',
                 pay_password:'',                        // 支付密码
-                business_type:'1',                      // 1 买入   2 卖出
+                business_type:'2',                      // 1 交易额   2 数量
                 amount:'',
             },
             activeKey:'limit',                          // 高亮
@@ -238,6 +238,7 @@ export default {
 					if(Array.isArray(data) && data.length){
 						/* 取当前币种最新价格 */
 						this.currentPrice = data[0].close
+						data[0].timestamp *= 1000
 					}
 
 					this.kLine.applyNewData(data.reverse())
@@ -261,19 +262,8 @@ export default {
             this.activeKey = key
         },
         /* 切换交易类型 */
-        changeBusinessType(e){
-            const {indexs} = e
-            const index = indexs[0]
-            this.businessTypeIndex = index
-
-			if(index == 0){
-				this.formData.business_type = 1
-			}else if(index == 1){
-				this.formData.business_type = 2
-			}
-
-            this.businessTypeShow = false
-        },
+        /* changeBusinessType(e){
+        }, */
 
 		/* 切换币种 */
 		changeCType(e){
