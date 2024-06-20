@@ -117,6 +117,8 @@
 						uni.navigateBack()
 					}, 1500)
 				}).catch(err => {
+					const {msg = ''} = err
+					if(msg)	this.toa(msg)
 					this.isDone = false
 				})
 			}
