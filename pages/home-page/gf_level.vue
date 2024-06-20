@@ -43,7 +43,10 @@
 					<view>积分折扣</view>
 					<view>{{currentLevelItem.integral_off_name}}</view>
 				</view>
-
+				<view>
+					<view>直属下级收益提成</view>
+					<view>{{currentLevelItem.child_commission}}%</view>
+				</view>
 			</view>
 			<view class="btn active" v-if="(user_info.level - 1) >= current">
 				您已购买当前等级
@@ -108,7 +111,7 @@
 			},
 			pay(){
 				if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
-				this.to.www(this.api.levelPlaceOrder, {id: this.list[this.current].id, pay_password: this.pay_password}, 'p').then(res => {
+				this.to.www(this.api.levelPlaceOrder, {id: this.currentLevelItem.id, pay_password: this.pay_password}, 'p').then(res => {
 					this.toa('支付成功')
 					setTimeout(() => {
 						uni.navigateBack()

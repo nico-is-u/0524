@@ -26,7 +26,7 @@
 					<view class="item flex flex-column" v-for="(item,index) in list" :key="'item-' + index">
                         <view class="title flex flex-y-center">
                             <view>{{item.name}}</view>
-                            <view class="tips1">{{item.intro}}</view>
+                            <view class="tips1">由人保承保本金</view>
                             <view class="tips2">{{item.intro}}</view>
                         </view>
                         <view class="section flex flex-between">
