@@ -180,6 +180,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的资产 详情
+		{
+			"path":"pages/home-page/my_zc_detail",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 提现
 		{
 			"path": "pages/home-page/withdraw",

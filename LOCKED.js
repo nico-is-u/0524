@@ -182,6 +182,8 @@ const xxxxxxxxxxxxxx = {
 	balanceLog:'plZNV62dgdwhrpxKvKuOjw==',
 	// 持仓记录
 	yunLog:'i6pkjlXA4qyaRM2fCsdNDQ==',
+	// 持仓记录2
+	yunLog2:'9F2FQrqAzzesJ753n4J3gg==',
 	/* 社群 */
 	shequn:"14so1mC3hkX5t47dMa8VPg==",
 	// CNY 汇兑 USDT

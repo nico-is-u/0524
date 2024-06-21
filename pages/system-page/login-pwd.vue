@@ -78,7 +78,7 @@
 
 			<view class="tips-row flex flex-x-center">
 				<view class="font-blue" @click="too('/pages/system-page/login')" v-if="scene == 1">返回登录</view>
-				<view class="font-blue" @click="too('/pages/home-page/my_list')" v-else>返回个人中心</view>
+				<view class="font-blue" @click="too('','bac')" v-else>返回个人中心</view>
 			</view>
 
 		</u--form>

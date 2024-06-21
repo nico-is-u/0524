@@ -61,7 +61,7 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log(encryptCBC("capital/cny2u"))
+console.log(encryptCBC("yun/hold"))
 
 var
   api_index = 0,

@@ -1,10 +1,11 @@
 <template>
 	<view class="page">
 		<view class="k-line-head" style="height: 530rpx">
+			
 			<!-- 顶栏 -->
 			<nNavbar title="云数币" :showBackBtn="false">
-				<u--text @click="too('/pages/home-page/my_zc')" color="white" align="right" text="我的资产" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
+			<!-- <u--text @click="too('/pages/home-page/my_zc')" color="white" align="right" text="我的资产" style="padding-right: 10rpx; padding-top: 10rpx"></u--text> -->
 
 			<!-- K线图 -->
 			<view class="k-line-shell">

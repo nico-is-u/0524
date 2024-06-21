@@ -9,9 +9,9 @@
             <!-- 小菜单 -->
             <view class="padding-box-3">
                 <view class="menu-card">
-                    <view class="menu-item">
+                    <view class="menu-item" @click="too('/pages/home-page/my_zc_detail')">
                         <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : ''}}</view>
-                        <view class="value">云数币</view>
+                        <view class="value">我的币</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
