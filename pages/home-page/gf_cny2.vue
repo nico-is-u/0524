@@ -100,7 +100,7 @@ export default {
     },
     methods:{
         buy(){
-            if(!this.amount) return this.toa('请输入金额');
+            if(!this.formData.amount) return this.toa('请输入金额');
 
             this.isDone = true;
 
@@ -125,8 +125,8 @@ export default {
 			this.to.www(this.api.user_info).then(res => {
 
 				this.userInfo = res.data
-				this.cnyPrice = parseInt(res.data.topup_balance).toFixed(2)
-                this.cnyRate = parseInt(res.data.cnyRate).toFixed(2)
+				this.cnyPrice = parseFloat(res.data.topup_balance).toFixed(2)
+                this.cnyRate = parseFloat(res.data.cnyRate).toFixed(2)
 
 				uni.setStorage({
 					data: this.userInfo,
