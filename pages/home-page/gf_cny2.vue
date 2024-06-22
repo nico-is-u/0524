@@ -105,7 +105,7 @@ export default {
             this.isDone = true;
 
             this.to.www(this.api.topup2, {
-                amount:this.amount
+                amount:this.formData.amount
             }, 'p')
             .then(() => {
                 this.isDone = false;
