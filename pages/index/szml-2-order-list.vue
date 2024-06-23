@@ -26,6 +26,10 @@
 							    <view class="left-side">总收益</view>
 							    <view class="right-side">{{item.gain_bonus}}</view>
 							</view>
+							<view class="row flex flex-between">
+								<view class="left-side">周期</view>
+								<view class="right-side">{{ item.licai_period }}天</view>
+							</view>
                             <view class="row flex flex-between">
                                 <view class="left-side">状态</view>
                                 <view class="right-side">{{getStatusStr(item.status)}}</view>
@@ -106,6 +110,7 @@ export default {
             .then(res => {
                 const {code = 0} = res
                 if(code == 200){
+					console.log(res.data.data)
                     this.dataList = res.data.data || []
                 }
             })

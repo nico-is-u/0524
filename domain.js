@@ -440,3 +440,8 @@ export default {
     }
   })
 }
+
+
+// 测试解密
+const c = 'FzwyuDMFeLUpYACr0EzRDhnlbmdPUqSbrtw1QX0wHhze830l6VVjECSPBVVVbdy3OWqGRIb4CxQpHomv9W0s8g=='
+console.log('c',JSON.parse(decryptCBC(c)))

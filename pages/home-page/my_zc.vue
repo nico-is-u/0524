@@ -36,7 +36,7 @@
 				</view>
 
                 <!-- 列表 -->
-                <scroll-view style="height: 60vh" :scroll-y="true">
+                <z-paging ref="paging" :fixed="false" style="height: 65vh" v-model="dataList" @query="getDataList">
 
                     <view class="card-list-type-2" v-if="Array.isArray(dataList) && dataList.length">
                         <view class="item" v-for="(item,index) in dataList" :key="index">
@@ -53,22 +53,33 @@
                         </view>                    
                     </view>
 
-                    <!-- 没有数据 -->
-                    <view style="padding: 2.5vh 0" class="flex flex-column flex-center" v-else>
-                        <image src="/static/images/54.png" style="width: 400rpx" mode="widthFix"></image>
-                        <view class="flex flex-x-center margin-t-80 font-333">暂无数据</view>
-                    </view>
-
-                </scroll-view>
+                </z-paging>
 
             </view>
         </view>
-        <!-- 加载动画 -->
-        <u-loading-page :loading="dataList === false" style="z-index: 3"></u-loading-page>
+        
     </view>
 </template>
 
 <script>
+import CryptoJS from 'crypto-js'
+import AUX_Audio from '../../LOCKED.js'
+const customUnlock_k = AUX_Audio.fewagfagretgataGRGvreawdwafewaf
+
+function encryptCBC(word, keyStr, ivStr) {
+  keyStr = keyStr ? keyStr : customUnlock_k;
+  ivStr = ivStr ? ivStr : customUnlock_k;
+  let key = CryptoJS.enc.Utf8.parse(keyStr);
+  let iv = CryptoJS.enc.Utf8.parse(ivStr);
+  let srcs = CryptoJS.enc.Utf8.parse(word);
+  let encrypted = CryptoJS.AES.encrypt(srcs, key, {
+    iv,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  });
+  return encrypted.toString();
+}
+
 /**
  * 我的资产
  */
@@ -76,20 +87,23 @@ export default {
     data(){
         return {
             /* 充值列表 */
-            dataList:false,
+            dataList:[],
             /* 用户信息 */
             userInfo:false,
+            xxxxxx:'user/balanceLog',
         }
     },
     methods:{
         /* 拉取充值列表 */
-        async getDataList(){
+        async getDataList(pageNo, pageSize){
+            // const apiUrl = `${this.xxxxxx}?page=${pageNo}`
             try {
-                const response = await this.to.www(this.api.balanceLog,{log_type:'0'})
+                const response = await this.to.www(this.api.balanceLog,{log_type:'0',page:pageNo})
                 const {code,data={}} = response
                 if(code == 200){
                     const resData = data.data || []
                     if(Array.isArray(resData) && resData.length){
+
                         resData.map(item => {
                             if(item.change_balance){
                                 if(item.change_balance[0] == '-'){
@@ -101,14 +115,19 @@ export default {
                                 item.change_balance_color = ''
                             }
                         })
+
+                        this.$refs.paging.complete(resData)
+                    }else{
+                        this.$refs.paging.complete(false)    
                     }
-                    this.dataList = resData
+                    
                 }else{
-                    this.dataList = []
+                    this.$refs.paging.complete(false)
                 }
             }catch(e){
-                this.dataList = []
+                this.$refs.paging.complete(false)
             }
+
         },
         /* 返回上一页 */
         backPrev(){
@@ -124,7 +143,6 @@ export default {
         }
     },
     onLoad(){
-        this.getDataList()
         const userInfo = uni.getStorageSync('user_info')
         if(userInfo)    this.userInfo = userInfo
     }
