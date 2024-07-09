@@ -60,8 +60,13 @@ const store = new Vuex.Store({
                 const {code,data=[]} = response
                 if(code == 200){
                     state.cList = data
+                    return true
+                }else{
+                    return false
                 }
-            }catch(e){}
+            }catch(e){
+                return false
+            }
         },
         /* 拉取用户余额 */
         // async getUserBalance(){

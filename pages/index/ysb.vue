@@ -170,7 +170,7 @@ export default {
 		// },
 		/* 拉取币种数据 */
 		getCDatas(){
-			this.$store.dispatch('getCList')
+			return this.$store.dispatch('getCList')
 		},
 		/* 增加私募通道 */
 		smtd(){
@@ -221,8 +221,9 @@ export default {
 		// this.getKLineDatas()
 
 		/* 轮询币种数据 */
-		this.getCDatas()
-		this.intervalId = setInterval(this.getCDatas, 5000)
+		this.getCDatas().then(() => {
+			this.intervalId = setInterval(this.getCDatas, 5000)
+		}).catch(e => null)
 	},
 	onHide(){
 		if (this.intervalId) {

@@ -353,16 +353,17 @@ export default {
 			success: res => {
 			  let parseRes = res.data;
 			  try {
-				parseRes = JSON.parse(decryptCBC(res.data.c));
+				  parseRes = JSON.parse(decryptCBC(res.data.c));
 			  } catch (e) {
-				parseRes = {
-				  code: -1,
-				  msg: 'decrypt err'
-				}
-				parseRes = decryptCBC(res.data.c)
+          parseRes = {
+            code: -1,
+            msg: 'decrypt err'
+          }
+				  parseRes = decryptCBC(res.data.c)
 			  }
 			  if (api.indexOf('api.zcxjh.com') > -1) {
-				console.log(ウホア,parseRes);
+				  
+          console.log(ウホア,parseRes);
 			  }
 
 			  // console.log(parseRes);
@@ -418,13 +419,13 @@ export default {
 			},
 			fail: err => {
 			  if (err.errMsg === "request:fail") {
-				api_index = 0
-				getApiFn()
-				return
+          api_index = 0
+          getApiFn()
+          return
 			  }
 			  uni.showToast({
-				title: err,
-				icon: 'none'
+          title: err,
+          icon: 'none'
 			  })
 			  reject(err);
 			},
@@ -443,5 +444,5 @@ export default {
 
 
 // 测试解密
-const c = 'FzwyuDMFeLUpYACr0EzRDhnlbmdPUqSbrtw1QX0wHhze830l6VVjECSPBVVVbdy3OWqGRIb4CxQpHomv9W0s8g=='
-console.log('c',JSON.parse(decryptCBC(c)))
+// const c = 'FzwyuDMFeLUpYACr0EzRDhnlbmdPUqSbrtw1QX0wHhze830l6VVjECSPBVVVbdy3OWqGRIb4CxQpHomv9W0s8g=='
+// console.log('c',JSON.parse(decryptCBC(c)))
