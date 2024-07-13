@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
              <!-- 顶栏 -->
-			<nNavbar title="数字魅力" :showBackBtn="false" >
+			<nNavbar title="外汇储备认购" :showBackBtn="false" >
 				<u--text color="white" @click="too('szml-order-list')" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
@@ -11,13 +11,13 @@
 
 				<!-- tab 菜单 -->
 				<view class="tab-menu-type-1 flex flex-between flex-y-end">
-					<view class="menu-item active menu-item-1 flex flex-center">
+					<view class="menu-item menu-item-1 flex flex-center" @click="too('/pages/index/szml-2','tab')">
+						<view class="triangle"></view>
+						<text>外汇储备</text>
+					</view>
+					<view class="menu-item active menu-item-2 flex flex-center">
 						<view class="triangle"></view>
 						<text>存币生息</text>
-					</view>
-					<view class="menu-item menu-item-2 flex flex-center" @click="too('/pages/index/szml-2')">
-						<view class="triangle"></view>
-						<text>理财产品</text>
 					</view>
 				</view>
 

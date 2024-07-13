@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
              <!-- 顶栏 -->
-			<nNavbar title="理财产品" :showBackBtn="true" :back="true" :backFunc="backPrev">
+			<nNavbar title="外汇储备认购" :showBackBtn="true" :back="true" :backFunc="backPrev">
 				<u--text @click="too('szml-2-order-list')" color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
@@ -11,19 +11,22 @@
 
 				<!-- tab 菜单 -->
 				<view class="tab-menu-type-1 flex flex-between flex-y-end">
-					<view class="menu-item  menu-item-1 flex flex-center" @click="too('/pages/index/szml','tab')">
+					<view class="menu-item active menu-item-1 flex flex-center">
+						<view class="triangle"></view>
+						<text>外汇储备</text>
+					</view>
+					<view class="menu-item  menu-item-2 flex flex-center" @click="too('/pages/index/szml')">
 						<view class="triangle"></view>
 						<text>存币生息</text>
-					</view>
-					<view class="menu-item active menu-item-2 flex flex-center">
-						<view class="triangle"></view>
-						<text>理财产品</text>
 					</view>
 				</view>
 
 				<!-- 产品列表 -->
 				<view class="mr-section padding-box-3 product-list" style="background-color: white">
 					<view class="item flex flex-column" v-for="(item,index) in list" :key="'item-' + index">
+						<view class="img-box">
+							<image :src="item.cover_img" mode="aspectFill"></image>
+						</view>
                         <view class="title flex flex-y-center">
                             <view>{{item.name}}</view>
                             <view class="tips1">由人保承保本金</view>
@@ -168,6 +171,14 @@ page{
     .item{
         border-bottom: 3rpx solid #E9E9E9;
         padding-bottom: 32rpx;
+
+		.img-box{
+			padding-bottom: 20rpx;
+			image{
+				height: 260rpx;
+			}
+		}
+
         .title{
             font-size: 29rpx;
             color: #222;

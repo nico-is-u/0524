@@ -681,7 +681,7 @@
 				"text": "数字魅力",
 				"iconPath": "static/images/tabbar/t4.png",
 				"selectedIconPath": "static/images/tabbar/t4c.png",
-				"pagePath": "pages/index/szml"
+				"pagePath": "pages/index/szml-2"
 			},
 			{
 				"text": "我的",
