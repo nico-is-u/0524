@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
-             <!-- 顶栏 -->
+            <!-- 顶栏 -->
 			<nNavbar title="外汇储备认购" :showBackBtn="true" :back="true" :backFunc="backPrev">
 				<u--text @click="too('szml-2-order-list')" color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>

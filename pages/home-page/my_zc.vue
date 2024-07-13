@@ -16,12 +16,12 @@
                     <view class="line"></view>
                     <view class="menu-item">
                         <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : ''}}</view>
-                        <view class="value">USDT</view>
+                        <view class="value">外汇储备</view>
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
                         <view class="label">{{userInfo && userInfo.topup_balance ? (parseFloat(userInfo.topup_balance).toFixed(2)) : ''}}</view>
-                        <view class="value">CNY</view>
+                        <view class="value">积分</view>
                     </view>
                 </view>
             </view>

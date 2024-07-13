@@ -10,7 +10,7 @@
 		</view>
 		<view class="cny2 margin-t-40" @click="too('gf_cny2')">
 			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
-			CNY兑汇USDT
+			USDT兑汇人民币
 		</view>
 	</view>
 </template>
