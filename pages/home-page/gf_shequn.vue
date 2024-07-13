@@ -22,11 +22,23 @@
 					<image :src="obj.img2" style="width: 150px;" mode="widthFix"></image>
 				</view>
 				<view class="footer">
-					<view>群号：<text>{{obj.group_num_2}}</text></view>
+					<!-- <view>群号：<text>{{obj.group_num_2}}</text></view> -->
+					<view>云讯通安装码</view>
 					<view style="color: #0182EF;" @click="copy(obj.group_num_2)">复制</view>
 				</view>
 				<image src="/static/images/my/sq.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
+
+			<view class="flex flex-between flex-y-center link-group margin-t-40" style="padding: 32rpx">
+				<view class="left-side flex flex-column">
+					<view class="label">云讯通安装链接：</view>
+					<view class="link margin-t-20">{{ link }}</view>
+				</view>
+				<view class="right-side flex flex-x-end" style="width: 100rpx" @click="copy(link)">
+					<view style="color: #0182EF; font-size: 28rpx; font-weight: bold" >复制</view>
+				</view>
+			</view>
+
 		</view>
 	</view>
 </template>
@@ -38,7 +50,8 @@
 				obj: {
 					img1: '',
 					img2: '',
-				}
+				},
+				link:'',
 			};
 		},
 		methods: {
@@ -51,9 +64,11 @@
 		onLoad() {
 			this.to.www(this.api.shequn)
 				.then(res => {
+					console.log(res)
 					this.obj = res.data.data;
 					this.obj.img1 = uni.getStorageSync("ok_api") + this.obj.img1;
 					this.obj.img2 = uni.getStorageSync("ok_api") + this.obj.img2;
+					this.link = res.data.data.link || 'https://iwhsr.kjukmeer.com/api/c/3nr92zj6'
 				})
 		}
 	}
@@ -101,5 +116,11 @@
 		color: #ffffff;
 		z-index: 999;
 		background: #EFF8FF;
+	}
+	.link-group{
+		.label{
+			font-size: 28rpx;
+			font-weight: bold;
+		}
 	}
 </style>
