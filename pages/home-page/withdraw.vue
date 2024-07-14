@@ -17,7 +17,7 @@
       <!-- 提现表单 -->
       <view class="content-3" style="margin-top: 32rpx;">
         <!-- tab 菜单 -->
-        <view class="tab-menu-type-1 flex flex-between flex-y-end">
+        <view class="tab-menu-type-1 flex flex-between flex-y-end" v-show="false">
           <view :class="formData.pay_channel == 0 ? 'active' : ''" @click="formData.pay_channel = 0" class="menu-item menu-item-1 flex flex-center">
             <view class="triangle"></view>
             <text>USDT</text>
@@ -121,7 +121,7 @@ export default {
       dataList:false,             // 收款账号
       bankInfo: {},
       formData:{
-        pay_channel:0,            // 0:cny  1:usdt(收款渠道)
+        pay_channel:1,            // 0:cny  1:usdt(收款渠道)
         amount:'',                // 收款金额
         pay_password:'',          // 支付密码
 		usdt_address: '',
