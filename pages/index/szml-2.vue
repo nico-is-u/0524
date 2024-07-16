@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
             <!-- 顶栏 -->
-			<nNavbar title="外汇储备认购" :showBackBtn="true" :back="true" :backFunc="backPrev">
+			<nNavbar title="数字魅力" :showBackBtn="true" :back="true" :backFunc="backPrev">
 				<u--text @click="too('szml-2-order-list')" color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
@@ -25,7 +25,7 @@
 				<view class="mr-section padding-box-3 product-list" style="background-color: white">
 					<view class="item flex flex-column" v-for="(item,index) in list" :key="'item-' + index">
 						<view class="img-box">
-							<image :src="item.cover_img" mode="aspectFill"></image>
+							<image :src="item.cover_img" mode="widthFix"></image>
 						</view>
                         <view class="title flex flex-y-center">
                             <view>{{item.name}}</view>
@@ -34,8 +34,14 @@
                         </view>
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
-                                <view class="font-red2">{{item.income_rate}}%</view>
-                                <view class="font-gray">近1年收益率</view>
+								<view>
+									<view class="font-red2">{{item.income_rate}}%</view>
+									<view class="font-gray">近1年收益率</view>
+								</view>
+								<view class="margin-t-30" v-if="item.ysb">
+									<text>获赠云数币</text>
+									<text class="font-red3 margin-l-10">{{ item.ysb || '0' }}</text>
+								</view>
                             </view>
                             <view class="right-side flex flex-y-center">
                                 <u-button class="n-button n-button-4" :text="item.amount + '元起'" @click="buy(item.id)"></u-button>
@@ -167,7 +173,7 @@ page{
     flex-direction: column;
     gap: 32rpx;
 
-    padding: 40rpx 32rpx;
+    padding: 40rpx 32rpx 10vh;
     .item{
         border-bottom: 3rpx solid #E9E9E9;
         padding-bottom: 32rpx;
@@ -194,6 +200,11 @@ page{
             .font-red2{
                 font-size: 34rpx;
             }
+			
+			.font-red3{
+				color: #FE2F2F;
+				font-size: 28rpx;
+			}
 
         }
     }

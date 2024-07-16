@@ -41,12 +41,12 @@
 		</view>
 
 		<!-- 兑换通道 -->
-		<view style="padding: 32rpx; padding-top: 0">
+		<!-- <view style="padding: 32rpx; padding-top: 0">
 			<u-button class="n-button n-button-5" text="兑换通道" @click="smtd"></u-button>
-		</view>
+		</view> -->
 
 		<!-- 首页 - 菜单 -->
-		<view class="padding-box">
+		<view class="padding-box margin-t-30">
 			<view class="menu-2">
 				<!-- <view class="menu-item" style="background-image: url(/static/images/11.png)" @click="too('/pages/home-page/my_zc')">
 					<view class="item-content">

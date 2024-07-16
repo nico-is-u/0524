@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
             <!-- 顶栏 -->
-			<nNavbar title="外汇储备认购" :showBackBtn="false" >
+			<nNavbar title="数字魅力" :showBackBtn="false" >
 				<u--text color="white" @click="too('szml-order-list')" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 

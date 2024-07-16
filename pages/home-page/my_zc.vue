@@ -20,7 +20,7 @@
                     </view>
                     <view class="line"></view>
                     <view class="menu-item">
-                        <view class="label">{{userInfo && userInfo.topup_balance ? (parseFloat(userInfo.topup_balance).toFixed(2)) : ''}}</view>
+                        <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : ''}}</view>
                         <view class="value">积分</view>
                     </view>
                 </view>
