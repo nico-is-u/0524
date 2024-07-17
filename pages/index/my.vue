@@ -74,9 +74,9 @@
             <view class="label">海量权益月月领</view>
           </view>
         </view>
-        <view class="menu-item" @click="too('/pages/home-page/gf_level')" style="background-image: url(/static/images/34.png);">
+        <view class="menu-item" @click="too('/pages/home-page/gf_level2')" style="background-image: url(/static/images/34.png);">
           <view class="text-info">
-            <view class="title">等级提升</view>
+            <view class="title">等级特权</view>
             <view class="label">升级会员专属福利</view>
           </view>
         </view>

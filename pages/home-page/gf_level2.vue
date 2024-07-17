@@ -16,7 +16,7 @@
                 <swiper-item v-for="(item,index) in list1" :key="'swiper-item-'+index">
                     <image :src="item"></image>
                     <!-- 去升级按钮 -->
-                    <view v-if="(index + 1) > (userInfo.level)" class="level-up" @click="levelUp">去升级 ></view>
+                    <!-- <view v-if="(index + 1) > (userInfo.level)" class="level-up" @click="levelUp">去升级 ></view> -->
                 </swiper-item>
             </swiper>
 
@@ -70,22 +70,39 @@
                         <view class="th flex">
                             <view style="width:180rpx">等级权益</view>
                             <!-- <view style="width:140rpx">购买会员等级</view> -->
-                            <view style="width:130rpx">月度列表（话费）</view>
-                            <view style="width:130rpx">理财加速收益</view>
-                            <!-- <view style="width:250rpx">周期资产解冻最高等级</view> -->
-                             <view style="width:150rpx">积分折扣</view>
-                            <view style="width:150rpx">推荐会员奖励</view>
+                            <view class="flex flex-column" style="width:220rpx">
+                                <text>会员晋升要求</text>
+                                <text>(持有外汇储备)</text>
+                            </view>
+
+                            <view class="flex flex-column" style="width:220rpx">
+                                <text>会员福利工资</text>
+                                <text>(每月1日发放)</text>
+                            </view>
+
+                            <view class="flex" style="width:180rpx">
+                                <text>加速收益叠加</text>
+                            </view>
+
+                            <view class="flex" style="width:180rpx">
+                                <text>积分好礼兑换</text>
+                            </view>
+
+                            <view class="flex" style="width:200rpx">
+                                <text>云数币兑换比例</text>
+                            </view>
+                            
                         </view>
                         
                         <view class="td flex" v-for="(item,index) in levelList" :key="'level-row-' + index">
                             <view style="width:180rpx">{{ item.name || '' }}V{{ item.level || '' }}</view>
-                            <!-- <view style="width:140rpx">{{ item.single_amount  ? item.single_amount + 'U' : '-' }}</view> -->
-                            <view style="width:130rpx">{{ item.month_gift == 0 ? '-' : '￥' + item.month_gift }}</view>
-                            <view style="width:130rpx">{{ item.speed_income == 0 ? '-' : item.speed_income}}</view>
-                            <!-- <view style="width:250rpx">{{ item.thawing_level == 0 ? '-' : '￥' + item.thawing_level}}</view> -->
-                            <view style="width:150rpx">{{ item.integral_off_name }}</view>
-                            <view style="width:150rpx">{{ item.recommend_reward == 0 ? '-' : item.recommend_reward +  '%'}}</view>
+                            <view style="width:220rpx"> {{ item.total_assets == 0 ? '-' : '￥'+ item.total_assets}}</view>
+                            <view style="width:220rpx"> {{ item.month_wages == 0 ? '-' : '￥'+ item.month_wages }}</view>
+                            <view style="width:180rpx"> {{ item.speed_income == 0 ? '-' : item.speed_income }}</view>
+                            <view style="width:180rpx"> {{ item.integral_off_name }}</view>
+                            <view style="width:200rpx"> {{ item.exchange_ysb ? item.exchange_ysb + '%' : '-' }}</view>
                         </view>
+                        
                     </view>
                     
                 </scroll-view>
@@ -99,7 +116,7 @@
                             <th>购买方式</th>
                         </tr>
                         <tr>
-                            <td>大众会员V1</td>
+                            <td>初级会员</td>
                             <td>-</td>
                             <td>{{ levelAmountList[0] || '-' }}</td>
                         </tr>
@@ -144,7 +161,7 @@
                 
                 /* 选中项 */
                 current: 0,
-                current2: 1,
+                current2: 2,
             }
         },
         computed:{

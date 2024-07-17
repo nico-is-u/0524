@@ -41,12 +41,12 @@
 		</view>
 
 		<!-- 兑换通道 -->
-		<!-- <view style="padding: 32rpx; padding-top: 0">
-			<u-button class="n-button n-button-5" text="兑换通道" @click="smtd"></u-button>
-		</view> -->
+		<view style="padding: 32rpx; padding-top: 0" class="margin-t-20">
+			<u-button class="n-button n-button-5" text="兑换通道" @click="smtd" :loading="isLoading2" :loadingText="loadingTxt2"></u-button>
+		</view>
 
 		<!-- 首页 - 菜单 -->
-		<view class="padding-box margin-t-30">
+		<view class="padding-box">
 			<view class="menu-2">
 				<!-- <view class="menu-item" style="background-image: url(/static/images/11.png)" @click="too('/pages/home-page/my_zc')">
 					<view class="item-content">
@@ -113,6 +113,9 @@ export default {
 	data(){
 		return {
 			isLoading:false,                    		// 请求中
+
+			isLoading2:false,							// 请求中2
+			loadingTxt2:'处理中...',					// 请求中 文字
 
 			kLine:false,								// K线插件
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
@@ -184,7 +187,42 @@ export default {
 		},
 		/* 增加私募通道 */
 		smtd(){
-			this.toa('暂未开放')
+
+			const _this = this
+
+			uni.showModal({
+				title:'提示',
+				content:'确定要兑换吗？',
+				success:function(res){
+					
+					if (res.confirm) {
+
+						uni.showLoading()
+						_this.isLoading2 = true
+	
+						_this.to.www(_this.api.ysbExchange)
+						.then(res => {
+							const {code,data=[]} = res
+							if(code == 200){
+								// 操作成功
+								_this.tos('提交成功')
+								_this.too('/pages/home-page/my_zc')
+							}else{
+								_this.isLoading2 = false
+								uni.hideLoading()
+							}
+						})
+						.catch(e => {
+							_this.isLoading2 = false
+							uni.hideLoading()
+						})
+
+					}
+
+				}
+				
+			})
+
 		},
 
 	},

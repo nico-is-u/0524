@@ -646,10 +646,10 @@
 			}
 		},
 		{
-			"path": "pages/home-page/gf_cny2",
+			"path": "pages/home-page/gf_cny3",
 			"style" : 
 			{
-				"navigationBarTitleText" : "CNY兑汇USDT",
+				"navigationBarTitleText" : "USDT兑汇人民币",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
