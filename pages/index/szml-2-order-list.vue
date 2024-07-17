@@ -38,12 +38,12 @@
 							    <view class="left-side">下单时间</view>
 							    <view class="right-side">{{item.created_at}}</view>
 							</view>
-							<view class="row flex flex-between" v-if="item.status == 2">
+							<!-- <view class="row flex flex-between" v-if="item.status == 2">
 							    <view class="left-side">操作</view>
 							    <view class="right-side">
 									<u-button class="btn" text="赎回" @click="shuhui(item.id)"></u-button>
 								</view>
-							</view>
+							</view> -->
                         </view>
                     </view>
                 </view>
@@ -75,7 +75,7 @@ export default {
 					case 3:
 						return '待出售';
 					case 4:
-						return '已完成';
+						return '已结束收益';
 					case 5:
 						return '提前赎回';
 					default:

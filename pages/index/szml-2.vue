@@ -36,7 +36,7 @@
                             <view class="left-side flex flex-column">
 								<view>
 									<view class="font-red2">{{item.income_rate}}%</view>
-									<view class="font-gray">近1年收益率</view>
+									<view class="font-gray">七日年化收益率</view>
 								</view>
 								<view class="margin-t-30" v-if="item.ysb">
 									<text>获赠云数币</text>
@@ -44,7 +44,8 @@
 								</view>
                             </view>
                             <view class="right-side flex flex-y-center">
-                                <u-button class="n-button n-button-4" :text="item.amount + '元起'" @click="buy(item.id)"></u-button>
+								<!-- :text="item.amount + '元起'" -->
+                                <u-button class="n-button n-button-4" text="立即购买" @click="buy(item.id)"></u-button>
                             </view>
                         </view>
                     </view>
@@ -55,19 +56,19 @@
 			<view class="warp" style="padding: 0 20px;">
 				<view class="rect1" @tap.stop>
 
-					<view style="margin-top: 40rpx;">
+					<!-- <view style="margin-top: 40rpx;">
 						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
 							size="14" text="购买金额"></u--text>
 						<view style="margin: 30rpx 0 0;">
 							<u-input type="number" placeholder="请输入购买金额" border="surround" v-model="amount"></u-input>
 						</view>
-					</view>
+					</view> -->
 
 					<view style="margin-top: 40rpx;">
 						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
 							size="14" text="请输入支付密码"></u--text>
 						<view style="margin: 30rpx 0 0;">
-							<xt-verify-code :isPassword="true" :isFocus="false" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
+							<xt-verify-code :isPassword="true" :isFocus="true" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
 						</view>
 					</view>
 					<u-button iconColor="#fff" class="custom-style" text="立即支付" :loading="isDone"
@@ -100,11 +101,13 @@ export default {
 		},
 		pay(){
 			if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
-			if (uni.$u.test.isEmpty(this.amount)) return this.toa('请输入购买金额');
+			// if (uni.$u.test.isEmpty(this.amount)) return this.toa('请输入购买金额');
 			// if (!/^-?\d+$/.test(this.amount)) return this.toa('暂不支持非整数交易')
+
+			this.isDone = true
+			
 			this.to.www(this.api.licaPlaceOrder, {
 				id: this.id, 
-				amount: this.amount,
 				pay_password: this.pay_password
 			}, 'p').then(res => {
 				const {code} = res
@@ -181,6 +184,7 @@ page{
 		.img-box{
 			padding-bottom: 20rpx;
 			image{
+				width: 100%;
 				height: 260rpx;
 			}
 		}
@@ -210,18 +214,18 @@ page{
     }
 
     .tips1{
-        font-size: 20rpx;
-        padding: 8rpx;
+        font-size: 26rpx;
+        padding: 12rpx 10rpx;
         color: #0182EF;
-        background: rgba(1, 130, 239, 0.2);
+        background: rgba(1, 130, 239, .075);
         border-radius: 4rpx;
     }
 
     .tips2{
-        font-size: 20rpx;
-        padding: 8rpx;
+        font-size: 26rpx;
+        padding: 12rpx 10rpx;
         color: #FF8420;
-        background-color: rgba(255, 132, 32, .2);
+        background-color: rgba(255, 132, 32, .075);
         border-radius: 4rpx;
     }
 }
