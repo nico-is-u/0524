@@ -12,30 +12,36 @@
 
                     <view class="row flex flex-between flex-y-center">
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail')">
-                            <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : ''}}</view>
+                            <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : '0.00'}}</view>
                             <view class="value">我的币</view>
                         </view>
                         <view class="line"></view>
                         <view class="menu-item">
-                            <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : ''}}</view>
+                            <view class="label">{{userInfo && userInfo.total_foreign ? (parseFloat(userInfo.total_foreign).toFixed(2)) : '0.00'}}</view>
                             <view class="value">外汇储备</view>
                         </view>
                         <view class="line"></view>
                         <view class="menu-item">
-                            <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : ''}}</view>
+                            <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : '0'}}</view>
                             <view class="value">积分</view>
                         </view>
                     </view>
 
                     <view class="row flex flex-between flex-y-center">
                         <view class="menu-item">
-                            <view class="label"></view>
-                            <view class="value">233</view>
+                            <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : '0.00'}}</view>
+                            <view class="value">USDT</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item"></view>
+                        <view class="menu-item">
+                            <view class="label">{{userInfo && userInfo.topup_balance ? (parseFloat(userInfo.topup_balance).toFixed(2)) : '0.00'}}</view>
+                            <view class="value">可用余额</view>
+                        </view>
                         <view class="line"></view>
-                        <view class="menu-item"></view>
+                        <view class="menu-item">
+                            <view class="label">{{userInfo && userInfo.balance ? (parseFloat(userInfo.balance).toFixed(2)) : '0.00'}}</view>
+                            <view class="value">可提余额</view>
+                        </view>
                     </view>
 
                 </view>
@@ -160,8 +166,18 @@ export default {
     },
     onLoad(){
         const userInfo = uni.getStorageSync('user_info')
-        console.log(userInfo)
         if(userInfo)    this.userInfo = userInfo
+
+        this.to.www(this.api.user_info)
+        .then(res => {
+            this.userInfo = res.data;
+            uni.setStorage({
+                data: this.userInfo,
+                key: 'user_info'
+            });
+        })
+
+        
     }
 }
 </script>

@@ -11,12 +11,12 @@
           <view class="line"></view>
           <view class="text-block flex flex-column">
             <view class="label">CNY可用余额</view>
-            <view class="title">{{userInfo.topup_balance || '0'}}</view>
+            <view class="title">{{userInfo.topup_balance || '0.00'}}</view>
           </view>
           <view class="line"></view>
           <view class="text-block flex flex-column">
             <view class="label">CNY可提余额</view>
-            <view class="title">{{userInfo.topup_balance || '0'}}</view>
+            <view class="title">{{userInfo.balance || '0.00'}}</view>
           </view>
         </view>
       </view>

@@ -95,7 +95,7 @@
 					<view style="color: #666666;font-size: 14px;">{{ '$' + item.price}}</view>
 					<view class="right-side">
 						<view class="n-fee" :class="item.isPos ? 'n-fee-pos' : 'n-fee-pos2'">
-							<view>{{ item.isPos ? '+' : '-'}}</view>
+							<view>{{ item.isPos ? '+' : ''}}</view>
 							<view>{{ item.change3 }}%</view>
 						</view>
 					</view>

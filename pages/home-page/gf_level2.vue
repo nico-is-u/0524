@@ -12,9 +12,17 @@
             <!-- <u-swiper height="140" :current="current" :autoplay="false" previousMargin="30" bgColor="#40496F"
                     nextMargin="30"
                     circular :list="list1" @change="change" @click="click"></u-swiper> -->
-            <swiper class="swiper" previous-margin="30rpx" next-margin="30rpx" >
+            <swiper class="swiper" previous-margin="30rpx" next-margin="30rpx" :current="listIndex">
                 <swiper-item v-for="(item,index) in list1" :key="'swiper-item-'+index">
                     <image :src="item"></image>
+                    
+                    <!-- 头衔 -->
+                    <!-- <view class="level-up" v-if="index == 1">随员</view>
+                    <view class="level-up" v-if="index == 2">秘书</view>
+                    <view class="level-up" v-if="index == 3">参赞</view>
+                    <view class="level-up" v-if="index == 4">公使</view>
+                    <view class="level-up" v-if="index == 5">大使</view> -->
+
                     <!-- 去升级按钮 -->
                     <!-- <view v-if="(index + 1) > (userInfo.level)" class="level-up" @click="levelUp">去升级 ></view> -->
                 </swiper-item>
@@ -42,7 +50,7 @@
                         <view class="item">
                             <image src="/static/images/59.png"></image>
                             <view class="label">超快晋级</view>
-                            <view class="desc">持仓8000U即可升级，购买会员等级永久尊享身份</view>
+                            <view class="desc">持有18000元外汇储备，即可尊享VIP国家外交衔级待遇</view>
                         </view>
                         <view class="item">
                             <image src="/static/images/60.png"></image>
@@ -57,7 +65,7 @@
                         <view class="item">
                             <image src="/static/images/62.png"></image>
                             <view class="label">专属权益</view>
-                            <view class="desc">月度专属礼包等权益，畅享高品质财富机会</view>
+                            <view class="desc">每月1日，领取福利工资等权益，畅享高品质财富机会</view>
                         </view>
 
                     </view>
@@ -116,28 +124,33 @@
                             <!-- <th>购买方式</th> -->
                         </tr>
                         <tr>
-                            <td>初级会员</td>
+                            <td>初级会员V</td>
                             <td>{{levelUpList[0]}}</td>
                             <!-- <td>{{ levelAmountList[0] || '-' }}</td> -->
                         </tr>
                         <tr>
-                            <td>黄金会员V2</td>
+                            <td>大众会员V1</td>
                             <td>{{levelUpList[1]}}</td>
+                            <!-- <td>{{ levelAmountList[0] || '-' }}</td> -->
+                        </tr>
+                        <tr>
+                            <td>黄金会员V2</td>
+                            <td>{{levelUpList[2]}}</td>
                             <!-- <td>{{ levelAmountList[1] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>白金会员V3</td>
-                            <td>{{levelUpList[2]}}</td>
+                            <td>{{levelUpList[3]}}</td>
                             <!-- <td>{{ levelAmountList[2] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>铂金会员V4</td>
-                            <td>{{levelUpList[3]}}</td>
+                            <td>{{levelUpList[4]}}</td>
                             <!-- <td>{{ levelAmountList[3] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>钻石会员V5</td>
-                            <td>{{levelUpList[4]}}</td>
+                            <td>{{levelUpList[5]}}</td>
                             <!-- <td>{{ levelAmountList[4] || '-' }}</td> -->
                         </tr>
                     </table>
@@ -156,12 +169,15 @@
                 /* 轮播图图组 */
                 list1: [],
 				list: [],
+
+                listIndex:0,
+
                 /* 用户信息 */
                 userInfo:false,
                 
                 /* 选中项 */
                 current: 0,
-                current2: 3,
+                current2: 1,
             }
         },
         computed:{
@@ -180,7 +196,7 @@
             },
             /* 等级晋升条件 */
             levelUpList(){
-                let result = ['-','-','-','-','-']
+                let result = ['-','-','-','-','-','-']
                 if(Array.isArray(this.levelList) && this.levelList.length){
                     this.levelList.map((item,index) => {
                         if(item.total_assets){
@@ -199,11 +215,12 @@
             /* 轮播图图组 */
             setList(){
                 const result = []
-                for(let i = 1; i <= 5; i++){
+                for(let i = 0; i <= 5; i++){
                     if((this.userInfo.level) == i){
-                        result.push('/static/images/my/level2-' + i + '.png')
+                        this.listIndex = i
+                        result.push('/static/images/my/level' + i + '-2.png')
                     }else{
-                        result.push('/static/images/my/level3-' + i + '.png')
+                        result.push('/static/images/my/level' + i + '.png')
                     }
                 }
                 this.list1 = result

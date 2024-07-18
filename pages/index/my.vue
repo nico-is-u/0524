@@ -21,11 +21,12 @@
               <view class="desc flex">
 
                 <!-- 用户等级 -->
-                <image src="/static/images/21.png" v-if="user_info.level == 1" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/22.png" v-if="user_info.level == 2" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/23.png" v-if="user_info.level == 3" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/24.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
-                <image src="/static/images/25.png" v-if="user_info.level == 5" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/65.png" v-if="user_info.level == 0" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/66.png" v-if="user_info.level == 1" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/67.png" v-if="user_info.level == 2" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/68.png" v-if="user_info.level == 3" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/69.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
+                <image src="/static/images/70.png" v-if="user_info.level == 5" mode="widthFix" class="level-2"></image>
 
                 <view class="text-part" @click="too('/pages/home-page/gf_level2')">
                   <text>我的等级特权</text>
@@ -39,11 +40,12 @@
           <view class="right-side" @click="too('/pages/home-page/gf_level2')">
 
             <!-- 用户等级 -->
-            <image src="/static/images/16.png" v-if="user_info.level == 1" mode="widthFix"></image>
-            <image src="/static/images/17.png" v-if="user_info.level == 2" mode="widthFix"></image>
-            <image src="/static/images/18.png" v-if="user_info.level == 3" mode="widthFix"></image>
-            <image src="/static/images/19.png" v-if="user_info.level == 4" mode="widthFix"></image>
-            <image src="/static/images/20.png" v-if="user_info.level == 5" mode="widthFix"></image>
+            <image src="/static/images/71.png" v-if="user_info.level == 0" mode="widthFix"></image>
+            <image src="/static/images/72.png" v-if="user_info.level == 1" mode="widthFix"></image>
+            <image src="/static/images/73.png" v-if="user_info.level == 2" mode="widthFix"></image>
+            <image src="/static/images/74.png" v-if="user_info.level == 3" mode="widthFix"></image>
+            <image src="/static/images/75.png" v-if="user_info.level == 4" mode="widthFix"></image>
+            <image src="/static/images/76.png" v-if="user_info.level == 5" mode="widthFix"></image>
 
           </view>
 
@@ -70,8 +72,8 @@
         </view>
         <view class="menu-item" @click="too('/pages/home-page/gf_gift')" style="background-image: url(/static/images/33.png);">
           <view class="text-info">
-            <view class="title">领取礼包</view>
-            <view class="label">海量权益月月领</view>
+            <view class="title">福利工资</view>
+            <view class="label">衔级待遇月月领</view>
           </view>
         </view>
         <view class="menu-item" @click="too('/pages/home-page/gf_level2')" style="background-image: url(/static/images/34.png);">
