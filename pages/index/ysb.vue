@@ -156,7 +156,7 @@ export default {
 		getKLineDatas(){
 			this.isLoading = true
 			this.to.www(this.api.k_line,{
-				code:this.$store.getters['cName'],
+				code:'YSB',
 				bar:this.bar
 			})
 			.then(res => {

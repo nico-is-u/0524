@@ -485,6 +485,10 @@
 
 		padding: 0 32rpx;
 
+		.row{
+			width: 100%;
+		}
+
 		.menu-item{
 			min-width: 25%;
 			min-height: 150rpx;

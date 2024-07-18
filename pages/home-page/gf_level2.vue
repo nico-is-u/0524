@@ -113,32 +113,32 @@
                         <tr>
                             <th style="width: 86px">等级权益</th>
                             <th>资产要求(总资产自动升级，日均资产按月考核，次月按日均资产匹配</th>
-                            <th>购买方式</th>
+                            <!-- <th>购买方式</th> -->
                         </tr>
                         <tr>
                             <td>初级会员</td>
-                            <td>-</td>
-                            <td>{{ levelAmountList[0] || '-' }}</td>
+                            <td>{{levelUpList[0]}}</td>
+                            <!-- <td>{{ levelAmountList[0] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>黄金会员V2</td>
-                            <td>总资产8000U/日均5000U</td>
-                            <td>{{ levelAmountList[1] || '-' }}</td>
+                            <td>{{levelUpList[1]}}</td>
+                            <!-- <td>{{ levelAmountList[1] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>白金会员V3</td>
-                            <td>总资产18000U/日均10000U</td>
-                            <td>{{ levelAmountList[2] || '-' }}</td>
+                            <td>{{levelUpList[2]}}</td>
+                            <!-- <td>{{ levelAmountList[2] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>铂金会员V4</td>
-                            <td>总资产38000U/日均25000U</td>
-                            <td>{{ levelAmountList[3] || '-' }}</td>
+                            <td>{{levelUpList[3]}}</td>
+                            <!-- <td>{{ levelAmountList[3] || '-' }}</td> -->
                         </tr>
                         <tr>
                             <td>钻石会员V5</td>
-                            <td>总资产88000U/日均6000U</td>
-                            <td>{{ levelAmountList[4] || '-' }}</td>
+                            <td>{{levelUpList[4]}}</td>
+                            <!-- <td>{{ levelAmountList[4] || '-' }}</td> -->
                         </tr>
                     </table>
                     
@@ -161,7 +161,7 @@
                 
                 /* 选中项 */
                 current: 0,
-                current2: 2,
+                current2: 3,
             }
         },
         computed:{
@@ -173,6 +173,18 @@
                         result[index] = '-'
                         if(item.single_amount){
                             result[index] = item.single_amount + 'U'
+                        }
+                    })
+                }
+                return result
+            },
+            /* 等级晋升条件 */
+            levelUpList(){
+                let result = ['-','-','-','-','-']
+                if(Array.isArray(this.levelList) && this.levelList.length){
+                    this.levelList.map((item,index) => {
+                        if(item.total_assets){
+                            result[index] = '￥'+ item.total_assets
                         }
                     })
                 }

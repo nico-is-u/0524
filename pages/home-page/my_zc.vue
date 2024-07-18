@@ -8,22 +8,38 @@
 			<nNavbar title="我的资产" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
             <!-- 小菜单 -->
             <view class="padding-box-3">
-                <view class="menu-card">
-                    <view class="menu-item" @click="too('/pages/home-page/my_zc_detail')">
-                        <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : ''}}</view>
-                        <view class="value">我的币</view>
+                <view class="menu-card flex flex-column">
+
+                    <view class="row flex flex-between flex-y-center">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail')">
+                            <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : ''}}</view>
+                            <view class="value">我的币</view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="menu-item">
+                            <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : ''}}</view>
+                            <view class="value">外汇储备</view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="menu-item">
+                            <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : ''}}</view>
+                            <view class="value">积分</view>
+                        </view>
                     </view>
-                    <view class="line"></view>
-                    <view class="menu-item">
-                        <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : ''}}</view>
-                        <view class="value">外汇储备</view>
+
+                    <view class="row flex flex-between flex-y-center">
+                        <view class="menu-item">
+                            <view class="label"></view>
+                            <view class="value">233</view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="menu-item"></view>
+                        <view class="line"></view>
+                        <view class="menu-item"></view>
                     </view>
-                    <view class="line"></view>
-                    <view class="menu-item">
-                        <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : ''}}</view>
-                        <view class="value">积分</view>
-                    </view>
+
                 </view>
+                
             </view>
         </view>
         <!-- 资金明细 -->
@@ -36,7 +52,7 @@
 				</view>
 
                 <!-- 列表 -->
-                <z-paging ref="paging" :fixed="false" style="height: 65vh" v-model="dataList" @query="getDataList">
+                <z-paging ref="paging" :fixed="false" style="height: calc(100% - 200rpx)" v-model="dataList" @query="getDataList">
 
                     <view class="card-list-type-2" v-if="Array.isArray(dataList) && dataList.length">
                         <view class="item" v-for="(item,index) in dataList" :key="index">
@@ -144,6 +160,7 @@ export default {
     },
     onLoad(){
         const userInfo = uni.getStorageSync('user_info')
+        console.log(userInfo)
         if(userInfo)    this.userInfo = userInfo
     }
 }
@@ -155,6 +172,22 @@ page{
     background-color: #F9F9F9;
 }
 #my-zc{
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    >.padding-box{
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        >.content{
+            height: 100%;
+        }
+    }
+
     .right-side{
         color: #666;
     }
