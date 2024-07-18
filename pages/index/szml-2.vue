@@ -45,7 +45,7 @@
                             </view>
                             <view class="right-side flex flex-y-center">
 								<!-- :text="item.amount + '元起'" -->
-                                <u-button class="n-button n-button-4" text="立即购买" @click="buy(item.id)"></u-button>
+                                <u-button class="n-button n-button-4" text="立即购买" @click="buy(item)"></u-button>
                             </view>
                         </view>
                     </view>
@@ -56,13 +56,20 @@
 			<view class="warp" style="padding: 0 20px;">
 				<view class="rect1" @tap.stop>
 
-					<!-- <view style="margin-top: 40rpx;">
+					<view class="flex price-info">
+						<!-- <u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+							size="14" text="支付金额"></u--text> -->
+						<text>支付金额：</text>
+						<text>{{amount}}</text>
+					</view>
+
+					<view style="margin-top: 40rpx;">
 						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
-							size="14" text="购买金额"></u--text>
+							size="14" text="购买数量"></u--text>
 						<view style="margin: 30rpx 0 0;">
-							<u-input type="number" placeholder="请输入购买金额" border="surround" v-model="amount"></u-input>
+							<u-input type="number" placeholder="请输入购买数量" border="surround" v-model="buy_num" :min="1" :step="1"></u-input>
 						</view>
-					</view> -->
+					</view>
 
 					<view style="margin-top: 40rpx;">
 						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
@@ -89,26 +96,29 @@ export default {
 			showPay: false,
 			isDone: false,
 			regStatus: '处理中...',
-			amount:0,									// 购买金额
+			amount:'',									// 产品金额
+			buy_num:1,									// 购买数量
 			pay_password: '',
 			id: 0
 		};
 	},
 	methods:{
-		buy(id){
-			this.id = id;
+		buy(item){
+			this.id = item.id;
+			this.amount = item.amount
 			this.showPay = true;
 		},
 		pay(){
+			if (uni.$u.test.isEmpty(this.buy_num) || parseInt(this.buy_num) == 0) return this.toa('请输入购买数量');
 			if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
-			// if (uni.$u.test.isEmpty(this.amount)) return this.toa('请输入购买金额');
 			// if (!/^-?\d+$/.test(this.amount)) return this.toa('暂不支持非整数交易')
 
 			this.isDone = true
 			
 			this.to.www(this.api.licaPlaceOrder, {
 				id: this.id, 
-				pay_password: this.pay_password
+				buy_num: this.buy_num,
+				pay_password: this.pay_password,
 			}, 'p').then(res => {
 				const {code} = res
 				if(code == 200){
@@ -163,6 +173,12 @@ page{
 		box-sizing: border-box;
 		background: #fff;
 	
+		.price-info{
+			font-size: 28rpx;
+			margin-top: 40rpx;
+			padding:6rpx 0 0 0rpx;
+		}
+
 		.custom-style {
 			width: 30vw;
 			border-radius: 8px;
