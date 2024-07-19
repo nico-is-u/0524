@@ -119,8 +119,8 @@
                     <view class="title1">晋级方式</view>
                     <table class="n-table">
                         <tr>
-                            <th style="width: 86px">等级权益</th>
-                            <th>资产要求(总资产自动升级，日均资产按月考核，次月按日均资产匹配</th>
+                            <th style="width: 120px">晋级要求</th>
+                            <th style="width: 280px">本人持有外汇储备</th>
                             <!-- <th>购买方式</th> -->
                         </tr>
                         <tr>
@@ -218,7 +218,12 @@
                 for(let i = 0; i <= 5; i++){
                     if((this.userInfo.level) == i){
                         this.listIndex = i
-                        result.push('/static/images/my/level' + i + '-2.png')
+
+                        if(i == 0){
+                            result.push('/static/images/my/level' + i + '.png')
+                        }else{
+                            result.push('/static/images/my/level' + i + '-2.png')
+                        }
                     }else{
                         result.push('/static/images/my/level' + i + '.png')
                     }

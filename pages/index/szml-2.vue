@@ -120,10 +120,15 @@ export default {
 				buy_num: this.buy_num,
 				pay_password: this.pay_password,
 			}, 'p').then(res => {
+				
 				const {code} = res
 				if(code == 200){
 					this.toa('支付成功')
+
+					this.isDone = false
 					this.showPay = false
+					this.buy_num = 1
+
 					this.too('/pages/index/szml-2-order-list')
 				}else{
 					this.isDone = false

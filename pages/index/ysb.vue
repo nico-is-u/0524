@@ -263,21 +263,21 @@ export default {
 		
 		/* 样式配置 */
 		// dispose('chart')
-	},
-	onShow(){
-		/* 重新拉取K线 */
-		this.getKLineDatas()
 
 		/* 轮询币种数据 */
 		this.getCDatas().then(() => {
 			this.intervalId = setInterval(this.getCDatas, 5000)
 		}).catch(e => null)
+
+		/* 拉取K线 */
+		this.getKLineDatas()
+		this.intervalId2 = setInterval(this.getKLineDatas, (60000 * 15))
 	},
 	onHide(){
-		if (this.intervalId) {
-			clearInterval(this.intervalId)
-			this.intervalId = null
-		}
+		// if (this.intervalId) {
+		// 	clearInterval(this.intervalId)
+		// 	this.intervalId = null
+		// }
 	}
 }
 </script>

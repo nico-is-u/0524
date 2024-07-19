@@ -564,7 +564,7 @@
 			"path" : "pages/home-page/gf_gift",
 			"style" : 
 			{
-				"navigationBarTitleText" : "礼品领取",
+				"navigationBarTitleText" : "福利工资",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff",
 				"navigationBarTextStyle":"black"
