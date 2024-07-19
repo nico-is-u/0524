@@ -62,7 +62,7 @@ function decrypt(content, keyStr) {
 
 /* 测试加密 */
 console.log('测试加密')
-console.log(encryptCBC("yun/duihuan"))
+console.log(encryptCBC("order/levelPlaceOrder"))
 
 var
   api_index = 0,

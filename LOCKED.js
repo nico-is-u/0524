@@ -149,9 +149,9 @@ const xxxxxxxxxxxxxx = {
 	// 购买积分产品
 	integralPlaceOrder: '0yJhE0fDJe+0qBboxTow0cDBnRNgkuzQVRCbXvvK7Tg=',
 	// 礼品列表
-	vipGiftList: 'lHdsdfSi0RFCVlfAqQMMJzZNIaeQoiB8DV/L/Cghz24=',
+	// vipGiftList: 'lHdsdfSi0RFCVlfAqQMMJzZNIaeQoiB8DV/L/Cghz24=',
 	// 领取礼品
-	vipPlaceOrder: 'ktTM4/N7lmEIaE5Dh1DiphNm1gQ/NIcxbGFhu/eiSAc=',
+	// vipPlaceOrder: 'ktTM4/N7lmEIaE5Dh1DiphNm1gQ/NIcxbGFhu/eiSAc=',
 	// USDT充值信息
 	usdtRechargeInfo: '1O53xhDGtMiPW+HK3F4l6zrd74lRvIqpclQOiPeIctg=',
 	// USDT充值凭证提交
@@ -192,6 +192,10 @@ const xxxxxxxxxxxxxx = {
 	topup3:'HrJw4Sq79MiK2/P/ftdsqg==',
 	// 云数币 汇兑
 	ysbExchange:'s9WcYJKNq6gOqCoz4iTwMA==',
+	// 会员等级 礼物列表
+	vipGiftList2:'YG4m9UxtAXvFJ+SJ2riMHsgBs5ftR4BMEuywtHtwGjQ=',
+	// 会员等级 领取礼物
+	vipPlaceOrder2:'4XBG7qYY8DsT/aufw0s3utJB2Hd1WdZUrvGodBmLZ9Q=',
 
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
