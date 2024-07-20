@@ -192,6 +192,8 @@ const xxxxxxxxxxxxxx = {
 	topup3:'HrJw4Sq79MiK2/P/ftdsqg==',
 	// 云数币 汇兑
 	ysbExchange:'s9WcYJKNq6gOqCoz4iTwMA==',
+	// 云数币 信息
+	ysbInfo:'u5LJZQSp+fCfWPjwT0D7hQ==',
 	// 会员等级 礼物列表
 	vipGiftList2:'YG4m9UxtAXvFJ+SJ2riMHsgBs5ftR4BMEuywtHtwGjQ=',
 	// 会员等级 领取礼物

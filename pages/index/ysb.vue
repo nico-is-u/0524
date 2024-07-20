@@ -42,8 +42,43 @@
 
 		<!-- 兑换通道 -->
 		<view style="padding: 32rpx; padding-top: 0" class="margin-t-20">
-			<u-button class="n-button n-button-5" text="兑换通道" @click="smtd" :loading="isLoading2" :loadingText="loadingTxt2"></u-button>
+			<u-button class="n-button n-button-5" text="兑换通道" @click="duihuanShow = true"></u-button>
 		</view>
+
+		<!-- 确认兑换通道 -->
+		<u-overlay :show="duihuanShow" @click="duihuanShow = false">
+			<view class="warp" style="padding: 0 20px;">
+				<view class="rect1" @tap.stop>
+
+					<view class="flex price-info">
+						<text>兑换数量：</text>
+						<text class="price-info-amount">{{ duihuanInfo.amount }}</text>
+					</view>
+
+					<view class="flex price-info">
+						<text>价格：</text>
+						<text class="price-info-amount">{{ duihuanInfo.price }}</text>
+					</view>
+
+					<view class="flex price-info">
+						<text>兑换金额：</text>
+						<text class="price-info-amount">{{ duihuanInfo.cny }}</text>
+					</view>
+
+					<view style="margin-top: 60rpx;">
+						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+							size="14" text="请输入支付密码"></u--text>
+						<view style="margin: 30rpx 0 0;">
+							<xt-verify-code :isPassword="true" :isFocus="true" boxActiveColor="#333" v-model="payPassword"></xt-verify-code>
+						</view>
+					</view>
+
+					<u-button iconColor="#fff" class="custom-style" text="立即支付" :loading="isLoading2"
+						:loadingText="loadingTxt2" @click="pay"></u-button>
+
+				</view>
+			</view>
+		</u-overlay>
 
 		<!-- 首页 - 菜单 -->
 		<view class="padding-box">
@@ -114,8 +149,11 @@ export default {
 		return {
 			isLoading:false,                    		// 请求中
 
-			isLoading2:false,							// 请求中2
-			loadingTxt2:'处理中...',					// 请求中 文字
+			duihuanShow:false,							//	兑换窗口
+			duihuanInfo:false,							//	兑换信息
+			payPassword:'',								//  支付密码
+			isLoading2:false,							//	请求中2
+			loadingTxt2:'处理中...',					//	请求中 文字
 
 			kLine:false,								// K线插件
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
@@ -185,42 +223,41 @@ export default {
 		getCDatas(){
 			return this.$store.dispatch('getCList')
 		},
-		/* 增加私募通道 */
-		smtd(){
+		/* 发起兑换 */
+		pay(){
 
-			const _this = this
+			if (uni.$u.test.isEmpty(this.payPassword)) return this.toa('请输入支付密码');
 
-			uni.showModal({
-				title:'提示',
-				content:'确定要兑换吗？',
-				success:function(res){
-					
-					if (res.confirm) {
+			uni.showLoading()
+			this.isLoading2 = true
 
-						uni.showLoading()
-						_this.isLoading2 = true
-	
-						_this.to.www(_this.api.ysbExchange)
-						.then(res => {
-							const {code,data=[]} = res
-							if(code == 200){
-								// 操作成功
-								_this.tos('提交成功')
-								_this.too('/pages/home-page/my_zc')
-							}else{
-								_this.isLoading2 = false
-								uni.hideLoading()
-							}
-						})
-						.catch(e => {
-							_this.isLoading2 = false
-							uni.hideLoading()
-						})
+			this.to.www(this.api.ysbExchange,{
+				pay_password:this.payPassword
+			},'p')
+			.then(res => {
+				const {code,data=[]} = res
+				if(code == 200){
+					// 操作成功
+					this.tos('提交成功')
+					this.payPassword = ''
 
-					}
+					this.duihuanShow = false
+					this.isLoading2 = false
+					uni.hideLoading()
 
+					this.too('/pages/home-page/my_zc')
+				}else{
+
+					this.duihuanShow = false
+					this.isLoading2 = false
+					uni.hideLoading()
 				}
-				
+			})
+			.catch(e => {
+
+				this.duihuanShow = false
+				this.isLoading2 = false
+				uni.hideLoading()
 			})
 
 		},
@@ -273,6 +310,12 @@ export default {
 		this.getKLineDatas()
 		this.intervalId2 = setInterval(this.getKLineDatas, (60000 * 15))
 	},
+	onLoad(){
+		/* 拉取兑换信息 */
+		this.to.www(this.api.ysbInfo).then(res => {
+			this.duihuanInfo = res.data
+		})
+	},
 	onHide(){
 		// if (this.intervalId) {
 		// 	clearInterval(this.intervalId)
@@ -315,6 +358,43 @@ page{
 	}
 
 
+}
+
+/* 兑换弹出窗口 */
+.warp {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	z-index: 3;
+
+	.rect1 {
+		border-radius: 10px;
+		padding: 20px;
+		width: 100%;
+		box-sizing: border-box;
+		background: #fff;
+	
+		.price-info{
+			font-size: 28rpx;
+			margin-top: 40rpx;
+			padding:6rpx 0 0 0rpx;
+
+			.price-info-amount{
+				font-size: 34rpx;
+				color: #FF2732;
+			}
+		}
+
+		.custom-style {
+			width: 30vw;
+			border-radius: 8px;
+			margin-top: 30px;
+			background: #1292FF;
+			color: #fff;
+		}
+	}
 }
 
 /* 币种列表 */
