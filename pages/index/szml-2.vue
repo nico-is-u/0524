@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
             <!-- 顶栏 -->
-			<nNavbar title="数字魅力" :showBackBtn="true" :back="true" :backFunc="backPrev">
+			<nNavbar title="数字魅力" :showBackBtn="false">
 				<u--text @click="too('szml-2-order-list')" color="white" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
@@ -141,7 +141,7 @@ export default {
 		},
 		/* 返回上一页 */
 		backPrev(){
-			this.too('/pages/index/szml','tab')
+			this.too('/pages/index/index','tab')
 		}
 	},
 	onLoad() {

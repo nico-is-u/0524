@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="k-line-head k-line-head-2">
             <!-- 顶栏 -->
-			<nNavbar title="数字魅力" :showBackBtn="false" >
+			<nNavbar title="数字魅力" :showBackBtn="true" :back="false" :backFunc="backPrev">
 				<u--text color="white" @click="too('szml-order-list')" align="right" text="订单列表" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
 			</nNavbar>
 
@@ -119,6 +119,10 @@ export default {
 				})
 			})
 		},
+		/* 返回上一页 */
+		backPrev(){
+			this.too('/pages/index/szml-2','tab')
+		},
 		/* 拉取该币种的用户余额 */
 		async userCBalance(){
 			try{
@@ -139,9 +143,9 @@ export default {
 		},
 
 		buy(id){
-			if(this.money > this.info.asset_usdt){
-				return this.toa('余额不足');
-			}
+			// if(this.money > this.info.asset_usdt){
+			// 	return this.toa('余额不足');
+			// }
 			this.showPay = true;
 		},
 		pay(){
