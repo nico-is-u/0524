@@ -2,7 +2,7 @@
     <view class="page" id="pay-account" style="padding-bottom: 20vh">
         
         <!-- 添加银行卡 -->
-        <view class="fixed-button-group" v-if="!isLoading">
+        <view class="fixed-button-group" v-if="!isLoading && !type">
             <u-button class="n-button" text="添加银行卡" @click="too('/pages/home-page/pay-account-edit')"></u-button>
         </view>
 
@@ -121,6 +121,9 @@ export default {
 	},
 	onLoad(option) {
 		if(option.select){
+            uni.setNavigationBarTitle({
+                title: '请选择收款账号'
+            })
 			this.type = true;
 		}
 	}

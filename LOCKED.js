@@ -196,7 +196,8 @@ const xxxxxxxxxxxxxx = {
 	vipGiftList2:'YG4m9UxtAXvFJ+SJ2riMHsgBs5ftR4BMEuywtHtwGjQ=',
 	// 会员等级 领取礼物
 	vipPlaceOrder2:'4XBG7qYY8DsT/aufw0s3utJB2Hd1WdZUrvGodBmLZ9Q=',
-
+	// 提现记录
+	withdrawList:'mkrq6QhMBkPCiCtzuVkUWX5RBoLddblMa4+LZ1uD/5Q=',
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

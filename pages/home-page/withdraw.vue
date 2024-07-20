@@ -111,6 +111,44 @@
         <view class="n-button" style="margin-top: 64rpx;height: initial!important;" @click="checkForm">提现</view>
       </view>
 
+      <!-- 提现记录 -->
+      <view class="padding-box">
+        <view class="content">
+          <view class="title">
+            <view class="label">
+              <text>提现记录</text>
+            </view>
+				  </view>
+
+          <view class="card-list-type-2" v-if="Array.isArray(dataList2) && dataList2.length">
+              <view class="item" v-for="(item,index) in dataList2" :key="index">
+                  <view class="row flex flex-between">
+                      <view class="left-side">状态</view>
+                      <view class="right-side">
+                          <view>{{item.stext || ''}}</view>
+                      </view>
+                  </view>
+
+                  <view class="row flex flex-between">
+                    <view class="left-side">提现金额</view>
+                    <view class="right-side">{{ item.withdraw_amount || '' }}</view>
+                  </view>
+
+                  <view class="row flex flex-between">
+                    <view class="left-side">提现手续费</view>
+                    <view class="right-side">{{ item.withdraw_fee || '' }}</view>
+                  </view>
+                  
+                  <view class="row flex flex-between">
+                    <view class="left-side">{{ item.capital_sn || '' }}</view>
+                    <view class="right-side">{{ item.updated_at || '' }}</view>
+                  </view>
+              </view>                    
+          </view>
+
+        </view>
+      </view>
+
   </view>
 
 </template>
@@ -127,14 +165,16 @@ export default {
       isLoading:false,                // 请求中
       regStatus: '正在提交...',		     // loading text
 
-      dataList:false,             // 收款账号
+      dataList:false,                 // 收款账号
+      dataList2:[],                   // 提现记录
+
       bankInfo: {},
       formData:{
         pay_channel:1,            // 0:cny  1:usdt(收款渠道)
         amount:'',                // 收款金额
         pay_password:'',          // 支付密码
-		usdt_address: '',
-		bank_id: 0,
+        usdt_address: '',
+        bank_id: 0,
       },
       formRules:{
         amount:[
@@ -196,6 +236,14 @@ export default {
 	  this.to.www(this.api.user_info).then(res => {
 			this.userInfo = res.data
 		})
+
+    /* 拉取收款账号 */
+
+    /* 拉取提现记录 */
+    this.to.www(this.api.withdrawList).then(res => {
+      this.dataList2 = res.data.data || []
+    })
+
   }
 }
 </script>
@@ -242,6 +290,7 @@ page{
   .content-3{
     overflow: hidden;
   }
+
 
 }
 </style>
