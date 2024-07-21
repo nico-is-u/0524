@@ -9,9 +9,15 @@
                                 <view class="left-side">订单编号</view>
                                 <view class="right-side">{{item.order_sn}}</view>
                             </view>
+
                             <view class="row flex flex-between">
                                 <view class="left-side">理财投资金额</view>
                                 <view class="right-side">{{item.licai_number}}</view>
+                            </view>
+
+							<view class="row flex flex-between">
+                                <view class="left-side">投资数量</view>
+                                <view class="right-side">{{item.buy_num}}</view>
                             </view>
 							
 							<view class="row flex flex-between">

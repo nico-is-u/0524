@@ -220,7 +220,7 @@
 				this.$store.dispatch('getCList').then(() => {
 					/* 默认币设为YSB */
 					if(Array.isArray(this.$store.state.cList) && this.$store.state.cList.length){
-						const arrIndex = this.$store.state.cList.findIndex(item => item.name == 'YSB')
+						const arrIndex = this.$store.state.cList.findIndex(item => item.name == 'YSC')
 						if(arrIndex != -1)	this.$store.commit('changeCListIndex',arrIndex)
 					}
 				})

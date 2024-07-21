@@ -194,7 +194,7 @@ export default {
 		getKLineDatas(){
 			this.isLoading = true
 			this.to.www(this.api.k_line,{
-				code:'YSB',
+				code:'YSC',
 				bar:this.bar
 			})
 			.then(res => {

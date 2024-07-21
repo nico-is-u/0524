@@ -63,13 +63,13 @@
 						<text>{{amount}}</text>
 					</view>
 
-					<view style="margin-top: 40rpx;">
+					<!-- <view style="margin-top: 40rpx;">
 						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
 							size="14" text="购买数量"></u--text>
 						<view style="margin: 30rpx 0 0;">
-							<u-input type="number" placeholder="请输入购买数量" border="surround" v-model="buy_num" :min="1" :step="1"></u-input>
+							<u-input type="number" placeholder="请输入购买数量" border="surround" v-model="buy_num" :min="1" :step="1" disabled></u-input>
 						</view>
-					</view>
+					</view> -->
 
 					<view style="margin-top: 40rpx;">
 						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"

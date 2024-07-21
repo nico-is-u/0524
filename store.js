@@ -15,7 +15,7 @@ const store = new Vuex.Store({
     getters:{
         /* 当前选中币种名 */
         cName(state){
-            let result = 'YSB'
+            let result = 'YSC'
             if(Array.isArray(state.cList) && state.cList.length){
                 let item = state.cList[state.CListIndex] || false
                 if(item){
