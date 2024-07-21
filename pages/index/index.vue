@@ -215,8 +215,16 @@
 				this.getBannerList()
 				/* 获取新闻资讯 */
 				this.getNewsList()
+
 				/* 获取币种列表 */
-				this.$store.dispatch('getCList')
+				this.$store.dispatch('getCList').then(() => {
+					/* 默认币设为YSB */
+					if(Array.isArray(this.$store.state.cList) && this.$store.state.cList.length){
+						const arrIndex = this.$store.state.cList.findIndex(item => item.name == 'YSB')
+						if(arrIndex != -1)	this.$store.commit('changeCListIndex',arrIndex)
+					}
+				})
+
 				/* 个人信息 */
 				this.to.www(this.api.user_info)
 				.then(res => {

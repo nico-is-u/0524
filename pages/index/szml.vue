@@ -270,7 +270,7 @@ export default {
         this.getUserInfo()
 		/* 拉取该币种当前余额 */
 		this.userCBalance()
-	}
+	},
 }
 </script>
 
