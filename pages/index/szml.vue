@@ -28,10 +28,10 @@
 
 				<!-- 操作区域 -->
 				<view class="mr-section padding-box-3" style="background-color: white">
-					<view class="form-group margin-t-40">
+					<view class="form-group margin-t-40" style="gap: 0;">
 
 						<!-- 切换币种 -->
-						<view class="change-coin-type flex flex-between">
+						<view class="change-coin-type flex flex-between" style="margin: 32rpx 0;">
 							<view class="left-side">质押</view>
 							<view class="right-side">
 								<view style="padding-right: 24rpx" @click="cTypeShow = true">
@@ -41,10 +41,15 @@
 							</view>
 						</view>
 
-						<view class="form-control">
+						<view class="form-control" style="margin: 16rpx 0 0;">
 							<u--input border="none" v-model="money" type="digit" placeholder="请输入质押的云数币数量"></u--input>
 						</view>
-						<view class="form-tips">
+
+						<view class="form-tips2" v-if="$store.getters['cName'] == 'YSC'">
+							{{yscTips}}
+						</view>
+						
+						<view class="form-tips" style="margin: 48rpx 0;">
 							<view class="left-side">可用</view>
 							<view class="right-side">{{userBalance}}</view>
 						</view>
@@ -97,6 +102,7 @@ export default {
 			showPay: false,
 			isDone: false,
 			regStatus: '处理中...',
+			yscTips:'云数币最低500枚，每100枚为增加基数',
 			pay_password: '',
 			id: 0,
 			money: '',
@@ -146,7 +152,23 @@ export default {
 			// if(this.money > this.info.asset_usdt){
 			// 	return this.toa('余额不足');
 			// }
-			this.showPay = true;
+
+			/* 云数币判断 */
+			if(this.$store.getters['cName'] == 'YSC'){
+				const money = parseInt(this.money)
+				if(money < 500){
+					this.money = 500
+					this.toa(this.yscTips)
+				}else if(money % 100 != 0){
+					this.money = Math.ceil(money / 100) * 100
+					this.toa(this.yscTips)
+				}else{
+					this.showPay = true
+				}
+			}else{
+				this.showPay = true
+			}
+
 		},
 		pay(){
 			if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');

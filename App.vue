@@ -456,6 +456,12 @@
 			padding: 0 32rpx;
 		}
 
+		.form-tips2{
+			padding: 0 24rpx;
+			color: #FF2732;
+			opacity: .75;
+		}
+
 	}
 
 	/* 悬浮按钮 */

@@ -14,7 +14,8 @@
               avatarStyle="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"
               noTab>
             </avatar> -->
-			<image :src="avatarurl" style="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"></image>
+			      <image :src="avatarurl" style="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"></image>
+            
             <!-- 文字讯息 -->
             <view class="text-info">
               <view class="username">{{ user_info.realname || '' }}</view>
@@ -28,13 +29,24 @@
                 <image src="/static/images/69.png" v-if="user_info.level == 4" mode="widthFix" class="level-2"></image>
                 <image src="/static/images/70.png" v-if="user_info.level == 5" mode="widthFix" class="level-2"></image>
 
+                <view class="text-part" style="padding-top: 2rpx;">
+                  <text v-if="user_info.level == 1">(随员)</text>
+                  <text v-if="user_info.level == 2">(秘书)</text>
+                  <text v-if="user_info.level == 3">(参赞)</text>
+                  <text v-if="user_info.level == 4">(公使)</text>
+                  <text v-if="user_info.level == 5">(大使)</text>
+                </view>
+                
+              </view>
+              <view class="desc flex" v-if="user_info.level">
+        
                 <view class="text-part" @click="too('/pages/home-page/gf_level2')">
                   <text>我的等级特权</text>
                   <text>></text>
                 </view>
+
               </view>
-            </view>
-            
+            </view>      
           </view>
 
           <view class="right-side" @click="too('/pages/home-page/gf_level2')">
