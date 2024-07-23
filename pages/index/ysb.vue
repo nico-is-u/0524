@@ -51,7 +51,12 @@
 				<view class="rect1" @tap.stop>
 
 					<view class="flex price-info">
-						<text>兑换数量：</text>
+						<text>云数币持仓：</text>
+						<text class="price-info-amount">{{ parseFloat(duihuanInfo.balance).toFixed(2) }}</text>
+					</view>
+
+					<view class="flex price-info">
+						<text>当前等级可兑换：</text>
 						<text class="price-info-amount">{{ duihuanInfo.amount }}</text>
 					</view>
 
@@ -127,7 +132,14 @@
 							<!-- <view class="font-333" style="font-size: 28rpx;">{{ '$' + item.price}}</view> -->
 						</view>
 					</view>
-					<view style="color: #666666;font-size: 14px;">{{ '$' + item.price}}</view>
+
+					<view style="color: #666666;font-size: 14px;">
+						<text v-if="item.name == 'YSC'">￥</text>
+						<text v-else>$</text>
+
+						<text>{{ item.price }}</text>
+					</view>
+
 					<view class="right-side">
 						<view class="n-fee" :class="item.isPos ? 'n-fee-pos' : 'n-fee-pos2'">
 							<view>{{ item.isPos ? '+' : ''}}</view>
