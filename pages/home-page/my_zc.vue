@@ -16,29 +16,29 @@
                             <view class="value">我的币</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=3')">
                             <view class="label">{{userInfo && userInfo.total_foreign ? (parseFloat(userInfo.total_foreign).toFixed(2)) : '0.00'}}</view>
                             <view class="value">外汇储备</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=2')">
                             <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : '0'}}</view>
                             <view class="value">积分</view>
                         </view>
                     </view>
 
                     <view class="row flex flex-between flex-y-center">
-                        <view class="menu-item">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=10')">
                             <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : '0.00'}}</view>
                             <view class="value">USDT</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=5')">
                             <view class="label">{{userInfo && userInfo.topup_balance ? (parseFloat(userInfo.topup_balance).toFixed(2)) : '0.00'}}</view>
                             <view class="value">可用余额</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=4')">
                             <view class="label">{{userInfo && userInfo.balance ? (parseFloat(userInfo.balance).toFixed(2)) : '0.00'}}</view>
                             <view class="value">可提余额</view>
                         </view>

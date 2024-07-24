@@ -54,6 +54,11 @@
 							<view class="right-side">{{userBalance}}</view>
 						</view>
 
+						<view class="form-tips" style="margin: 12rpx 0;">
+							<view class="left-side">已质押</view>
+							<view class="right-side">{{pledge}}</view>
+						</view>
+
 					</view>
 				</view>
 			</view>
@@ -98,6 +103,7 @@ export default {
 			
 			userInfo:false,                             // 用户信息
 			userBalance:0,								// 用户（当前币种）余额
+			pledge:0,									// 已质押数量
 
 			showPay: false,
 			isDone: false,
@@ -118,6 +124,7 @@ export default {
 
 				this.userInfo = res.data
 				this.usdtPrice = parseInt(res.data.cnyRate).toFixed(1)
+				this.pledge = parseInt(res.data.pledge)
 
 				uni.setStorage({
 					data: this.userInfo,
@@ -178,6 +185,10 @@ export default {
 				pay_password: this.pay_password
 			}, 'p').then(res => {
 				this.toa('质押成功')
+				
+				/* 更新可用币数量 */
+				this.userCBalance()
+
 				this.init();
 			}).catch(err => {
 				// this.isDone = false
@@ -284,6 +295,10 @@ export default {
 	},
 	onLoad() {
 		this.init()
+
+		/* 个人信息 */
+        const userInfo = uni.getStorageSync('user_info')
+        if(userInfo)    this.userInfo = userInfo
 	},
 	onShow(){
 		/* 拉取币种信息 */

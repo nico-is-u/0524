@@ -187,6 +187,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的资产 详情2
+		{
+			"path":"pages/home-page/my_zc_detail2",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 提现
 		{
 			"path": "pages/home-page/withdraw",

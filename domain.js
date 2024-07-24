@@ -61,8 +61,8 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-console.log('测试加密')
-console.log(encryptCBC("yun/duihuanShow"))
+// console.log('测试加密')
+// console.log(encryptCBC(""))
 
 var
   api_index = 0,
