@@ -189,6 +189,9 @@ export default {
 				/* 更新可用币数量 */
 				this.userCBalance()
 
+				/* 个人信息 */
+				this.getUserInfo()
+
 				this.init();
 			}).catch(err => {
 				// this.isDone = false

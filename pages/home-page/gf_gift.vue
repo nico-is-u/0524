@@ -17,12 +17,20 @@
 		<view class="list2 flex flex-column">
 			<view class="list-item" v-for="(item,index) in list" :key="index" v-if="item.level">
 				<image :src="'/static/images/my/gz-level' + item.level + '.jpg'" style="width: 100%;" mode="widthFix"></image>
-				<view class="btn" :class="(item.can_receive == 0 || item.is_receive == 1) ? 'btn-2' : ''" @click="buy(item)">
+				<view class="btn" :class="{
+					'btn-2':item.can_receive != 1,
+					'btn-3':item.can_receive == 1 && item.is_receive == 1
+				}" @click="buy(item)">
+					
 					<template v-if="item.can_receive == 1">
 						<text v-if="item.is_receive == 0">可领取</text>
 						<text v-if="item.is_receive == 1">已领取</text>
 					</template>
-					<text v-else>可领取</text>
+
+					<template v-else>
+						<text v-if="item.is_receive == 0">未领取</text>
+						<text v-if="item.is_receive == 1">已领取</text>
+					</template>
 				</view>
 			</view>
 		</view>
@@ -151,6 +159,10 @@
 
 			.btn-2{
 				background: #9e9e9e !important;
+			}
+
+			.btn-3{
+				background: rgb(89, 146, 152) !important;
 			}
 
 		}
