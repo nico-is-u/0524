@@ -44,7 +44,7 @@
             </view>
         </view>
         <!-- 加载动画 -->
-        <u-loading-page :loading="!dataList.length" style="z-index: 3"></u-loading-page>
+        <u-loading-page :loading="loading" style="z-index: 3"></u-loading-page>
     </view>
 </template>
 
@@ -63,6 +63,9 @@ export default {
             dataList:[],
             /* 用户信息 */
             userInfo:false,
+            /* 页面等待 */
+            loading:true
+
         }
     },
     computed:{
@@ -92,6 +95,8 @@ export default {
                 const {code,data={}} = response
                 if(code == 200){
                     const resData = data.data || []
+
+                    this.loading = false
 
                     resData.map(item => {
                         if(item.change_balance){

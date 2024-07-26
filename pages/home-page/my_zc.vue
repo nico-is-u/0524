@@ -120,7 +120,7 @@ export default {
         async getDataList(pageNo, pageSize){
             // const apiUrl = `${this.xxxxxx}?page=${pageNo}`
             try {
-                const response = await this.to.www(this.api.balanceLog,{log_type:'0',page:pageNo})
+                const response = await this.to.www(this.api.balanceLog,{page:pageNo})
                 const {code,data={}} = response
                 if(code == 200){
                     const resData = data.data || []
