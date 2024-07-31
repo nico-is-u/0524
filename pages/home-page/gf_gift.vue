@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<image :src="'/static/images/my/level'+(user_info.level) +'.png'" style="width: 100%;" mode="widthFix"></image>
+		<image :src="'/static/images/my/level'+(user_info.level) +'-2.png'" style="width: 100%;" mode="widthFix"></image>
 		<!-- 老的礼物列表  暂时屏蔽 -->
 		<!-- <view class="list">
 			<view class="list-item" v-for="(item,index) in list" :key="index">
@@ -67,6 +67,11 @@
 				this.to.www(this.api.vipPlaceOrder2, {id: item.id}, 'p').then(res => {
 
 					this.toa('领取成功')
+
+					/* 重新请求个人信息 */
+					this.to.www(this.api.user_info).then(res => {
+						this.user_info = res.data;
+					})
 					
 					/* 重新请求列表 */
 					this.to.www(this.api.vipGiftList2)

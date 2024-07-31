@@ -65,8 +65,8 @@ function decrypt(content, keyStr) {
 // console.log(encryptCBC(""))
 
 /* 测试解密 */
-console.log('测试解密')
-console.log(decryptCBC("12UGiu3pNSIctHAiNrfYWCTkEUzsAxNCfJNjHAxFXwU"))
+// console.log('测试解密')
+// console.log(decryptCBC("12UGiu3pNSIctHAiNrfYWCTkEUzsAxNCfJNjHAxFXwU"))
 
 var
   api_index = 0,

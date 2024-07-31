@@ -297,18 +297,18 @@ export default {
 		}
 	},
 	onLoad() {
-		this.init()
+		// this.init()
 
 		/* 个人信息 */
         const userInfo = uni.getStorageSync('user_info')
         if(userInfo)    this.userInfo = userInfo
 	},
 	onShow(){
-		/* 拉取币种信息 */
-		this.getCDatas()
-		/* 个人信息 */
-        this.getUserInfo()
-		/* 拉取该币种当前余额 */
+		// /* 拉取币种信息 */
+		// this.getCDatas()
+		// /* 个人信息 */
+        // this.getUserInfo()
+		// /* 拉取该币种当前余额 */
 		this.userCBalance()
 	},
 }
