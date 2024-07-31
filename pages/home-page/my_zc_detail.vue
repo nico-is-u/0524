@@ -97,7 +97,7 @@ export default {
         /* 请求页面数据 */
         async getDataList2(pageNo, pageSize){
             try {
-                const response = await this.to.www(this.api.balanceLogCode,{code:'YSC',page:pageNo})
+                const response = await this.to.www(this.api.balanceLog,{log_type:7,page:pageNo})
                 const {code,data={}} = response
                 if(code == 200){
                     const resData = data.data || []
