@@ -180,6 +180,7 @@ const xxxxxxxxxxxxxx = {
 	applyWithdraw: 'wTGz3KuLWNUyjR/2GtPDDR7tQitFgX2aW684cBGUVK8=',
 	// 资金明细
 	balanceLog:'plZNV62dgdwhrpxKvKuOjw==',
+	balanceLogCode:'lIEt04US+QO2We1enO3NpHicYR5wWYzZxS3TyNWMLbU=',
 	// 持仓记录
 	yunLog:'i6pkjlXA4qyaRM2fCsdNDQ==',
 	// 持仓记录2

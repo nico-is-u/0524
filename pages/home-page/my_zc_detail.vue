@@ -31,6 +31,31 @@
                     </view>
                 </view>
 
+                <view class="title">
+					<view class="label">
+						<text>资金明细</text>
+					</view>
+				</view>
+
+                <!-- 列表 -->
+                <z-paging ref="paging" :fixed="false" style="height: calc(100% - 200rpx)" v-model="dataList2" @query="getDataList2">
+                    <view class="card-list-type-2">
+                        <view class="item" v-for="(item,index) in dataList2" :key="index">
+                            <!-- 外汇订单 -->
+                            <view class="row flex flex-between">
+                                <view class="left-side">{{item.type_text || ''}}</view>
+                                <view class="right-side">
+                                    <view :class="item.change_balance_color || ''">{{item.change_balance || ''}}</view>
+                                </view>
+                            </view>
+                            <view class="row flex flex-between">
+                                <view class="left-side">{{item.order_sn || ''}}</view>
+                                <view class="right-side">{{item.created_at || ''}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </z-paging>
+
             </view>
         </view>
         <!-- 加载动画 -->
@@ -47,6 +72,8 @@ export default {
         return {
             /* 充值列表 */
             dataList:false,
+            /* 云数币明细 */
+            dataList2:[],
             /* 用户信息 */
             userInfo:false,
         }
@@ -65,6 +92,36 @@ export default {
                 }
             }catch(e){
                 this.dataList = []
+            }
+        },
+        /* 请求页面数据 */
+        async getDataList2(pageNo, pageSize){
+            try {
+                const response = await this.to.www(this.api.balanceLogCode,{code:'YSC',page:pageNo})
+                const {code,data={}} = response
+                if(code == 200){
+                    const resData = data.data || []
+
+                    this.loading = false
+
+                    resData.map(item => {
+                        if(item.change_balance){
+                            if(item.change_balance[0] == '-'){
+                                item.change_balance_color = 'font-green'
+                            }else{
+                                item.change_balance_color = 'font-red'
+                            }
+                        }else{
+                            item.change_balance_color = ''
+                        }
+                    })
+
+                    this.$refs.paging.complete(resData)
+                }else{
+                    this.$refs.paging.complete(false)
+                }
+            }catch(e){
+                this.$refs.paging.complete(false)
             }
         },
         /* 返回上一页 */
@@ -97,6 +154,26 @@ page{
     background-color: #F9F9F9;
 }
 #my-zc{
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    >.padding-box{
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        >.content{
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+    }
+
     .right-side{
         color: #666;
     }
