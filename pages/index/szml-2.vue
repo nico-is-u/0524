@@ -43,10 +43,16 @@
 									<text class="font-red3 margin-l-10">{{ item.ysb || '0' }}</text>
 								</view>
                             </view>
-                            <view class="right-side flex flex-y-center">
+							
+							<view class="right-side flex flex-y-center" v-if="item.sale_status == 1">
 								<!-- :text="item.amount + '元起'" -->
                                 <u-button class="n-button n-button-4" text="立即购买" @click="buy(item)"></u-button>
                             </view>
+							<view class="right-side flex flex-y-center" v-else>
+								<text v-if="item.sale_status == 2">暂未开放</text>
+								<text v-if="item.sale_status == 3">已售罄</text>
+							</view>
+                            
                         </view>
                     </view>
 				</view>
