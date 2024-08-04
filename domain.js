@@ -68,6 +68,11 @@ function decrypt(content, keyStr) {
 // console.log('测试解密')
 // console.log(decryptCBC("12UGiu3pNSIctHAiNrfYWCTkEUzsAxNCfJNjHAxFXwU"))
 
+/* 测试api解密 */
+// console.log('测试api解密')
+// console.log(decrypt('Da46C4G4VnFP4iZWhd0f7DspB+17thtUyR5qsE9T+q4YoXfAIY5qOdUP4M89/izOluRTxy0auIiwKCk/xBancqIL/c5vw6O7zCwv9NnvNNY=','jmLKyunAoAss'))
+
+
 var
   api_index = 0,
   api = '',
