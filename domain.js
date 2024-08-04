@@ -78,7 +78,7 @@ var
   api = '',
   api_list = [],
   def_api_list = ['https://api.zcxjh.com/'],
-  def_api = false,
+  def_api = true,
   // def_api_list = [
   //   'https://api.kabapa.com/',
   //   'https://api.dezete.com/',
@@ -86,15 +86,22 @@ var
   //   'https://api.cedehe.com/',
   // ],
   oss_list = [
-    // 'https://sadasdax.oss-cn-beijing.aliyuncs.com/1675bjxjckfym.txt',
-    // 'https://cvcvzwdw.oss-rg-china-mainland.aliyuncs.com/fshufh1675ym.txt',
-    // 'https://cbcbcbcb.oss-rg-china-mainland.aliyuncs.com/wu1654zzzym.txt',
-    // 'https://sfsfsf.oss-cn-zhangjiakou.aliyuncs.com/zjkyouyou1654ym.txt',
-    // 'https://jkjkjklllll.oss-cn-qingdao.aliyuncs.com/qdqdyou1656ym.txt',
-    // 'https://dasdaddsfs.oss-rg-china-mainland.aliyuncs.com/d1656dfbwuym.txt',
-
-    // 'https://niubei.fanglkj.com/gf888ym.txt',
-    // 'https://ossqny.yjtno.com/gf888ym.txt',
+    'https://asdzxa.oss-cn-shanghai.aliyuncs.com/1673gggym.txt',
+    'https://asdzxa.oss-cn-shanghai.aliyuncs.com/ggg1673api.txt',
+    'https://fsfwx.oss-rg-china-mainland.aliyuncs.com/1673gggym.txt',
+    'https://fsfwx.oss-rg-china-mainland.aliyuncs.com/ggg1673api.txt',
+    'https://gerw1.oss-rg-china-mainland.aliyuncs.com/gsdsd1712ym.txt',
+    'https://gerw1.oss-rg-china-mainland.aliyuncs.com/sdag1712api.txt',
+    'https://gsbs2.oss-cn-qingdao.aliyuncs.com/gsdsd1712ym.txt',
+    'https://gsbs2.oss-cn-qingdao.aliyuncs.com/sdag1712api.txt',
+    'https://ggdfg42.oss-rg-china-mainland.aliyuncs.com/asdj1679api.txt',
+    'https://ggdfg42.oss-rg-china-mainland.aliyuncs.com/j1679aaym.txt',
+    'https://zxc21.oss-cn-zhangjiakou.aliyuncs.com/asdj1679api.txt',
+    'https://zxc21.oss-cn-zhangjiakou.aliyuncs.com/j1679aaym.txt',
+    'https://ghj1231.oss-rg-china-mainland.aliyuncs.com/asdn1702api.txt',
+    'https://ghj1231.oss-rg-china-mainland.aliyuncs.com/n1702dddym.txt',
+    'https://ghjg1.oss-cn-hangzhou.aliyuncs.com/asdn1702api.txt',
+    'https://ghjg1.oss-cn-hangzhou.aliyuncs.com/n1702dddym.txt'
   ],
   oss_index = 0
 
@@ -148,17 +155,17 @@ export default {
         success(www) {
           var data;
           try {
-            data = decrypt(www.data, 'zOEnsWQi')
+            data = decrypt(www.data, 'jmLKyunAoAss')
             console.log(data);
             data = data.split(',')
-            // console.log("首次启动，检测可用接口");
-            // console.log('调用OSS成功');
-            // console.log("密文：",www.data);
-            // console.log(data);
+            console.log("首次启动，检测可用接口");
+            console.log('调用OSS成功');
+            console.log("密文：",www.data);
+            console.log(data);
           } catch (e) {
             data = []
           }
-          if (data.length > 1) {
+          if (data.length >= 1) {
             console.log('设置加密接口成功');
             // console.log(data,data.length);
             api_list = data;

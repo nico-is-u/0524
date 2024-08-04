@@ -37,7 +37,7 @@
         </view>
 
         <!-- 加载动画 -->
-        <u-loading-page :loading="dataList == false"></u-loading-page>
+        <u-loading-page :loading="dataList === false"></u-loading-page>
 
         <!-- 新增地址 -->
         <view class="fixed-button-group" v-if="dataList !== false && dataList.length == 0">
