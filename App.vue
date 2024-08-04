@@ -65,6 +65,8 @@
 
 <style lang="scss">
 	@import "@/uni_modules/uview-ui/index.scss";
+	@import "./static/scss/flex.scss";
+	@import "./static/scss/layout.scss";
 
 	// .uni-body::before {
 	// 	content: "";

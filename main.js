@@ -10,9 +10,6 @@ import store from './store'
 import './uni.promisify.adaptor'
 import uView from '@/uni_modules/uview-ui'
 
-import "./static/scss/flex.scss"
-import "./static/scss/layout.scss"
-
 Vue.use(uView)
 Vue.config.productionTip = false
 Vue.prototype.to = domain;
