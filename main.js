@@ -1,7 +1,7 @@
 import App from './App'
-import AUX_Audio from 'LOCKED.js'
+import AUX_Audio from './LOCKED.js'
 
-import domain from 'domain.js'
+import domain from './domain.js'
  
 // #ifndef VUE3
 import Vue from 'vue'

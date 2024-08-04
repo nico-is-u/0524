@@ -297,7 +297,7 @@ export default {
 		}
 	},
 	onLoad() {
-		// this.init()
+		this.init()
 
 		/* 个人信息 */
         const userInfo = uni.getStorageSync('user_info')

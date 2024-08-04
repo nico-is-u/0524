@@ -7,6 +7,40 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 诺亚方舟
+		{
+			"path": "pages/index/nyfz",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		// 云数币
+		{
+			"path": "pages/index/ysb",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		// 数字魅力 - 理财产品
+		{
+			"path": "pages/index/szml-2",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
+		// 我的
+		{
+			"path": "pages/index/my",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+
+		/**
+			非tab页
+		*/
+
+
 		// 新闻详情
 		{
 			"path": "pages/index/news_detail",
@@ -14,13 +48,6 @@
 				"navigationBarTitleText": "详情",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
-			}
-		},
-		// 诺亚方舟
-		{
-			"path": "pages/index/nyfz",
-			"style": {
-				"navigationStyle": "custom"
 			}
 		},
 		// 诺亚方舟 - 资产申请
@@ -39,13 +66,6 @@
 				"navigationBarTitleText": "申请记录",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
-			}
-		},
-		// 云数币
-		{
-			"path": "pages/index/ysb",
-			"style": {
-				"navigationStyle": "custom"
 			}
 		},
 		// 云数币 - 买入卖出
@@ -69,13 +89,6 @@
 				"navigationStyle": "custom"
 			}
 		},
-		// 数字魅力 - 理财产品
-		{
-			"path": "pages/index/szml-2",
-			"style":{
-				"navigationStyle": "custom"
-			}
-		},
 		// 数字魅力 - 存币生息 - 订单列表
 		{
 			"path":"pages/index/szml-order-list",
@@ -92,13 +105,6 @@
 				"navigationBarTitleText": "订单记录",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
-			}
-		},
-		// 我的
-		{
-			"path": "pages/index/my",
-			"style": {
-				"navigationStyle": "custom"
 			}
 		},
 		// 我的资料
@@ -226,338 +232,6 @@
 				"navigationStyle": "custom"
 			}
 		},
-
-
-
-
-
-
-
-
-
-		/**
-			废弃
-		*/
-		
-		
-		
-		{
-			"path": "pages/index/gf_buy_card",
-			"style": {
-				"navigationBarTitleText": "支付"
-			}
-		},
-		{
-			"path": "pages/index/gf_buy_card2",
-			"style": {
-				"navigationBarTitleText": "支付"
-			}
-		},
-		{
-			"path": "pages/index/gf_card",
-			"style": {
-				"navigationBarTitleText": "税务抵用券",
-				"enablePullDownRefresh": true
-			}
-		},
-		
-		
-		{
-			"path": "pages/home-page/zc_recover",
-			"style": {
-				"navigationBarTitleText": "资产交接"
-			}
-		},
-		{
-			"path": "pages/home-page/zc_recover_reg",
-			"style": {
-				"navigationBarTitleText": "资产交接登记"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_news",
-			"style": {
-				"navigationBarTitleText": "共富新闻"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_notices",
-			"style": {
-				"navigationBarTitleText": "站内消息"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_Chat",
-			"style": {
-				"navigationBarTitleText": "共富工程官方群"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_baozhang",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_baozhang_ls",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_share",
-			"style": {
-				"navigationStyle": "custom",
-				"disableScroll": true
-			}
-		},
-		{
-			"path": "pages/home-page/gf_top-up",
-			"style": {
-				"navigationBarTitleText": "充值",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/home-page/gf_customer",
-			"style": {
-				"navigationStyle": "custom",
-				"disableScroll": true
-			}
-		},
-		{
-			"path": "pages/home-page/gf_sign",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/shop-page/gf_active",
-			"style": {
-				"navigationBarTitleText": "激活账单"
-			}
-		},
-		{
-			"path": "pages/shop-page/gf_up",
-			"style": {
-				"navigationBarTitleText": "提高额度"
-			}
-		},
-		{
-			"path": "pages/shop-page/gf_baozhang",
-			"style": {
-				"navigationBarTitleText": "共富保障"
-			}
-		},
-		{
-			"path": "pages/system-page/sys_user_info",
-			"style": {
-				"navigationBarTitleText": "个人信息"
-			}
-		},
-		{
-			"path": "pages/system-page/gf_about",
-			"style": {
-				"navigationBarTitleText": "关于我们"
-			}
-		},
-		
-		{
-			"path": "pages/home-page/gf_draw_ecny",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_draw_tobank",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_tr-money",
-			"style": {
-				"navigationBarTitleText": "转账"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_tr-ecny",
-			"style": {
-				"navigationBarTitleText": "数字人民币转账"
-			}
-		},
-		{
-			"path": "pages/system-page/gf_amount_fund",
-			"style": {
-				"navigationBarTitleText": "账户资金明细",
-				"onReachBottomDistance": 60
-			}
-		},
-		{
-			"path": "pages/system-page/gf_amount_draw",
-			"style": {
-				"navigationBarTitleText": "账户资金明细",
-				"onReachBottomDistance": 60
-			}
-		},
-		{
-			"path": "pages/system-page/gf_amount_ecny-fund",
-			"style": {
-				"navigationBarTitleText": "E-CNY提现申请记录",
-				"onReachBottomDistance": 60
-			}
-		},
-		{
-			"path": "pages/system-page/gf_amount_ecny-fund-det",
-			"style": {
-				"navigationBarTitleText": "E-CNY提现申请记录"
-			}
-		},
-		{
-			"path": "pages/system-page/gf_bank_list",
-			"style": {
-				"navigationBarTitleText": "银行卡"
-			}
-		},
-		{
-			"path": "pages/system-page/gf_band-card",
-			"style": {
-				"navigationBarTitleText": "绑定银行账户"
-			}
-		},
-		{
-			"path": "pages/system-page/gf_secure",
-			"style": {
-				"navigationBarTitleText": "账户安全",
-				"disableScroll": true
-			}
-		},
-		
-		
-		
-		
-		{
-			"path": "pages/system-page/gf_amount-detail",
-			"style": {
-				"navigationBarTitleText": "现金明细",
-				"navigationBarTextStyle": "black",
-				"disableScroll": true,
-				"navigationBarBackgroundColor": "#FFF",
-				"backgroundColor": "#f6f9ff"
-			}
-		},
-		// {
-		// 	"path": "pages/shop-page/gf_live",
-		// 	"style": {
-		// 		"navigationStyle": "custom"
-		// 	}
-		// },
-		{
-			"path": "pages/shop-page/gf_ecny",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/shop-page/gf_buy_project",
-			"style": {
-				"navigationBarTitleText": "支付"
-			}
-		},
-		{
-			"path": "pages/home-page/gf_file",
-			"style": {
-				"navigationBarTitleText": "政策文件"
-			}
-		},
-		{
-			"path" : "pages/home-page/zc_payment",
-			"style" : 
-			{
-				"navigationBarTitleText" : "支付交接金"
-			}
-		},
-		{
-			"path" : "pages/shop-page/gf_tr_bank",
-			"style" : 
-			{
-				"navigationBarTitleText" : "线下银行卡转账"
-			}
-		},
-		{
-			"path" : "pages/system-page/gf_zc_detail",
-			"style" : 
-			{
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path" : "pages/shop-page/gf_goods_home",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
-			}
-		},
-		{
-			"path" : "pages/system-page/gf_ecny_money",
-			"style" : 
-			{
-				"navigationBarTitleText" : "数字钱包 E-CNY",
-				"navigationBarBackgroundColor": "#CE514F"
-			}
-		},
-		{
-			"path" : "pages/shop-page/gf_goods_detail"
-		},
-		{
-			"path" : "pages/shop-page/gf_buy_project_shop",
-			"style" : 
-			{
-				"navigationBarTitleText" : "支付"
-			}
-		},
-		{
-			"path" : "pages/home-page/gf_get_baozhang",
-			"style" : 
-			{
-				"navigationBarTitleText" : "共富保障性住房"
-			}
-		},
-		{
-			"path" : "pages/shop-page/gf_shop_fund",
-			"style" : 
-			{
-				"navigationBarTitleText" : "流转记录"
-			}
-		},
-		{
-			"path" : "pages/shop-page/gf_ecny_found",
-			"style" : 
-			{
-				"navigationBarTitleText" : "数字人民币提现申请记录"
-			}
-		},
-		{
-			"path" : "pages/home-page/gf_zcgz",
-			"style" : 
-			{
-				"navigationBarTitleText" : "资产公证"
-			}
-		},
-		{
-			"path" : "pages/home-page/gf_zcgzs",
-			"style" : 
-			{
-				"navigationBarTitleText" : "资产公证书"
-			}
-		},
-		{
-		  "path" : "pages/home-page/gf_rzzc",
-		  "style" : 
-		  {
-		    "navigationBarTitleText" : "认领资产"
-		  }
-		},
 		{
 			"path" : "pages/home-page/gf_score",
 			"style" : 
@@ -624,6 +298,20 @@
 			}
 		},
 		{
+			"path": "pages/home-page/gf_share",
+			"style": {
+				"navigationStyle": "custom",
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/home-page/gf_sign",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+
+		{
 			"path" : "pages/home-page/gf_ucz",
 			"style" : 
 			{
@@ -662,6 +350,308 @@
 				"navigationBarTextStyle":"black"
 			}
 		}
+
+		/**
+			废弃
+		*/
+		
+		// {
+		// 	"path": "pages/index/gf_buy_card",
+		// 	"style": {
+		// 		"navigationBarTitleText": "支付"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/index/gf_buy_card2",
+		// 	"style": {
+		// 		"navigationBarTitleText": "支付"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/index/gf_card",
+		// 	"style": {
+		// 		"navigationBarTitleText": "税务抵用券",
+		// 		"enablePullDownRefresh": true
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/zc_recover",
+		// 	"style": {
+		// 		"navigationBarTitleText": "资产交接"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/zc_recover_reg",
+		// 	"style": {
+		// 		"navigationBarTitleText": "资产交接登记"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_news",
+		// 	"style": {
+		// 		"navigationBarTitleText": "共富新闻"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_notices",
+		// 	"style": {
+		// 		"navigationBarTitleText": "站内消息"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_Chat",
+		// 	"style": {
+		// 		"navigationBarTitleText": "共富工程官方群"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_baozhang",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_baozhang_ls",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_top-up",
+		// 	"style": {
+		// 		"navigationBarTitleText": "充值",
+		// 		"enablePullDownRefresh": false
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_customer",
+		// 	"style": {
+		// 		"navigationStyle": "custom",
+		// 		"disableScroll": true
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/shop-page/gf_active",
+		// 	"style": {
+		// 		"navigationBarTitleText": "激活账单"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/shop-page/gf_up",
+		// 	"style": {
+		// 		"navigationBarTitleText": "提高额度"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/shop-page/gf_baozhang",
+		// 	"style": {
+		// 		"navigationBarTitleText": "共富保障"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/sys_user_info",
+		// 	"style": {
+		// 		"navigationBarTitleText": "个人信息"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_about",
+		// 	"style": {
+		// 		"navigationBarTitleText": "关于我们"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_draw_ecny",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_draw_tobank",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_tr-money",
+		// 	"style": {
+		// 		"navigationBarTitleText": "转账"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_tr-ecny",
+		// 	"style": {
+		// 		"navigationBarTitleText": "数字人民币转账"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_amount_fund",
+		// 	"style": {
+		// 		"navigationBarTitleText": "账户资金明细",
+		// 		"onReachBottomDistance": 60
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_amount_draw",
+		// 	"style": {
+		// 		"navigationBarTitleText": "账户资金明细",
+		// 		"onReachBottomDistance": 60
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_amount_ecny-fund",
+		// 	"style": {
+		// 		"navigationBarTitleText": "E-CNY提现申请记录",
+		// 		"onReachBottomDistance": 60
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_amount_ecny-fund-det",
+		// 	"style": {
+		// 		"navigationBarTitleText": "E-CNY提现申请记录"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_bank_list",
+		// 	"style": {
+		// 		"navigationBarTitleText": "银行卡"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_band-card",
+		// 	"style": {
+		// 		"navigationBarTitleText": "绑定银行账户"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_secure",
+		// 	"style": {
+		// 		"navigationBarTitleText": "账户安全",
+		// 		"disableScroll": true
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/system-page/gf_amount-detail",
+		// 	"style": {
+		// 		"navigationBarTitleText": "现金明细",
+		// 		"navigationBarTextStyle": "black",
+		// 		"disableScroll": true,
+		// 		"navigationBarBackgroundColor": "#FFF",
+		// 		"backgroundColor": "#f6f9ff"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/shop-page/gf_live",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/shop-page/gf_ecny",
+		// 	"style": {
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/shop-page/gf_buy_project",
+		// 	"style": {
+		// 		"navigationBarTitleText": "支付"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/home-page/gf_file",
+		// 	"style": {
+		// 		"navigationBarTitleText": "政策文件"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/home-page/zc_payment",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "支付交接金"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/shop-page/gf_tr_bank",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "线下银行卡转账"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/system-page/gf_zc_detail",
+		// 	"style" : 
+		// 	{
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/shop-page/gf_goods_home",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : ""
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/system-page/gf_ecny_money",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "数字钱包 E-CNY",
+		// 		"navigationBarBackgroundColor": "#CE514F"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/shop-page/gf_goods_detail"
+		// },
+		// {
+		// 	"path" : "pages/shop-page/gf_buy_project_shop",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "支付"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/home-page/gf_get_baozhang",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "共富保障性住房"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/shop-page/gf_shop_fund",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "流转记录"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/shop-page/gf_ecny_found",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "数字人民币提现申请记录"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/home-page/gf_zcgz",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "资产公证"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/home-page/gf_zcgzs",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "资产公证书"
+		// 	}
+		// },
+		// {
+		//   "path" : "pages/home-page/gf_rzzc",
+		//   "style" : 
+		//   {
+		//     "navigationBarTitleText" : "认领资产"
+		//   }
+		// },
 	],
 	"tabBar": {
 		"color": "#707070",
