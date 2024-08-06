@@ -86,14 +86,14 @@ var
   //   'https://api.cedehe.com/',
   // ],
   oss_list = [
-    'https://asdzxa.oss-cn-shanghai.aliyuncs.com/ggg1673api.txt',
-    'https://fsfwx.oss-rg-china-mainland.aliyuncs.com/ggg1673api.txt',
-    'https://gerw1.oss-rg-china-mainland.aliyuncs.com/sdag1712api.txt',
-    'https://gsbs2.oss-cn-qingdao.aliyuncs.com/sdag1712api.txt',
-    'https://ggdfg42.oss-rg-china-mainland.aliyuncs.com/asdj1679api.txt',
-    'https://zxc21.oss-cn-zhangjiakou.aliyuncs.com/asdj1679api.txt',
-    'https://ghj1231.oss-rg-china-mainland.aliyuncs.com/asdn1702api.txt',
-    'https://ghjg1.oss-cn-hangzhou.aliyuncs.com/asdn1702api.txt'
+    'https://asdzxa.oss-cn-shanghai.aliyuncs.com/1673gggym.txt',
+    'https://fsfwx.oss-rg-china-mainland.aliyuncs.com/1673gggym.txt',
+    'https://gerw1.oss-rg-china-mainland.aliyuncs.com/gsdsd1712ym.txt',
+    'https://gsbs2.oss-cn-qingdao.aliyuncs.com/gsdsd1712ym.txt',
+    'https://ggdfg42.oss-rg-china-mainland.aliyuncs.com/j1679aaym.txt',
+    'https://zxc21.oss-cn-zhangjiakou.aliyuncs.com/j1679aaym.txt',
+    'https://ghj1231.oss-rg-china-mainland.aliyuncs.com/n1702dddym.txt',
+    'https://ghjg1.oss-cn-hangzhou.aliyuncs.com/n1702dddym.txt'
   ],
   oss_index = 0
 
@@ -370,12 +370,8 @@ export default {
           }
 				  parseRes = decryptCBC(res.data.c)
 			  }
-			  if (api.indexOf('api.zcxjh.com') > -1) {
-				  
-          console.log(ウホア,parseRes);
-			  }
 
-			  // console.log(parseRes);
+			  console.log(ウホア,parseRes);
 
 			  if (parseRes.code == 200) {
 				  resolve(parseRes);

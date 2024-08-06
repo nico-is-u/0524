@@ -108,7 +108,7 @@
                             <view style="width:220rpx"> {{ item.month_wages == 0 ? '-' : '￥'+ item.month_wages }}</view>
                             <view style="width:180rpx"> {{ item.speed_income == 0 ? '-' : item.speed_income }}</view>
                             <view style="width:180rpx"> {{ item.integral_off_name }}</view>
-                            <view style="width:200rpx"> {{ item.exchange_ysb ? item.exchange_ysb + '%' : '-' }}</view>
+                            <view style="width:200rpx"> {{ item.exchange_ysc ? item.exchange_ysc + '%' : '-' }}</view>
                         </view>
                         
                     </view>

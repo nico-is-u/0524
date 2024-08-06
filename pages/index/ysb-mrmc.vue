@@ -15,11 +15,11 @@
 
                 <!-- tab 菜单 -->
 				<view class="tab-menu-type-1 flex flex-between flex-y-end">
-					<view @click="formData.type = 'buy'" :class="formData.type == 'buy' ? 'active' : ''" class="menu-item menu-item-1 flex flex-center">
+					<view @click="changeBusinessType('buy')" :class="formData.type == 'buy' ? 'active' : ''" class="menu-item menu-item-1 flex flex-center">
 						<view class="triangle"></view>
 						<text>买入</text>
 					</view>
-					<view @click="formData.type = 'sell'" :class="formData.type == 'sell' ? 'active' : ''" class="menu-item menu-item-2 flex flex-center">
+					<view @click="changeBusinessType('sell')" :class="formData.type == 'sell' ? 'active' : ''" class="menu-item menu-item-2 flex flex-center">
 						<view class="triangle"></view>
 						<text>卖出</text>
 					</view>
@@ -118,7 +118,7 @@
 
 
 			<!-- 切换币种 -->
-			<u-picker :show="cTypeShow" :columns="[$store.state.cList]" keyName="name" @confirm="changeCType" @cancel="cTypeShow = false" @close="cTypeShow = false"></u-picker>
+			<u-picker :show="cTypeShow" :columns="[cList]" keyName="name" @confirm="changeCType" @cancel="cTypeShow = false" @close="cTypeShow = false"></u-picker>
 
             <!-- 切换交易类型(暂时屏蔽) -->
             <!-- <u-picker :show="businessTypeShow" :columns="businessType" keyName="label" @confirm="changeBusinessType" @cancel="businessTypeShow = false" @close="businessTypeShow = false"></u-picker> -->
@@ -200,6 +200,21 @@ export default {
 			}
 			return result
 		},
+		/* 币种列表 */
+		cList(){
+			let result = []
+			if(this.$store.state.cList){
+				/* 卖出的情况下暂时屏蔽YSC */
+				if(this.formData.type == 'sell'){
+					this.$store.state.cList.map(item => {
+						if(item.name != 'YSC')	result.push(item)
+					})
+				}else{
+					result = this.$store.state.cList
+				}
+			}
+			return result
+		},
     },
     methods:{
         /* 返回上一页 */
@@ -262,8 +277,21 @@ export default {
             this.activeKey = key
         },
         /* 切换交易类型 */
-        /* changeBusinessType(e){
-        }, */
+        changeBusinessType(type){
+
+			/* 如果卖出的情况，暂时隐藏YSC类型 */
+			if(type == 'sell' && this.$store.getters['cName'] == 'YSC'){
+				/* 重置为默认第一项 */
+				this.$store.commit('changeCListIndex',0)
+				/* 重新渲染K线 */
+				this.getKLineDatas()
+				/* 重新拉取余额 */
+				this.userCBalance()
+			}
+
+			this.formData.type = type
+
+        },
 
 		/* 切换币种 */
 		changeCType(e){
@@ -370,6 +398,12 @@ export default {
 	onLoad(options){
 		const {type = ''} = options
 		this.formData.type = type
+
+		/* 如果卖出的情况，暂时隐藏YSC类型 */
+		if(type == 'sell' && this.$store.getters['cName'] == 'YSC'){
+			/* 重置为默认第一项 */
+			this.$store.commit('changeCListIndex',0)
+		}
 	}
 }
 </script>
