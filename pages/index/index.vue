@@ -400,6 +400,8 @@
 						const {banner = [] , setting_conf = {}} = res.data
 						this.banner_list = banner
 						this.setting_conf = setting_conf
+						const {kefu_url = ''} = setting_conf
+						if(kefu_url)	uni.setStorageSync('kefu_url', kefu_url)
 					})
 			}
 

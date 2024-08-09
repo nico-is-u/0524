@@ -34,7 +34,7 @@
 				<view> 4、订单异常的用户，请在72小时内联系客服处理，超出时 间后果自负! </view>
 				<view style="display: flex;flex-wrap: wrap;">5、更多问题，请点击查看
 					<text style="color: #0182EF;padding: 0 3px;font-weight: bold;">充值帮助</text>或
-					<view style="background: #0182EF;margin-left: 3px;border-radius: 5px;color: #fff;padding: 3px 8px;display: flex;align-items: center;">
+					<view style="background: #0182EF;margin-left: 3px;border-radius: 5px;color: #fff;padding: 3px 8px;display: flex;align-items: center;" @click="openKefu">
 						<image src="/static/images/my/kf.png" style="width: 15px;margin-right: 5px;" mode="widthFix"></image>
 						咨询客服
 					</view>
@@ -74,6 +74,7 @@
 				user_info: {
 					cnyRate: 1
 				},
+				kefu_url:'',
 			};
 		},
 		methods: {
@@ -99,9 +100,21 @@
 				setTimeout(() => {
 					this.isDone = false;
 				}, 3000)
+			},
+			openKefu(){
+				//#ifdef WEB
+				window.open(this.kefu_url)
+				//#endif
+
+				//#ifdef APP-PLUS
+				plus.runtime.openURL(this.kefu_url)
+				//#endif
 			}
 		},
 		onLoad() {
+			const kefu_url = uni.getStorageSync('kefu_url')
+    		if(kefu_url)  this.kefu_url = kefu_url
+
 			this.domain = uni.getStorageSync("ok_api");
 			this.to.www(this.api.user_info).then(res => {
 				this.user_info = res.data;

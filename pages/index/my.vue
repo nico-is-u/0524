@@ -130,7 +130,7 @@
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
         </view>
 
-        <view class="item">
+        <view class="item" @click="openKefu">
           <view class="left-side flex flex-y-center">
             <image src="/static/images/39.png"></image>
             <text>在线客服</text>
@@ -164,7 +164,8 @@ export default {
     return {
       // 默认头像
       avatarurl: '/static/images/30.png',
-      user_info: {}
+      user_info: {},
+      kefu_url:'',
     }
   },
   methods:{
@@ -205,9 +206,21 @@ export default {
       })
 
     },
+    openKefu(){
+      //#ifdef WEB
+      window.open(this.kefu_url)
+      //#endif
+
+      //#ifdef APP-PLUS
+      plus.runtime.openURL(this.kefu_url)
+      //#endif
+    }
   },
   onShow() {
     this.getUserInfo()
+
+    const kefu_url = uni.getStorageSync('kefu_url')
+    if(kefu_url)  this.kefu_url = kefu_url
   },
   components: {
     avatar
