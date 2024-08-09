@@ -673,6 +673,74 @@
 		}
 	}
 
+	/* tab菜单 样式3 */
+	.tab-menu-type-3{
+		overflow: hidden;
+		.menu-item{
+			width: 33.33%;
+			height: 72rpx;
+			position: relative;
+
+			font-size: 36rpx;
+			color: #828383;
+			background-color: #EFF6FE;
+
+			.triangle{
+				display: none;
+			}
+
+			&.active{
+				height: 84rpx;
+				color: #222;
+				font-weight: bold;
+				background-color: white;
+				
+				.triangle{
+					display: block;
+				}
+
+			}
+		}
+
+		.menu-item-1,.menu-item-2{
+			border-top-left-radius: 16rpx;
+			.triangle{
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: -21rpx;
+				top: 0;
+		
+				border-top: 84rpx solid white;
+				border-right: 21rpx solid transparent;
+				transform: rotateX(180deg) translateX(-1rpx);
+		
+				z-index: 1;
+			}
+		}
+
+		.menu-item-2{
+			border-top-left-radius: 0;
+		}
+
+    	.menu-item-3{
+			border-top-right-radius: 16rpx;
+			.triangle{
+				width: 0;
+				height: 0;
+				position: absolute;
+				left: -21rpx;
+				top: 0;
+		
+				border-top: 84rpx solid white;
+				border-left: 21rpx solid transparent;
+				transform: rotateX(180deg);
+		
+				z-index: 1;
+			}
+		}
+	}
+
 	/* K线页面 头部 */
 	.k-line-head {
 		height: 636rpx;

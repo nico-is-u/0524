@@ -10,12 +10,16 @@
 			<view class="k-line-shell">
 
 				<!-- tab 菜单 -->
-				<view class="tab-menu-type-1 flex flex-between flex-y-end">
+				<view class="tab-menu-type-3 flex flex-between flex-y-end">
 					<view class="menu-item menu-item-1 flex flex-center" @click="too('/pages/index/szml-2','tab')">
 						<view class="triangle"></view>
 						<text>外汇储备</text>
 					</view>
-					<view class="menu-item active menu-item-2 flex flex-center">
+					<view class="menu-item menu-item-2 flex flex-center" @click="too('/pages/index/szml-3')">
+						<view class="triangle"></view>
+						<text>短期生财</text>
+					</view>
+					<view class="menu-item menu-item-3 active flex flex-center">
 						<view class="triangle"></view>
 						<text>存币生息</text>
 					</view>

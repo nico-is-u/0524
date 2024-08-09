@@ -164,6 +164,14 @@ const xxxxxxxxxxxxxx = {
 	licaPlaceOrder: '/dumjht33VUhZlQWsTNkcsu1P73cm5jo6KGa+OK2Uw8=',
 	// 理财订单
 	licaiOrderList: 'fbn2UuPkw8ILVIawloAJPtqwv8TuQSIwUlu5mvfF7cg=',
+
+	/* 短期理财 */
+	licaiShortList:'nrviYAmhutq8YSNY9VnRy2+q+BeAY12yafmbUy+9R1w=',
+	/* 短期理财下单 */
+	licaiShortPlaceOrder:'+jTMyy4z6EfLAnwlZF0fZ5GR2ZEfDGPZD6C8wYv2qf8=',
+	/* 短期理财订单 */
+	licaiShortOrderList:'T26iZACy5j9F1uJCLhn6AfMnCdJmLBP+dnDwRr+A9/M=',
+
 	// 赎回理财
 	licaiRedemption: 'rosoPNMLdP3JbkDoMXDyUDqwjfXYbL0Y3GcKBDfOzGs=',
 	// 赎回存币生息
