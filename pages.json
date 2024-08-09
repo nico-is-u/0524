@@ -98,14 +98,14 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
-		// 数字魅力 - 短期生财
+		// 数字魅力 - 短期理财
 		{
 			"path":"pages/index/szml-3",
 			"style":{
 				"navigationStyle": "custom"
 			}
 		},
-		// 数字魅力 - 短期生财 - 订单列表
+		// 数字魅力 - 短期理财 - 订单列表
 		{
 			"path":"pages/index/szml-3-order-list",
 			"style":{

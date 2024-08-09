@@ -17,7 +17,7 @@
 					</view>
 					<view class="menu-item menu-item-2 flex flex-center" @click="too('/pages/index/szml-3')">
 						<view class="triangle"></view>
-						<text>短期生财</text>
+						<text>短期理财</text>
 					</view>
 					<view class="menu-item menu-item-3 active flex flex-center">
 						<view class="triangle"></view>

@@ -17,7 +17,7 @@
 					</view>
 					<view class="menu-item active menu-item-2 flex flex-center" >
 						<view class="triangle"></view>
-						<text>短期生财</text>
+						<text>短期理财</text>
 					</view>
 					<view class="menu-item menu-item-3 flex flex-center" @click="too('/pages/index/szml')">
 						<view class="triangle"></view>
@@ -39,8 +39,8 @@
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
 								<view>
-									<view class="font-red2">{{item.income_rate}}%</view>
-									<view class="font-gray">七日年化总收益</view>
+									<view class="font-red2">{{item.income_rate ? '￥' + item.income_rate : ''}}</view>
+									<view class="font-gray">七日化收益</view>
 								</view>
 								<view class="margin-t-30" v-if="item.ysb">
 									<text>获赠云数币</text>
