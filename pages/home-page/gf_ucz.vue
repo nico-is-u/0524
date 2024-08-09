@@ -9,9 +9,10 @@
 		<view class="content">
 			<view class="card">
 				<view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">该地址仅支持TRX/TRC20相关资产</view>
-				<view style="text-align: center;margin: 20px 0;">
+				<!-- 暂时隐藏二维码 -->
+				<!-- <view style="text-align: center;margin: 20px 0;">
 					<image :src="cz.qrcode" style="width: 150px;" mode="widthFix"></image>
-				</view>
+				</view> -->
 				<view class="footer">
 					<view>接收地址：<text>{{cz.address}}</text></view>
 				</view>

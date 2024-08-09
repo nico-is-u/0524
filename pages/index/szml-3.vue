@@ -40,7 +40,7 @@
                             <view class="left-side flex flex-column">
 								<view>
 									<view class="font-red2">{{item.income_rate}}%</view>
-									<view class="font-gray">七日年化收益率</view>
+									<view class="font-gray">七日年化总收益</view>
 								</view>
 								<view class="margin-t-30" v-if="item.ysb">
 									<text>获赠云数币</text>
@@ -139,7 +139,7 @@ export default {
 					this.showPay = false
 					this.buy_num = 1
 
-					this.too('/pages/index/szml-2-order-list')
+					this.too('/pages/index/szml-3-order-list')
 				}else{
 					this.isDone = false
 					this.showPay = false
@@ -165,3 +165,99 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+page{
+	height: 100%;
+	background-color: #f9f9f9;
+}
+.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+		z-index: 3;
+	}
+	
+	.rect1 {
+		border-radius: 10px;
+		padding: 20px;
+		width: 100%;
+		box-sizing: border-box;
+		background: #fff;
+	
+		.price-info{
+			font-size: 28rpx;
+			margin-top: 40rpx;
+			padding:6rpx 0 0 0rpx;
+		}
+
+		.custom-style {
+			width: 30vw;
+			border-radius: 8px;
+			margin-top: 30px;
+			background: #1292FF;
+			color: #fff;
+		}
+	}
+.product-list{
+    display: flex;
+    flex-direction: column;
+    gap: 32rpx;
+
+    padding: 40rpx 32rpx 10vh;
+    .item{
+        border-bottom: 3rpx solid #E9E9E9;
+        padding-bottom: 32rpx;
+
+		.img-box{
+			padding-bottom: 20rpx;
+			image{
+				width: 100%;
+				height: 260rpx;
+			}
+		}
+
+        .title{
+            font-size: 29rpx;
+            color: #222;
+            gap: 20rpx;
+            .label{
+                font-weight: bold;
+            }
+        }
+
+        .section{
+            margin-top: 24rpx;
+
+            .font-red2{
+                font-size: 34rpx;
+            }
+			
+			.font-red3{
+				color: #FE2F2F;
+				font-size: 28rpx;
+			}
+
+        }
+    }
+
+    .tips1{
+        font-size: 26rpx;
+        padding: 12rpx 10rpx;
+        color: #0182EF;
+        background: rgba(1, 130, 239, .075);
+        border-radius: 4rpx;
+    }
+
+    .tips2{
+        font-size: 26rpx;
+        padding: 12rpx 10rpx;
+        color: #FF8420;
+        background-color: rgba(255, 132, 32, .075);
+        border-radius: 4rpx;
+    }
+}
+
+</style>
