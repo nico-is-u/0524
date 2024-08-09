@@ -79,21 +79,22 @@
 			
 		</template>
 
-		<u-overlay :show="showAd" zIndex="999" opacity="0.8">
+		<u-overlay :show="showAd" zIndex="999" opacity="0.4">
 			<view class="warp">
 				<view class="rect" @tap.stop>
-					<text class="title">通知内容</text>
-					<image src="../../static/icon/noti.png" style="width: 60%;margin: 20rpx 0;height: 0.8rem;"
-						mode="widthFix"></image>
-					<view class="content">
+					<!-- 背景图 -->
+					<image class="noticeimg" src="../../static/images/77.png" mode="widthFix"></image>
+					<!-- 关闭按钮 -->
+					<view class="close" @click="hideOnext"></view>
+					<!-- 广告内容 -->
+					<view class="noticecontent">
 						<u-parse :content="showNots" :tagStyle="style"></u-parse>
-						<view @click="hideOnext" class="close">关闭</view>
 					</view>
 				</view>
 			</view>
 		</u-overlay>
 
-		<u-overlay :show="showUrNots" zIndex="999" opacity="0.8">
+		<!-- <u-overlay :show="showUrNots" zIndex="999" opacity="0.8">
 			<view class="warp">
 				<view class="rect" @tap.stop>
 					<text style="color: #FFF;margin: 30rpx 0;display: block;">{{urnotice.title}}</text>
@@ -103,7 +104,7 @@
 					</view>
 				</view>
 			</view>
-		</u-overlay>
+		</u-overlay> -->
 
 		<view v-if="isShwoLoad"
 			style="position: fixed;width: 100%;top: 0;left: 0;z-index: 99999;background-color: #FFF;height: 100vh;">
@@ -166,19 +167,7 @@
 				},
 				user_info: {},
 				notsTitle: '',
-				// noticeList: [],
-				noticeList:[{
-					"id": 132,
-					"type": 1,
-					"status": 1,
-					"cover_img": "http://gf.yjtno.com/20240809/79816a76b25b0c8c096ae1c4de34ebd2.png",
-					"title": "重要通知",
-					"content": "测试测试",
-					"video_url": "",
-					"sort": 0,
-					"created_at": "2024-08-09 03:13:19",
-					"updated_at": "2024-08-09 03:13:52"
-				}],
+				noticeList: [],
 
 				banner_list:[],
 				setting_conf:{},
@@ -509,51 +498,37 @@ page{
 	}
 
 .rect {
-	width: 76%;
-	border-radius: 10rpx;
-	background-color: #d90d06;
-	padding: 20rpx 15rpx 30rpx;
-	text-align: center;
-	height: 70%;
+
+	width: 325px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+	.noticeimg{
+		height: 504px;
+	}
 
 	// overflow-y: scroll;
 
-	.content {
-		background-color: #FFF;
-		padding: 20rpx;
-		border-radius: 10rpx;
-		height: calc(100% - 105rpx);
-		border: 4rpx solid #bdbdbd;
+	.noticecontent{
+		position: absolute;
+		top: 145px;
+		left: 31px;
+		width: 275px;
+		height: 332px;
 		box-sizing: border-box;
-		min-height: 50%;
-		overflow-y: scroll;
-	}
-
-	.title {
-		display: block;
-		width: 60%;
-		height: 60rpx;
-		line-height: 50rpx;
-		text-align: center;
-		color: $th;
-		font-weight: bold;
-		margin: 20rpx auto 30rpx;
-		background: url("../../static/icon/text_bg.png") no-repeat;
-		background-size: 100% 100%;
+		padding: 10px;
+		font-size: 15px;
 	}
 
 	.close {
-		width: 200rpx;
-		background-color: $th;
-		color: #fff;
-		margin: 30rpx auto 20rpx;
-		height: 60rpx;
-		line-height: 60rpx;
-		border-radius: 50rpx;
-		position: fixed;
-		bottom: 250rpx;
-		left: 50%;
-		transform: translateX(-50%);
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		right: 22px;
+		top: 15px;
+		z-index: 9999;
 	}
 
 }
