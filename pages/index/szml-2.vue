@@ -39,8 +39,8 @@
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
 								<view>
-									<view class="font-red2">{{item.income_rate ? '￥' + item.income_rate : ''}}</view>
-									<view class="font-gray">七日化收益</view>
+									<view class="font-red2">{{item.income_rate}}%</view>
+									<view class="font-gray">七日化收益率</view>
 								</view>
 								<view class="margin-t-30" v-if="item.ysb">
 									<text>获赠云数币</text>
