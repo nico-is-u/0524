@@ -62,7 +62,7 @@ function decrypt(content, keyStr) {
 
 /* 测试加密 */
 // console.log('测试加密')
-// console.log(encryptCBC("user/balanceLogCode"))
+// console.log(encryptCBC("common/bulletin"))
 
 /* 测试解密 */
 // console.log('测试解密')

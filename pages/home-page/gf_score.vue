@@ -3,7 +3,7 @@
 		<view class="back_head" @click="too('/','bac')">
 			<u--text prefixIcon="arrow-left" iconStyle="font-size: 38rpx;color:#ebebeb" color="#ebebeb" align="left"
 				text=""></u--text>
-			<u--text color="#fff" bold align="center" text="签到送积分"></u--text>
+			<u--text color="#fff" bold align="center" text="积分兑换"></u--text>
 			<u--text color="#d7d7d7" align="right" text=""></u--text>
 		</view>
 		<view class="head">
@@ -20,7 +20,7 @@
 		<view class="content">
 			<view class="list">
 				<view class="list-item" v-for="(item,index) in list" :key="index">
-					<image :src="item.cover_img" style="width: 100%;" mode="widthFix"></image>
+					<image :src="item.cover_img" style="width: 100%; height: 360rpx;" mode="aspectFill"></image>
 					<view>
 						<view>{{item.name}}</view>
 						<view>兑换要求：{{item.description}}</view>

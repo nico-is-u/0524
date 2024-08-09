@@ -201,6 +201,8 @@ const xxxxxxxxxxxxxx = {
 	vipPlaceOrder2:'4XBG7qYY8DsT/aufw0s3utJB2Hd1WdZUrvGodBmLZ9Q=',
 	// 提现记录
 	withdrawList:'mkrq6QhMBkPCiCtzuVkUWX5RBoLddblMa4+LZ1uD/5Q=',
+	// 系统公告
+	system_notice:'j8TX/gISBUE0P+tvthwl7A==',
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

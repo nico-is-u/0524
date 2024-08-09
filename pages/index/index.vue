@@ -82,7 +82,7 @@
 		<u-overlay :show="showAd" zIndex="999" opacity="0.8">
 			<view class="warp">
 				<view class="rect" @tap.stop>
-					<!-- <text class="title">通知内容</text> -->
+					<text class="title">通知内容</text>
 					<image src="../../static/icon/noti.png" style="width: 60%;margin: 20rpx 0;height: 0.8rem;"
 						mode="widthFix"></image>
 					<view class="content">
@@ -167,6 +167,18 @@
 				user_info: {},
 				notsTitle: '',
 				// noticeList: [],
+				noticeList:[{
+					"id": 132,
+					"type": 1,
+					"status": 1,
+					"cover_img": "http://gf.yjtno.com/20240809/79816a76b25b0c8c096ae1c4de34ebd2.png",
+					"title": "重要通知",
+					"content": "测试测试",
+					"video_url": "",
+					"sort": 0,
+					"created_at": "2024-08-09 03:13:19",
+					"updated_at": "2024-08-09 03:13:52"
+				}],
 
 				banner_list:[],
 				setting_conf:{},
@@ -184,8 +196,6 @@
 			if (usr_info) {
 				this.user_info = usr_info;
 			}
-			/* 暂时屏蔽（弹出公告图） */
-			return 
 			setTimeout(() => {
 				if (this.noticeList.length > 0) {
 					this.showAd = true;
@@ -195,8 +205,7 @@
 			}, 500)
 		},
 		onLoad() {
-			/* 暂时屏蔽 */
-			// this.isShwoLoad = false
+			this.isShwoLoad = false
 			var usr_isLogin = uni.getStorageSync("TK");
 			if (!usr_isLogin) {
 				uni.showToast({
@@ -245,7 +254,7 @@
 					this.too('/pages/system-page/login')
 				})
 			}
-			// this.getNotices()
+			this.getNotices()
 			// this.getNewsList()
 		},
 		mounted(){
@@ -372,17 +381,17 @@
 				})
 			},
 			/* 去通知详情 */
-			// getNotices() {
-			// 	this.to.www(this.api.system_notice)
-			// 		.then(res => {
-			// 			if (res.data.length > 0) {
-			// 				this.noticeList = res.data;
-			// 				this.notsTitle = this.noticeList[0].title;
-			// 				this.showNots = res.data[0].content;
-			// 				this.isShwoLoad = false
-			// 			}
-			// 		})
-			// },
+			getNotices() {
+				this.to.www(this.api.system_notice)
+					.then(res => {
+						if (res.data.length > 0) {
+							this.noticeList = res.data;
+							this.notsTitle = this.noticeList[0].title;
+							this.showNots = res.data[0].content;
+							this.isShwoLoad = false
+						}
+					})
+			},
 			/* 获取新闻列表  取2个放首页 */
 			getNewsList() {
 				this.to.www(this.api.systemInfoList,{type:'2'},'p')
@@ -415,13 +424,14 @@
 </script>
 
 <style lang="scss" scoped>
-	.bannervid {
-		width: calc(100% - 40px);
-		border-radius: 10rpx;
-		// height: 380rpx;
-		z-index: 55;
-		margin: 20px 20px 0 20px;
-	}
+.bannervid {
+	width: calc(100% - 40px);
+	border-radius: 10rpx;
+	// height: 380rpx;
+	z-index: 55;
+	margin: 20px 20px 0 20px;
+}
+
 page{
 	background-color: #f9f9f9;
 }
@@ -457,6 +467,95 @@ page{
 			width: 72rpx;
 		}
 	}
+}
+
+.ststus2 {
+	padding: 30rpx;
+	animation: 2s opacitys ease-in-out infinite;
+
+	.bg {
+		background-color: #f0f0f1;
+	}
+
+	.ra {
+		border-radius: 50%;
+	}
+
+	.ra1 {
+		border-radius: 8rpx;
+	}
+
+	.roat {
+		left: calc(50% - 100rpx);
+		animation: 2s roat ease-in-out infinite;
+	}
+}
+
+@keyframes roat {
+	0% {
+		transform: rotate(0)
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+.rect {
+	width: 76%;
+	border-radius: 10rpx;
+	background-color: #d90d06;
+	padding: 20rpx 15rpx 30rpx;
+	text-align: center;
+	height: 70%;
+
+	// overflow-y: scroll;
+
+	.content {
+		background-color: #FFF;
+		padding: 20rpx;
+		border-radius: 10rpx;
+		height: calc(100% - 105rpx);
+		border: 4rpx solid #bdbdbd;
+		box-sizing: border-box;
+		min-height: 50%;
+		overflow-y: scroll;
+	}
+
+	.title {
+		display: block;
+		width: 60%;
+		height: 60rpx;
+		line-height: 50rpx;
+		text-align: center;
+		color: $th;
+		font-weight: bold;
+		margin: 20rpx auto 30rpx;
+		background: url("../../static/icon/text_bg.png") no-repeat;
+		background-size: 100% 100%;
+	}
+
+	.close {
+		width: 200rpx;
+		background-color: $th;
+		color: #fff;
+		margin: 30rpx auto 20rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+		border-radius: 50rpx;
+		position: fixed;
+		bottom: 250rpx;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
 }
 </style>
 
