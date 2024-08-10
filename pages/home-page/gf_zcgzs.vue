@@ -24,16 +24,16 @@
 					<text class="line">财产证明</text>
 				</view>
 				<view class="item" style="font-size: 10px;">
-					<text>为让共富工程用户更好的使用资产和继承，根据《中华人民共和国公证法》及《公证程序规则》，申请人</text>
+					<text>为让云数中国用户更好的使用资产和继承，根据《中华人民共和国公证法》及《公证程序规则》，申请人</text>
 					<text class="line">{{uri.realname}}</text> <text>于</text>
 					<text class="line">2024</text> <text>年</text>
 					<text class="line">{{item.created_at.slice(5,7)}}</text> <text>月</text>
 					<text class="line">{{item.created_at.slice(8,10)}}</text>
-					<text>日由中国梦共富工程民族振兴局公证员李富君对申请人的以下财产进行公证：</text>
+					<text>日由中国梦云数中国民族振兴局公证员李富君对申请人的以下财产进行公证：</text>
 				</view>
 				<view class="list">
 					<view class="item">
-						<text>1、共富工程专属卡：</text>
+						<text>1、云数中国专属卡：</text>
 						<text class="line">{{uri.wallet_id}}</text>
 					</view>
 					<view class="item">

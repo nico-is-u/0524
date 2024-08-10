@@ -16,7 +16,7 @@
 				</view>
 				<view class="list">
 					<view class="item">
-						<text>1、共富工程专属卡：</text>
+						<text>1、云数中国专属卡：</text>
 						<text class="line">{{uri.wallet_id}}</text>
 					</view>
 					<view class="item">

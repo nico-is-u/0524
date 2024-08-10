@@ -3,7 +3,7 @@
 		<view class="content">
 			<view class="imgs">
 				<image :src="wh_url" mode="widthFix"></image>
-				<text>共富工程官方群</text>
+				<text>云数中国官方群</text>
 				<image :src="qq_url" mode="widthFix"></image>
 			</view>
 		</view>

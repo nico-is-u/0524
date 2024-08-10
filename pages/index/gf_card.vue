@@ -6,9 +6,9 @@
 				<text :class="['title',ProCurIndex==2?'cur':'']" @click="changeTab(2)">共富专属卡</text>
 			</view>
 		</view>
-		<!-- 共富工程的页面 包含共富工程和领取记录 -->
+		<!-- 云数中国的页面 包含云数中国和领取记录 -->
 		<template>
-			<!-- 共富工程 -->
+			<!-- 云数中国 -->
 			<view v-if="ProCurIndex==1">
 				<view style="margin: 160rpx;" v-if="!project_list.length">
 					<u-empty mode="list"></u-empty>
@@ -95,7 +95,7 @@
 	export default {
 		data() {
 			return {
-				type: 1, //共富工程  2 激活数字人民币钱包  3激活数字人民币账单 4商城
+				type: 1, //云数中国  2 激活数字人民币钱包  3激活数字人民币账单 4商城
 				page: 1,
 				ProCurIndex: 1,
 				isReload: true,

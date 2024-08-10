@@ -2,7 +2,7 @@
 	<view>
 		<view class="top_tab_nav">
 			<view class="page_title_tab">
-				<text :class="['title',type==1?'cur':'']" @click="type=1">共富工程</text>
+				<text :class="['title',type==1?'cur':'']" @click="type=1">云数中国</text>
 				<text :class="['title',type==2?'cur':'']" @click="type=2">激活钱包</text>
 			</view>
 			<u-subsection v-if="type==1" :list="ProTabList" :current="ProCurIndex" @change="ProsectionChange"
@@ -11,9 +11,9 @@
 				activeColor="#B80606"></u-subsection>
 		</view>
 		
-		<!-- 共富工程的页面 包含共富工程和领取记录 -->
+		<!-- 云数中国的页面 包含云数中国和领取记录 -->
 		<template v-if="type==1" >
-			<!-- 共富工程 -->
+			<!-- 云数中国 -->
 			<view v-if="ProCurIndex==0">
 				<view style="margin: 160rpx;" v-if="!project_list.length">
 					<u-empty mode="list"></u-empty>
@@ -134,7 +134,7 @@
 				type: 1,
 				ProCurIndex: 0,
 				AccCurIndex: 0,
-				ProTabList: ['共富工程', '领取记录'],
+				ProTabList: ['云数中国', '领取记录'],
 				AccTabList: ['激活钱包', '激活记录'],
 
 				page: 1,
@@ -200,7 +200,7 @@
 			AccSectionChange(index) {
 				this.AccCurIndex = index;
 			},
-			// 共富工程和记录切换
+			// 云数中国和记录切换
 			ProsectionChange(index) {
 				this.ProCurIndex = index;
 			}

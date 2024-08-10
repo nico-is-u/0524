@@ -66,7 +66,7 @@
 	export default {
 		data() {
 			return {
-				type: 3, //共富工程  2 激活数字人民币钱包  3激活数字人民币账单
+				type: 3, //云数中国  2 激活数字人民币钱包  3激活数字人民币账单
 				page: 1,
 				ProCurIndex: 1,
 				isReload: true,

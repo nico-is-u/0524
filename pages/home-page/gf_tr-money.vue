@@ -47,7 +47,7 @@
 				<u-row justify="between">
 					<u-col span="5">
 						<u--text prefixIcon="coupon" iconStyle="font-size: 16px;margin-right:8rpx"
-							text="共富工程钱包"></u--text>
+							text="云数中国钱包"></u--text>
 					</u-col>
 					<u-col span="5">
 						<u--text color="#aa0000" align="left" :text="'余额：'+user_info.gf_purse"></u--text>
