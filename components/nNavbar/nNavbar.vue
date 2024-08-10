@@ -70,8 +70,8 @@ export default {
 
 <style lang="scss">
 .app-nav-bar{
-    height: 88rpx;
-    padding: calc(var(--status-bar-height)+var(--status-bar-height)) 11rpx 0;
+    height: 112rpx;
+    padding: 24rpx 11rpx 0;
 
     position: relative;
     z-index: 99;
