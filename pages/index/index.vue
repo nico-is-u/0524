@@ -82,13 +82,18 @@
 		<u-overlay :show="showAd" zIndex="999" opacity="0.4">
 			<view class="warp">
 				<view class="rect" @tap.stop>
-					<!-- 背景图 -->
-					<image class="noticeimg" src="../../static/images/77.png" mode="widthFix"></image>
+					
 					<!-- 关闭按钮 -->
-					<view class="close" @click="hideOnext"></view>
+					<view class="close" @click="hideOnext">
+						<u-icon name="close-circle" size="28"></u-icon>
+					</view>
 					<!-- 广告内容 -->
-					<view class="noticecontent">
-						<u-parse :content="showNots" :tagStyle="style"></u-parse>
+					<view class="notice-content">
+						<view class="scroll-view-box">
+							<scroll-view :scroll-y="true">
+								<u-parse :content="showNots" :tagStyle="style"></u-parse>
+							</scroll-view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -493,43 +498,63 @@ page{
 }
 
 .warp {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-	}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
 
 .rect {
 
 	width: 325px;
+	height: 504px;
+
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 
-	.noticeimg{
-		height: 504px;
-	}
+	background: linear-gradient(#e3f5ff,#eefcfd);
+	border-radius: 10px;
 
 	// overflow-y: scroll;
 
-	.noticecontent{
+	.notice-content{
 		position: absolute;
-		top: 145px;
-		left: 31px;
-		width: 275px;
-		height: 332px;
+		top: 30px;
+		left: 0;
+		width: 100%;
+		height: calc(100% - 30px);
 		box-sizing: border-box;
-		padding: 10px;
+		padding: 10px 15px 15px;
 		font-size: 15px;
+
+		.scroll-view-box{
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			border-radius: 10px;
+			box-sizing: border-box;
+			padding: 10rpx;
+			scroll-view{
+				width: 100%;
+				height: 100%;
+				// border: #d2d2d2 1.5px solid;
+				padding: 5px;
+				border-radius: 12px;
+
+				box-sizing: border-box;
+
+			}
+		}
 	}
 
 	.close {
 		position: absolute;
 		width: 25px;
 		height: 25px;
-		right: 22px;
-		top: 15px;
+		right: 22rpx;
+		top: 15rpx;
 		z-index: 9999;
 	}
 

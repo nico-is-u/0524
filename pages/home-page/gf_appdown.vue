@@ -22,7 +22,8 @@
 				</view>
 				<image src="/static/images/my/az.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
 			</view>
-			<view class="card">
+			<!-- 苹果系统安装 -->
+			<!-- <view class="card">
 				<view style="text-align: center;">
 					<image src="/static/images/my/l.png" style="width: 50px;" mode="widthFix"></image>
 					<text style="color: #0182EF;font-weight: bold;margin: 0 10px;font-size: 16px;">苹果系统安装</text>
@@ -36,7 +37,7 @@
 					<view style="color: #0182EF;" @click="copy(systemInfo.ios_download_url)">复制</view>
 				</view>
 				<image src="/static/images/my/pg.png" style="width: 85px;position: absolute;top: 0;right: 0;" mode="widthFix"></image>
-			</view>
+			</view> -->
 			<view class="card">
 				<view style="text-align: center;">
 					<image src="/static/images/my/l.png" style="width: 50px;" mode="widthFix"></image>
