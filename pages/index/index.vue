@@ -57,13 +57,20 @@
 					<view class="gf_news">
 						<view class="gf_news_conrent" v-if="Array.isArray(newsList) && newsList.length">
 
-							<view class="news-item flex flex-column"
+							<view class="news-item flex"
 								v-for="(item,index) in newsList"
 								:key="'news-item-' + index"
 								@click="toNewDetail(item)">
-								<view class="news-title">{{ item.title }}</view>
-								<view class="news-date">{{ item.updated_at | dateMatter }}</view>
-								<view class="news-bottom-border"></view>
+
+								<view class="left-side">
+									<image :src="item.cover_img" mode="aspectFill"></image>
+								</view>
+
+								<view class="right-side flex flex-column">
+									<view class="news-title">{{ item.title }}</view>
+									<view class="news-date">{{ item.updated_at | dateMatter }}</view>
+									<view class="news-bottom-border"></view>
+								</view>
 							</view>
 
 						</view>
@@ -393,6 +400,7 @@
 					const {code,data} = res
 					console.log(res)
 					if(code == 200){
+						console.log(data.data)
 						this.newsList = data.data || []
 					}
 				})
@@ -569,15 +577,44 @@ page{
 	.news-item{
 		padding: 0 32rpx;
 		margin-bottom: 32rpx;
+
+		height: 200rpx;
+
+		>.left-side{
+			width: 40%;
+			height: 100%;
+			
+			flex-shrink: 0;
+
+			box-sizing: border-box;
+			padding-right: 30rpx;
+			padding-bottom: 40rpx;
+		}
+
+		>.right-side{
+			flex-grow: 1;
+		}
+	}
+
+	image{
+		width: 100%;
+		height: 100%;
 	}
 
 	.news-title{
 		font-size: 28rpx;
 		color: #34353E;
 		font-weight: 500;
+
+		height: 152rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		padding-bottom: 24rpx;
+		box-sizing: border-box;
 	}
 	.news-date{
-		margin-top: 24rpx;
+		// margin-top: 24rpx;
 		font-size: 28rpx;
 		color: #666666;
 	}

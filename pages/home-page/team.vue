@@ -32,7 +32,7 @@
                 <view class="level-member-info">
                     <view class="inner flex flex-y-center">
                         <image src="/static/images/42.png" mode="widthFix"></image>
-                        <text>层级人员：{{ teamList.length || '' }}</text>
+                        <text>层级人员：{{ teamTotal }}</text>
                     </view>
                 </view>
 
@@ -82,6 +82,7 @@ export default {
             userInfo:false,                 // 用户信息
             teamInfo:false,                 // 团队信息
             teamList:false,                 // 团队列表
+            teamTotal:0,                    // 团队人数
             level:1,
         }
     },
@@ -109,6 +110,7 @@ export default {
 
                 if(code == 200){
                     this.teamList = data.list.data || []
+                    this.teamTotal = data.list.total || 0
                     this.isLoading = false
                 }else{
                     this.isLoading = false
