@@ -87,20 +87,20 @@
 		</template>
 
 		<u-overlay :show="showAd" zIndex="999" opacity="0.4">
-			<view class="warp">
-				<view class="rect" @tap.stop>
+			<view class="warp2">
+				<view class="rect2" @tap.stop>
 					
 					<!-- 关闭按钮 -->
 					<view class="close" @click="hideOnext">
-						<u-icon name="close-circle" size="28"></u-icon>
+						<u-icon name="close-circle" size="28" color="white"></u-icon>
 					</view>
+
+
 					<!-- 广告内容 -->
 					<view class="notice-content">
-						<view class="scroll-view-box">
-							<scroll-view :scroll-y="true">
-								<u-parse :content="showNots" :tagStyle="style"></u-parse>
-							</scroll-view>
-						</view>
+						<scroll-view :scroll-y="true" style="height: 100%">
+							<u-parse :content="showNots" :tagStyle="style"></u-parse>
+						</scroll-view>
 					</view>
 				</view>
 			</view>
@@ -535,6 +535,70 @@ page{
 		height: calc(100% - 30px);
 		box-sizing: border-box;
 		padding: 10px 15px 15px;
+		font-size: 15px;
+
+		.scroll-view-box{
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			border-radius: 10px;
+			box-sizing: border-box;
+			padding: 10rpx;
+			scroll-view{
+				width: 100%;
+				height: 100%;
+				// border: #d2d2d2 1.5px solid;
+				padding: 5px;
+				border-radius: 12px;
+
+				box-sizing: border-box;
+
+			}
+		}
+	}
+
+	.close {
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		right: 22rpx;
+		top: 15rpx;
+		z-index: 9999;
+	}
+
+}
+
+.warp2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.rect2 {
+
+	width: 325px;
+	height: 1200rpx;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+	background-image: url('../../static/images/notice.jpg');
+	background-size: 100% 100%;
+	border-radius: 10px;
+
+	// overflow-y: scroll;
+
+	.notice-content{
+		position: absolute;
+		top: 240rpx;
+		left: 0;
+		width: 100%;
+		height: calc(100% - 240rpx);
+		box-sizing: border-box;
+		padding: 25px;
 		font-size: 15px;
 
 		.scroll-view-box{
