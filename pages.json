@@ -216,9 +216,16 @@
 				"navigationStyle": "custom"
 			}
 		},
-		// 我的资产 - 外汇储备
+		// 我的资产 - 我的项目
 		{
 			"path":"pages/home-page/my_zc_detail3",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
+		// 我的资产 - 我的项目 - 详情
+		{
+			"path":"pages/home-page/my_zc_detail4",
 			"style":{
 				"navigationStyle": "custom"
 			}

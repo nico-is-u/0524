@@ -8,10 +8,11 @@
 			<nNavbar :title="navTitle" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
             <!-- 小菜单 -->
         </view>
+
         <!-- 资金明细 -->
         <view class="padding-box margin-t-30">
             <view class="content" v-if="type">
-                
+
                 <view class="title">
 					<view class="label">
 						<text>资金明细</text>
@@ -43,8 +44,7 @@
 
             </view>
         </view>
-        <!-- 加载动画 -->
-        <u-loading-page :loading="loading" style="z-index: 3"></u-loading-page>
+
     </view>
 </template>
 
@@ -55,17 +55,11 @@
 export default {
     data(){
         return {
-
             /* 页面场景 */
             type:0,
 
             /* 充值列表 */
             dataList:[],
-            
-            /* 用户信息 */
-            userInfo:false,
-            /* 页面等待 */
-            loading:true
 
         }
     },
@@ -73,105 +67,26 @@ export default {
         /* nav标题 */
         navTitle(){
             switch(this.type){
-                case '3':
+                case '1':
                     return '外汇储备'
                 case '2':
-                    return '积分'
-                case '10':
-                    return 'USDT'
-                case '5':
-                    return '可用余额'
-                case '4':
-                    return '可提余额'
-                default:
-                    return ''
+                    return '短期理财'
             }
         },
+        /* 请求url地址 */
+        // apiUrl(){
+        // },
     },
     methods:{
-        /* 请求页面数据 */
-        async getDataList(pageNo, pageSize){
-            try {
-                const response = await this.to.www(this.api.balanceLog,{log_type:this.type,page:pageNo})
-                const {code,data={}} = response
-                if(code == 200){
-                    const resData = data.data || []
-
-                    this.loading = false
-
-                    resData.map(item => {
-                        if(item.change_balance){
-                            if(item.change_balance[0] == '-'){
-                                item.change_balance_color = 'font-green'
-                            }else{
-                                item.change_balance_color = 'font-red'
-                            }
-                        }else{
-                            item.change_balance_color = ''
-                        }
-                    })
-
-                    this.$refs.paging.complete(resData)
-                }else{
-                    this.$refs.paging.complete(false)
-                }
-            }catch(e){
-                this.$refs.paging.complete(false)
-            }
-        },
         /* 返回上一页 */
         backPrev(){
-            this.too('/pages/home-page/my_zc')
-        }
-    },
-    filters:{
-        /* 小数处理 */
-        decimal(val){
-            const str1 = val.toString()
-            if(str1 === '0'){
-                return '0.00'
-            }else{
-                return str1
-            }
+            this.too('/pages/home-page/my_zc_detail3')
         }
     },
     onLoad(options){
-
         /* 得到页面场景 */
         const {type} = options
         this.type = type
-
-        /* 个人信息 */
-        const userInfo = uni.getStorageSync('user_info')
-        if(userInfo)    this.userInfo = userInfo
     }
 }
 </script>
-
-<style lang="scss">
-page{
-    height: 100%;
-    background-color: #F9F9F9;
-}
-#my-zc{
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    >.padding-box{
-        flex-grow: 1;
-
-        display: flex;
-        flex-direction: column;
-
-        >.content{
-            height: 100%;
-        }
-    }
-
-    .right-side{
-        color: #666;
-    }
-}
-</style>

@@ -16,9 +16,9 @@
                             <view class="value">我的币</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=3')">
-                            <view class="label">{{userInfo && userInfo.total_foreign ? (parseFloat(userInfo.total_foreign).toFixed(2)) : '0.00'}}</view>
-                            <view class="value">外汇储备</view>
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail3')">
+                            <view class="label">{{myProject}}</view>
+                            <view class="value">我的项目</view>
                         </view>
                         <view class="line"></view>
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=2')">
@@ -113,6 +113,17 @@ export default {
             /* 用户信息 */
             userInfo:false,
             xxxxxx:'user/balanceLog',
+        }
+    },
+    computed:{
+        myProject(){
+            let result = '0.00'
+            if(this.userInfo){
+                const result1 = this.userInfo.licai_short ? parseFloat(this.userInfo.licai_short).toFixed(2) : 0
+                const result2 = this.userInfo.total_foreign ? parseFloat(this.userInfo.total_foreign).toFixed(2) : 0
+                result = (result1 + result2) ? parseFloat(result1 + result2).toFixed(2) : '0.00'
+            }
+            return result
         }
     },
     methods:{

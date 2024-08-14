@@ -11,12 +11,12 @@
                 <view class="menu-card flex flex-column">
 
                     <view class="row flex flex-between flex-y-center">
-                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail')">
-                            <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : '0.00'}}</view>
+                        <view class="menu-item" @click="too('/pages/index/szml-2-order-list')">
+                            <view class="label">{{userInfo && userInfo.licai_short ? (parseFloat(userInfo.licai_short).toFixed(2)) : '0.00'}}</view>
                             <view class="value">外汇储备</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=3')">
+                        <view class="menu-item" @click="too('/pages/index/szml-3-order-list')">
                             <view class="label">{{userInfo && userInfo.total_foreign ? (parseFloat(userInfo.total_foreign).toFixed(2)) : '0.00'}}</view>
                             <view class="value">短期理财</view>
                         </view>
@@ -38,7 +38,24 @@
 /**
  * 外汇储备
  */
-
+export default {
+    data(){
+        return {
+            /* 用户信息 */
+            userInfo:false,
+        }
+    },
+    methods:{
+        /* 返回上一页 */
+        backPrev(){
+            this.too('/pages/home-page/my_zc')
+        }
+    },
+    onLoad(){
+        const userInfo = uni.getStorageSync('user_info')
+        if(userInfo)    this.userInfo = userInfo
+    }
+}
 </script>
 
 <style lang="scss">
