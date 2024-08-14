@@ -58,6 +58,16 @@ Vue.prototype.lookImg = function(img,t='仅查看一张') {
 		})
 	},
 
+Vue.prototype.webOpen = function(url){
+	//#ifdef WEB
+	window.open(url)
+	//#endif
+
+	//#ifdef APP-PLUS
+	plus.runtime.openURL(url)
+	//#endif
+}
+
 App.mpType = 'app'
 const app = new Vue({
 	store,

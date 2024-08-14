@@ -23,6 +23,9 @@
 			  </u-radio-group>
 		</view>
 		<view class="btn" @click="buy">充值</view>
+
+		<!-- 加载动画 -->
+		<u-loading-page :loading="isLoading" :loading-text="regStatus"></u-loading-page>
 	</view>
 </template>
 
@@ -34,6 +37,10 @@
 				money: '',
 				channelList: [],
 				currentpay: 0,
+
+				isLoading:false,
+				regStatus:'处理中',
+
 			};
 		},
 		methods: {
@@ -50,14 +57,25 @@
 				}
 				if(this.money>Number(this.payItemObj.single_topup_max_amount)) return this.toa('最高限额'+this.payItemObj.single_topup_max_amount);
 				if(this.money<Number(this.payItemObj.single_topup_min_amount)) return this.toa('最低限额'+this.payItemObj.single_topup_min_amount);
-				console.log(parms);
+				console.log(parms)
+
+				/* 打开等待 */
+				this.isLoading = true
 				this.to.www(this.api.topup, parms, 'p')
 					.then(res => {
-						window.open(res.data.data)
+						this.isLoading = false
+						const result = res.data.data || ''
+
+						if(result){
+							this.webOpen(result)
+						}else{
+							this.toa('网络错误,请稍后重试')
+						}
+
 					})
-				setTimeout(() => {
-					this.isDone = false;
-				}, 3000)
+				// setTimeout(() => {
+				// 	this.isDone = false;
+				// }, 3000)
 			}
 		},
 		onLoad() {
