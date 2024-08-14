@@ -216,6 +216,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的资产 - 外汇储备
+		{
+			"path":"pages/home-page/my_zc_detail3",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 提现
 		{
 			"path": "pages/home-page/withdraw",
