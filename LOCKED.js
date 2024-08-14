@@ -211,6 +211,9 @@ const xxxxxxxxxxxxxx = {
 	withdrawList:'mkrq6QhMBkPCiCtzuVkUWX5RBoLddblMa4+LZ1uD/5Q=',
 	// 系统公告
 	system_notice:'j8TX/gISBUE0P+tvthwl7A==',
+	// 人民币汇率
+	rmb_rate:'DMXUwwdQZIlpMNKNvReaqtXVXJfYNGeq9ehyu7vhguI=',
+	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
 export default xxxxxxxxxxxxxx

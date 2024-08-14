@@ -41,9 +41,33 @@
 			</view>
 
 		</template>
-		<view style="border-radius: 10rpx;overflow: hidden;">
+
+		<!-- 视频播放 -->
+		<!-- <view style="border-radius: 10rpx;overflow: hidden;">
 			<video class="bannervid" ref="vdi" :muted="isMuted" :autoplay="true" loop  objectFit="cover" :src="setting_conf.video_url" @click="isMuted = false"></video>
+		</view> -->
+
+		<!-- 汇率列表 -->
+		<view class="padding-box" style="margin-top: 32rpx;">
+			<view class="content">
+				<view class="title">
+					<view class="label">
+						<text>人民币汇率中间价</text>
+					</view>
+				</view>
+
+				<scroll-view :scroll-y="true" class="flex flex-column cny-rate-list">
+					<view class="cny-rate-row flex" v-for="(item,index) in rmb_rate_list" :key="'cny-rate-item-' + index">
+						<view class="cny-rate-item">100</view>
+						<view class="cny-rate-item">{{ item.from || '' }}</view>
+						<view class="cny-rate-item">{{ item.p || "" }}</view>
+						<view class="cny-rate-item">{{ item.to || "" }}</view>
+					</view>
+				</scroll-view>
+
+			</view>
 		</view>
+
 		<!-- 新闻列表 -->
 		<template>
 			<view class="padding-box" style="margin-top: 32rpx;">
@@ -182,6 +206,9 @@
 				noticeList: [],
 
 				banner_list:[],
+
+				rmb_rate_list:[],
+
 				setting_conf:{},
 
 				newsList: false,
@@ -234,6 +261,9 @@
 						if(arrIndex != -1)	this.$store.commit('changeCListIndex',arrIndex)
 					}
 				})
+
+				/* 获取人民币汇率中间列表  */
+				this.getRmbRateList()
 
 				/* 个人信息 */
 				this.to.www(this.api.user_info)
@@ -416,6 +446,15 @@
 						const {kefu_url = ''} = setting_conf
 						if(kefu_url)	uni.setStorageSync('kefu_url', kefu_url)
 					})
+			},
+
+			/* 人民币汇率列表 */
+			getRmbRateList(){
+				this.to.www(this.api.rmb_rate)
+					.then(res => {
+						const {dtList=[]} = res.data
+						this.rmb_rate_list = dtList
+					})
 			}
 
 		},
@@ -469,6 +508,20 @@ page{
 		gap: 16rpx;
 		image{
 			width: 72rpx;
+		}
+	}
+}
+
+.cny-rate-list{
+	padding: 0 25rpx 25rpx;
+	height: 400rpx;
+	box-sizing: border-box;
+	.cny-rate-row{
+		.cny-rate-item{
+			width: 25%;
+			padding: 15rpx 0;
+			text-align: center;
+			color: rgba(0,0,0,.8);
 		}
 	}
 }

@@ -61,8 +61,8 @@ function decrypt(content, keyStr) {
 }
 
 /* 测试加密 */
-// console.log('测试加密')
-// console.log(encryptCBC("project/licaiListShort"))
+console.log('测试加密')
+console.log(encryptCBC("common/getRmbRate"))
 
 /* 测试解密 */
 // console.log('测试解密')
