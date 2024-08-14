@@ -17,8 +17,9 @@
 			      <image :src="avatarurl" style="width: 120upx; height: 120upx; transform:translateY(4px); border-radius: 100%;"></image>
             
             <!-- 文字讯息 -->
-            <view class="text-info">
+            <view class="text-info flex flex-column">
               <view class="username">{{ user_info.realname || '' }}</view>
+              <view class="account">{{ user_info.phone ? '('+ user_info.phone +')' : ''}}</view>
               <view class="desc flex">
 
                 <!-- 用户等级 -->
@@ -266,6 +267,12 @@ page{
           margin-left: 18rpx;
 
           .username{
+            color: white;
+            white-space: nowrap;
+          }
+
+          .account{
+            font-size: 28rpx;
             color: white;
             white-space: nowrap;
           }

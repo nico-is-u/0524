@@ -585,7 +585,7 @@ page{
     justify-content: center;
     position: relative;
 
-	background-image: url('../../static/images/notice.jpg');
+	background-image: url('../../static/images/notice2.jpg');
 	background-size: 100% 100%;
 	border-radius: 10px;
 
