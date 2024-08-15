@@ -56,14 +56,14 @@
 					</view>
 				</view>
 
-				<!-- <scroll-view :scroll-y="true" class="flex flex-column cny-rate-list">
+				<scroll-view :scroll-y="true" class="flex flex-column cny-rate-list">
 					<view class="cny-rate-row flex" v-for="(item,index) in rmb_rate_list" :key="'cny-rate-item-' + index">
 						<view class="cny-rate-item">100</view>
 						<view class="cny-rate-item">{{ item.from || '' }}</view>
 						<view class="cny-rate-item">{{ item.p || "" }}</view>
 						<view class="cny-rate-item">{{ item.to || "" }}</view>
 					</view>
-				</scroll-view> -->
+				</scroll-view>
 
 				<!-- <animateList :List="rmb_rate_list"></animateList> -->
 
@@ -210,7 +210,8 @@
 
 				banner_list:[],
 
-				rmb_rate_list:[],
+				rmb_rate_list:[
+				],
 
 				setting_conf:{},
 

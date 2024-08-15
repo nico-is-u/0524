@@ -87,21 +87,31 @@
 		padding: 5px 20px;
 	}
 	.code{
-		display: grid;
-		grid-template-columns: repeat(7,1fr);
-		text-align: center;
-		grid-gap: 10px;
+		display: flex;
+		justify-content: space-around;
+		// grid-template-columns: repeat(7,1fr);
+		// text-align: center;
+		// grid-gap: 10px;
+		gap: 10px;
 		margin: 15px 0;
+
 		>view{
 			background: #F9F9F9;
-			width: 100%;
-			aspect-ratio: 1/1;
+
+			// width: 100%;
+			height: 88rpx;
+			width: 10%;
+			min-width: 72rpx;
+
+			// aspect-ratio: 1/1;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			font-size: 24px;
 			color: #0182EF;
 			border-radius: 8px;
+
+			
 		}
 	}
 	.footer{

@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view class="back_head" @click="too('/','bac')">
+		<view class="back_head" @click="too('/pages/index/my','tab')">
 			<u--text prefixIcon="arrow-left" iconStyle="font-size: 38rpx;color:#ebebeb" color="#ebebeb" align="left"
 				text=""></u--text>
 			<u--text color="#fff" bold align="center" text="积分兑换"></u--text>

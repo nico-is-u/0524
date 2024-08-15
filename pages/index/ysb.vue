@@ -320,7 +320,7 @@ export default {
 
 		/* 拉取K线 */
 		this.getKLineDatas()
-		this.intervalId2 = setInterval(this.getKLineDatas, (60000 * 15))
+		this.intervalId2 = setInterval(this.getKLineDatas, (60000 * 1))
 	},
 	onLoad(){
 		/* 拉取兑换信息 */
