@@ -12,12 +12,12 @@
 
                     <view class="row flex flex-between flex-y-center">
                         <view class="menu-item" @click="too('/pages/index/szml-2-order-list')">
-                            <view class="label">{{userInfo && userInfo.licai_short ? (parseFloat(userInfo.licai_short).toFixed(2)) : '0.00'}}</view>
+                            <view class="label">{{userInfo && userInfo.total_foreign ? (parseFloat(userInfo.total_foreign).toFixed(2)) : '0.00'}}</view>
                             <view class="value">外汇储备</view>
                         </view>
                         <view class="line"></view>
                         <view class="menu-item" @click="too('/pages/index/szml-3-order-list')">
-                            <view class="label">{{userInfo && userInfo.total_foreign ? (parseFloat(userInfo.total_foreign).toFixed(2)) : '0.00'}}</view>
+                            <view class="label">{{userInfo && userInfo.licai_short ? (parseFloat(userInfo.licai_short).toFixed(2)) : '0.00'}}</view>
                             <view class="value">短期理财</view>
                         </view>
                         <view class="line"></view>
