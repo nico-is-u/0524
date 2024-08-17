@@ -1,10 +1,13 @@
 <template>
     <div id="animateList">
-        <div id="box">
+        <div id="box" class="cny-rate-list">
             <div id="con1" ref="con1" :class="{anim:animate==true}" @mouseenter="mEnter" @mouseleave="mLeave">
-                <p v-for='item in List'>
-                    <span>{{ item }}</span>
-                </p>
+                <view class="cny-rate-row flex" v-for="(item,index) in List" :key="'cny-rate-item-' + index">
+                    <view class="cny-rate-item">100</view>
+                    <view class="cny-rate-item">{{ item.from || '' }}</view>
+                    <view class="cny-rate-item">{{ item.p || "" }}</view>
+                    <view class="cny-rate-item">{{ item.to || "" }}</view>
+                </view>
             </div>
         </div>
     </div>
@@ -30,7 +33,7 @@
         methods: {
             scroll() {
                 let that = this;
-                that.$refs.con1.style.marginTop = '-30px';
+                that.$refs.con1.style.marginTop = '-35px';
                 that.animate = !that.animate;
                 setTimeout(function () {
                     that.List.push(that.List[0]);
@@ -52,20 +55,28 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     #box{
-        height: 300px;
-        line-height: 30px;
         overflow: hidden;
         transition: all 0.5s;
-        color: #ffffff;
     }
+
+    .cny-rate-list{
+        padding: 0 25rpx 25rpx;
+        height: 400rpx;
+        box-sizing: border-box;
+        .cny-rate-row{
+            .cny-rate-item{
+                width: 25%;
+                height: 35px;
+                text-align: center;
+                color: rgba(0,0,0,.8);
+            }
+        }
+    }
+
     .anim{
         transition: all 0.5s;
     }
-    #con1 li{
-        list-style: none;
-        line-height: 30px;
-        height: 30px;
-    }
+
 </style>
