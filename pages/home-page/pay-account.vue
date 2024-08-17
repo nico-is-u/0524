@@ -12,7 +12,8 @@
                 <view class="row flex flex-between">
                     <view class="left-side">
                         <view class="flex flex-column text-group">
-                            <view class="label">{{item.bank_name || ''}}{{ item.address ? ' ('+item.address+')' : '' }}</view>
+                            <view class="label">{{item.bank_name || ''}}</view>
+                            <!-- {{ item.address ? ' ('+item.address+')' : '' }} -->
                             <view class="text">{{item.name || ''}}</view>
                         </view>
                     </view>

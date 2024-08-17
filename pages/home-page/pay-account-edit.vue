@@ -38,7 +38,7 @@
                     </u-form-item>
 
                     <!-- 持卡人姓名 -->
-                    <!-- <u-form-item
+                    <u-form-item
                         label="持卡人姓名"
                         labelWidth="200rpx"
                         prop="name"
@@ -48,7 +48,7 @@
                             placeholder="请输入您的姓名"
                             border="none">
                         </u--input>
-                    </u-form-item> -->
+                    </u-form-item>
 
                     <!-- 收款地址 -->
                     <u-form-item
@@ -150,9 +150,9 @@ export default {
             
         },
         onLoad(){
-            const userInfo = uni.getStorageSync('user_info')
-            const {realname = ''} = userInfo
-            this.formData.name = realname
+            // const userInfo = uni.getStorageSync('user_info')
+            // const {realname = ''} = userInfo
+            // this.formData.name = realname
         }
     }
 }
