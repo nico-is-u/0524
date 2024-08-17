@@ -1,10 +1,10 @@
 <template>
     <view class="page">
         <view class="padding-box-3">
-            <view class="card" v-if="dataList.length">
+            <view class="card">
                 <view class="card-content">
-                    <view class="card-list-type-2">
-                        <view class="item" v-for="(item,index) in dataList" :key="index">
+                    <z-paging class="card-list-type-2" ref="paging" :fixed="false" style="height: 100%" v-model="dataList" @query="getDataList" system-loading-text="数据请求中" :auto-show-system-loading="true">
+						<view class="item" v-for="(item,index) in dataList" :key="index">
                             <view class="row flex flex-between">
                                 <view class="left-side">订单编号</view>
                                 <view class="right-side">{{item.order_sn}}</view>
@@ -51,10 +51,10 @@
 								</view>
 							</view>
                         </view>
-                    </view>
+					</z-paging>
                 </view>
             </view>
-            <view class="flex flex-x-center" style="padding-top: 10vh" v-else>暂无数据</view>
+            
         </view>
     </view>
 </template>
@@ -66,9 +66,6 @@ export default {
             /* 申请列表 */
             dataList:[],
         }
-    },
-    onLoad(){
-        this.getDataList()
     },
 	computed: {
 		getStatusStr(status) {
@@ -111,8 +108,8 @@ export default {
 				}
 			});
 		},
-        getDataList(){
-            this.to.www(this.api.licaiOrderList)
+        getDataList(pageNo, pageSize){
+            this.to.www(this.api.licaiOrderList,{page:pageNo})
             .then(res => {
                 const {code = 0} = res
                 if(code == 200){
@@ -129,26 +126,43 @@ export default {
 						})
 					}
 
-                    this.dataList = datas
-
-                }
-            })
+					this.$refs.paging.complete(datas)
+                }else{
+					this.$refs.paging.complete(false)
+				}
+            }).catch(e => {
+				this.$refs.paging.complete(false)
+			})
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-	.btn{
-		background: #1292FF;
-		color: #fff;
-		border-radius: 8px;
-	}
-	.row {
-		margin-bottom: 5px!important;
-		padding: 7px 0;
-	}
+.btn{
+	background: #1292FF;
+	color: #fff;
+	border-radius: 8px;
+}
+.row {
+	margin-bottom: 5px!important;
+	padding: 7px 0;
+}
 page{
     background-color: #F9F9F9;
+	height: 100%;
+}
+.page{
+	height: 100%;
+	.padding-box-3{
+		height: 100%;
+		.card{
+			height: 100%;
+			padding: 0;
+		}
+		.card-content{
+			height: 100%;
+		}
+	}
 }
 </style>
