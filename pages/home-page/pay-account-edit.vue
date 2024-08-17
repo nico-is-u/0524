@@ -37,8 +37,8 @@
                         </u--input>
                     </u-form-item>
 
-                    <!-- 银行卡号 -->
-                    <u-form-item
+                    <!-- 持卡人姓名 -->
+                    <!-- <u-form-item
                         label="持卡人姓名"
                         labelWidth="200rpx"
                         prop="name"
@@ -46,6 +46,19 @@
                         <u--input
                             v-model="formData.name"
                             placeholder="请输入您的姓名"
+                            border="none">
+                        </u--input>
+                    </u-form-item> -->
+
+                    <!-- 收款地址 -->
+                    <u-form-item
+                        label="收款地址"
+                        labelWidth="200rpx"
+                        prop="address"
+                        :borderBottom="false">
+                        <u--input
+                            v-model="formData.address"
+                            placeholder="请输入您的收款地址"
                             border="none">
                         </u--input>
                     </u-form-item>
@@ -72,10 +85,11 @@ export default {
             regStatus: '正在请求...',		 // loading text
 
             formData:{
-                pay_type:3,
+                pay_type:7,
                 name:'',                            // 持卡人姓名
                 account:'',                         // 银行卡号
                 bank_name:'',                       // 银行名称
+                address:'',                         // 收款地址
             },
             formRules:{
                 name:[{
@@ -89,6 +103,10 @@ export default {
                 bank_name:[{
                     required:true,
                     message:'请输入银行名称'
+                }],
+                address:[{
+                    required:true,
+                    message:'请输入您的收款地址'
                 }]
             }
         }
@@ -105,6 +123,7 @@ export default {
         async goRequest(){
             this.isLoading = true
             try{
+                console.log(this.formData)
                 const response = await this.to.www(this.api.bank_account, this.formData,'p')
             
                 /* 注册成功 */
@@ -120,6 +139,8 @@ export default {
                         }
                     })
                 }else{
+                    const {msg = ''} = response
+                    this.toa(msg)
                     this.isLoading = false
                 }
 
@@ -127,6 +148,11 @@ export default {
                 this.isLoading = false
             }
             
+        },
+        onLoad(){
+            const userInfo = uni.getStorageSync('user_info')
+            const {realname = ''} = userInfo
+            this.formData.name = realname
         }
     }
 }
