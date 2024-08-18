@@ -7,7 +7,8 @@
 		</view>
 
         <!-- 添加银行卡 -->
-        <view class="fixed-button-group" v-if="!isLoading && !type">
+        <view class="fixed-button-group flex flex-column" style="gap: 40rpx" v-if="!isLoading && !type">
+            <u-button class="n-button n-button-3" text="添加Trc收款地址" @click="too('/pages/home-page/pay-account2-edit')"></u-button>
             <u-button class="n-button" text="添加银行卡" @click="too('/pages/home-page/pay-account-edit')"></u-button>
         </view>
 
@@ -188,6 +189,9 @@ page{
             }
         }
 
+    }
+    .fixed-button-group{
+        height: 20vh;
     }
 }
 </style>

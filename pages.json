@@ -189,6 +189,16 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
+		// 我的资料 - Trc收款账号 - 编辑
+		{
+			"path": "pages/home-page/pay-account2-edit",
+			"style":{
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "新增",
+				"navigationBarBackgroundColor":"#FFF",
+				"navigationBarTextStyle":"black"
+			}
+		},
 		// 我的资料 - 支付密码
 		{
 			"path":"pages/home-page/pay-pwd",
