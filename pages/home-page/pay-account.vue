@@ -14,43 +14,74 @@
 
         <!-- 收款账号 -->
         <view class="padding-box-2 flex flex-column" style="padding-top:32rpx; gap:32rpx" v-if="Array.isArray(dataList) && dataList.length">
-            <view class="account-item" v-for="(item,index) in dataList" :key="'item' + index" @click="doselect(item)">
-                <view class="row flex flex-between">
-                    <view class="left-side">
-                        <view class="flex flex-column text-group">
-                            <view class="label">{{item.bank_name || ''}}</view>
-                            <!-- {{ item.address ? ' ('+item.address+')' : '' }} -->
-                            <view class="text">{{item.name || ''}}</view>
-                        </view>
-                    </view>
-                    <view class="right-side">
-                        <!-- <view class="btn flex flex-center">
-                            <image src="/static/images/56.png" mode="widthFix"></image>
-                            <text>编辑</text>
-                        </view> -->
 
-                        <view class="btn flex flex-center" v-if="!type" @click="delItem(index)">
-                            <image src="/static/images/57.png" mode="widthFix"></image>
-                            <text>删除</text>
+            <template v-for="(item,index) in dataList">
+
+                <!-- 普通银行卡 -->
+                <view class="account-item"  :key="'item' + index"  @click="doselect(item)" v-if="item.pay_type == 3">
+                    <view class="row flex flex-between">
+                        <view class="left-side">
+                            <view class="flex flex-column text-group">
+                                <view class="label">{{item.bank_name || ''}}</view>
+                                <!-- {{ item.address ? ' ('+item.address+')' : '' }} -->
+                                <view class="text">{{item.name || ''}}</view>
+                            </view>
                         </view>
-						<view v-else class="btn flex flex-center">
-                            <u-icon name="checkbox-mark" color="#2979ff" size="28"></u-icon>
-                            <text>选择</text>
+                        <view class="right-side">
+                            <!-- <view class="btn flex flex-center">
+                                <image src="/static/images/56.png" mode="widthFix"></image>
+                                <text>编辑</text>
+                            </view> -->
+    
+                            <view class="btn flex flex-center" v-if="!type" @click="delItem(index)">
+                                <image src="/static/images/57.png" mode="widthFix"></image>
+                                <text>删除</text>
+                            </view>
+                            <view v-else class="btn flex flex-center">
+                                <u-icon name="checkbox-mark" color="#2979ff" size="28"></u-icon>
+                                <text>选择</text>
+                            </view>
                         </view>
                     </view>
+    
+                    <view class="row" style="margin-top: 60rpx">
+                        <view class="left-side">
+                            <view class="flex flex-column text-group">
+                                <view class="label">账户号码</view>
+                                <view class="text">{{item.account || ''}}</view>
+                            </view>
+                        </view>
+                        <view class="right-side"></view>
+                    </view>
+    
                 </view>
 
-                <view class="row" style="margin-top: 60rpx">
-                    <view class="left-side">
-                        <view class="flex flex-column text-group">
-                            <view class="label">账户号码</view>
-                            <view class="text">{{item.account || ''}}</view>
+                <!-- Trc地址 -->
+                <view class="account-item account-item2" :key="'item' + index" @click="doselect(item)" v-if="item.pay_type == 7">
+                    <view class="row flex flex-between">
+                        <view class="left-side">
+                            <view class="flex flex-column text-group">
+                                <view class="label">收款地址：</view>
+                                <view class="text">{{item.address || ''}}</view>
+                            </view>
+                        </view>
+                        <view class="right-side">
+                        
+                            <view class="btn flex flex-center" v-if="!type" @click="delItem(index)">
+                                <image src="/static/images/57.png" mode="widthFix"></image>
+                                <text>删除</text>
+                            </view>
+                            <view v-else class="btn flex flex-center">
+                                <u-icon name="checkbox-mark" color="#2979ff" size="28"></u-icon>
+                                <text>选择</text>
+                            </view>
                         </view>
                     </view>
-                    <view class="right-side"></view>
+
                 </view>
 
-            </view>
+            </template>
+            
 
         </view>
         
@@ -109,7 +140,7 @@ export default {
             const _this = this
             uni.showModal({
                 title: '提示',
-                content: '是否删除：' + target.bank_name,
+                content: '确定要删除吗?',
                 success(res) {
                     if (res.confirm) {
                         _this.to.www(_this.api.bank_del, {
@@ -187,6 +218,10 @@ page{
                 width: 32rpx;
                 margin-right: 6rpx;
             }
+        }
+
+        &.account-item2{
+            background-image: url('/static/images/78.png');
         }
 
     }
