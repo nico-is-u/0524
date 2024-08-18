@@ -90,6 +90,9 @@ export default {
             isLoading:false,				// 请求等待
             regStatus: '正在请求...',		 // loading text
 
+            /* 用户个人信息 */
+            userInfo:false,
+
             formData:{
                 pay_type:3,
                 name:'',                            // 持卡人姓名
@@ -98,10 +101,10 @@ export default {
                 address:'',                         // 收款地址
             },
             formRules:{
-                name:[{
-                    required:true,
-                    message:'请输入您的姓名'
-                }],
+                // name:[{
+                //     required:true,
+                //     message:'请输入您的姓名'
+                // }],
                 account:[{
                     required:true,
                     message:'请输入您的银行卡号'
@@ -154,10 +157,31 @@ export default {
             }
             
         },
+
+        /* 用户信息 */
+		getUserInfo() {
+			this.to.www(this.api.user_info).then(res => {
+
+                this.userInfo = res.data
+
+				const {realname = ''} = this.userInfo
+                this.formData.name = realname
+
+				uni.setStorage({
+					data: this.userInfo,
+					key: 'user_info'
+				})
+                
+
+			})
+		},
+
         onLoad(){
             const userInfo = uni.getStorageSync('user_info')
             const {realname = ''} = userInfo
             this.formData.name = realname
+
+            this.getUserInfo()
         }
     }
 }
