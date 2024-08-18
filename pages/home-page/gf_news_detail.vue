@@ -1,5 +1,8 @@
 <template>
 	<view class="news_page">
+		<!-- 顶栏 -->
+		<nNavbar title="详情"></nNavbar>
+
 		<u-parse :content="obj.content" :tagStyle="style"></u-parse>
 	</view>
 </template>

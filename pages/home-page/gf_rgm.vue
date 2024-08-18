@@ -1,5 +1,11 @@
 <template>
-	<view class="container">
+	<view class="container page3">
+
+		<!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="人民币充值" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
 		<view class="form">
 			<view>请输入金额</view>
 			<view>

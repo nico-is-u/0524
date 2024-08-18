@@ -51,7 +51,7 @@ export default {
 
                 let pages = getCurrentPages()
                 if(pages.length == 1){
-                    this.too('/pages/index/index')
+                    this.too('/pages/index/index','tab')
                 }else{
                     this.goBack()
                 }

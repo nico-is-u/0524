@@ -1,6 +1,11 @@
 <template>
-    <view class="page" id="pay-account" style="padding-bottom: 20vh">
+    <view class="page page3" id="pay-account" style="padding-bottom: 20vh">
         
+        <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="收款账号" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <!-- 添加银行卡 -->
         <view class="fixed-button-group" v-if="!isLoading && !type">
             <u-button class="n-button" text="添加银行卡" @click="too('/pages/home-page/pay-account-edit')"></u-button>

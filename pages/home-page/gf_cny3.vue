@@ -1,5 +1,11 @@
 <template>
-    <view class="container">
+    <view class="container page3">
+
+        <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="USDT兑汇人民币" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
 
         <!-- 文字部分 -->
         <view class="grid-list" v-if="usdtPrice !== false">

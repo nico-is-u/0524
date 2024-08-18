@@ -1,5 +1,11 @@
 <template>
-    <view class="page">
+    <view class="page page3">
+
+        <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="资产申请" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <view class="padding-box-4">
             <u--form
                 ref="uForm"

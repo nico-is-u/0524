@@ -218,6 +218,33 @@
 
 	}
 
+	.page3{
+		background-color: #f0f2f5 !important;
+		padding-top: 112rpx !important;
+
+		.page-navbar{
+			// color: black;
+			position: fixed;
+			width: 100%;
+			height: 112rpx;
+			top: 0;
+			left: 0;
+
+			z-index: 100;
+
+			background-color: #fff !important;
+
+			.app-nav-bar .center-block{
+				color: #222 !important;
+			}
+
+			.app-nav-bar .left-side .uni-icons, .app-nav-bar .right-side .uni-icons{
+				color: #222 !important;
+			}
+			
+		}
+	}
+
 	view{
 		color: #222;
 		box-sizing: border-box;

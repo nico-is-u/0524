@@ -1,5 +1,11 @@
 <template>
-	<view class="container">
+	<view class="container page3">
+
+		<!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="购买USDT" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
 		<view class="czfs" @click="showPayList = true" v-if="channelList.length > 0">
 			<view>充值方式</view>
 			<view>

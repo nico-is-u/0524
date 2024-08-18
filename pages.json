@@ -45,6 +45,7 @@
 		{
 			"path": "pages/index/news_detail",
 			"style": {
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "详情",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -54,6 +55,7 @@
 		{
 			"path":"pages/index/nyfz_detail",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "资产申请",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -63,6 +65,7 @@
 		{
 			"path":"pages/index/nyfz_list",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "申请记录",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -93,6 +96,7 @@
 		{
 			"path":"pages/index/szml-order-list",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "订单记录",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -109,6 +113,7 @@
 		{
 			"path":"pages/index/szml-3-order-list",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "订单记录",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -118,6 +123,7 @@
 		{
 			"path":"pages/index/szml-2-order-list",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "订单记录",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -127,6 +133,7 @@
 		{
 			"path": "pages/home-page/my_list",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "我的资料",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -136,6 +143,7 @@
 		{
 			"path": "pages/home-page/my_shdz",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "收货地址",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -145,6 +153,7 @@
 		{
 			"path":"pages/home-page/my_shdz_edit",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "新增收货地址",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -154,6 +163,7 @@
 		{
 			"path": "pages/home-page/my_real-name_auth",
 			"style": {
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "实名认证",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -163,6 +173,7 @@
 		{
 			"path": "pages/home-page/pay-account",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "收款账号",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -172,6 +183,7 @@
 		{
 			"path": "pages/home-page/pay-account-edit",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "新增",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -181,6 +193,7 @@
 		{
 			"path":"pages/home-page/pay-pwd",
 			"style": {
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "支付密码",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -190,6 +203,7 @@
 		{
 			"path": "pages/home-page/team",
 			"style":{
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "我的团队",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -234,6 +248,7 @@
 		{
 			"path": "pages/home-page/withdraw",
 			"style": {
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "提现",
 				"navigationBarBackgroundColor":"#FFF",
 				"navigationBarTextStyle":"black"
@@ -275,6 +290,7 @@
 			"path" : "pages/home-page/gf_gift",
 			"style" : 
 			{
+				"navigationStyle": "custom",
 				"navigationBarTitleText" : "福利工资",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff",
@@ -321,6 +337,7 @@
 			"path" : "pages/home-page/gf_cz",
 			"style" : 
 			{
+				"navigationStyle": "custom",
 				"navigationBarTitleText" : "在线充值",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff",
@@ -354,6 +371,7 @@
 			"path" : "pages/home-page/gf_ugm",
 			"style" : 
 			{
+				"navigationStyle": "custom",
 				"navigationBarTitleText" : "购买USDT",
 				"navigationBarBackgroundColor": "#fff",
 				"navigationBarTextStyle":"black",
@@ -364,6 +382,7 @@
 			"path" : "pages/home-page/gf_rgm",
 			"style" : 
 			{
+				"navigationStyle": "custom",
 				"navigationBarTitleText" : "人民币充值",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor":"#FFF",
@@ -374,6 +393,7 @@
 			"path": "pages/home-page/gf_cny3",
 			"style" : 
 			{
+				"navigationStyle": "custom",
 				"navigationBarTitleText" : "USDT兑汇人民币",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor":"#FFF",

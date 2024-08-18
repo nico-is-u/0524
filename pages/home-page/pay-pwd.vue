@@ -1,5 +1,11 @@
 <template>
-    <view class="page">
+    <view class="page page3">
+
+        <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="支付密码" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <!-- 内容正文 -->
         <view class="padding-box-3" style="padding-top: 2vh">
             <!-- 表单 -->

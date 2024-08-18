@@ -1,5 +1,11 @@
 <template>
-    <view class="page" id="my_shdz_edit">
+    <view class="page page3" id="my_shdz_edit">
+
+        <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="新增收货地址" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <!-- 内容正文 -->
         <view class="padding-box-3" style="padding-top: 0">
             <!-- 表单 -->

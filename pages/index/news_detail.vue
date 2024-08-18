@@ -1,5 +1,11 @@
 <template>
-	<view class="news_page">
+	<view class="news_page page3">
+		<!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="详情" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
+		<view style="height: 30rpx;"></view>
 		<u-parse :content="obj.content" :tagStyle="style"></u-parse>
 	</view>
 </template>

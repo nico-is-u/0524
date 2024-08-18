@@ -1,5 +1,10 @@
 <template>
-	<view class="container">
+	<view class="container page3">
+		<!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="在线充值" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
 		<view class="usdt" @click="too('gf_ucz')">
 			<image src="/static/images/my/usdt.png" style="width: 22px;" mode="widthFix"></image>
 			USDT充值通道

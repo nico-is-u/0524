@@ -1,5 +1,11 @@
 <template>
-    <view class="page" id="my-team">
+    <view class="page page3" id="my-team">
+
+         <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="我的团队" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <view class="padding-box-3">
             <view class="content-4">
 

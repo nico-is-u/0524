@@ -1,6 +1,11 @@
 <template>
-  <view class="page" id="gf_draw">
-    
+  <view class="page page3" id="gf_draw">
+
+      <!-- 顶栏 -->
+      <view class="page-navbar">
+        <nNavbar title="提现" :showBackBtn="true" :back="true"></nNavbar>
+      </view>
+      
       <!-- 余额信息 -->
       <view style="padding: 16rpx 12rpx 0">
         <view class="balance-info flex flex-y-center flex-x-center">

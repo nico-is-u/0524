@@ -1,5 +1,11 @@
 <template>
-    <view class="page">
+    <view class="page page3">
+
+		<!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="订单记录" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <view class="padding-box-3">
             <view class="card" v-if="dataList.length">
                 <view class="card-content">

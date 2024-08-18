@@ -1,5 +1,11 @@
 <template>
-    <view class="page" id="my_shdz">
+    <view class="page page3" id="my_shdz">
+
+        <!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="收货地址" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
         <view class="padding-box-3" style="padding-bottom: 10vh" v-if="dataList !== false">
             <view class="card-list-type-1 flex flex-column" v-if="dataList.length">
                 <view class="card-item" v-for="(item,index) in dataList" :key="index">

@@ -1,5 +1,11 @@
 <template>
-	<view class="container">
+	<view class="container page3">
+
+		<!-- 顶栏 -->
+		<view class="page-navbar">
+			<nNavbar title="福利工资" :showBackBtn="true" :back="true"></nNavbar>
+		</view>
+
 		<image :src="'/static/images/my/level'+(user_info.level) +'-2.png'" style="width: 100%;" mode="widthFix"></image>
 		<!-- 老的礼物列表  暂时屏蔽 -->
 		<!-- <view class="list">
