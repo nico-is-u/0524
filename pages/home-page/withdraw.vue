@@ -30,7 +30,7 @@
       <view class="padding-box-3">
         <view class="content-3" style="margin-top: 32rpx;">
           <!-- tab 菜单 -->
-          <view class="tab-menu-type-1 flex flex-between flex-y-end" v-show="false">
+          <view class="tab-menu-type-1 flex flex-between flex-y-end" v-show="true">
             <view :class="formData.pay_channel == 0 ? 'active' : ''" @click="formData.pay_channel = 0" class="menu-item menu-item-1 flex flex-center">
               <view class="triangle"></view>
               <text>USDT</text>
