@@ -1191,6 +1191,10 @@
 			border-radius: 8rpx;
 		}
 
+		.u-textarea{
+			background-color: #F9F9F9 !important;
+		}
+
 		.u-form-item{
 			padding-bottom: 10rpx;
 		}

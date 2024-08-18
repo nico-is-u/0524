@@ -3,23 +3,22 @@
 
         <!-- 顶栏 -->
 		<view class="page-navbar">
-			<nNavbar title="USDT兑汇人民币" :showBackBtn="true" :back="true"></nNavbar>
+			<nNavbar title="人民币汇兑USDT" :showBackBtn="true" :back="true"></nNavbar>
 		</view>
 
-
         <!-- 文字部分 -->
-        <view class="grid-list" v-if="usdtPrice !== false">
+        <view class="grid-list" v-if="cnyPrice !== false">
             <view class="item">
-                <view class="label">可用余额（USDT）</view>
-                <view class="desc">{{usdtPrice}}</view>
+                <view class="label">可用余额（CNY）</view>
+                <view class="desc">{{cnyPrice}}</view>
             </view>
             <view class="item" style="align-items: flex-end">
                 <view class="label">汇率</view>
-                <view class="desc">{{cnyRate}}</view>
+                <view class="desc">{{cny2usdt_rate}}</view>
             </view>
         </view>
 
-		<view class="form">
+        <view class="form">
 			<!-- 表单部分 -->
             <u--form
                 ref="uForm"
@@ -31,9 +30,9 @@
             >
                 
 
-                <!-- 汇兑金额 （USDT） -->
+                <!-- 汇兑金额 （CNY） -->
                 <u-form-item
-                    label="USDT"
+                    label="CNY"
                     prop="amount"
                     :borderBottom="false"
                 >
@@ -48,22 +47,35 @@
                         @click="enterMaximum"
                         slot="suffix"
                     ></u--text>
+
                     </u--input>
                 </u-form-item>
 
-                <!-- 汇兑金额（CNY） -->
+                <!-- 汇兑金额（USDT） -->
                 <u-form-item 
-                label="CNY"
+                label="USDT"
                 :borderBottom="false">
-                    <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ cnyPrice }}</view>
+                    
+                    <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ usdtPrice }}</view>
+                    
                 </u-form-item>
+
+                <!-- 收款地址 -->
+                <!-- <u-form-item
+                    label="收款地址"
+                    props="address"
+                    :borderBottom="false"
+                >
+                    <u--textarea v-model="formData.address" placeholder="请输入收款地址" ></u--textarea>
+                </u-form-item> -->
 
             </u--form>
 
 		</view>
 		
 		<u-button iconColor="#fff" class="btn" :loading="isDone" loadingText="请稍等" text="充值" @click="buy" ></u-button>
-	</view>
+
+    </view>
 </template>
 
 <script>
@@ -71,27 +83,32 @@ export default {
     data(){
         return {
             isDone:false,
-            usdtPrice:false,                     // USDT余额
-            cnyRate:false,                      // CNY汇率（兑USDT）
+            cnyPrice:false,                     // USDT余额
+            cny2usdt_rate:false,                // CNY汇率（兑USDT）
             formData:{
                 amount:'',                  // 交易金额
+                address:'',                 // 收款地址
             },
             formRules:{
                 amount:[{
                     required:true,
                     message:'请输入交易金额'
-                }]
+                }],
+                // address:[{
+                //     required:true,
+                //     message:"请输入收款地址"
+                // }]
             }
         }
     },
     computed:{
-        cnyPrice:{
+        usdtPrice:{
             get(){
                 let result = '0.00'
-                if(this.formData.amount && this.cnyRate){
+                if(this.formData.amount && this.cny2usdt_rate){
                     const amount = parseFloat(this.formData.amount)
                     if(amount){
-                        result = parseFloat(amount * this.cnyRate).toFixed(2)
+                        result = parseFloat(amount / this.cny2usdt_rate).toFixed(2)
                     }
                 }
                 return result
@@ -107,7 +124,7 @@ export default {
 
             this.isDone = true;
 
-            this.to.www(this.api.topup3, {
+            this.to.www(this.api.topup2, {
                 amount:this.formData.amount
             }, 'p')
             .then(() => {
@@ -123,15 +140,16 @@ export default {
         },
         /* 输入最大金额 */
         enterMaximum(){
-            this.formData.amount = this.usdtPrice
+            this.formData.amount = this.cnyPrice
         },
         /* 用户信息 */
 		getUserInfo() {
 			this.to.www(this.api.user_info).then(res => {
 
 				this.userInfo = res.data
-				this.usdtPrice = parseFloat(res.data.usdt).toFixed(2)
-                this.cnyRate = parseFloat(res.data.cnyRate).toFixed(2)
+
+				this.cnyPrice = parseFloat(res.data.topup_balance).toFixed(2)
+                this.cny2usdt_rate = parseFloat(res.data.cny2usdt_rate).toFixed(2)
 
 				uni.setStorage({
 					data: this.userInfo,

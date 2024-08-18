@@ -9,13 +9,20 @@
 			<image src="/static/images/my/usdt.png" style="width: 22px;" mode="widthFix"></image>
 			USDT充值通道
 		</view>
+
 		<view class="cny" @click="too('gf_rgm')">
 			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
 			CNY充值通道
 		</view>
-		<view class="cny2 margin-t-40" @click="too('gf_cny3')">
-			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
+
+		<view class="usdt margin-t-40" @click="too('gf_cny3')">
+			<image src="/static/images/my/usdt.png" style="width: 22px;" mode="widthFix"></image>
 			USDT兑汇人民币
+		</view>
+
+		<view class="cny2 margin-t-40" @click="too('gf_cny4')">
+			<image src="/static/images/my/cny.png" style="width: 22px;" mode="widthFix"></image>
+			人民币汇兑USDT
 		</view>
 	</view>
 </template>
