@@ -29,7 +29,14 @@
                             border="none">
                         </u--input>
                     </u-form-item>
-
+                    
+                    <u-form-item
+                        label="提示" 
+                        labelWidth="150rpx">
+                        <view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">
+                            请仔细核对您的收款地址，若因您的地址错误，造成资金损失，由您自行承担。
+                        </view>
+                    </u-form-item>
 
                     <!-- 加载动画 -->
                     <u-loading-page :loading="isLoading"></u-loading-page>
