@@ -69,8 +69,8 @@
           <!-- 收款地址（trc） -->
           <template v-if="formData.pay_channel == 0">
 
-            <u-form-item v-if="trcList2.length" label="钱包地址" prop="usdt_address" :borderBottom="false">
-              <view style="padding: 30rpx 0 0 20rpx;">{{ trcList2[trcIndex].address || '' }}</view>
+            <u-form-item label="钱包地址" prop="usdt_address" :borderBottom="false">
+              <view style="padding: 30rpx 0 0 20rpx;">{{ trcAddress || '暂无钱包地址' }}</view>
 
             </u-form-item>
 
@@ -99,7 +99,8 @@
       <u-loading-page :loading="isLoading" :loading-text="regStatus" style="z-index: 3"></u-loading-page>
 
       <!-- 提交按钮 -->
-      <view class="n-button" style="margin-top: 64rpx;height: initial!important;" @click="checkForm">提现</view>
+      <u-button class="n-button" text="提现" :loading="isLoading" loadingText="请稍等" @click="checkForm" style="margin-top: 64rpx;"></u-button>
+
     </view>
 
     <!-- 提现记录 -->
@@ -199,7 +200,23 @@ export default {
         })
       }
       return result
-    }
+    },
+    trcAddress(){
+      let result = ''
+      if (Array.isArray(this.trcList2) && this.trcList2.length) {
+        result = this.trcList2[this.trcIndex].address || ''
+      }
+      return result
+    },
+
+    trcId(){
+      let result = ''
+      if (Array.isArray(this.trcList2) && this.trcList2.length) {
+        result = this.trcList2[this.trcIndex].id || ''
+      }
+      return result
+    },
+
   },
   onShow() {
     let bank_info = uni.getStorageSync("BANK_DRAW");
@@ -214,11 +231,12 @@ export default {
   methods: {
     /* 检查表单 */
     checkForm() {
+      
       this.$refs.uForm.validate().then(res => {
 
         if (this.formData.pay_channel == 0) {
-          this.formData.usdt_address = this.trcList2[this.trcIndex].address || ''
-          this.formData.bank_id = this.trcList2[this.trcIndex].id || 0
+          this.formData.usdt_address = this.trcAddress
+          this.formData.bank_id = this.trcId
           // return this.toa('请输入钱包地址')
         }
 
@@ -250,7 +268,9 @@ export default {
             if(msg) this.toa(msg)
           })
 
-      }).catch(()=>{})
+      }).catch((e)=>{
+        console.log(e)
+      })
     },
     /* 拉取收款账号列表（trc) */
     async getTrcList() {
