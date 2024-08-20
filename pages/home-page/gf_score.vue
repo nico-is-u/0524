@@ -1,11 +1,11 @@
 <template>
 	<view class="container">
-		<view class="back_head" @click="too('/pages/index/my','tab')">
-			<u--text prefixIcon="arrow-left" iconStyle="font-size: 38rpx;color:#ebebeb" color="#ebebeb" align="left"
-				text=""></u--text>
-			<u--text color="#fff" bold align="center" text="积分兑换"></u--text>
-			<u--text color="#d7d7d7" align="right" text=""></u--text>
-		</view>
+	
+		<!-- 顶栏 -->
+		<nNavbar title="积分兑换" :showBackBtn="true" :back="false" :backFunc="backPrev" :isFixed="true">
+			<u--text @click="too('gf_score_order_list')" color="white" align="right" text="兑换订单" style="padding-right: 10rpx; padding-top: 10rpx"></u--text>
+		</nNavbar>
+
 		<view class="head">
 			<view class="box">
 				<view style="display: flex;align-items: center;">
@@ -86,6 +86,9 @@
 					this.isDone = false
 				})
 			},
+			backPrev(){
+				this.too('/pages/index/my','tab')
+			}
 		},
 		onLoad() {
 			this.to.www(this.api.user_info).then(res => {

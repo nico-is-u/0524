@@ -148,6 +148,9 @@ const xxxxxxxxxxxxxx = {
 	integralList: '/F0/nZaYgwdTvNOscZF1+EeToiLj+ceBuETQo6K33O8=',
 	// 购买积分产品
 	integralPlaceOrder: '0yJhE0fDJe+0qBboxTow0cDBnRNgkuzQVRCbXvvK7Tg=',
+	// 积分兑换记录
+	integralOrderList:'OUcres2EgImma5CDTc/WsHSgcce8ZmSVGiaMNa36oks=',
+
 	// 礼品列表
 	// vipGiftList: 'lHdsdfSi0RFCVlfAqQMMJzZNIaeQoiB8DV/L/Cghz24=',
 	// 领取礼品

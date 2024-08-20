@@ -1,6 +1,9 @@
 <template>
     
-    <view class="app-nav-bar flex flex-between" :class="padding ? 'app-padding-nav-bar' : ''">
+    <view class="app-nav-bar flex flex-between" :class="{
+        'app-padding-nav-bar':padding,
+        'app-nav-bar-fixed':isFixed
+    }">
         <!-- 左侧 -->
         <view class="left-side flex" @click="clickLeft">
             <!-- 显示返回箭头 -->
@@ -31,6 +34,10 @@ export default {
             default:''
         },
         padding:{
+            type:Boolean,
+            default:false,
+        },
+        isFixed:{
             type:Boolean,
             default:false,
         },
@@ -98,5 +105,12 @@ export default {
     &.app-padding-nav-bar{
         height: 110rpx;
     }
+
+    &.app-nav-bar-fixed{
+        position: fixed;
+        width: 100%;
+        background: #1292FF;
+    }
+
 }
 </style>

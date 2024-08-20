@@ -6,6 +6,9 @@
 			<u--text color="#000" bold align="center" text="邀请好友"></u--text>
 			<u--text color="#d7d7d7" align="right" text=""></u--text>
 		</view>
+
+		
+
 		<view class="content">
 			<view class="card">
 				<view style="text-align: center;font-size: 16px;font-weight: bold;">我的邀请码</view>

@@ -287,6 +287,7 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 积分兑换 - 及记录页面
 		{
 			"path" : "pages/home-page/gf_score",
 			"style" : 
@@ -296,6 +297,16 @@
 				"enablePullDownRefresh" : false
 			}
 		},
+		{
+			"path" : "pages/home-page/gf_score_order_list",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
+		},
+		
 		{
 			"path" : "pages/home-page/gf_gift",
 			"style" : 
