@@ -121,7 +121,7 @@ export default {
             if(this.userInfo){
                 const result1 = this.userInfo.licai_short ? parseFloat(this.userInfo.licai_short).toFixed(2) : 0
                 const result2 = this.userInfo.total_foreign ? parseFloat(this.userInfo.total_foreign).toFixed(2) : 0
-                result = (result1 + result2) ? parseFloat(result1 + result2).toFixed(2) : '0.00'
+                result = (Number(result1) + Number(result2)) ? (Number(result1) + Number(result2)).toFixed(2) : '0.00'
             }
             return result
         }
