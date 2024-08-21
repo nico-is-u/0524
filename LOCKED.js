@@ -217,6 +217,8 @@ const xxxxxxxxxxxxxx = {
 	system_notice:'j8TX/gISBUE0P+tvthwl7A==',
 	// 人民币汇率
 	rmb_rate:'DMXUwwdQZIlpMNKNvReaqtXVXJfYNGeq9ehyu7vhguI=',
+	// 是否允许注册
+	canRegister:'5SsIJedPmQH7RxC+wZLAS6C985nSKcdeIEQCZM5IxIM=',
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }

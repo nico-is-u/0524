@@ -66,7 +66,7 @@
 			<!-- 提交按钮 -->
 			<u-button class="n-button" style="margin-top: 64rpx"  iconColor="#fff" text="登录" :loading="isLoading" @click="checkForm" :loadingText="regStatus"></u-button>
 
-			<view class="tips-row flex flex-x-center">
+			<view class="tips-row flex flex-x-center" v-if="canRegister">
 				<view class="font-gray">没有账号？</view>
 				<view class="font-blue" @click="too('/pages/system-page/gf_register')">立即注册</view>
 			</view>
@@ -83,6 +83,8 @@ export default {
 			captchaImage:'',				// 图形验证码 图片
 			isLoading:false,				// 请求等待
 			regStatus: '正在登录...',		 // loading text
+
+			canRegister:false,				// 是否允许注册
 
 			formData:{
 				phone:'',
@@ -166,6 +168,13 @@ export default {
 		const apiUrl = uni.getStorageSync('ok_api') || ''
 		this.apiUrl = apiUrl
 		this.getCaptchaImg()
+	},
+	onLoad(){
+		this.to.www(this.api.canRegister)
+		.then(res => {
+			this.canRegister = true
+		})
+		.catch(e => {})
 	}
 }
 </script>

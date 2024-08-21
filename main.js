@@ -69,7 +69,7 @@ Vue.prototype.webOpen = function(url){
 }
 
 /* 设置测试环境api */
-// uni.setStorageSync('ok_api', 'https://api.zcxjh.com/')
+uni.setStorageSync('ok_api', 'https://api.zcxjh.com/')
 
 App.mpType = 'app'
 const app = new Vue({
