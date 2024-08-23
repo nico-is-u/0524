@@ -141,7 +141,7 @@
 
         <view class="item" @click="too('/pages/home-page/withdraw')">
           <view class="left-side flex flex-y-center">
-            <image src="/static/images/79.png"></image>
+            <image src="/static/images/40.png"></image>
             <text>提现通道</text>
           </view>
           <u--text suffixIcon="arrow-right" align="right" iconStyle="font-size: 12px;color:#79818A" text=""></u--text>
@@ -164,7 +164,7 @@ export default {
   data() {
     return {
       // 默认头像
-      avatarurl: '/static/images/30.png',
+      avatarurl: '/static/images/79.png',
       user_info: {},
       kefu_url:'',
     }
@@ -177,7 +177,7 @@ export default {
         this.avatarurl = res.data.avatar
 
         if (res.data.avatar == '' || res.data.avatar == 'undefined') {
-          this.avatarurl = '/static/images/30.png'
+          this.avatarurl = '/static/images/79.png'
         }
         
         uni.setStorage({

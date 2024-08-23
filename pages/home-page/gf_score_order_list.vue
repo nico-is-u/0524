@@ -16,6 +16,11 @@
                                 <view class="right-side">{{item.order_sn || ''}}</view>
                             </view>
 
+							<view class="row flex flex-between">
+                                <view class="left-side">快递单号</view>
+                                <view class="right-side">{{item.express || ''}}</view>
+                            </view>
+
                             <view class="row flex flex-between">
                                 <view class="left-side">兑换产品</view>
                                 <view class="right-side">{{item.name || ''}}</view>
