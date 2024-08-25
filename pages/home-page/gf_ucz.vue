@@ -22,6 +22,12 @@
 				</view>
 			</view>
 			<view class="btn" @click="upload">转账凭证提交</view>
+
+			
+			<view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">
+				充值金额 100U 起，不受理 100U 以下订单，若因您的充值金额未达到要求，造成资金损失，由您自行承担
+			</view>
+			
 		</view>
 	</view>
 </template>
