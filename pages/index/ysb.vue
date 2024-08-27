@@ -1,6 +1,7 @@
 <template>
 	<view class="page">
-		<view class="k-line-head" style="height: 530rpx">
+		<!-- style="height: 530rpx" -->
+		<view class="k-line-head" >
 			
 			<!-- 顶栏 -->
 			<nNavbar title="云数币" :showBackBtn="false">
@@ -13,17 +14,17 @@
 				<!-- K线部分 -->
 				<view class="k-line-box" style="border-radius: 16rpx">
 					<!-- 小菜单2 -->
-					<!-- <view class="menu-list-2" style="justify-content: flex-start; gap:30rpx">
+					<view class="menu-list-2" style="justify-content: flex-start; gap:30rpx">
 						<view class="menu-item" @click="changeKLineDatas('30m')" :class="bar == '30m' ? 'active' : ''">30分</view>
 						<view class="menu-item" @click="changeKLineDatas('1D')" :class="bar == '1D' ? 'active' : ''">日K</view>
 						<view class="menu-item" @click="changeKLineDatas('1W')" :class="bar == '1W' ? 'active' : ''">周K</view>
 						<view class="menu-item" @click="changeKLineDatas('1M')" :class="bar == '1M' ? 'active' : ''">月K</view>
-						<view class="menu-item" @click="changeKLineDatas('3M')" :class="bar == '3M' ? 'active' : ''">季K</view> -->
+						<view class="menu-item" @click="changeKLineDatas('3M')" :class="bar == '3M' ? 'active' : ''">季K</view>
 						<!-- <view class="menu-item more">
 							<text>更多</text>
 							<image src="/static/images/10.png" mode="widthFix"></image>
 						</view> -->
-					<!-- </view> -->
+					</view>
 
 					<!-- K线插件 -->
 					<view class="chart-shell">
