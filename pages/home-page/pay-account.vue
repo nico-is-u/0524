@@ -220,6 +220,12 @@ page{
             }
         }
 
+        .left-side{
+            width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         &.account-item2{
             background-image: url('/static/images/78.png');
         }
