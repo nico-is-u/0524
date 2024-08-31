@@ -19,15 +19,48 @@
 			<u-radio-group v-model="currentpay" placement="column" @change="groupChange">
 				<view class="select-item" v-for="(item,index) in channelList" :class="{active: currentpay == index}" @click="groupChange(index)">
 					<view class="tb-header">
-					 	<view style="display: flex;align-items: center;width: 50vw;">
+						<view style="display: flex;align-items: center;width: 50vw;">
 							<image :src="domain+item.img" style="width: 20px;margin-right: 8px;" mode="widthFix"></image>
 							{{item.name + "（" + item.single_topup_min_amount + "-" + item.single_topup_max_amount + "）"}}
 						</view>
-					 </view>
+						</view>
 					<u-radio :name="index"></u-radio>
 				</view>
-			  </u-radio-group>
+			</u-radio-group>
 		</view>
+
+		<view class="pay-content" v-if="payItemObj.channel == 0">
+
+			<u--form labelPosition="top">
+				<u-form-item
+					label="付款人姓名"
+					labelWidth="220rpx">
+					<u--input
+						v-model="formData.uname"
+						placeholder="请输入付款人姓名"
+						border="none">
+					</u--input>
+				</u-form-item>
+
+				<u-form-item
+					label="请选择上传凭证"
+					labelWidth="300rpx"
+				>
+					<view class="n-upload-box flex flex-column flex-y-center" style="margin-top: 40rpx" @click="upload">
+						<template v-if="formData.pay_voucher_img_url == ''">
+							<u-icon size="24px" color="#ababab" name="plus"></u-icon>
+							<view class="flex flex-x-center margin-t-25">
+								<u--text text="请上传您的凭证" color="#ababab"></u--text>
+							</view>
+						</template>
+						<image v-else :src="domain + formData.pay_voucher_img_url" style="width: 100%;" mode="widthFix"></image>
+					</view>
+				</u-form-item>
+			</u--form>
+
+		</view>
+
+
 		<view class="btn" @click="buy">充值</view>
 
 		<!-- 加载动画 -->
@@ -44,25 +77,89 @@
 				channelList: [],
 				currentpay: 0,
 
+				formData:{
+					uname:'',
+					pay_voucher_img_url:'',
+				},
+
 				isLoading:false,
 				regStatus:'处理中',
-
+				
 			};
+		},
+		computed:{
+			/* 当前选中项 */
+			payItemObj(){
+
+				let result = {
+					channel:-1
+				}
+
+				if(Array.isArray(this.channelList) && this.channelList.length){
+					return this.channelList[this.currentpay]
+				}
+				return result
+			}
 		},
 		methods: {
 			groupChange(e){
 				this.currentpay = e;
+				console.log(this.payItemObj)
 			},
+
+			upload(){
+				let that = this;
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['compressed'],
+					sourceType: ['album'],
+					success: function (res) {
+						uni.showLoading();
+						that.to.www(that.api.nyfz_upload, res.tempFilePaths[0], "p", "file")
+							.then(res => {
+								that.toa('上传成功')
+								that.formData.pay_voucher_img_url = res[0];
+								console.log(that.formData);
+								uni.hideLoading();
+							})
+							.catch((err) => {
+								console.log(err)
+								// uni.hideLoading();
+							})
+					}
+				});
+			},
+
 			buy(){
-				this.payItemObj = this.channelList[this.currentpay];
 				let parms = {
 					amount: this.money,
 					pay_channel: this.payItemObj.channel,
 					payment_config_id: this.payItemObj.id,
 					is_usdt: 0
 				}
+
+				/* 表单判断 */
 				if(this.money>Number(this.payItemObj.single_topup_max_amount)) return this.toa('最高限额'+this.payItemObj.single_topup_max_amount);
 				if(this.money<Number(this.payItemObj.single_topup_min_amount)) return this.toa('最低限额'+this.payItemObj.single_topup_min_amount);
+
+
+				/* 如果是银行卡 */
+				if(this.payItemObj.channel == 0){
+					if(!this.formData.uname){
+						this.toa('请输入付款人姓名')
+						return
+					}
+					else if(!this.formData.pay_voucher_img_url){
+						this.toa('请上传您的凭证')
+						return
+					}else{
+						parms = {
+							...parms,
+							...this.formData
+						}
+					}
+				}
+
 				console.log(parms)
 
 				/* 打开等待 */
@@ -79,6 +176,11 @@
 						}
 
 					})
+					.catch(e => {
+						this.isLoading = false
+					})
+
+
 				// setTimeout(() => {
 				// 	this.isDone = false;
 				// }, 3000)
