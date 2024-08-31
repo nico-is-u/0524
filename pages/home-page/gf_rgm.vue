@@ -53,7 +53,7 @@
 								<u--text text="请上传您的凭证" color="#ababab"></u--text>
 							</view>
 						</template>
-						<image v-else :src="domain + formData.pay_voucher_img_url" style="width: 100%;" mode="widthFix"></image>
+						<image v-else :src="formData.pay_voucher_img_url" style="width: 100%;" mode="widthFix"></image>
 					</view>
 				</u-form-item>
 			</u--form>
@@ -73,6 +73,8 @@
 		data() {
 			return {
 				domain: "",
+				TK:"",
+
 				money: '',
 				channelList: [],
 				currentpay: 0,
@@ -115,17 +117,32 @@
 					sourceType: ['album'],
 					success: function (res) {
 						uni.showLoading();
-						that.to.www(that.api.nyfz_upload, res.tempFilePaths[0], "p", "file")
-							.then(res => {
-								that.toa('上传成功')
-								that.formData.pay_voucher_img_url = res[0];
-								console.log(that.formData);
-								uni.hideLoading();
-							})
-							.catch((err) => {
+
+						uni.uploadFile({
+							url: `${that.domain}` + `/common/uploadFile`,
+							filePath:res.tempFilePaths[0],
+							header: {token: that.TK},
+							name: 'file',
+							success: (res) => {
+								let {data:resData} = res
+								if(resData){
+									resData = JSON.parse(resData)
+
+									that.toa('上传成功')
+
+									that.formData.pay_voucher_img_url = resData.data.url || ''
+									uni.hideLoading()
+
+								}
+
+
+							},
+							fail:(err) => {
 								console.log(err)
-								// uni.hideLoading();
-							})
+								uni.hideLoading()
+							}
+						})
+
 					}
 				});
 			},
@@ -172,7 +189,17 @@
 						if(result){
 							this.webOpen(result)
 						}else{
-							this.toa('网络错误,请稍后重试')
+							/* 如果是银行卡通道 */
+							if(this.payItemObj.channel == 0){
+
+								setTimeout(() => {
+									this.toa('提交成功')
+								},250)
+								this.too('/','bac')
+								
+							}else{
+								this.toa('网络错误,请稍后重试')
+							}
 						}
 
 					})
@@ -187,7 +214,9 @@
 			}
 		},
 		onLoad() {
-			this.domain = uni.getStorageSync("ok_api");
+			this.domain = uni.getStorageSync("ok_api")
+			this.TK = uni.getStorageSync("TK")
+
 			this.to.www(this.api.payChannelList).then(res => {
 				this.channelList = res.data;
 			})
