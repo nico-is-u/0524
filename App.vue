@@ -492,6 +492,16 @@
 
 	}
 
+	.pay-info-list{
+		.u-input{
+			background-color: #fff !important;
+		}
+		.u-input__content{
+			padding-top: 5rpx !important;
+			padding-bottom: 5rpx !important;
+		}
+	}
+
 	/* 悬浮按钮 */
 	.fixed-button-group{
 		position: fixed;

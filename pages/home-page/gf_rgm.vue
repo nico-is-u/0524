@@ -30,6 +30,71 @@
 		</view>
 
 		<view class="pay-content" v-if="payItemObj.channel == 0">
+			<view class="pay-title">请确认充值信息</view>
+			<view class="pay-info-list" style="margin-top: 30rpx;">
+				<u--form labelPosition="top" v-if="payItemObj.card_info">
+					<u-form-item
+						label="收款卡号"
+						labelWidth="220rpx">
+						<u--input
+							disabled
+							v-model="payItemObj.card_info.card_number"
+							border="none">
+
+							<!-- 点击复制 -->
+							<u--text
+								color="#838282"
+								text="复制"
+								@click="toCopy(payItemObj.card_info.card_number)"
+								slot="suffix"
+							></u--text>
+							
+						</u--input>
+					</u-form-item>
+
+					<u-form-item
+						label="收款银行"
+						labelWidth="220rpx">
+						<u--input
+							disabled
+							v-model="payItemObj.card_info.bank_name"
+							border="none">
+
+							<!-- 点击复制 -->
+							<u--text
+								color="#838282"
+								text="复制"
+								@click="toCopy(payItemObj.card_info.bank_name)"
+								slot="suffix"
+							></u--text>
+
+						</u--input>
+					</u-form-item>
+
+					<u-form-item
+						label="收款姓名"
+						labelWidth="220rpx">
+						<u--input
+							disabled
+							v-model="payItemObj.card_info.realname"
+							border="none">
+
+							<!-- 点击复制 -->
+							<u--text
+								color="#838282"
+								text="复制"
+								@click="toCopy(payItemObj.card_info.realname)"
+								slot="suffix"
+							></u--text>
+
+						</u--input>
+					</u-form-item>
+
+				</u--form>
+			</view>
+		</view>
+
+		<view class="pay-content" v-if="payItemObj.channel == 0">
 
 			<u--form labelPosition="top">
 				<u-form-item
@@ -145,6 +210,12 @@
 
 					}
 				});
+			},
+
+			toCopy(val){
+				uni.setClipboardData({
+					data: val
+				})
 			},
 
 			buy(){
