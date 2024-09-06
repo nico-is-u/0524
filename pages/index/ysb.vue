@@ -313,14 +313,18 @@ export default {
 		/* 样式配置 */
 		// dispose('chart')
 
+
 		/* 轮询币种数据 */
 		this.getCDatas().then(() => {
-			this.intervalId = setInterval(this.getCDatas, 5000)
+			this.intervalId = setInterval(this.getCDatas, 10000)
 		}).catch(e => null)
+
 
 		/* 拉取K线 */
 		this.getKLineDatas()
-		this.intervalId2 = setInterval(this.getKLineDatas, (60000 * 1))
+		this.intervalId2 = setInterval(this.getKLineDatas, 10000)
+
+		
 	},
 	onLoad(){
 		/* 拉取兑换信息 */
