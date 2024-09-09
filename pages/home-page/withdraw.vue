@@ -8,26 +8,47 @@
 
     <!-- 余额信息 -->
     <view style="padding: 16rpx 12rpx 0">
+
       <view class="balance-info flex flex-y-center flex-x-center">
-        <view class="text-block flex flex-column">
-          <view class="label">USDT余额</view>
-          <view class="title">{{ Number(userInfo.usdt).toFixed(2) || '0' }}</view>
-        </view>
-        <view class="line"></view>
-        <view class="text-block flex flex-column">
-          <view class="label">CNY可用余额</view>
-          <view class="title">{{ userInfo.topup_balance || '0.00' }}</view>
-        </view>
-        <view class="line"></view>
-        <view class="text-block flex flex-column">
-          <view class="label">CNY可提余额</view>
-          <view class="title">{{ userInfo.balance || '0.00' }}</view>
+
+        <view class="balance-info-body flex">
+
+          <view class="text-block flex flex-column">
+            <view class="label">USDT余额</view>
+            <view class="title">{{ Number(userInfo.usdt).toFixed(2) || '0' }}</view>
+          </view>
+          <view class="line"></view>
+          <view class="text-block flex flex-column" style="margin-left: 48rpx;">
+            <view class="label">CNY可用余额</view>
+            <view class="title">{{ userInfo.topup_balance || '0.00' }}</view>
+          </view>
+
         </view>
       </view>
+
+      <view class="balance-info flex flex-y-center flex-x-center" style="margin-top: 12rpx;">
+
+        <view class="balance-info-header">CNY可提余额</view>
+        <view class="balance-info-body flex" style="padding-top: 48rpx;">
+
+          <view class="text-block flex flex-column">
+            <view class="label">本金余额</view>
+            <view class="title">{{ Number(userInfo.seed_money).toFixed(2) || '0.00' }}</view>
+          </view>
+          <view class="line"></view>
+          <view class="text-block flex flex-column" style="margin-left: 48rpx;">
+            <view class="label">收益余额</view>
+            <view class="title">{{ Number(userInfo.income_balance).toFixed(2) || '0.00' }}</view>
+          </view>
+
+        </view>
+
+      </view>
+
     </view>
 
     <!-- 提现表单 -->
-    <view class="padding-box-3">
+    <view class="padding-box-3" style="padding-top: 0;">
       <view class="content-3" style="margin-top: 32rpx;">
         <!-- tab 菜单 -->
         <view class="tab-menu-type-1 flex flex-between flex-y-end" v-show="true">
@@ -43,11 +64,11 @@
           </view>
         </view>
 
-        <view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
+        <view style="text-indent: 28px; font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 16px;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
 
         <!-- 表单部分 -->
         <u--form ref="uForm" :model="formData" :rules="formRules" labelPosition="top" :borderBottom="false"
-          labelWidth="auto">
+          labelWidth="auto" style="background-color: white;">
           <!-- 提现金额 -->
           <u-form-item label="提现" prop="amount" :borderBottom="false">
             <u--input type="number" v-model="formData.amount" placeholder="请输入要提现的数额" border="none">
@@ -318,6 +339,30 @@ page {
 
     padding: 0;
 
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    .balance-info-header{
+      color: rgba(255,255,255,.8);
+      position: absolute;
+
+      top: 24rpx;
+      
+      width: 100%;
+
+      font-size: 32rpx;
+      text-align: center;
+
+      padding-right: 32rpx;
+    }
+    
+    .balance-info-body{
+      width: 100%;
+      justify-content: center;
+    }
+
     .line {
       width: 2rpx;
       height: 120rpx;
@@ -345,6 +390,7 @@ page {
 
   .content-3 {
     overflow: hidden;
+    background-color: inherit;
   }
 
 
