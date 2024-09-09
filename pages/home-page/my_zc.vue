@@ -39,7 +39,7 @@
                         </view>
                         <view class="line"></view>
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=4')">
-                            <view class="label">{{userInfo && userInfo.balance ? (parseFloat(userInfo.balance).toFixed(2)) : '0.00'}}</view>
+                            <view class="label">{{myBalance}}</view>
                             <view class="value">可提余额</view>
                         </view>
                     </view>
@@ -122,6 +122,18 @@ export default {
                 const result1 = this.userInfo.licai_short ? parseFloat(this.userInfo.licai_short).toFixed(2) : 0
                 const result2 = this.userInfo.total_foreign ? parseFloat(this.userInfo.total_foreign).toFixed(2) : 0
                 result = (Number(result1) + Number(result2)) ? (Number(result1) + Number(result2)).toFixed(2) : '0.00'
+            }
+            return result
+        },
+        myBalance(){
+            let result = '0.00'
+            if(this.userInfo){
+                result = 0
+
+                const result1 = parseFloat(this.userInfo.balance).toFixed(2) || 0
+                const result2 = parseFloat(this.userInfo.income_balance).toFixed(2) || 0
+
+                result = (parseFloat(result1) + parseFloat(result2)).toFixed(2) || '0.00'
             }
             return result
         }

@@ -173,7 +173,7 @@ export default {
 
 				this.userInfo = res.data
 
-				this.cnyPrice = parseFloat(res.data.seed_money).toFixed(2)
+				this.cnyPrice = parseFloat(res.data.balance).toFixed(2)
 				this.cnyPrice2 = parseFloat(res.data.income_balance).toFixed(2)
 
                 this.cny2usdt_rate = parseFloat(res.data.cny2usdt_rate).toFixed(2)

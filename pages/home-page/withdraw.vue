@@ -33,7 +33,7 @@
 
           <view class="text-block flex flex-column">
             <view class="label">本金余额</view>
-            <view class="title">{{ Number(userInfo.seed_money).toFixed(2) || '0.00' }}</view>
+            <view class="title">{{ Number(userInfo.balance).toFixed(2) || '0.00' }}</view>
           </view>
           <view class="line"></view>
           <view class="text-block flex flex-column" style="margin-left: 48rpx;">
