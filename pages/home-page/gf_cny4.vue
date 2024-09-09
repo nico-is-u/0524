@@ -6,18 +6,27 @@
 			<nNavbar title="人民币汇兑USDT" :showBackBtn="true" :back="true"></nNavbar>
 		</view>
 
+        <view style="text-indent: 28px; font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 16px;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
+
         <!-- 文字部分 -->
         <view class="grid-list" v-if="cnyPrice !== false">
+            
             <view class="item">
-                <view class="label">可用余额（CNY）</view>
+                <view class="label">本金余额（CNY）</view>
                 <view class="desc">{{cnyPrice}}</view>
             </view>
             <view class="item" style="align-items: flex-end">
                 <view class="label">汇率</view>
                 <view class="desc">{{cny2usdt_rate}}</view>
             </view>
+
+            <view class="item">
+                <view class="label">收益余额（CNY）</view>
+                <view class="desc">{{cnyPrice2}}</view>
+            </view>
         </view>
 
+    
         <view class="form">
 			<!-- 表单部分 -->
             <u--form
@@ -29,7 +38,14 @@
                 labelWidth="auto"
             >
                 
-
+                <!-- 汇兑类型 -->
+                <u-form-item label="汇兑类型" prop="type" :borderBottom="false" >
+                    <u-radio-group v-model="formData.type" style="padding: 28rpx 0;">
+                        <u-radio :customStyle="{marginRight: '28px'}" label="本金" :name="1"></u-radio>
+                        <u-radio :customStyle="{marginRight: '28px'}" label="收益" :name="2"></u-radio>
+                    </u-radio-group>
+                </u-form-item>
+            
                 <!-- 汇兑金额 （CNY） -->
                 <u-form-item
                     label="CNY"
@@ -73,7 +89,7 @@
 
 		</view>
 		
-		<u-button iconColor="#fff" class="btn" :loading="isDone" loadingText="请稍等" text="充值" @click="buy" ></u-button>
+		<u-button iconColor="#fff" class="btn" :loading="isDone" loadingText="请稍等" text="兑换" @click="buy" ></u-button>
 
     </view>
 </template>
@@ -83,11 +99,15 @@ export default {
     data(){
         return {
             isDone:false,
-            cnyPrice:false,                     // USDT余额
+
+            cnyPrice:false,                     // 本金余额
+            cnyPrice2:false,                    // 收益余额
+
             cny2usdt_rate:false,                // CNY汇率（兑USDT）
             formData:{
                 amount:'',                  // 交易金额
                 address:'',                 // 收款地址
+                type:1,                     // 汇兑类型
             },
             formRules:{
                 amount:[{
@@ -140,7 +160,12 @@ export default {
         },
         /* 输入最大金额 */
         enterMaximum(){
-            this.formData.amount = this.cnyPrice
+            if(this.formData.type == 1){
+                this.formData.amount = this.cnyPrice
+            }
+            else if(this.formData.type == 2){
+                this.formData.amount = this.cnyPrice2
+            }
         },
         /* 用户信息 */
 		getUserInfo() {
@@ -148,7 +173,9 @@ export default {
 
 				this.userInfo = res.data
 
-				this.cnyPrice = parseFloat(res.data.balance).toFixed(2)
+				this.cnyPrice = parseFloat(res.data.seed_money).toFixed(2)
+				this.cnyPrice2 = parseFloat(res.data.income_balance).toFixed(2)
+
                 this.cny2usdt_rate = parseFloat(res.data.cny2usdt_rate).toFixed(2)
 
 				uni.setStorage({

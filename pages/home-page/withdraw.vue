@@ -7,11 +7,11 @@
     </view>
 
     <!-- 余额信息 -->
-    <view style="padding: 16rpx 12rpx 0">
+    <view style="padding: 16rpx 12rpx 0" v-if="userInfo">
 
       <view class="balance-info flex flex-y-center flex-x-center">
 
-        <view class="balance-info-body flex">
+        <view class="balance-info-body flex" >
 
           <view class="text-block flex flex-column">
             <view class="label">USDT余额</view>
@@ -26,7 +26,7 @@
         </view>
       </view>
 
-      <view class="balance-info flex flex-y-center flex-x-center" style="margin-top: 12rpx;">
+      <view class="balance-info flex flex-y-center flex-x-center" style="margin-top: 12rpx;"  >
 
         <view class="balance-info-header">CNY可提余额</view>
         <view class="balance-info-body flex" style="padding-top: 48rpx;">
@@ -64,7 +64,7 @@
           </view>
         </view>
 
-        <view style="text-indent: 28px; font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 16px;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
+        <view v-if="formData.pay_channel != 0" style="text-indent: 28px; font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 16px;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
 
         <!-- 表单部分 -->
         <u--form ref="uForm" :model="formData" :rules="formRules" labelPosition="top" :borderBottom="false"
@@ -75,6 +75,14 @@
               <!-- 后插槽 币种 -->
               <u--text :text="pay_channel_txt" :bold="true" slot="suffix"></u--text>
             </u--input>
+          </u-form-item>
+
+          <!-- 提现类型 -->
+          <u-form-item label="提现类型" prop="type" :borderBottom="false" v-if="formData.pay_channel != 0">
+            <u-radio-group v-model="formData.type" style="padding: 28rpx 0;">
+                <u-radio :customStyle="{marginRight: '28px'}" label="本金" :name="1"></u-radio>
+                <u-radio :customStyle="{marginRight: '28px'}" label="收益" :name="2"></u-radio>
+            </u-radio-group>
           </u-form-item>
 
           <!-- <u-form-item v-if="formData.pay_channel == 0"
@@ -175,7 +183,7 @@
 export default {
   data() {
     return {
-      userInfo: {},          // 用户信息
+      userInfo: false,          // 用户信息
 
       isLoading: false,                // 请求中
       regStatus: '正在提交...',		     // loading text
@@ -190,6 +198,7 @@ export default {
       bankInfo: {},
       formData: {
         pay_channel: 0,
+        type:1,                    // 提现类型
         amount: '',                // 收款金额
         pay_password: '',          // 支付密码
         usdt_address: '',
