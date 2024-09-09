@@ -169,7 +169,7 @@ export default {
 
 			kLine:false,								// K线插件
 			barList:['30m','1D','1W','1M','3M'],		// k线的时区
-			bar:'30m',
+			bar:'1D',
 
 			intervalId:null,
 			intervalId2:null,
@@ -282,7 +282,7 @@ export default {
 		/* 样式配置 */
 		chart.setStyles({
 			candle:{
-				type:'area',
+				//type:'area',
 				tooltip:{
 					// showRule:'none'
 					custom:function(){

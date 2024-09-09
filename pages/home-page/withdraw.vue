@@ -43,6 +43,8 @@
           </view>
         </view>
 
+        <view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 0;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
+
         <!-- 表单部分 -->
         <u--form ref="uForm" :model="formData" :rules="formRules" labelPosition="top" :borderBottom="false"
           labelWidth="auto">
