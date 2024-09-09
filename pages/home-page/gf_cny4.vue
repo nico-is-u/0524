@@ -72,7 +72,8 @@
                 label="USDT"
                 :borderBottom="false">
                     
-                    <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ usdtPrice }}</view>
+                <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ usdtPrice2 }}</view>
+                <view v-if="usdtPrice != '0.00'" style="padding: 20px 0 0 10px; font-size: 30rpx; text-decoration: line-through; color: rgba(255,0,0,.7);">({{ usdtPrice }})</view>
                     
                 </u-form-item>
 
@@ -137,6 +138,13 @@ export default {
                 return 
             }
         },
+        usdtPrice2(){
+            let result = '0.00'
+            if(this.usdtPrice){
+                result = (parseFloat(this.usdtPrice) * 0.9).toFixed(2)
+            }
+            return result
+        }
     },
     methods:{
         buy(){
@@ -145,7 +153,8 @@ export default {
             this.isDone = true;
 
             this.to.www(this.api.topup2, {
-                amount:this.formData.amount
+                amount:this.formData.amount,
+                type:this.formData.type
             }, 'p')
             .then(() => {
                 this.isDone = false;
