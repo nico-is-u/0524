@@ -6,7 +6,7 @@
 			<nNavbar title="人民币汇兑USDT" :showBackBtn="true" :back="true"></nNavbar>
 		</view>
 
-        <view style="text-indent: 28px; font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 16px;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
+        <view v-if="formData.type != 1" style="text-indent: 28px; font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 16px;color: #CD854B;">为保证您收入的合法合规，响应税务部门要求，收益余额提现将扣除20%个人所得税，云数中国补贴10%，实际缴纳个税10%，已经提现部分由云数中国全额补贴，无需追缴！</view>
 
         <!-- 文字部分 -->
         <view class="grid-list" v-if="cnyPrice !== false">
@@ -71,9 +71,15 @@
                 <u-form-item 
                 label="USDT"
                 :borderBottom="false">
-                    
-                <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ usdtPrice2 }}</view>
-                <view v-if="usdtPrice != '0.00'" style="padding: 20px 0 0 10px; font-size: 30rpx; text-decoration: line-through; color: rgba(255,0,0,.7);">({{ usdtPrice }})</view>
+                
+                <template v-if="formData.type == 1">
+                    <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ usdtPrice }}</view>
+                </template>
+
+                <template v-if="formData.type == 2">
+                    <view style="padding: 20px 0 0 20px; font-size: 32rpx;">{{ usdtPrice2 }}</view>
+                    <view v-if="usdtPrice != '0.00'" style="padding: 20px 0 0 10px; font-size: 30rpx; text-decoration: line-through; color: rgba(255,0,0,.7);">({{ usdtPrice }})</view>
+                </template>
                     
                 </u-form-item>
 
