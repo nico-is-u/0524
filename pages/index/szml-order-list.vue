@@ -15,9 +15,15 @@
                                 <view class="left-side">订单编号</view>
                                 <view class="right-side">{{item.order_sn}}</view>
                             </view>
+
                             <view class="row flex flex-between">
                                 <view class="left-side">质押数量</view>
                                 <view class="right-side">{{item.pledge_number}}</view>
+                            </view>
+
+							<view class="row flex flex-between">
+                                <view class="left-side">质押金额</view>
+                                <view class="right-side">{{item.amount}}</view>
                             </view>
 							
 							<view class="row flex flex-between">
@@ -44,12 +50,12 @@
 							    <view class="left-side">下单时间</view>
 							    <view class="right-side">{{item.created_at}}</view>
 							</view>
-                            <!-- <view class="row flex flex-between" v-if="item.status == 2">
+                            <view class="row flex flex-between" v-if="item.status == 2">
 							    <view class="left-side">操作</view>
 							    <view class="right-side">
 									<u-button class="btn" text="赎回" @click="shuhui(item.id)"></u-button>
 								</view>
-							</view> -->
+							</view>
                         </view>
                     </z-paging>
                 </view>
@@ -75,11 +81,11 @@ export default {
 					case 4:
 						return '已结束';
                     case 5:
-                        return '赎回审核';
+                        return '赎回申请中';
 					case 6:
-						return '已赎回'
+						return '赎回同意'
 					case 7:
-						return '赎回审核拒绝'
+						return '赎回拒绝'
 					default:
                         return ''
 				}
