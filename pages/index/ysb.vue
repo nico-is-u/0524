@@ -15,7 +15,7 @@
 				<view class="k-line-box" style="border-radius: 16rpx">
 					<!-- 小菜单2 -->
 					<view class="menu-list-2" style="justify-content: flex-start; gap:30rpx">
-						<view class="menu-item" @click="changeKLineDatas('30m')" :class="bar == '30m' ? 'active' : ''">30分</view>
+						<view class="menu-item" @click="changeKLineDatas('1min')" :class="bar == '1min' ? 'active' : ''">实时</view>
 						<view class="menu-item" @click="changeKLineDatas('1D')" :class="bar == '1D' ? 'active' : ''">日K</view>
 						<!-- <view class="menu-item" @click="changeKLineDatas('1W')" :class="bar == '1W' ? 'active' : ''">周K</view>
 						<view class="menu-item" @click="changeKLineDatas('1M')" :class="bar == '1M' ? 'active' : ''">月K</view>
@@ -169,8 +169,8 @@ export default {
 			loadingTxt2:'处理中...',					//	请求中 文字
 
 			kLine:false,								// K线插件
-			barList:['30m','1D','1W','1M','3M'],		// k线的时区
-			bar:'30m',
+			barList:['1min','30m','1D','1W','1M','3M'],		// k线的时区
+			bar:'1min',
 
 			intervalId:null,
 			intervalId2:null,
@@ -201,7 +201,23 @@ export default {
 		/* 更改K线查询 */
 		changeKLineDatas(bar){
 			this.bar = bar
-			this.getKLineDatas()
+
+			if(bar == '1min'){
+				this.kLine.setStyles({
+					candle:{
+						type:'area',
+					}
+				})
+				this.getKLineDatas()
+			}else if(bar == '1D'){
+				this.kLine.setStyles({
+					candle:{
+						type:'candle_solid',
+					}
+				})
+				this.getKLineDatas()
+			}
+
 		},
 		/* 执行K线查询 */
 		getKLineDatas(){
@@ -283,7 +299,7 @@ export default {
 		/* 样式配置 */
 		chart.setStyles({
 			candle:{
-				//type:'area',
+				type:'area',
 				tooltip:{
 					// showRule:'none'
 					custom:function(){
@@ -323,7 +339,7 @@ export default {
 
 		/* 拉取K线 */
 		this.getKLineDatas()
-		this.intervalId2 = setInterval(this.getKLineDatas, 10000)
+		this.intervalId2 = setInterval(this.getKLineDatas, 60000)
 
 		
 	},
