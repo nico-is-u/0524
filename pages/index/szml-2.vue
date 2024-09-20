@@ -320,6 +320,8 @@ page{
 
 		font-size: 32rpx;
 
+		width: calc(50% - 10rpx);
+
 		border: 1px solid transparent;
 		// border-color: #7A7079;
 		border-radius: 16rpx;
