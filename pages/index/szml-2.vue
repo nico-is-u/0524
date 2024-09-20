@@ -25,9 +25,15 @@
 					</view>
 				</view>
 
+				<!-- 二级tag菜单 -->
+				<view class="second-tag-menu flex">
+					<view class="menu-item" :class="listKey == 1 ? 'active' : ''" @click="listKey = 1">外汇储备</view>
+					<view class="menu-item" :class="listKey == 2 ? 'active' : ''" @click="listKey = 2">外汇体验</view>
+				</view>
+
 				<!-- 产品列表 -->
 				<view class="mr-section padding-box-3 product-list" style="background-color: white">
-					<view class="item flex flex-column" v-for="(item,index) in list" :key="'item-' + index">
+					<view class="item flex flex-column" v-for="(item,index) in displayList" :key="'item-' + index">
 						<view class="img-box">
 							<image :src="item.cover_img" mode="widthFix"></image>
 						</view>
@@ -39,8 +45,8 @@
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
 								<view>
-									<view class="font-red2">{{item.income_rate}}%</view>
-									<view class="font-gray">七日化收益率</view>
+									<view class="font-red2">{{item.income_rate}}</view>
+									<view class="font-gray">{{ shouyilv }}</view>
 								</view>
 								<view class="margin-t-30" v-if="item.ysb">
 									<text>获赠云数币</text>
@@ -100,9 +106,19 @@
 export default {
 	data() {
 		return {
+
+			/* 外汇储备体验 列表 */
+			/* 日释放收益 列表 */
 			list: [],
-			user_info: {
-			},
+			list2:[],
+
+			/* 列表key */
+			listKey:1,
+
+			/* 用户个人信息 */
+			user_info: {},
+
+
 			showPay: false,
 			isDone: false,
 			regStatus: '处理中...',
@@ -111,6 +127,24 @@ export default {
 			pay_password: '',
 			id: 0
 		};
+	},
+	computed:{
+		/* 最终渲染列表 */
+		displayList(){
+			if(this.listKey == 1){
+				return this.list
+			}else if(this.listKey == 2){
+				return this.list2
+			}
+		},
+		/* 收益率文本 */
+		shouyilv(){
+			if(this.listKey == 1){
+				return '七日化收益率'
+			}else if(this.listKey == 2){
+				return '每日收益'
+			}
+		}
 	},
 	methods:{
 		buy(item){
@@ -159,10 +193,14 @@ export default {
 		// 	this.user_info = res.data;
 		// })
 		this.to.www(this.api.licaiList)
-			.then(res => {
-				console.log(res.data.data)
-				this.list = res.data.data
-			})
+		.then(res => {
+			this.list = res.data.data || []
+		})
+
+		this.to.www(this.api.licaiList,{is_daily:1})
+		.then(res => {
+			this.list2 = res.data.data || []
+		})
 	}
 }
 </script>
@@ -181,27 +219,28 @@ page{
 		z-index: 3;
 	}
 	
-	.rect1 {
-		border-radius: 10px;
-		padding: 20px;
-		width: 100%;
-		box-sizing: border-box;
-		background: #fff;
-	
-		.price-info{
-			font-size: 28rpx;
-			margin-top: 40rpx;
-			padding:6rpx 0 0 0rpx;
-		}
+.rect1 {
+	border-radius: 10px;
+	padding: 20px;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fff;
 
-		.custom-style {
-			width: 30vw;
-			border-radius: 8px;
-			margin-top: 30px;
-			background: #1292FF;
-			color: #fff;
-		}
+	.price-info{
+		font-size: 28rpx;
+		margin-top: 40rpx;
+		padding:6rpx 0 0 0rpx;
 	}
+
+	.custom-style {
+		width: 30vw;
+		border-radius: 8px;
+		margin-top: 30px;
+		background: #1292FF;
+		color: #fff;
+	}
+}
+
 .product-list{
     display: flex;
     flex-direction: column;
@@ -259,6 +298,39 @@ page{
         background-color: rgba(255, 132, 32, .075);
         border-radius: 4rpx;
     }
+}
+
+.second-tag-menu{
+
+	padding: 32rpx 32rpx 0;
+	background-color: white;
+
+	gap: 20rpx;
+
+	.menu-item{
+
+		padding: 12rpx 16rpx;
+
+		color: #7A7079;
+		background-color: #EFF6FE;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 32rpx;
+
+		border: 1px solid transparent;
+		// border-color: #7A7079;
+		border-radius: 16rpx;
+
+		&.active{
+			color: #0182EF;
+			border-color: #0182EF;
+			background-color: #f0f8ff;
+		}
+
+	}
 }
 
 </style>
