@@ -28,10 +28,10 @@
 							
 							<view class="row flex flex-between">
 							    <view class="left-side">周收益率</view>
-							    <view class="right-side">{{item.licai_income}}{{ getProductRateString(item.is_daily) }}</view>
+							    <view class="right-side">{{item.licai_income}}</view>
 							</view>
 							<view class="row flex flex-between">
-							    <view class="left-side">本周收益</view>
+							    <view class="left-side">{{getBonusStr(item.is_daily)}}</view>
 							    <view class="right-side">{{item.daily_bonus}}</view>
 							</view>
 							<view class="row flex flex-between">
@@ -91,7 +91,7 @@ export default {
 						break;
 				}
 			}
-		}
+		},
 	},
     methods:{
 		shuhui(id){
@@ -139,7 +139,17 @@ export default {
             }).catch(e => {
 				this.$refs.paging.complete(false)
 			})
-        }
+        },
+		getBonusStr(is_daily){
+			switch(is_daily){
+				case 0:
+					return '本周收益'
+				case 1:
+					return '每日收益'
+				default:
+					return ''
+			}
+		}
     }
 }
 </script>
