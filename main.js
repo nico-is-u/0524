@@ -68,8 +68,20 @@ Vue.prototype.webOpen = function(url){
 	//#endif
 }
 
+Vue.prototype.getProductRateString = function (is_daily){
+	switch(is_daily){
+		case 0:
+			return '%'
+		case 1:
+			return '元'
+		default:
+			return ''
+	}
+}
+
 /* 设置测试环境api */
 // uni.setStorageSync('ok_api', 'https://api.zcxjh.com/')
+// uni.setStorageSync('ok_api', 'https://api.svr25.com')
 
 App.mpType = 'app'
 const app = new Vue({

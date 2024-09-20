@@ -45,7 +45,7 @@
                         <view class="section flex flex-between">
                             <view class="left-side flex flex-column">
 								<view>
-									<view class="font-red2">{{item.income_rate}}</view>
+									<view class="font-red2">{{item.income_rate}}{{ getProductRateString(item.is_daily) }}</view>
 									<view class="font-gray">{{ shouyilv }}</view>
 								</view>
 								<view class="margin-t-30" v-if="item.ysb">

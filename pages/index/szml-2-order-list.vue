@@ -28,7 +28,7 @@
 							
 							<view class="row flex flex-between">
 							    <view class="left-side">周收益率</view>
-							    <view class="right-side">{{item.licai_income}}%</view>
+							    <view class="right-side">{{item.licai_income}}{{ getProductRateString(item.is_daily) }}</view>
 							</view>
 							<view class="row flex flex-between">
 							    <view class="left-side">本周收益</view>
