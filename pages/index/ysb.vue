@@ -295,7 +295,10 @@ export default {
 	mounted(){
 		this.domain = uni.getStorageSync("ok_api");
 		const chart = init('chart')
-		
+
+		/* 数值精度 */
+		chart.setPriceVolumePrecision(4,4)
+
 		/* 样式配置 */
 		chart.setStyles({
 			candle:{
