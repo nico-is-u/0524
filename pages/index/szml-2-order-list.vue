@@ -26,18 +26,21 @@
                                 <view class="right-side">{{item.buy_num}}</view>
                             </view>
 							
-							<view class="row flex flex-between">
+							<view class="row flex flex-between" v-if="item.is_daily == 0">
 							    <view class="left-side">周收益率</view>
 							    <view class="right-side">{{item.licai_income}}</view>
 							</view>
+
 							<view class="row flex flex-between">
 							    <view class="left-side">{{getBonusStr(item.is_daily)}}</view>
 							    <view class="right-side">{{item.daily_bonus}}</view>
 							</view>
+
 							<view class="row flex flex-between">
 							    <view class="left-side">总收益</view>
 							    <view class="right-side">{{item.gain_bonus}}</view>
 							</view>
+							
 							<view class="row flex flex-between">
 								<view class="left-side">周期</view>
 								<view class="right-side">{{ item.licai_period }}天</view>
