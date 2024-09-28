@@ -26,10 +26,10 @@
                                 <view class="right-side">{{item.buy_num}}</view>
                             </view>
 							
-							<view class="row flex flex-between" v-if="item.is_daily == 0">
+							<!-- <view class="row flex flex-between" v-if="item.is_daily == 0">
 							    <view class="left-side">周收益率</view>
 							    <view class="right-side">{{item.licai_income}}</view>
-							</view>
+							</view> -->
 
 							<view class="row flex flex-between">
 							    <view class="left-side">{{getBonusStr(item.is_daily)}}</view>
@@ -146,11 +146,11 @@ export default {
 		getBonusStr(is_daily){
 			switch(is_daily){
 				case 0:
-					return '本周收益'
+					return '每日收益'
 				case 1:
 					return '每日收益'
 				default:
-					return ''
+					return '每日收益'
 			}
 		}
     }
