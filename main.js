@@ -71,11 +71,11 @@ Vue.prototype.webOpen = function(url){
 Vue.prototype.getProductRateString = function (is_daily){
 	switch(is_daily){
 		case 0:
-			return '%'
+			return '元'
 		case 1:
 			return '元'
 		default:
-			return ''
+			return '元'
 	}
 }
 
