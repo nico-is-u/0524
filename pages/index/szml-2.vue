@@ -140,7 +140,7 @@ export default {
 		/* 收益率文本 */
 		shouyilv(){
 			if(this.listKey == 1){
-				return '每日收益'
+				return '每日收益率'
 			}else if(this.listKey == 2){
 				return '每日收益'
 			}
