@@ -27,7 +27,7 @@
                             </view>
 							
 							<view class="row flex flex-between">
-							    <view class="left-side">总收益</view>
+							    <view class="left-side">{{getBonusStr(item.is_daily)}}</view>
 							    <view class="right-side">{{item.licai_income}}</view>
 							</view>
 							<view class="row flex flex-between">
@@ -137,7 +137,17 @@ export default {
             }).catch(e => {
 				this.$refs.paging.complete(false)
 			})
-        }
+        },
+		getBonusStr(is_daily){
+			switch(is_daily){
+				case 0:
+					return '总收益'
+				case 1:
+					return '日收益'
+				default:
+					return ''
+			}
+		}
     }
 }
 </script>
