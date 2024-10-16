@@ -4,8 +4,16 @@
         <image src="/static/images/45.png" class="fixed-image" mode="widthFix"></image>
         <!-- 头部 -->
 		<view class="page-head">
+
             <!-- 顶栏 -->
 			<nNavbar title="我的资产" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
+
+            <!-- 小标题 -->
+            <view class="like-h1-h2 flex flex-column flex-center">
+                <view class="like-h1">云数中国万事达联名钱包</view>
+                <view class="like-h2">{{ userInfo.yun_balance || '' }}</view>
+            </view>
+
             <!-- 小菜单 -->
             <view class="padding-box-3">
                 <view class="menu-card flex flex-column">
@@ -48,6 +56,7 @@
                 
             </view>
         </view>
+        
         <!-- 资金明细 -->
         <view class="padding-box">
             <view class="content">
@@ -215,6 +224,23 @@ page{
 
     display: flex;
     flex-direction: column;
+
+    .like-h1-h2{
+        position: relative;
+        z-index: 3;
+        padding: 16rpx 0 0;
+        >view{
+            color: white;
+        }
+
+        >.like-h1{
+            font-size: 46rpx;
+        }
+
+        >.like-h2{
+            font-size: 52rpx;
+        }
+    }
 
     >.padding-box{
         flex-grow: 1;
