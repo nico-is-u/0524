@@ -21,6 +21,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 云数币 私募申请通道
+		{
+			"path": "pages/index/ysb-sq",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
 		// 数字魅力 - 理财产品
 		{
 			"path": "pages/index/szml-2",

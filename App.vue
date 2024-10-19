@@ -1219,4 +1219,17 @@
 			height: 300rpx !important;
 		}
 	}
+
+
+	/* 一些特殊页面 */
+
+	#ysb-sq-form{
+		padding: 18rpx 38rpx;
+		.u-form .u-form-item__body__left__content__label{
+			font-size: 26rpx !important;
+			color: #9B9DA6 !important;
+			font-weight: bold !important;
+		}
+	}
+
 </style>
