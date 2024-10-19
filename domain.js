@@ -62,7 +62,7 @@ function decrypt(content, keyStr) {
 
 /* 测试加密 */
 console.log('测试加密')
-console.log(encryptCBC("noahOrder/trans"))
+console.log(encryptCBC("yun/simuApply"))
 
 /* 测试解密 */
 // console.log('测试解密')
@@ -405,7 +405,7 @@ export default {
 				  icon: 'none'
 				});
 				reject(parseRes)
-			  } else if (parseRes.code == 10001 || parseRes.code == 10002) {
+			  } else if (parseRes.code == 10001 || parseRes.code == 10002 || parseRes.code == 11003) {
 				// console.log(encryptCBC(JSON.stringify(b)));
 				// console.log(decryptCBC(encryptCBC(JSON.stringify(b))));
 				// console.log(b);

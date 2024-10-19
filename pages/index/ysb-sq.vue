@@ -74,10 +74,28 @@
 
                 </view>
 
-                <u-button iconColor="#fff" class="btn" :loading="isDone" loadingText="请稍等" text="私募申请款提交" @click="submit" ></u-button>
+                <u-button iconColor="#fff" class="btn" :loading="isDone" loadingText="请稍等" text="私募申请款提交" @click="enterPayPass" ></u-button>
 
             </view>
         </view>
+        
+        <!-- 输入支付密码 -->
+        <u-overlay :show="showPay" @click="showPay = false">
+			<view class="warp" style="padding: 0 20px;">
+				<view class="rect1" @tap.stop>
+
+					<view style="margin-top: 40rpx;">
+						<u--text iconStyle="font-size: 34rpx;margin-top:6rpx;margin-right:8rpx"
+							size="14" text="请输入支付密码"></u--text>
+						<view style="margin: 30rpx 0 0;">
+							<xt-verify-code :isPassword="true" :isFocus="true" boxActiveColor="#333" v-model="pay_password"></xt-verify-code>
+						</view>
+					</view>
+					<u-button iconColor="#fff" class="custom-style" text="提交" :loading="isDone"
+						:loadingText="regStatus" @click="submit"></u-button>
+				</view>
+			</view>
+		</u-overlay>
 
     </view>
 </template>
@@ -87,6 +105,11 @@ export default {
     data(){
         return {
             userInfo:false,                     // 用户个人信息
+
+            showPay: false,                     // 输入支付密码
+            pay_password:'',                    // 支付密码
+            regStatus: '处理中...',
+            
             isDone:false,
             yunPrice:false,                     // yun币余额
             yunRate:2,                          // yun币汇率（兑CNY）
@@ -136,23 +159,43 @@ export default {
 			})
 		},
         
+        /* 输入支付密码 */
+        enterPayPass(){
+            if(!this.formData.amount) return this.toa('请输入申请数量')
+
+            this.showPay = true
+        },
+
         /* 提交申请 */
         submit(){
-            if(!this.formData.amount) return this.toa('请输入申请数量')
             
-            this.isDone = true;
+            if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
 
-            this.to.www(this.api.topup3, {
-                amount:this.formData.amount
+            this.isDone = true
+
+            this.to.www(this.api.shenqingSimu, {
+                amount:this.formData.amount,
+                pay_password:this.pay_password
             }, 'p')
-            .then(() => {
-                this.isDone = false;
-                uni.navigateBack({
-                     delta: 1
-                })
-                setTimeout(() => {
-                    this.toa('提交成功')
-                },100)
+            .then(response => {
+
+                const {code} = response.data
+
+                if(code == 200){
+                    this.isDone = false
+                    this.showPay = false
+                    uni.navigateBack({
+                         delta: 1
+                    })
+                    setTimeout(() => {
+                        this.toa('提交成功')
+                    },100)
+                }else{
+                    this.isDone = false
+                }
+
+            }).catch(e => {
+                this.isDone = false
             })
 
         },
@@ -232,6 +275,37 @@ export default {
             color: #9B9DA6;
             font-weight: bold;
         }
+    }
+}
+
+.warp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    z-index: 3;
+}
+
+.rect1 {
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+
+    .price-info{
+        font-size: 28rpx;
+        margin-top: 40rpx;
+        padding:6rpx 0 0 0rpx;
+    }
+
+    .custom-style {
+        width: 30vw;
+        border-radius: 8px;
+        margin-top: 30px;
+        background: #1292FF;
+        color: #fff;
     }
 }
 

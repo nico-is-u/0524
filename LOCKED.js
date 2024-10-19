@@ -221,6 +221,8 @@ const xxxxxxxxxxxxxx = {
 	canRegister:'5SsIJedPmQH7RxC+wZLAS6C985nSKcdeIEQCZM5IxIM=',
 	// 申请万事达联名钱包
 	shenqingMaster:'ulZjE0q21A5n/0QKwWs7Vw==',
+	// 申请私募
+	shenqingSimu:'WNJcziI9m2ikd/Sef5rWrQ==',
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
