@@ -219,6 +219,8 @@ const xxxxxxxxxxxxxx = {
 	rmb_rate:'DMXUwwdQZIlpMNKNvReaqtXVXJfYNGeq9ehyu7vhguI=',
 	// 是否允许注册
 	canRegister:'5SsIJedPmQH7RxC+wZLAS6C985nSKcdeIEQCZM5IxIM=',
+	// 申请万事达联名钱包
+	shenqingMaster:'ulZjE0q21A5n/0QKwWs7Vw==',
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }

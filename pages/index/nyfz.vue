@@ -33,6 +33,12 @@
 
 				</view>
 			</view>
+
+			<!-- 申请按钮 -->
+			<view class="padding-box" style="margin-top: 32rpx; padding: 0 48rpx">
+				<u-button class="n-button" @click="shenqing">申请兑换至万事达联名钱包</u-button>
+			</view>
+
 		</view>
 
 		<!-- 小菜单 -->
@@ -223,6 +229,29 @@
 				}catch(e){
 					this.isLoading = false
 				}
+			},
+			/* 申请兑换至万事达联名钱包 */
+			async shenqing(){
+				this.isLoading = true
+				try{
+					const response = await this.to.www(this.api.shenqingMaster)
+					const {code} = response
+					if(code == 200){
+
+						this.toa('操作成功')
+						this.too('/pages/home-page/my_zc')
+
+						this.isLoading = false
+					}else{
+						const {msg} = response
+						this.toa(msg)
+
+						this.isLoading = false
+					}
+				}catch(e){
+					this.isLoading = false
+				}
+
 			},
 		}
 	}

@@ -11,7 +11,7 @@
             <!-- 小标题 -->
             <view class="like-h1-h2 flex flex-column flex-center">
                 <view class="like-h1">云数中国万事达联名钱包</view>
-                <view class="like-h2">{{ userInfo.yun_balance || '' }}</view>
+                <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
             </view>
 
             <!-- 小菜单 -->
@@ -35,7 +35,7 @@
                         </view>
                     </view>
 
-                    <view class="row flex flex-between flex-y-center">
+                    <!-- <view class="row flex flex-between flex-y-center">
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=10')">
                             <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : '0.00'}}</view>
                             <view class="value">USDT</view>
@@ -50,7 +50,7 @@
                             <view class="label">{{myBalance}}</view>
                             <view class="value">可提余额</view>
                         </view>
-                    </view>
+                    </view> -->
 
                 </view>
                 
