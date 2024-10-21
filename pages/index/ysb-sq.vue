@@ -172,6 +172,7 @@ export default {
             if (uni.$u.test.isEmpty(this.pay_password)) return this.toa('请输入支付密码');
 
             this.isDone = true
+            this.showPay = false
 
             this.to.www(this.api.shenqingSimu, {
                 amount:this.formData.amount,
@@ -183,7 +184,7 @@ export default {
 
                 if(code == 200){
                     this.isDone = false
-                    this.showPay = false
+                    
                     uni.navigateBack({
                          delta: 1
                     })

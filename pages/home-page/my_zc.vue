@@ -27,7 +27,7 @@
                         </view>
                         <view class="line"></view>
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail3')">
-                            <view class="label">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
+                            <view class="label">{{ userInfo.yunshu_balance ? '￥' + userInfo.yunshu_balance : ''}}</view>
                             <view class="value">我的云数钱包</view>
                         </view>
                         <!-- <view class="line"></view> -->
