@@ -185,12 +185,13 @@ export default {
                 if(code == 200){
                     this.isDone = false
                     
-                    uni.navigateBack({
-                         delta: 1
-                    })
+                    this.too('/pages/index/ysb','tab')
+                    this.toa('提交成功')
+
                     setTimeout(() => {
                         this.toa('提交成功')
                     },100)
+
                 }else{
                     this.isDone = false
                 }

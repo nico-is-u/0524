@@ -13,7 +13,7 @@
             <!-- 小标题 -->
             <view class="like-h1-h2 flex flex-column ">
                 <view class="like-h1">云数中国万事达联名钱包</view>
-                <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
+                <view class="like-h2">{{ userInfo.yunshu_balance ? '￥' + userInfo.yunshu_balance : ''}}</view>
             </view>
 
             <!-- 小菜单 -->
@@ -27,7 +27,7 @@
                         </view>
                         <view class="line"></view>
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail3')">
-                            <view class="label">{{ userInfo.yunshu_balance ? '￥' + userInfo.yunshu_balance : ''}}</view>
+                            <view class="label">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
                             <view class="value">我的云数钱包</view>
                         </view>
                         <!-- <view class="line"></view> -->
@@ -239,10 +239,12 @@ page{
         }
 
         >.like-h1{
-            font-size: 35rpx;
+            text-align: center;
+            font-size: 42rpx;
         }
 
         >.like-h2{
+            text-align: center;
             font-size: 64rpx;
             color: #427bef;
             font-weight: bold;

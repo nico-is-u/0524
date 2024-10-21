@@ -565,7 +565,8 @@
 		&.menu-card2{
 			// background-color: none;
 			background-image: url('/static/images/80.png') !important;
-			background-size: contain !important;
+			background-size: 100% 100% !important;
+			border: 0 !important;
 
 			>.row{
 				justify-content: center;
