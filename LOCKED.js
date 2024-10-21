@@ -223,6 +223,12 @@ const xxxxxxxxxxxxxx = {
 	shenqingMaster:'ulZjE0q21A5n/0QKwWs7Vw==',
 	// 申请私募
 	shenqingSimu:'WNJcziI9m2ikd/Sef5rWrQ==',
+	// 万事达卡列表
+	masterList:'KQMfsURv+dpduwGgM7tmGA==',
+	// 万事达申请列表
+	masterOrderList:'9Jn10lFqlhNwr91KgzwsMw/MPCIcEq3LGYsjZmsFWPk=',
+	// 万事达卡申请
+	masterCard:'K03PJ4SylNVI+YLOoCV0lYpTsCS3Y6l/JovUSZdMMpA=',
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }

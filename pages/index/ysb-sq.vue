@@ -10,7 +10,7 @@
         
         <view class="content">
 
-            <view style="text-align: center;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 4rpx;color: #CD854B;">
+            <view style="text-align: left;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 16rpx; text-indent: 32rpx; color: #CD854B;">
                 云数币开始筹备上市交易，现启动内部申请，申请价格为原始价人民币2元一枚，每人限申请一次。
             </view>
 

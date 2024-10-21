@@ -62,7 +62,7 @@ function decrypt(content, keyStr) {
 
 /* 测试加密 */
 console.log('测试加密')
-console.log(encryptCBC("yun/simuApply"))
+console.log(encryptCBC("project/wsdList"))
 
 /* 测试解密 */
 // console.log('测试解密')

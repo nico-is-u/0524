@@ -261,6 +261,20 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的资产 - 选卡
+		{
+			"path":"pages/home-page/my_zc_select_card",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
+		// 我的资产 - 选卡 - 记录页
+		{
+			"path":"pages/home-page/my_zc_select_card_record",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 提现
 		{
 			"path": "pages/home-page/withdraw",

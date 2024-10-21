@@ -11,28 +11,29 @@
             <!-- 小标题 -->
             <view class="like-h1-h2 flex flex-column flex-center">
                 <view class="like-h1">云数中国万事达联名钱包</view>
-                <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
+                <!-- <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view> -->
+                <u-button class="n-button" style="margin-top: 24rpx;" @click="too('/pages/home-page/my_zc_select_card')">万事达卡申请</u-button>
             </view>
 
             <!-- 小菜单 -->
             <view class="padding-box-3">
-                <view class="menu-card flex flex-column">
+                <view class="menu-card menu-card2 flex flex-column">
 
-                    <view class="row flex flex-between flex-y-center">
+                    <view class="row flex flex-y-center">
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail')">
                             <view class="label">{{userInfo && userInfo.yun ? (parseFloat(userInfo.yun).toFixed(2)) : '0.00'}}</view>
-                            <view class="value">我的币</view>
+                            <view class="value">我的云数币</view>
                         </view>
                         <view class="line"></view>
                         <view class="menu-item" @click="too('/pages/home-page/my_zc_detail3')">
-                            <view class="label">{{myProject}}</view>
-                            <view class="value">我的项目</view>
+                            <view class="label">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
+                            <view class="value">我的云数钱包</view>
                         </view>
-                        <view class="line"></view>
-                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=2')">
+                        <!-- <view class="line"></view> -->
+                        <!-- <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=2')">
                             <view class="label">{{userInfo && userInfo.integral ? userInfo.integral : '0'}}</view>
                             <view class="value">积分</view>
-                        </view>
+                        </view> -->
                     </view>
 
                     <!-- <view class="row flex flex-between flex-y-center">
@@ -228,7 +229,7 @@ page{
     .like-h1-h2{
         position: relative;
         z-index: 3;
-        padding: 16rpx 0 0;
+        padding: 16rpx 48rpx 0;
         >view{
             color: white;
         }

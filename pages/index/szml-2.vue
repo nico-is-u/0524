@@ -26,10 +26,10 @@
 				</view>
 
 				<!-- 二级tag菜单 -->
-				<view class="second-tag-menu flex">
+				<!-- <view class="second-tag-menu flex">
 					<view class="menu-item" :class="listKey == 1 ? 'active' : ''" @click="listKey = 1">外汇储备</view>
 					<view class="menu-item" :class="listKey == 2 ? 'active' : ''" @click="listKey = 2">外汇体验</view>
-				</view>
+				</view> -->
 
 				<!-- 产品列表 -->
 				<view class="mr-section padding-box-3 product-list" style="background-color: white">
@@ -197,10 +197,10 @@ export default {
 			this.list = res.data.data || []
 		})
 
-		this.to.www(this.api.licaiList,{is_daily:1})
-		.then(res => {
-			this.list2 = res.data.data || []
-		})
+		// this.to.www(this.api.licaiList,{is_daily:1})
+		// .then(res => {
+		// 	this.list2 = res.data.data || []
+		// })
 	}
 }
 </script>

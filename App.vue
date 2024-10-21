@@ -562,6 +562,15 @@
 			background-color: #E5E6EB;
 		}
 
+		&.menu-card2{
+			>.row{
+				justify-content: center;
+				gap: 60rpx;
+				.menu-item{
+					min-width: 30%;
+				}
+			}
+		}
 
 	}
 
