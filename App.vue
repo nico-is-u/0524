@@ -145,7 +145,7 @@
 
 				width: 100%;
 				height: 500rpx;
-				background-image: url('/static/images/44.png');
+				// background-image: url('/static/images/44.png');
 				background-size: cover;
 				background-repeat: no-repeat;
 			}
@@ -563,11 +563,21 @@
 		}
 
 		&.menu-card2{
+			// background-color: none;
+			background-image: url('/static/images/80.png') !important;
+			background-size: contain !important;
+
 			>.row{
 				justify-content: center;
 				gap: 60rpx;
 				.menu-item{
 					min-width: 30%;
+					.label{
+						color: white;
+					}
+					.value{
+						color: white;
+					}
 				}
 			}
 		}

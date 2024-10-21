@@ -1,18 +1,19 @@
 <template>
 	<view class="page with-bg" id="my-zc">
+
         <!-- 浮动图标 -->
-        <image src="/static/images/45.png" class="fixed-image" mode="widthFix"></image>
+        <!-- <image src="/static/images/45.png" class="fixed-image" mode="widthFix"></image> -->
+
         <!-- 头部 -->
 		<view class="page-head">
 
             <!-- 顶栏 -->
-			<nNavbar title="我的资产" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
+			<nNavbar color="black" title="我的资产" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
 
             <!-- 小标题 -->
-            <view class="like-h1-h2 flex flex-column flex-center">
+            <view class="like-h1-h2 flex flex-column ">
                 <view class="like-h1">云数中国万事达联名钱包</view>
-                <!-- <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view> -->
-                <u-button class="n-button" style="margin-top: 24rpx;" @click="too('/pages/home-page/my_zc_select_card')">万事达卡申请</u-button>
+                <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
             </view>
 
             <!-- 小菜单 -->
@@ -55,7 +56,9 @@
 
                 </view>
                 
+                <u-button class="n-button" style="margin-top: 24rpx;" @click="too('/pages/home-page/my_zc_select_card')">万事达卡申请</u-button>
             </view>
+            
         </view>
         
         <!-- 资金明细 -->
@@ -218,7 +221,7 @@ export default {
 <style lang="scss">
 page{
     height: 100%;
-    background-color: #F9F9F9;
+    background-color: #c2ebfd;
 }
 #my-zc{
     height: 100%;
@@ -229,17 +232,20 @@ page{
     .like-h1-h2{
         position: relative;
         z-index: 3;
-        padding: 16rpx 48rpx 0;
+        padding: 32rpx 48rpx 0;
+
         >view{
-            color: white;
+            color: black;
         }
 
         >.like-h1{
-            font-size: 46rpx;
+            font-size: 35rpx;
         }
 
         >.like-h2{
-            font-size: 52rpx;
+            font-size: 64rpx;
+            color: #427bef;
+            font-weight: bold;
         }
     }
 

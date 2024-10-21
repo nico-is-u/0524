@@ -2,7 +2,8 @@
     
     <view class="app-nav-bar flex flex-between" :class="{
         'app-padding-nav-bar':padding,
-        'app-nav-bar-fixed':isFixed
+        'app-nav-bar-fixed':isFixed,
+        'app-nav-bar-black':color == 'black'
     }">
         <!-- 左侧 -->
         <view class="left-side flex" @click="clickLeft">
@@ -110,6 +111,15 @@ export default {
         position: fixed;
         width: 100%;
         background: #1292FF;
+    }
+
+    &.app-nav-bar-black{
+        .center-block{
+            color: black;
+        }
+        .uni-icons{
+            color: black !important;
+        }
     }
 
 }
