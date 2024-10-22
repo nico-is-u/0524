@@ -222,6 +222,10 @@
 						this.toa('领取成功')
 						this.too('/pages/index/nyfz_list')
 
+						setTimeout(() => {
+							this.toa('领取成功')
+						},200)
+
 						this.isLoading = false
 					}else{
 						this.isLoading = false

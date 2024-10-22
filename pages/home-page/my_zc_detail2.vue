@@ -121,7 +121,7 @@ export default {
         },
         /* 返回上一页 */
         backPrev(){
-            this.too('/pages/home-page/my_zc')
+            this.too('/pages/home-page/my_zc_detail3','reb')
         }
     },
     filters:{

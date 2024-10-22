@@ -21,9 +21,27 @@
                             <view class="value">短期理财</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item">
-                            <view class="label"></view>
-                            <view class="value"></view>
+                        
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=5')">
+                            <view class="label">{{userInfo && userInfo.topup_balance ? (parseFloat(userInfo.topup_balance).toFixed(2)) : '0.00'}}</view>
+                            <view class="value">可用余额</view>
+                        </view>
+                    </view>
+
+                    <view class="row flex flex-between flex-y-center">
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=4')">
+                            <view class="label">{{myBalance}}</view>
+                            <view class="value">可提余额</view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="menu-item" @click="too('/pages/index/nyfz_list')">
+                            <view class="label">{{nyfzInfo.totalAmount || '0.00'}}</view>
+                            <view class="value">诺亚方舟</view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail2?type=10')">
+                            <view class="label">{{userInfo && userInfo.usdt ? (parseFloat(userInfo.usdt).toFixed(2)) : '0.00'}}</view>
+                            <view class="value">USDT</view>
                         </view>
                     </view>
                     
@@ -43,17 +61,46 @@ export default {
         return {
             /* 用户信息 */
             userInfo:false,
+            /* 诺亚方舟 */
+			nyfzInfo:false,
+        }
+    },
+    computed:{
+        myBalance(){
+            let result = '0.00'
+            if(this.userInfo){
+                result = 0
+
+                const result1 = parseFloat(this.userInfo.balance).toFixed(2) || 0
+                const result2 = parseFloat(this.userInfo.income_balance).toFixed(2) || 0
+
+                result = (parseFloat(result1) + parseFloat(result2)).toFixed(2) || '0.00'
+            }
+            return result
         }
     },
     methods:{
         /* 返回上一页 */
         backPrev(){
             this.too('/pages/home-page/my_zc')
-        }
+        },
+        getData() {
+            this.to.www(this.api.nyfz_info)
+            .then(res => {
+                const {code = 0} = res
+                if(code == 200){
+                    this.nyfzInfo = res.data
+                }
+            })
+        },
     },
     onLoad(){
         const userInfo = uni.getStorageSync('user_info')
         if(userInfo)    this.userInfo = userInfo
+        
+    },
+    onShow(){
+        this.getData()
     }
 }
 </script>
