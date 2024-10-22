@@ -223,6 +223,8 @@ const xxxxxxxxxxxxxx = {
 	shenqingMaster:'ulZjE0q21A5n/0QKwWs7Vw==',
 	// 申请私募
 	shenqingSimu:'WNJcziI9m2ikd/Sef5rWrQ==',
+	// 申请私募记录
+	simuOrder:'Ha035Ff0xLAzcsMxe6w5yw==',
 	// 万事达卡列表
 	masterList:'KQMfsURv+dpduwGgM7tmGA==',
 	// 万事达申请列表

@@ -77,6 +77,35 @@
                 <u-button iconColor="#fff" class="btn" :loading="isDone" loadingText="请稍等" text="私募申请款提交" @click="enterPayPass" ></u-button>
 
             </view>
+
+            <!-- 申请记录 -->
+            <view class="order-list">
+
+                <view style="text-align: left;font-size: 16px;background: #FDF4EC;border-radius: 8px;padding: 8px 16rpx; text-indent: 32rpx; color: #CD854B;">
+                    申请记录
+                </view>
+
+                <view class="card margin-t-15" v-for="(item,index) in orderList" :key="'order-item-' + index">
+                    <view class="order-item flex flex-column">
+                        <view class="flex flex-between flex-y-center">
+                            <view class="left-side">申请订单:</view>
+                            <view class="right-side">{{ item.amount }} 枚</view>
+                        </view>
+
+                        <view class="flex flex-between flex-y-center">
+                            <view class="left-side">状态:</view>
+                            <view class="right-side">{{ getStatusTxt(item.status) }} </view>
+                        </view>
+
+                        <view class="flex flex-between flex-y-center">
+                            <view class="left-side">申请时间:</view>
+                            <view class="right-side">{{ item.created_at || '' }} </view>
+                        </view>
+
+                    </view>
+                </view>
+            </view>
+            
         </view>
         
         <!-- 输入支付密码 -->
@@ -109,6 +138,8 @@ export default {
             showPay: false,                     // 输入支付密码
             pay_password:'',                    // 支付密码
             regStatus: '处理中...',
+
+            orderList:[],                       // 申请记录
             
             isDone:false,
             yunPrice:false,                     // yun币余额
@@ -180,7 +211,7 @@ export default {
             }, 'p')
             .then(response => {
 
-                const {code} = response.data
+                const {code} = response
 
                 if(code == 200){
                     this.isDone = false
@@ -201,10 +232,36 @@ export default {
             })
 
         },
+
+        /* 私募申请记录 */
+        getDataList(){
+            this.to.www(this.api.simuOrder)
+            .then(response => {
+                const {code} = response
+                if(code == 200){
+                    this.orderList = response.data.data || []
+                }
+            })
+            .catch(e => {})
+        },
+
+        getStatusTxt(status){
+            switch(status){
+                case 0:
+                    return '申请中'
+                case 1:
+                    return '成功'
+                case 2:
+                    return '失败'
+                default:
+                    return ''
+            }
+        }
     },
 
     onShow(){
         this.getUserInfo()
+        this.getDataList()
     }
 }
 </script>
@@ -309,6 +366,19 @@ export default {
         background: #1292FF;
         color: #fff;
     }
+}
+
+.order-list{
+    padding-top: 32rpx;
+    .order-item{
+        gap: 32rpx;
+        .left-side{
+            font-size: 28rpx;
+            color: #9B9DA6;
+            font-weight: bold;
+        }
+    }
+
 }
 
 </style>

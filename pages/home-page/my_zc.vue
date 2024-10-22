@@ -1,5 +1,5 @@
 <template>
-	<view class="page with-bg" id="my-zc">
+	<view class="page with-bg2" id="my-zc">
 
         <!-- 浮动图标 -->
         <!-- <image src="/static/images/45.png" class="fixed-image" mode="widthFix"></image> -->
@@ -11,9 +11,9 @@
 			<nNavbar color="black" title="我的资产" :showBackBtn="true" :back="false" :backFunc="backPrev"></nNavbar>
 
             <!-- 小标题 -->
-            <view class="like-h1-h2 flex flex-column ">
+            <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail3')">
                 <view class="like-h1">云数中国万事达联名钱包</view>
-                <view class="like-h2">{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
+                <view class="like-h2" >{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
             </view>
 
             <!-- 小菜单 -->
@@ -26,7 +26,7 @@
                             <view class="value">我的云数币</view>
                         </view>
                         <view class="line"></view>
-                        <view class="menu-item" @click="too('/pages/home-page/my_zc_detail3')">
+                        <view class="menu-item" >
                             <view class="label">{{ userInfo.yunshu_balance ? '￥' + userInfo.yunshu_balance : ''}}</view>
                             <view class="value">我的云数钱包</view>
                         </view>
