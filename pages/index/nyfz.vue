@@ -219,12 +219,12 @@
 					const response = await this.to.www(this.api.nyfz_lq,{},'p')
 					const {code} = response
 					if(code == 200){
-						this.toa('领取成功')
-						this.too('/pages/index/nyfz_list')
 
+						this.toa('领取成功')
+						
 						setTimeout(() => {
-							this.toa('领取成功')
-						},200)
+							this.too('/pages/index/nyfz_list')
+						},1000)
 
 						this.isLoading = false
 					}else{
@@ -242,8 +242,12 @@
 					const {code} = response
 					if(code == 200){
 
+					
 						this.toa('操作成功')
-						this.too('/pages/home-page/my_zc')
+						
+						setTimeout(() => {
+							this.too('/pages/home-page/my_zc')
+						},1000)
 
 						this.isLoading = false
 					}else{
