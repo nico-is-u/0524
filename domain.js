@@ -387,6 +387,9 @@ export default {
             url: '/pages/system-page/login'
           })
 
+          /* 重启应用 */
+          plus.runtime.restart()
+
         
 			  } else if (parseRes.code == 403) {
 				uni.clearStorage();
