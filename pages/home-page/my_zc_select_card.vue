@@ -20,10 +20,12 @@
                 height:'100rpx',
             }"
             :inactiveStyle="{
-                fontSize:'40rpx'
+                fontSize:'40rpx',
+                color:'darkgray',
             }"
             :activeStyle="{
-                fontSize:'40rpx'
+                fontSize:'48rpx',
+                color:'black',
             }"
             style="padding: 16rpx 0 32rpx"></u-tabs>
 
