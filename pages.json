@@ -261,6 +261,13 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的资产 - 我的项目 - 资产确权
+		{
+			"path":"pages/home-page/my_zc_detail5",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 我的资产 - 选卡
 		{
 			"path":"pages/home-page/my_zc_select_card",

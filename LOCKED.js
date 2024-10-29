@@ -231,6 +231,11 @@ const xxxxxxxxxxxxxx = {
 	masterOrderList:'9Jn10lFqlhNwr91KgzwsMw/MPCIcEq3LGYsjZmsFWPk=',
 	// 万事达卡申请
 	masterCard:'K03PJ4SylNVI+YLOoCV0lYpTsCS3Y6l/JovUSZdMMpA=',
+
+	// 资产申请列表
+	zcList:'Th9ciQmuuhRa3tQNOsmJOAE61vCdAZhNgNPjfSNDiFo=',
+	// 资产申请
+	zcRequest:'Ml0d1OwLOwkdAyzJMNZuDVxxiOpbRFpLRH86wJA3AWQ=',
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
