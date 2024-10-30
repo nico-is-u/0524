@@ -51,6 +51,9 @@
         <view class="user-zc-qq" v-if="display == 3">
             <image src="/static/images/81.jpg" mode="widthFix"></image>
             <view class="text-scene">
+                <!-- 证书编号 -->
+                <view class="zsbh">{{ userInfo.zsbh ? 'YS-WSD24D'+userInfo.zsbh : '' }}</view>
+
                 <!-- 用户名 -->
                 <view class="username">{{userInfo.realname || ''}}</view>
 
@@ -62,7 +65,7 @@
                 <view class="account2">{{ zcInfo.amount_zw || '' }}</view>
 
                 <!-- 日期 -->
-                <view class="datetime font-red">{{ zcInfo.created_at || '' }}</view>
+                <view class="datetime font-red">{{ zcInfo.created_at ? FormatDate(zcInfo.created_at) : '' }}</view>
             </view>
         </view>
 
@@ -152,6 +155,11 @@ export default {
                     this.display = 2
                 }
             })
+        },
+
+        /* 过滤日期 */
+        FormatDate(datetime){
+            return datetime.split(' ')[0]
         },
 
 
@@ -316,12 +324,12 @@ page{
             }
 
             &.account{
-                font-size: 38rpx;
-                height: 38rpx;
+                font-size: 26rpx;
+                height: 26rpx;
 
                 width: 50%;
-                top: 51.5%;
-                left: 35%;
+                top: 56.55%;
+                left: 34.5%;
             }
 
             &.account2{
@@ -329,16 +337,24 @@ page{
                 height: 24rpx;
                 color: #333;
 
-                width: 50%;
-                top: 56.5%;
+                width: 65%;
+                top: 52.05%;
                 left: 35%;
+            }
+
+            &.zsbh{
+                width: 50%;
+                top: 26.9%;
+                left: 62%;
+                height: 20rpx;
+                font-size: 20rpx;
             }
 
             &.datetime{
                 width: 50%;
                 height: 24rpx;
                 top: 81.5%;
-                left: 48%;
+                left: 68%;
                 font-size: 24rpx;
             }
         }
