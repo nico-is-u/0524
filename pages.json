@@ -268,6 +268,20 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的资产 - 我的项目 - 保证金缴纳通道
+		{
+			"path":"pages/home-page/my_zc_detail6",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
+		// 我的资产 - 我的项目 - 保证金缴纳通道 - 产品记录
+		{
+			"path":"pages/home-page/my_zc_detail6_record",
+			"style":{
+				"navigationStyle": "custom"
+			}
+		},
 		// 我的资产 - 选卡
 		{
 			"path":"pages/home-page/my_zc_select_card",
