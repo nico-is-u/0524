@@ -150,7 +150,14 @@ export default {
                 const {data} = response
                 if(data){
                     this.zcInfo = data
-                    this.display = 3
+                    const {status = 0} = data
+
+                    if(status && status == 1){
+                        this.display = 3
+                    }else{
+                        this.display = 2
+                    }
+
                 }else{
                     this.display = 2
                 }
