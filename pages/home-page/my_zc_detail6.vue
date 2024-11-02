@@ -15,28 +15,19 @@
                 <view class="menu-card flex flex-column" style="padding: 0;">
                     
                     <!-- 产品列表 -->
-                    <view class="mr-section padding-box-3 product-list" >
-                        <view class="item flex flex-column" v-for="(item,index) in bzList" :key="'item-' + index">
-                            <view class="img-box">
-                                <image :src="item.cover_img" mode="widthFix"></image>
-                            </view>
-                            <view class="title flex flex-y-center">
-                                <view>{{item.name}}</view>
-                            </view>
-
-                            <view class="section flex flex-between">
-                                <view class="left-side flex flex-column">
-                                    <view class="font-red2">￥{{item.single_amount}}</view>
-                                    <!-- <view class="font-gray">233</view> -->
-                                </view>
-
-                                <view class="right-side flex flex-y-center" v-if="item.status == 1">
-                                    <u-button class="n-button n-button-4" text="立即购买" @click="enterPayPassword(item.id)"></u-button>
-                                </view>
-
-                            </view>
-                        </view>
-                    </view>
+                    <u-cell-group style="width: 100%;">
+                        <u-cell
+                            v-for="(item,index) in bzList"
+                            :key="'item-' + index"
+                            size="large"
+                            :title="item.names[0]"
+                            :label="item.names[1]"
+                            :value="item.names[1]"
+                            isLink
+                            @click="enterPayPassword(item.id)"
+                        ></u-cell>
+                    </u-cell-group>
+                    
                     
                 </view>
             </view>
@@ -98,13 +89,33 @@ export default {
     },
     methods:{
 
+        splitString(input) {
+            const regex = /（\S+）/
+            const match = input.search(regex)
+            if (match != -1) {
+                return [
+                    input.slice(0,match),
+                    input.slice(match)
+                ]
+            }
+            return [input,null]
+        },
 
         /* 获取资产申请列表 */
         getDataList(){
             this.to.www(this.api.bzList)
             .then(response => {
                 const {data} = response
-                this.bzList = data.data || []
+                const result = data.data || []
+                if(result.length){
+                    result.map((item,index,arr) =>{
+                        if(item.name){
+                            arr[index]['names'] = this.splitString(item.name)
+                        }
+                    })
+                }
+                console.log(result)
+                this.bzList = result
             })
         },
 
@@ -133,6 +144,7 @@ export default {
 
             })
             .catch(e => {
+                this.showPay = false
                 this.isDone = false
             })
 
@@ -163,67 +175,6 @@ page{
 
     display: flex;
     flex-direction: column;
-
-    .product-list{
-        display: flex;
-        flex-direction: column;
-
-        width: 100%;
-        gap: 32rpx;
-
-        padding: 40rpx 32rpx 10vh;
-        .item{
-            border-bottom: 3rpx solid #E9E9E9;
-            padding-bottom: 32rpx;
-
-            .img-box{
-                padding-bottom: 20rpx;
-                image{
-                    width: 100%;
-                    height: 260rpx;
-                }
-            }
-
-            .title{
-                font-size: 29rpx;
-                color: #222;
-                gap: 20rpx;
-                .label{
-                    font-weight: bold;
-                }
-            }
-
-            .section{
-                margin-top: 24rpx;
-
-                .font-red2{
-                    font-size: 34rpx;
-                }
-                
-                .font-red3{
-                    color: #FE2F2F;
-                    font-size: 28rpx;
-                }
-
-            }
-        }
-
-        .tips1{
-            font-size: 26rpx;
-            padding: 12rpx 10rpx;
-            color: #0182EF;
-            background: rgba(1, 130, 239, .075);
-            border-radius: 4rpx;
-        }
-
-        .tips2{
-            font-size: 26rpx;
-            padding: 12rpx 10rpx;
-            color: #FF8420;
-            background-color: rgba(255, 132, 32, .075);
-            border-radius: 4rpx;
-        }
-    }
 
 }
 
