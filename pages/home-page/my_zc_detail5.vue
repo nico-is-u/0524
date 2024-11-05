@@ -69,9 +69,9 @@
             </view>
 
             <!-- 小标题 -->
-            <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail6')">
+            <!-- <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail6')">
                 <view class="like-h1">保证金缴纳通道 ></view>
-            </view>
+            </view> -->
 
         </view>
 
