@@ -17,7 +17,7 @@
                                 size="large"
                                 title="A档认定"
                                 label="(20万以内)"
-                                value="20万以内"
+                                value="4000元"
                                 isLink
                                 @click="enterPayPassword(1)"
                             ></u-cell>
@@ -26,7 +26,7 @@
                                 size="large"
                                 title="B档认定"
                                 label="(20万至300万以内)"
-                                value="20万至300万"
+                                value="10000元"
                                 isLink
                                 @click="enterPayPassword(2)"
                             ></u-cell>
@@ -35,7 +35,7 @@
                                 size="large"
                                 title="C档认定"
                                 label="(300万以上)"
-                                value="300万以上"
+                                value="20000元"
                                 isLink
                                 @click="enterPayPassword(3)"
                             ></u-cell>
