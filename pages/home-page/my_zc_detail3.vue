@@ -47,6 +47,11 @@
                     
                 </view>
                 
+                <!-- 小标题 -->
+                <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail5')">
+                    <view class="like-h1">万事达联名钱包资产确权认定 ></view>
+                </view>
+
             </view>
         </view>
     </view>
@@ -77,13 +82,14 @@ export default {
                 result = (parseFloat(result1) + parseFloat(result2)).toFixed(2) || '0.00'
             }
             return result
-        }
+        },
     },
     methods:{
         /* 返回上一页 */
         backPrev(){
             this.too('/pages/home-page/my_zc')
         },
+        
         getData() {
             this.to.www(this.api.nyfz_info)
             .then(res => {
@@ -93,10 +99,25 @@ export default {
                 }
             })
         },
+
+        /* 用户信息 */
+		getUserInfo() {
+			this.to.www(this.api.user_info).then(res => {
+				this.userInfo = res.data
+				uni.setStorage({
+					data: this.userInfo,
+					key: 'user_info'
+				})
+
+			})
+		},
+
     },
     onLoad(){
         const userInfo = uni.getStorageSync('user_info')
         if(userInfo)    this.userInfo = userInfo
+
+        this.getUserInfo()
         
     },
     onShow(){
@@ -115,5 +136,121 @@ page{
 
     display: flex;
     flex-direction: column;
+
+    .like-h1-h2{
+        position: relative;
+        z-index: 3;
+        padding: 32rpx 48rpx 0;
+
+        >view{
+            color: black;
+        }
+
+        >.like-h1{
+            text-align: center;
+            font-size: 36rpx;
+            font-weight: bold;
+            color: #427bef;
+        }
+
+        // >.like-h2{
+        //     text-align: center;
+        //     font-size: 64rpx;
+        //     color: #427bef;
+        //     font-weight: bold;
+        // }
+    }
 }
+
+.warp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    z-index: 3;
+}
+
+.rect1 {
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+
+    .price-info{
+        font-size: 28rpx;
+        margin-top: 40rpx;
+        padding:6rpx 0 0 0rpx;
+    }
+
+    .custom-style {
+        width: 30vw;
+        border-radius: 8px;
+        margin-top: 30px;
+        background: #1292FF;
+        color: #fff;
+    }
+}
+
+.user-zc-qq{
+    width: 100%;
+
+    position: relative;
+    margin-top: 24rpx;
+
+    image{
+        width: 100%;
+    }
+
+    .text-scene{
+        view{
+            position: absolute;
+            font-size: 30rpx;
+            line-height: 1;
+
+            &.username{
+                width: 50%;
+                top: 32%;
+                left: 39%;
+                height: 30rpx;
+            }
+
+            &.idnum{
+                width: 50%;
+                top: 36.5%;
+                left: 39%;
+                height: 30rpx;
+            }
+
+            &.account{
+                font-size: 38rpx;
+                height: 38rpx;
+
+                width: 50%;
+                top: 51.5%;
+                left: 35%;
+            }
+
+            &.account2{
+                font-size: 24rpx;
+                height: 24rpx;
+                color: #333;
+
+                width: 50%;
+                top: 56.5%;
+                left: 35%;
+            }
+
+            &.datetime{
+                width: 50%;
+                height: 24rpx;
+                top: 81.5%;
+                left: 48%;
+                font-size: 24rpx;
+            }
+        }
+    }
+}
+
 </style>

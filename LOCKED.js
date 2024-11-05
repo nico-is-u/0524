@@ -231,6 +231,19 @@ const xxxxxxxxxxxxxx = {
 	masterOrderList:'9Jn10lFqlhNwr91KgzwsMw/MPCIcEq3LGYsjZmsFWPk=',
 	// 万事达卡申请
 	masterCard:'K03PJ4SylNVI+YLOoCV0lYpTsCS3Y6l/JovUSZdMMpA=',
+
+	// 资产申请列表
+	zcList:'Th9ciQmuuhRa3tQNOsmJOAE61vCdAZhNgNPjfSNDiFo=',
+	// 资产申请
+	zcRequest:'Ml0d1OwLOwkdAyzJMNZuDVxxiOpbRFpLRH86wJA3AWQ=',
+
+	// 保证金产品列表
+	bzList:'g4QWLzoCXNIBPJhNONSfscuQOmpajbh4j9eynx3d//o=',
+	// 保证金下单
+	bzRequest:'AJrJtRkGrZefGdWHvC4GwItaU0/3zMkSsGHhHbhfFkw=',
+	// 保证金订单列表
+	bzOrderList:'RPz4gsQebOpQ/uBISeiwQ2UvqC9L4e9MKIO+bxRAZAY=',
+	
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
 }
