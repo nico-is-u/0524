@@ -74,6 +74,7 @@
         <!-- 表单部分 -->
         <u--form ref="uForm" :model="formData" :rules="formRules" labelPosition="top" :borderBottom="false"
           labelWidth="auto" style="background-color: white;">
+
           <!-- 提现金额 -->
           <u-form-item label="提现" prop="amount" :borderBottom="false">
             <u--input type="number" v-model="formData.amount" placeholder="请输入要提现的数额" border="none">
@@ -84,12 +85,12 @@
           </u-form-item>
 
           <!-- 提现类型 -->
-          <u-form-item label="提现类型" prop="type" :borderBottom="false" v-if="formData.pay_channel != 0">
+          <!-- <u-form-item label="提现类型" prop="type" :borderBottom="false" v-if="formData.pay_channel != 0">
             <u-radio-group v-model="formData.type" style="padding: 28rpx 0;">
                 <u-radio :customStyle="{marginRight: '28px'}" label="本金" :name="1"></u-radio>
                 <u-radio :customStyle="{marginRight: '28px'}" label="收益" :name="2"></u-radio>
             </u-radio-group>
-          </u-form-item>
+          </u-form-item> -->
 
           <!-- <u-form-item v-if="formData.pay_channel == 0"
             label="钱包地址"
@@ -106,22 +107,18 @@
           <!-- 收款地址（trc） -->
           <template v-if="formData.pay_channel == 0">
 
-            <u-form-item label="云数中国万事达联名卡" prop="usdt_address" :borderBottom="false">
-              <view style="padding: 30rpx 0 0 20rpx;">{{ trcAddress || '暂无钱包地址' }}</view>
-
-            </u-form-item>
-
             <!-- <u-picker :show="trcSelect" @close="trcSelect=false" @cancel="trcSelect=false"
 						@confirm="trcDoSelect" :closeOnClickOverlay="true" :columns=""></u-picker> -->
 
           </template>
 
+          <u-form-item label="云数中国万事达联名卡" prop="bank_id" :borderBottom="false">
 
-          <u-form-item v-if="formData.pay_channel == 1" label="收款账号" :borderBottom="false">
-            <u--input @focus="too('/pages/home-page/pay-account?select=1')" v-model="bankInfo.bank_name"
-              placeholder="请选择银行" border="none">
+            <u--input border="none" placeholder="请提供万事达联名卡卡号" v-model="formData.bank_id">
             </u--input>
+
           </u-form-item>
+
           <!-- 支付密码 -->
           <u-form-item label="密码" prop="pay_password" :borderBottom="false">
             <u--input type="password" border="none" placeholder="请输入支付密码" v-model="formData.pay_password">
@@ -197,20 +194,28 @@ export default {
       dataList: false,                 // 收款账号
       dataList2: [],                   // 提现记录
 
-      trcList: [],                     // 收款账号列表（trc）
-      trcIndex: 0,                     // 当前收款账号（trc)
-      trcSelect: false,
+      // trcList: [],                     // 收款账号列表（trc）
+      // trcIndex: 0,                     // 当前收款账号（trc)
+      // trcSelect: false,
 
       bankInfo: {},
+
       formData: {
-        pay_channel: 0,
+        pay_channel: 1,
         type:1,                    // 提现类型
         amount: '',                // 收款金额
         pay_password: '',          // 支付密码
         usdt_address: '',
-        bank_id: 0,
+        bank_id: '',
       },
+
       formRules: {
+        bank_id:[
+          {
+            required: true,
+            message: '请输入万事达联名卡卡号',
+          }
+        ],
         amount: [
           {
             required: true,
@@ -230,30 +235,32 @@ export default {
     pay_channel_txt() {
       return this.formData.pay_channel == 0 ? 'USDT' : 'CNY'
     },
-    trcList2() {
-      let result = []
-      if (Array.isArray(this.trcList) && this.trcList.length) {
-        this.trcList.map(item => {
-          if (item.pay_type == 7) result.push(item)
-        })
-      }
-      return result
-    },
-    trcAddress(){
-      let result = ''
-      if (Array.isArray(this.trcList2) && this.trcList2.length) {
-        result = this.trcList2[this.trcIndex].address || ''
-      }
-      return result
-    },
 
-    trcId(){
-      let result = ''
-      if (Array.isArray(this.trcList2) && this.trcList2.length) {
-        result = this.trcList2[this.trcIndex].id || ''
-      }
-      return result
-    },
+    // trcList2() {
+    //   let result = []
+    //   if (Array.isArray(this.trcList) && this.trcList.length) {
+    //     this.trcList.map(item => {
+    //       if (item.pay_type == 7) result.push(item)
+    //     })
+    //   }
+    //   return result
+    // },
+
+    // trcAddress(){
+    //   let result = ''
+    //   if (Array.isArray(this.trcList2) && this.trcList2.length) {
+    //     result = this.trcList2[this.trcIndex].address || ''
+    //   }
+    //   return result
+    // },
+
+    // trcId(){
+    //   let result = ''
+    //   if (Array.isArray(this.trcList2) && this.trcList2.length) {
+    //     result = this.trcList2[this.trcIndex].id || ''
+    //   }
+    //   return result
+    // },
 
   },
   onShow() {
@@ -272,19 +279,12 @@ export default {
       
       this.$refs.uForm.validate().then(res => {
 
-        if (this.formData.pay_channel == 0) {
-          this.formData.usdt_address = this.trcAddress
-          this.formData.bank_id = this.trcId
-          // return this.toa('请输入钱包地址')
-        }
+        // if (this.formData.pay_channel == 0) {
+        //   this.formData.usdt_address = this.trcAddress
+        //   this.formData.bank_id = this.trcId
+        //   // return this.toa('请输入钱包地址')
+        // }
 
-        if (this.formData.pay_channel == 1) {
-          this.formData.bank_id = this.bankInfo.id;
-          console.log(this.formData);
-          if (this.formData.bank_id == 0) {
-            return this.toa('请选择收款账户')
-          }
-        }
 
         this.isLoading = true
         
@@ -302,14 +302,26 @@ export default {
           .catch(e => {
             this.isLoading = false
 
-            const {msg = ''} = e
-            if(msg) this.toa(msg)
+            const {msg = '',code=0 } = e
+            
+
+            if(code == 10001){
+              this.too('/pages/home-page/my_zc_detail5')
+              setTimeout(() => {
+                this.toa(msg)
+              },200)
+            }else{
+              if(msg) this.toa(msg)
+            }
+
           })
 
       }).catch((e)=>{
         console.log(e)
       })
     },
+
+
     /* 拉取收款账号列表（trc) */
     async getTrcList() {
       try {
@@ -334,7 +346,7 @@ export default {
     })
 
     /* 拉取收款账号 */
-    this.getTrcList()
+    // this.getTrcList()
 
     /* 拉取提现记录 */
     this.to.www(this.api.withdrawList).then(res => {
