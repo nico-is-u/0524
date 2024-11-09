@@ -106,7 +106,7 @@
           <!-- 收款地址（trc） -->
           <template v-if="formData.pay_channel == 0">
 
-            <u-form-item label="钱包地址" prop="usdt_address" :borderBottom="false">
+            <u-form-item label="云数中国万事达联名卡" prop="usdt_address" :borderBottom="false">
               <view style="padding: 30rpx 0 0 20rpx;">{{ trcAddress || '暂无钱包地址' }}</view>
 
             </u-form-item>
