@@ -3,14 +3,19 @@
 
     <!-- 顶栏 -->
     <view class="page-navbar">
-      <nNavbar title="提现" :showBackBtn="true" :back="true"></nNavbar>
+      <nNavbar title="云数钱包资产提现" :showBackBtn="true" :back="true"></nNavbar>
     </view>
 
     <!-- 余额信息 -->
     <view style="padding: 16rpx 12rpx 0" v-if="userInfo">
 
-      <view class="balance-info flex flex-y-center flex-x-center">
+      <!-- 小标题 -->
+      <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail3')">
+          <view class="like-h1">云数中国万事达联名钱包</view>
+          <view class="like-h2" >{{ userInfo.yun_balance ? '￥' + userInfo.yun_balance : ''}}</view>
+      </view>
 
+      <!-- <view class="balance-info flex flex-y-center flex-x-center">
         <view class="balance-info-body flex" >
 
           <view class="text-block flex flex-column">
@@ -24,9 +29,9 @@
           </view>
 
         </view>
-      </view>
+      </view> -->
 
-      <view class="balance-info flex flex-y-center flex-x-center" style="margin-top: 12rpx;"  >
+      <!-- <view class="balance-info flex flex-y-center flex-x-center" style="margin-top: 12rpx;"  >
 
         <view class="balance-info-header">CNY可提余额</view>
         <view class="balance-info-body flex" style="padding-top: 48rpx;">
@@ -43,7 +48,7 @@
 
         </view>
 
-      </view>
+      </view> -->
 
     </view>
 
@@ -51,7 +56,7 @@
     <view class="padding-box-3" style="padding-top: 0;">
       <view class="content-3" style="margin-top: 32rpx;">
         <!-- tab 菜单 -->
-        <view class="tab-menu-type-1 flex flex-between flex-y-end" v-show="true">
+        <view class="tab-menu-type-1 flex flex-between flex-y-end" v-show="false">
           <view :class="formData.pay_channel == 0 ? 'active' : ''" @click="formData.pay_channel = 0"
             class="menu-item menu-item-1 flex flex-center">
             <view class="triangle"></view>
@@ -73,7 +78,8 @@
           <u-form-item label="提现" prop="amount" :borderBottom="false">
             <u--input type="number" v-model="formData.amount" placeholder="请输入要提现的数额" border="none">
               <!-- 后插槽 币种 -->
-              <u--text :text="pay_channel_txt" :bold="true" slot="suffix"></u--text>
+              <!-- <u--text :text="pay_channel_txt" :bold="true" slot="suffix"></u--text> -->
+              <u--text text="最大" :bold="true" slot="suffix" @click="enterMaxinum"></u--text>
             </u--input>
           </u-form-item>
 
@@ -314,6 +320,12 @@ export default {
         }
       } catch (e) {
       }
+    },
+    /* 辅助输入最大 */
+    enterMaxinum(){
+      if(this.userInfo){
+        this.formData.amount = this.userInfo.yun_balance || 0
+      }
     }
   },
   onLoad() {
@@ -339,6 +351,29 @@ page {
 }
 
 #gf_draw {
+
+  .like-h1-h2{
+      position: relative;
+      z-index: 3;
+      padding: 32rpx 48rpx 0;
+
+      >view{
+          color: black;
+      }
+
+      >.like-h1{
+          text-align: center;
+          font-size: 42rpx;
+          color: orangered;
+      }
+
+      >.like-h2{
+          text-align: center;
+          font-size: 64rpx;
+          color: #427bef;
+          font-weight: bold;
+      }
+  }
 
   /* 余额信息 */
   .balance-info {
