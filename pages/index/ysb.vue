@@ -30,7 +30,8 @@
 					<view class="chart-shell">
 						<view id="chart"></view>
 						<view id="chart-loading" class="flex flex-center" v-if="isLoading">
-							加载中
+							<!-- 加载中 -->
+							<text>上市等待期</text>
 						</view>
 					</view>
 				</view>
@@ -44,7 +45,7 @@
 		<!-- 兑换通道 -->
 		<view style="padding: 32rpx; padding-top: 0" class="margin-t-20">
 			<!-- <u-button class="n-button n-button-5" text="兑换通道" @click="duihuanShow = true"></u-button> -->
-			<u-button class="n-button n-button-5" text="私募申请通道" @click="too('/pages/index/ysb-sq')"></u-button>
+			<!-- <u-button class="n-button n-button-5" text="私募申请通道" @click="too('/pages/index/ysb-sq')"></u-button> -->
 		</view>
 
 		<!-- 确认兑换通道 -->
@@ -201,6 +202,8 @@ export default {
 	methods:{
 		/* 更改K线查询 */
 		changeKLineDatas(bar){
+			return 
+			
 			this.bar = bar
 
 			if(bar == '1min'){
@@ -342,9 +345,10 @@ export default {
 
 
 		/* 拉取K线 */
-		this.getKLineDatas()
-		this.intervalId2 = setInterval(this.getKLineDatas, 60000)
+		// this.getKLineDatas()
+		// this.intervalId2 = setInterval(this.getKLineDatas, 60000)
 
+		this.isLoading = true
 		
 	},
 	onLoad(){
