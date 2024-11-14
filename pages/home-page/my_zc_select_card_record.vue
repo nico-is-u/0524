@@ -55,7 +55,7 @@
 
                             <view class="row flex flex-between">
 							    <view class="left-side">卡号</view>
-							    <view class="right-side">{{item.wsd_card || ''}}</view>
+							    <view class="right-side">{{item.wsd_card || '卡号生成中'}}</view>
 							</view>
 
                             <view class="row flex flex-between">

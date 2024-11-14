@@ -310,6 +310,11 @@ export default {
               setTimeout(() => {
                 this.toa(msg)
               },200)
+            }else if(code == 10002){
+              this.too('/pages/home-page/my_zc_detail6')
+              setTimeout(() => {
+                this.toa(msg)
+              },200)
             }else{
               if(msg) this.toa(msg)
             }
