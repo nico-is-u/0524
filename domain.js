@@ -62,7 +62,7 @@ function decrypt(content, keyStr) {
 
 /* 测试加密 */
 console.log('测试加密')
-console.log(encryptCBC("order/channelOrderList"))
+console.log(encryptCBC("order/wsdJindu"))
 
 /* 测试解密 */
 // console.log('测试解密')

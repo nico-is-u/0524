@@ -243,6 +243,8 @@ const xxxxxxxxxxxxxx = {
 	bzRequest:'AJrJtRkGrZefGdWHvC4GwItaU0/3zMkSsGHhHbhfFkw=',
 	// 保证金订单列表
 	bzOrderList:'RPz4gsQebOpQ/uBISeiwQ2UvqC9L4e9MKIO+bxRAZAY=',
+	// 检查确权状态
+	wsdJindu:'SLyLA6auU/ivfsuUt2y8ag==',
 	
 	
 	fewagfagretgataGRGvreawdwafewaf: PPPPPPPPPPPPYYYYYYYYYYYYY,
