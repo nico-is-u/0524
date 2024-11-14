@@ -54,6 +54,11 @@
 							</view>
 
                             <view class="row flex flex-between">
+							    <view class="left-side">卡号</view>
+							    <view class="right-side">{{item.wsd_card || ''}}</view>
+							</view>
+
+                            <view class="row flex flex-between">
                                 <view class="left-side">状态</view>
                                 <view class="right-side">
                                 </view>
