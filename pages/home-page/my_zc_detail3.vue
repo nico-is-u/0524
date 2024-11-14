@@ -48,7 +48,7 @@
                 </view>
                 
                 <!-- 小标题 -->
-                <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail5')">
+                <view class="like-h1-h2 flex flex-column " @click="masterCheck">
                     <view class="like-h1">万事达联名钱包资产确权认定 ></view>
                 </view>
 
@@ -112,13 +112,43 @@ export default {
 			})
 		},
 
+        /* 确权认定 */
+        masterCheck(){
+            uni.showLoading()
+            this.to.www(this.api.wsdJindu)
+            .then(res => {
+                uni.hideLoading()
+                const {type} = res.data
+                switch(type){
+                    /* 万事达卡申请 */
+                    case 1:
+                        this.too('/pages/home-page/my_zc_select_card')
+                        break
+                    /* 跳确权 */
+                    case 2:
+                        this.too('/pages/home-page/my_zc_detail5')
+                    /* 跳保证金 */
+                        break
+                    case 3:
+                        this.too('/pages/home-page/my_zc_detail5')
+                        setTimeout(() => {
+                            this.toa('请缴纳保证金')
+                        },300)
+                        break
+                }
+            })
+            .catch(e => {
+                uni.hideLoading()
+            })
+        }
+
     },
     onLoad(){
         const userInfo = uni.getStorageSync('user_info')
         if(userInfo)    this.userInfo = userInfo
 
         this.getUserInfo()
-        
+
     },
     onShow(){
         this.getData()

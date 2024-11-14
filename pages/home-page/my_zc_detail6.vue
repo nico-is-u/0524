@@ -22,7 +22,7 @@
                             size="large"
                             :title="item.names[0]"
                             :label="item.names[1]"
-                            :value="item.names[1]"
+                            :value="item.single_amount + '元' "
                             isLink
                             @click="enterPayPassword(item.id)"
                         ></u-cell>

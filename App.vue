@@ -954,6 +954,8 @@
 					#chart,#chart-loading{
 						height: 380rpx;
 						margin-top: 16rpx;
+
+						font-size: 50rpx;
 					}
 
 					#chart-loading{
