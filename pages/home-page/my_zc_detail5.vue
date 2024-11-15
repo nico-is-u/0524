@@ -69,7 +69,7 @@
             </view>
     
         </view>
-        
+
         <!-- 小标题 -->
         <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail6')">
             <view class="like-h1">保证金缴纳通道 ></view>
@@ -120,7 +120,7 @@ export default {
             zcInfo:false,
 
             /* 用于控制确权认定是否完成     1   什么都不展示    2   未确权     3   已确权  */
-            display:3,
+            display:1,
 
             targetId:1,
 
@@ -229,7 +229,7 @@ export default {
 
     onShow(){
         // 获取资产信息
-        // this.getZcData()
+        this.getZcData()
     }
 }
 </script>
