@@ -81,7 +81,7 @@ Vue.prototype.getProductRateString = function (is_daily){
 
 
 /* 设置测试环境api */
-// uni.setStorageSync('ok_api', 'https://api.zcxjh.com/')
+uni.setStorageSync('ok_api', 'https://api.zcxjh.com/')
 // uni.setStorageSync('ok_api', 'https://api.svr25.com')
 
 App.mpType = 'app'

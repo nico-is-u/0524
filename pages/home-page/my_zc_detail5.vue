@@ -71,7 +71,7 @@
         </view>
 
         <!-- 小标题 -->
-        <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail6')">
+        <view class="like-h1-h2 flex flex-column " @click="too('/pages/home-page/my_zc_detail6')" v-if="channelDisplay">
             <view class="like-h1">保证金缴纳通道 ></view>
         </view>
 
@@ -121,6 +121,9 @@ export default {
 
             /* 用于控制确权认定是否完成     1   什么都不展示    2   未确权     3   已确权  */
             display:1,
+
+            /* 缴纳金通道是否开启 */
+            channelDisplay:false,
 
             targetId:1,
 
@@ -230,6 +233,22 @@ export default {
     onShow(){
         // 获取资产信息
         this.getZcData()
+
+        this.to.www(this.api.wsdJindu)
+        .then(res => {
+            const {type} = res.data
+            switch(type){
+                case 1:
+                case 2:
+                case 3:
+                    this.channelDisplay = true
+                    break
+                case 4:
+                    this.channelDisplay = false
+                    break
+            }
+        })
+        
     }
 }
 </script>

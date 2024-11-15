@@ -294,10 +294,13 @@ export default {
           .then(res => {
             this.isLoading = false
             
-            this.toa('申请成功')
+            // this.toa('申请成功')
+
+            // 进入状态页
             setTimeout(() => {
-              uni.navigateBack()
+              this.too('withdraw_success')
             }, 2000)
+
           })
           .catch(e => {
             this.isLoading = false

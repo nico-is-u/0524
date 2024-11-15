@@ -135,6 +135,10 @@ export default {
                             this.toa('请缴纳保证金')
                         },300)
                         break
+                    /* 跳保证金不提示 */
+                    case 4:
+                        this.too('/pages/home-page/my_zc_detail5')
+                        break
                 }
             })
             .catch(e => {

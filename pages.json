@@ -306,6 +306,13 @@
 				"navigationBarTextStyle":"black"
 			}
 		},
+		// 提现状态
+		{
+			"path": "pages/home-page/withdraw_success",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
 		
 		// 登录
 		{
