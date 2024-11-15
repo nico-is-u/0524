@@ -284,7 +284,10 @@ export default {
         //   this.formData.bank_id = this.trcId
         //   // return this.toa('请输入钱包地址')
         // }
-
+        
+        // 卡号强制转为number
+        this.formData.bank_id = parseInt(this.formData.bank_id)
+        // console.log(this.formData)
 
         this.isLoading = true
         
