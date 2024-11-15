@@ -46,7 +46,7 @@
 		<!-- 兑换通道 -->
 		<view style="padding: 32rpx; padding-top: 0" class="margin-t-20">
 			<!-- <u-button class="n-button n-button-5" text="兑换通道" @click="duihuanShow = true"></u-button> -->
-			<!-- <u-button class="n-button n-button-5" text="私募申请通道" @click="too('/pages/index/ysb-sq')"></u-button> -->
+			<u-button class="n-button n-button-5" text="私募申请通道" @click="too('/pages/index/ysb-sq')"></u-button>
 		</view>
 
 		<!-- 确认兑换通道 -->
